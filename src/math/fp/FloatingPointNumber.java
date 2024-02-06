@@ -25,10 +25,8 @@ public abstract class FloatingPointNumber
     
     final byte[] componentBytes;
     
-    // TODO: Write tests for this
     public byte[] getBytes() {
-        byte[] bytes = {0, 0};
-        return bytes;
+        return this.componentBytes;
     }
     
     public abstract float to32BitPrimitive();
