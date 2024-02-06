@@ -16,6 +16,8 @@
  */
 package math.fp;
 
+import java.util.Random;
+
 import static org.testng.Assert.*;
 import org.testng.annotations.Test;
 
@@ -25,9 +27,78 @@ import org.testng.annotations.Test;
  */
 public class FloatingPointNumberNGTest {
     
+    static final Random RANDOM = new Random();
+    
+    @Test
+    public void testGetBytes() {
+        System.out.println("getBytes");
+        int length = RANDOM.nextInt(16) + 4;
+        byte[] expected = new byte[length];
+        RANDOM.nextBytes(expected);
+        byte[] bytes = new byte[length];
+        System.arraycopy(expected, 0, bytes, 0, length);
+        FloatingPointNumber number = new FloatingPointNumberImpl(bytes);
+        byte[] actual = number.getBytes();
+        assertEquals(actual, expected);
+    }
+    
     private class FloatingPointNumberImpl extends FloatingPointNumber {
 
-        public FloatingPointNumberImpl(byte[] bytes) {
+        // TODO: Write tests for this
+        @Override
+        public float to32BitPrimitive() {
+            return -0.0f;
+        }
+
+        // TODO: Write tests for this
+        @Override
+        public double to64BitPrimitive() {
+            return 0.0;
+        }
+
+        // TODO: Write tests for this
+        @Override
+        public QuarterPrecisionNumber toQuarterPrecision() {
+            return null;
+        }
+
+        // TODO: Write tests for this
+        @Override
+        public HalfPrecisionNumber toHalfPrecision() {
+            return null;
+        }
+
+        // TODO: Write tests for this
+        @Override
+        public SinglePrecisionNumber toSinglePrecision() {
+            return null;
+        }
+
+        // TODO: Write tests for this
+        @Override
+        public DoublePrecisionNumber toDoublePrecision() {
+            return null;
+        }
+
+        // TODO: Write tests for this
+        @Override
+        public QuadruplePrecisionNumber toQuadruplePrecision() {
+            return null;
+        }
+
+        // TODO: Write tests for this
+        @Override
+        public OctuplePrecisionNumber toOctuplePrecision() {
+            return null;
+        }
+    
+        // TODO: Write tests for this
+        @Override
+        public String toHexadecimalString() {
+            return "SORRY, NOT IMPLEMENTED YET";
+        }
+    
+        FloatingPointNumberImpl(byte[] bytes) {
             super(bytes);
         }
         
