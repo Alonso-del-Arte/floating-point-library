@@ -95,7 +95,13 @@ public class SinglePrecisionNumber extends FloatingPointNumber {
         return new OctuplePrecisionNumber(THIRTY_TWO_ZEROS);
     }
     
-    public SinglePrecisionNumber(byte[] bytes) {
+    // TODO: Write tests for this
+    @Override
+    public String toHexadecimalString() {
+        return "SORRY, NOT IMPLEMENTED YET";
+    }
+    
+    SinglePrecisionNumber(byte[] bytes) {
         super(bytes);
     }
     

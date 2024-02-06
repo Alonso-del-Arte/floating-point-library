@@ -20,9 +20,10 @@ package math.fp;
  * Represents a floating point number.
  * @author Alonso del Arte
  */
-public abstract class FloatingPointNumber {
+public abstract class FloatingPointNumber 
+        implements Comparable<FloatingPointNumber> {
     
-    private final byte[] componentBytes;
+    final byte[] componentBytes;
     
     public abstract float to32BitPrimitive();
     
@@ -39,6 +40,39 @@ public abstract class FloatingPointNumber {
     public abstract QuadruplePrecisionNumber toQuadruplePrecision();
     
     public abstract OctuplePrecisionNumber toOctuplePrecision();
+    
+    public abstract String toHexadecimalString();
+    
+    // TODO: Write tests for this
+    public static FloatingPointNumber apply(byte[] bytes) {
+        return null;
+    }
+    
+    // TODO: Write tests for this
+    public FloatingPointNumber plus(FloatingPointNumber addend) {
+        return this;
+    }
+    
+    // TODO: Write tests for this
+    public FloatingPointNumber minus(FloatingPointNumber subtrahend) {
+        return this;
+    }
+    
+    // TODO: Write tests for this
+    public FloatingPointNumber times(FloatingPointNumber multiplicand) {
+        return this;
+    }
+    
+    // TODO: Write tests for this
+    public FloatingPointNumber divides(FloatingPointNumber divisor) {
+        return this;
+    }
+    
+    // TODO: Write tests for this
+    @Override
+    public int compareTo(FloatingPointNumber other) {
+        return 0;
+    }
     
     public FloatingPointNumber(byte[] bytes) {
         this.componentBytes = bytes;
