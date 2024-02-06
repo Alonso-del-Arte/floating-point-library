@@ -17,11 +17,11 @@
 package math.fp;
 
 /**
- *16-bit
+ *32-bit
  * @author Alonso del Arte
  */
-public class HalfPrecisionNumber extends FloatingPointNumber {
-    
+public class SinglePrecisionNumber extends FloatingPointNumber {
+
     private static final byte ZERO_BYTE = 0;
     
     private static final byte[] ONE_ZERO = {ZERO_BYTE}; // quarter
@@ -95,7 +95,7 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
         return new OctuplePrecisionNumber(THIRTY_TWO_ZEROS);
     }
     
-    HalfPrecisionNumber(byte[] bytes) {
+    public SinglePrecisionNumber(byte[] bytes) {
         super(bytes);
     }
     
