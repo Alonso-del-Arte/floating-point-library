@@ -101,6 +101,11 @@ public class SinglePrecisionNumber extends FloatingPointNumber {
         return "SORRY, NOT IMPLEMENTED YET";
     }
     
+    // TODO: Write tests for this
+    public static SinglePrecisionNumber fromPrimitive(float number) {
+        return new SinglePrecisionNumber(FOUR_ZEROS);
+    }
+    
     SinglePrecisionNumber(byte[] bytes) {
         super(bytes);
     }

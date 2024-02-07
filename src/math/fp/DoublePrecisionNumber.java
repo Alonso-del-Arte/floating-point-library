@@ -101,6 +101,11 @@ public class DoublePrecisionNumber extends FloatingPointNumber {
         return "SORRY, NOT IMPLEMENTED YET";
     }
     
+    // TODO: Write tests for this
+    public static DoublePrecisionNumber fromPrimitive(double number) {
+        return new DoublePrecisionNumber(EIGHT_ZEROS);
+    }
+    
     DoublePrecisionNumber(byte[] bytes) {
         super(bytes);
     }
