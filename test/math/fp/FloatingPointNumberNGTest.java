@@ -58,7 +58,20 @@ public class FloatingPointNumberNGTest {
         assertEquals(actual, expected);
     }
     
-    private class FloatingPointNumberImpl extends FloatingPointNumber {
+    private static FloatingPointNumber makeNumber() {
+        int length = RANDOM.nextInt(16) + 4;
+        byte[] bytes = new byte[length];
+        RANDOM.nextBytes(bytes);
+        return new FloatingPointNumberImpl(bytes);
+    }
+    
+    @Test
+    public void testReferentialEquality() {
+        FloatingPointNumber number = makeNumber();
+        assertEquals(number, number);
+    }
+    
+    private static class FloatingPointNumberImpl extends FloatingPointNumber {
 
         // TODO: Write tests for this
         @Override
