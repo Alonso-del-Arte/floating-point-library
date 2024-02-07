@@ -26,7 +26,10 @@ public abstract class FloatingPointNumber
     final byte[] componentBytes;
     
     public byte[] getBytes() {
-        return this.componentBytes;
+        int length = this.componentBytes.length;
+        byte[] copy = new byte[length];
+        System.arraycopy(this.componentBytes, 0, copy, 0, length);
+        return copy;
     }
     
     public abstract float to32BitPrimitive();
