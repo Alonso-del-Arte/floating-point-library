@@ -62,6 +62,24 @@ public class FloatingPointNumberNGTest {
 
         // TODO: Write tests for this
         @Override
+        public boolean isFinite() {
+            return false;
+        }
+    
+        // TODO: Write tests for this
+        @Override
+        public boolean isInfinite() {
+            return false;
+        }
+    
+        // TODO: Write tests for this
+        @Override
+        public boolean isNaN() {
+            return false;
+        }
+    
+        // TODO: Write tests for this
+        @Override
         public float to32BitPrimitive() {
             return -0.0f;
         }

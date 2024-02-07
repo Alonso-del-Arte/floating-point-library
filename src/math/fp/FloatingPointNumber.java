@@ -32,6 +32,12 @@ public abstract class FloatingPointNumber
         return copy;
     }
     
+    public abstract boolean isFinite();
+    
+    public abstract boolean isInfinite();
+    
+    public abstract boolean isNaN();
+    
     public abstract float to32BitPrimitive();
     
     public abstract double to64BitPrimitive();
