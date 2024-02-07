@@ -42,6 +42,22 @@ public class FloatingPointNumberNGTest {
         assertEquals(actual, expected);
     }
     
+    @Test
+    public void testGetBytesDoesNotLeakFieldRef() {
+        int length = RANDOM.nextInt(16) + 4;
+        byte[] expected = new byte[length];
+        RANDOM.nextBytes(expected);
+        byte[] bytes = new byte[length];
+        System.arraycopy(expected, 0, bytes, 0, length);
+        FloatingPointNumber number = new FloatingPointNumberImpl(bytes);
+        byte[] retrieved = number.getBytes();
+        for (byte i = 0; i < length; i++) {
+            retrieved[i] = (byte) (retrieved[i] + i);
+        }
+        byte[] actual = number.getBytes();
+        assertEquals(actual, expected);
+    }
+    
     private class FloatingPointNumberImpl extends FloatingPointNumber {
 
         // TODO: Write tests for this
