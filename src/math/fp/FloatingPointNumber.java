@@ -83,6 +83,18 @@ public abstract class FloatingPointNumber
     
     // TODO: Write tests for this
     @Override
+    public boolean equals(Object obj) {
+        return false;
+    }
+    
+    // TODO: Write tests for this
+    @Override
+    public int hashCode() {
+        return 0;
+    }
+    
+    // TODO: Write tests for this
+    @Override
     public int compareTo(FloatingPointNumber other) {
         return 0;
     }
