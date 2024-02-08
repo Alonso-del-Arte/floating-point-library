@@ -93,6 +93,15 @@ public class FloatingPointNumberNGTest {
         assert !number.equals(obj) : msg;
     }
     
+    @Test
+    public void testEquals() {
+        System.out.println("equals");
+        FloatingPointNumber someNumber = makeNumber();
+        byte[] bytes = someNumber.getBytes();
+        FloatingPointNumber sameNumber = new FloatingPointNumberImpl(bytes);
+        assertEquals(someNumber, sameNumber);
+    }
+    
     private static class FloatingPointNumberImpl extends FloatingPointNumber {
 
         // TODO: Write tests for this
