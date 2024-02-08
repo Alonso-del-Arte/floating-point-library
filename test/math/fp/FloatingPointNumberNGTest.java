@@ -16,6 +16,8 @@
  */
 package math.fp;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.Random;
 
 import static org.testng.Assert.*;
@@ -80,6 +82,14 @@ public class FloatingPointNumberNGTest {
         FloatingPointNumber number = makeNumber();
         Object obj = provideNull();
         String msg = number.toString() + " should not equal null";
+        assert !number.equals(obj) : msg;
+    }
+    
+    @Test
+    public void testNotEqualsDiffClass() {
+        Object number = makeNumber();
+        Object obj = LocalDate.now().getDayOfWeek();
+        String msg = number.toString() + " should not equal " + obj.toString();
         assert !number.equals(obj) : msg;
     }
     
