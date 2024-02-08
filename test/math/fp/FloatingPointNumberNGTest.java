@@ -71,6 +71,18 @@ public class FloatingPointNumberNGTest {
         assertEquals(number, number);
     }
     
+    private static Object provideNull() {
+        return null;
+    }
+    
+    @Test
+    public void testNotEqualsNull() {
+        FloatingPointNumber number = makeNumber();
+        Object obj = provideNull();
+        String msg = number.toString() + " should not equal null";
+        assert !number.equals(obj) : msg;
+    }
+    
     private static class FloatingPointNumberImpl extends FloatingPointNumber {
 
         // TODO: Write tests for this
