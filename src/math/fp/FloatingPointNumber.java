@@ -81,10 +81,9 @@ public abstract class FloatingPointNumber
         return this;
     }
     
-    // TODO: Write tests for this
     @Override
     public boolean equals(Object obj) {
-        return true;
+        return obj != null;
     }
     
     // TODO: Write tests for this
