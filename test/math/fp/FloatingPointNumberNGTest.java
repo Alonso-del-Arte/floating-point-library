@@ -102,6 +102,17 @@ public class FloatingPointNumberNGTest {
         assertEquals(someNumber, sameNumber);
     }
     
+    @Test
+    public void testNotEqualsDiffBytes() {
+        FloatingPointNumber someNumber = makeNumber();
+        byte[] bytes = someNumber.getBytes();
+        for (byte b : bytes) {
+            b = (byte) ~b;
+        }
+        FloatingPointNumber otherNumber = new FloatingPointNumberImpl(bytes);
+        assertNotEquals(someNumber, otherNumber);
+    }
+    
     private static class FloatingPointNumberImpl extends FloatingPointNumber {
 
         // TODO: Write tests for this
