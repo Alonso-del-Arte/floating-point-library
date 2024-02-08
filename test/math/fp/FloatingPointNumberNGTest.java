@@ -114,76 +114,73 @@ public class FloatingPointNumberNGTest {
     
     private static class FloatingPointNumberImpl extends FloatingPointNumber {
 
-        // TODO: Write tests for this
         @Override
         public boolean isFinite() {
             return false;
         }
     
-        // TODO: Write tests for this
         @Override
         public boolean isInfinite() {
             return false;
         }
     
-        // TODO: Write tests for this
         @Override
         public boolean isNaN() {
             return false;
         }
     
-        // TODO: Write tests for this
         @Override
         public float to32BitPrimitive() {
             return -0.0f;
         }
 
-        // TODO: Write tests for this
         @Override
         public double to64BitPrimitive() {
             return 0.0;
         }
 
-        // TODO: Write tests for this
         @Override
         public QuarterPrecisionNumber toQuarterPrecision() {
             return null;
         }
 
-        // TODO: Write tests for this
         @Override
         public HalfPrecisionNumber toHalfPrecision() {
             return null;
         }
 
-        // TODO: Write tests for this
         @Override
         public SinglePrecisionNumber toSinglePrecision() {
             return null;
         }
 
-        // TODO: Write tests for this
         @Override
         public DoublePrecisionNumber toDoublePrecision() {
             return null;
         }
 
-        // TODO: Write tests for this
         @Override
         public QuadruplePrecisionNumber toQuadruplePrecision() {
             return null;
         }
 
-        // TODO: Write tests for this
         @Override
         public OctuplePrecisionNumber toOctuplePrecision() {
             return null;
         }
     
-        // TODO: Write tests for this
+        @Override
+        public String toString() {
+            StringBuilder intermediate = new StringBuilder();
+            for (int i = 0; i < this.componentBytes.length; i++) {
+                intermediate.append(Byte.toString(this.componentBytes[i]));
+            }
+            return intermediate.toString();
+        }
+        
         @Override
         public String toHexadecimalString() {
-            return "SORRY, NOT IMPLEMENTED YET";
+            return "FOR TESTING PURPOSES ONLY";
         }
     
         FloatingPointNumberImpl(byte[] bytes) {
