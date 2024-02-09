@@ -16,7 +16,6 @@
  */
 package math.fp;
 
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Random;
 
@@ -100,6 +99,21 @@ public class FloatingPointNumberNGTest {
         byte[] bytes = someNumber.getBytes();
         FloatingPointNumber sameNumber = new FloatingPointNumberImpl(bytes);
         assertEquals(someNumber, sameNumber);
+    }
+    
+    @Test
+    public void testNotEqualsDiffLenByteArray() {
+        FloatingPointNumber numberA = makeNumber();
+        byte[] originalBytes = numberA.getBytes();
+        int lenA = originalBytes.length;
+        int lenB = lenA + 1;
+        byte[] bytes = new byte[lenB];
+        System.arraycopy(originalBytes, 0, bytes, 0, lenA);
+        FloatingPointNumber numberB = new FloatingPointNumberImpl(bytes);
+        String msg = "Given that " + numberA.toString() + " is made up of " 
+                + lenA + " bytes and " + numberB.toString() + " is made up of " 
+                + lenB + " bytes, they should not be considered equal";
+        assert !numberA.equals(numberB) : msg;
     }
     
 //    @Test
