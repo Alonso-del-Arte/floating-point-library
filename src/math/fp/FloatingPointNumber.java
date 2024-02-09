@@ -81,6 +81,11 @@ public abstract class FloatingPointNumber
         return this;
     }
     
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof FloatingPointNumber;
+    }
+    
     // TODO: Write tests for this
     @Override
     public int hashCode() {
