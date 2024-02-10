@@ -83,7 +83,13 @@ public abstract class FloatingPointNumber
     
     @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof FloatingPointNumber)) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (!this.getClass().equals(obj.getClass())) {
             return false;
         }
         FloatingPointNumber other = (FloatingPointNumber) obj;
