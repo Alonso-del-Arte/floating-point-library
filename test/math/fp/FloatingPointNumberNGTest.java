@@ -109,6 +109,7 @@ public class FloatingPointNumberNGTest {
         int lenB = lenA + 1;
         byte[] bytes = new byte[lenB];
         System.arraycopy(originalBytes, 0, bytes, 0, lenA);
+        bytes[lenA] = (byte) (RANDOM.nextInt() % 256);
         FloatingPointNumber numberB = new FloatingPointNumberImpl(bytes);
         String msg = "Given that " + numberA.toString() + " is made up of " 
                 + lenA + " bytes and " + numberB.toString() + " is made up of " 
