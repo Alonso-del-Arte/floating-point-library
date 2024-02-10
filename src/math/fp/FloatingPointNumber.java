@@ -86,8 +86,19 @@ public abstract class FloatingPointNumber
         if (!(obj instanceof FloatingPointNumber)) {
             return false;
         }
-        return this.componentBytes.length 
-                == ((FloatingPointNumber) obj).componentBytes.length;
+        FloatingPointNumber other = (FloatingPointNumber) obj;
+        int len = this.componentBytes.length;
+        if (len != other.componentBytes.length) {
+            return false;
+        }
+        boolean matchesSoFar = true;
+        int index = 0;
+        while (matchesSoFar && index < len) {
+            matchesSoFar = this.componentBytes[index] 
+                    == other.componentBytes[index];
+            index++;
+        }
+        return matchesSoFar;
     }
     
     // TODO: Write tests for this
