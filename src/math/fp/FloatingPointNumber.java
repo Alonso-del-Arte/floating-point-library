@@ -83,7 +83,11 @@ public abstract class FloatingPointNumber
     
     @Override
     public boolean equals(Object obj) {
-        return obj instanceof FloatingPointNumber;
+        if (!(obj instanceof FloatingPointNumber)) {
+            return false;
+        }
+        return this.componentBytes.length 
+                == ((FloatingPointNumber) obj).componentBytes.length;
     }
     
     // TODO: Write tests for this
