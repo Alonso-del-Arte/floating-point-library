@@ -117,14 +117,16 @@ public class FloatingPointNumberNGTest {
         assert !numberA.equals(numberB) : msg;
     }
     
-//    @Test
+    @Test
     public void testNotEqualsDiffBytes() {
         FloatingPointNumber someNumber = makeNumber();
         byte[] bytes = someNumber.getBytes();
         int index = RANDOM.nextInt(bytes.length);
         bytes[index] = (byte) ((bytes[index] << 1) + 1);
         FloatingPointNumber otherNumber = new FloatingPointNumberImpl(bytes);
-        assert !someNumber.equals(otherNumber);
+        String msg = someNumber.toString() + " should not equal " 
+                + otherNumber.toString();
+        assert !someNumber.equals(otherNumber) : msg;
     }
     
     private static class FloatingPointNumberImpl extends FloatingPointNumber {
