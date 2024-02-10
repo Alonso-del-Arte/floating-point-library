@@ -130,6 +130,27 @@ public class FloatingPointNumberNGTest {
     }
     
     @Test
+    public void testNotEqualsDiffFPClassTest() {
+        FloatingPointNumber someNumber = makeNumber();
+        byte[] bytes = someNumber.getBytes();
+        FloatingPointNumber kindaSameNumber 
+                = new FloatingPointNumberImpl(bytes) {
+            
+            @Override
+            public String toString() {
+                return "(0)" + super.toString();
+            }
+            
+        };
+        String msg = "Given that " + someNumber.toString() 
+                + " is an instance of " + someNumber.getClass().getName() 
+                + " and " + kindaSameNumber.toString() + " is an instance of " 
+                + kindaSameNumber.getClass().getName() 
+                + ", they should not be considered equal";
+        assert !someNumber.equals(kindaSameNumber) : msg;
+    }
+    
+    @Test
     public void testConstructorRejectsEmptyArray() {
         byte[] bytes = {};
         try {
