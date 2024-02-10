@@ -129,6 +129,29 @@ public class FloatingPointNumberNGTest {
         assert !someNumber.equals(otherNumber) : msg;
     }
     
+    @Test
+    public void testConstructorRejectsEmptyArray() {
+        byte[] bytes = {};
+        try {
+            FloatingPointNumber badNumber = new FloatingPointNumberImpl(bytes);
+            String message = "Should not have been able to use create " 
+                    + badNumber.getClass() + '@' 
+                    + Integer.toHexString(badNumber.hashCode()) 
+                    + " with empty array";
+            fail(message);
+        } catch (IllegalArgumentException iae) {
+            System.out.println("Empty array correctly caused exception");
+            String excMsg = iae.getMessage();
+            assert excMsg != null : "Message should not be null";
+            assert !excMsg.isBlank() : "Message should not be blank";
+            System.out.println("\"" + excMsg + "\"");
+        } catch (RuntimeException re) {
+            String message = re.getClass().getName() 
+                    + " is the wrong exception for empty array to constructor";
+            fail(message);
+        }
+    }
+    
     private static class FloatingPointNumberImpl extends FloatingPointNumber {
 
         @Override
