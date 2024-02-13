@@ -22,16 +22,30 @@ package math.integer;
  */
 public class LongProcessor {
     
-    // TODO: Write tests for this
+    /**
+     * 
+     * @param source
+     * @return 
+     * @throws IllegalArgumentException If <code>source</code> has 9 or more 
+     * bytes.
+     * @throws ArrayIndexOutOfBoundsException If <code>source</code> has 1 to 7 
+     * bytes.
+     */
     public static long fromBytes(byte[] source) {
         int len = source.length;
+        if (len == 0) return 0L;
         if (len > Double.BYTES) {
             int excess = len - Double.BYTES;
             String excMsg = "Source array has " + len + " bytes, " + excess 
                     + " too many";
             throw new IllegalArgumentException(excMsg);
         }
-        return 0L;
+        long intermediate = 0L;
+        for (int i = 0; i < 8; i++) {
+            intermediate *= 256;
+            intermediate += Byte.toUnsignedLong(source[i]);
+        }
+        return intermediate & Long.MAX_VALUE;
     }
     
     // TODO: Write tests for this
