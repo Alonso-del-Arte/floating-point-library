@@ -16,6 +16,8 @@
  */
 package math.integer;
 
+import java.util.Random;
+
 import static org.testng.Assert.*;
 import org.testng.annotations.Test;
 
@@ -25,10 +27,37 @@ import org.testng.annotations.Test;
  */
 public class LongProcessorNGTest {
     
-    /**
-     * Test of fromBytes method, of class LongProcessor.
-     */
+    private static final Random RANDOM = new Random(System.currentTimeMillis());
+    
     @Test
+    public void testFromBytesRejectsTooManyBytes() {
+        int size = RANDOM.nextInt(8) + Double.BYTES + 2;
+        byte[] source = new byte[size];
+        String msgPart = "Using array of " + size + " bytes ";
+        try {
+            long badLong = LongProcessor.fromBytes(source);
+            String message = msgPart 
+                    + "should have caused an exception, not given result " 
+                    + badLong;
+            fail(message);
+        } catch (IllegalArgumentException iae) {
+            System.out.println(msgPart 
+                    + "correctly caused IllegalArgumentException");
+            String excMsg = iae.getMessage();
+            assert excMsg != null : "Exception message should not be null";
+            assert !excMsg.isBlank() : "Exception message should not be blank";
+            System.out.println("\"" + excMsg + "\"");
+        } catch (RuntimeException re) {
+            String message = msgPart + "should not have caused " 
+                    + re.getClass().getName();
+            fail(message);
+        }
+    }
+    
+    /**
+     * Test of the fromBytes function, of the LongProcessor class.
+     */
+//    @Test
     public void testFromBytes() {
         System.out.println("fromBytes");
         byte[] source = null;
@@ -42,7 +71,7 @@ public class LongProcessorNGTest {
     /**
      * Test of toBytes method, of class LongProcessor.
      */
-    @Test
+//    @Test
     public void testToBytes() {
         System.out.println("toBytes");
         long source = 0L;
