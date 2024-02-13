@@ -31,7 +31,7 @@ public class LongProcessor {
                     + " too many";
             throw new IllegalArgumentException(excMsg);
         }
-        return Long.MIN_VALUE;
+        return 0L;
     }
     
     // TODO: Write tests for this
