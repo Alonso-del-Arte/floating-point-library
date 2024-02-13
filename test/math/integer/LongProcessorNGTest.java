@@ -54,6 +54,14 @@ public class LongProcessorNGTest {
         }
     }
     
+    @Test
+    public void testFromBytesEmptyArrayGivesZero() {
+        byte[] source = {};
+        long expected = 0L;
+        long actual = LongProcessor.fromBytes(source);
+        assertEquals(actual, expected);
+    }
+    
     /**
      * Test of the fromBytes function, of the LongProcessor class.
      */
