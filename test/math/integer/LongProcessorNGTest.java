@@ -31,7 +31,7 @@ public class LongProcessorNGTest {
     
     @Test
     public void testFromBytesRejectsTooManyBytes() {
-        int size = RANDOM.nextInt(8) + Double.BYTES + 2;
+        int size = RANDOM.nextInt(8) + Long.BYTES + 2;
         byte[] source = new byte[size];
         String msgPart = "Using array of " + size + " bytes ";
         try {
@@ -68,12 +68,12 @@ public class LongProcessorNGTest {
 //    @Test
     public void testFromBytes() {
         System.out.println("fromBytes");
-        byte[] source = null;
-        long expResult = 0L;
-        long result = LongProcessor.fromBytes(source);
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        byte[] source = new byte[Long.BYTES];
+        RANDOM.nextBytes(source);
+        StringBuilder hexNumStr = new StringBuilder();
+        long expected = 0L;
+        long actual = LongProcessor.fromBytes(source);
+        assertEquals(actual, expected);
     }
 
     /**
