@@ -24,7 +24,14 @@ public class LongProcessor {
     
     // TODO: Write tests for this
     public static long fromBytes(byte[] source) {
-        return 0L;
+        int len = source.length;
+        if (len > Double.BYTES) {
+            int excess = len - Double.BYTES;
+            String excMsg = "Source array has " + len + " bytes, " + excess 
+                    + " too many";
+            throw new IllegalArgumentException(excMsg);
+        }
+        return Long.MIN_VALUE;
     }
     
     // TODO: Write tests for this
