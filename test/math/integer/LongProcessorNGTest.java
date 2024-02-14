@@ -64,7 +64,9 @@ public class LongProcessorNGTest {
     
     /**
      * Test of the fromBytes function, of the LongProcessor class. For this test 
-     * we ensure the target 64-bit integer is positive or 0, not negative.
+     * we ensure the target 64-bit integer is positive or 0, not negative. 
+     * Admittedly, 0 is extremely unlikely, though not mathematically 
+     * impossible.
      */
     @Test
     public void testFromBytes() {
@@ -78,6 +80,31 @@ public class LongProcessorNGTest {
             expected *= 256;
             long unsigned = Byte.toUnsignedLong(b);
             expected += unsigned;
+            hexNumStr.append(Long.toHexString(unsigned));
+        }
+        long actual = LongProcessor.fromBytes(source);
+        String message = "Concatenated bytes are " + hexNumStr;
+        assertEquals(actual, expected, message);
+    }
+
+    /**
+     * Another test of the fromBytes function, of the LongProcessor class. For 
+     * this test we ensure the target 64-bit integer is negative.
+     */
+    @Test
+    public void testFromBytesNegative() {
+        byte[] source = new byte[Long.BYTES];
+        RANDOM.nextBytes(source);
+        source[0] = (byte) (source[0] | Byte.MIN_VALUE);
+        StringBuilder hexNumStr = new StringBuilder();
+        long expected = 0L;
+        for (byte b : source) {
+            expected *= 256;
+            long unsigned = Byte.toUnsignedLong(b);
+            expected += unsigned;
+            if (unsigned < 16) {
+                hexNumStr.append('0');
+            }
             hexNumStr.append(Long.toHexString(unsigned));
         }
         long actual = LongProcessor.fromBytes(source);
