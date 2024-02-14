@@ -17,15 +17,18 @@
 package math.integer;
 
 /**
- *
+ * Static class to process 64-bit integers arrays and arrays of bytes. 
  * @author Alonso del Arte
  */
 public class LongProcessor {
     
     /**
-     * 
-     * @param source
-     * @return 
+     * Converts an array of bytes to a signed 64-bit integer.
+     * @param source The bytes to convert, with the most significant byte first 
+     * and the least significant byte last. The first byte's first bit is 
+     * understood to be the sign bit. For example, {1, 3, 5, 7, 9, 11, 13, 15}. 
+     * These correspond to the hexadecimal representation 1030507090B0D0F.
+     * @return The converted 64-bit integer. For example, 72907546742689039.
      * @throws IllegalArgumentException If <code>source</code> has 9 or more 
      * bytes.
      * @throws ArrayIndexOutOfBoundsException If <code>source</code> has 1 to 7 
@@ -45,7 +48,7 @@ public class LongProcessor {
             intermediate *= 256;
             intermediate += Byte.toUnsignedLong(source[i]);
         }
-        return intermediate & Long.MAX_VALUE;
+        return intermediate;
     }
     
     // TODO: Write tests for this
