@@ -53,8 +53,8 @@ public class LongProcessor {
         }
         long intermediate = 0L;
         for (byte b : source) {
-            intermediate *= 256;
-            intermediate += Byte.toUnsignedLong(b);
+            intermediate <<= 8;
+            intermediate += (b & 255);
         }
         return intermediate;
     }
