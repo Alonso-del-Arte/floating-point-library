@@ -25,13 +25,21 @@ public class LongProcessor {
     /**
      * Converts an array of bytes to a signed 64-bit integer.
      * @param source The bytes to convert, with the most significant byte first 
-     * and the least significant byte last. The first byte's first bit is 
-     * understood to be the sign bit. For example, {1, 3, 5, 7, 9, 11, 13, 15}. 
-     * These correspond to the hexadecimal representation 1030507090B0D0F.
-     * @return The converted 64-bit integer. For example, 72907546742689039.
+     * and the least significant byte last. If the array has eight bytes, the 
+     * byte's first bit is understood to be the sign bit. For example, {1, 3, 5, 
+     * 7, 9, 11, 13, 15}. These correspond to the hexadecimal representation 
+     * 1030507090B0D0F. The array may have less than eight bytes, in which case 
+     * the last byte is the least significant byte and the number is positive, 
+     * even in the case of negative bytes, or if the array is empty the number 
+     * is 0. For a negative number, the array must have eight bytes with the 
+     * first byte being at least &minus;128 and at most &minus;1. For example, 
+     * {&minus;128, 126, 124, 122, 120, 118, 116, 114}, corresponding to the 
+     * hexadecimal representation 807E7C7A78767472.
+     * @return The converted 64-bit integer. For example, 72907546742689039, 
+     * corresponding to the 1030507090B0D0F example. Or, for example, if the 
+     * array only has one byte, say &minus;1, that becomes 255. With the 
+     * 807E7C7A78767472 example, the result would be &minus;9187769324340349838.
      * @throws IllegalArgumentException If <code>source</code> has 9 or more 
-     * bytes.
-     * @throws ArrayIndexOutOfBoundsException If <code>source</code> has 1 to 7 
      * bytes.
      */
     public static long fromBytes(byte[] source) {
@@ -44,9 +52,9 @@ public class LongProcessor {
             throw new IllegalArgumentException(excMsg);
         }
         long intermediate = 0L;
-        for (int i = 0; i < 8; i++) {
+        for (byte b : source) {
             intermediate *= 256;
-            intermediate += Byte.toUnsignedLong(source[i]);
+            intermediate += Byte.toUnsignedLong(b);
         }
         return intermediate;
     }
