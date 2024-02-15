@@ -111,6 +111,29 @@ public class LongProcessorNGTest {
         String message = "Concatenated bytes are " + hexNumStr;
         assertEquals(actual, expected, message);
     }
+    
+    @Test
+    public void testFromBytesArraySizes1To7() {
+        for (int size = 1; size < 8; size++) {
+            byte[] source = new byte[size];
+            RANDOM.nextBytes(source);
+            long expected = 0L;
+            for (byte b: source) {
+                expected *= 256;
+                expected += Byte.toUnsignedLong(b);
+            }
+            try {
+                long actual = LongProcessor.fromBytes(source);
+                assertEquals(actual, expected);
+            } catch (ArrayIndexOutOfBoundsException aioobe) {
+                String message = "Array of " + size 
+                        + " byte(s) should not have caused exception";
+                System.out.println(message);
+                System.out.println("\"" + aioobe.getMessage() + "\"");
+                fail(message);
+            }
+        }
+    }
 
     /**
      * Test of toBytes method, of class LongProcessor.
