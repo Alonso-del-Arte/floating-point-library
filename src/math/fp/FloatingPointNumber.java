@@ -16,6 +16,8 @@
  */
 package math.fp;
 
+import java.util.Arrays;
+
 /**
  * Represents a floating point number.
  * @author Alonso del Arte
@@ -81,6 +83,23 @@ public abstract class FloatingPointNumber
         return this;
     }
     
+    /**
+     * Compares this floating point number object for equality. For the 
+     * examples, let's say this object is a 128-bit rational approximation of 
+     * the mathematical constant &pi;. 
+     * @param obj The object to compare this floating point number object to. 
+     * Examples: 64-bit, 128-bit and 256-bit rational approximations of &pi; in 
+     * <code>FloatingPointNumber</code> instances; a 128-bit rational 
+     * approximation of &radic;10; a <code>BigDecimal</code> approximation of 
+     * &pi;; a <code>LocalDateTime</code> object for the time and date right 
+     * now; and a <code>Double</code> wrapping <code>Math.PI</code>.
+     * @return True only if <code>obj</code> is a 
+     * <code>FloatingPointNumber</code> instance of the same runtime class with 
+     * the same number of bytes and the same bit pattern, false in all other 
+     * cases. In the examples, false, true and false for the three 
+     * <code>FloatingPointNumber</code> instances holding approximations of 
+     * &pi;, and false for all others.
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -92,19 +111,8 @@ public abstract class FloatingPointNumber
         if (!this.getClass().equals(obj.getClass())) {
             return false;
         }
-        FloatingPointNumber other = (FloatingPointNumber) obj;
-        int len = this.componentBytes.length;
-        if (len != other.componentBytes.length) {
-            return false;
-        }
-        boolean matchesSoFar = true;
-        int index = 0;
-        while (matchesSoFar && index < len) {
-            matchesSoFar = this.componentBytes[index] 
-                    == other.componentBytes[index];
-            index++;
-        }
-        return matchesSoFar;
+        return Arrays.equals(this.componentBytes, 
+                ((FloatingPointNumber) obj).componentBytes);
     }
     
     // TODO: Write tests for this
