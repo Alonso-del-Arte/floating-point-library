@@ -17,7 +17,9 @@
 package math.fp;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 import static org.testng.Assert.*;
 import org.testng.annotations.Test;
@@ -148,6 +150,24 @@ public class FloatingPointNumberNGTest {
                 + kindaSameNumber.getClass().getName() 
                 + ", they should not be considered equal";
         assert !someNumber.equals(kindaSameNumber) : msg;
+    }
+    
+    @Test
+    public void testHashCode() {
+        System.out.println("hashCode");
+        int initialCapacity = RANDOM.nextInt(64) + 16;
+        Set<FloatingPointNumber> numbers = new HashSet<>(initialCapacity);
+        Set<Integer> hashes = new HashSet<>(initialCapacity);
+        for (int i = 0; i < initialCapacity; i++) {
+            FloatingPointNumber number = makeNumber();
+            numbers.add(number);
+            hashes.add(number.hashCode());
+        }
+        int expected = numbers.size();
+        int actual = hashes.size();
+        String message = "The set of " + expected 
+                + " numbers should correspond to as many hash codes";
+        assertEquals(actual, expected, message);
     }
     
     @Test
