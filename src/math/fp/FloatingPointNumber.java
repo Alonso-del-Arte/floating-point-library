@@ -118,7 +118,12 @@ public abstract class FloatingPointNumber
     // TODO: Write tests for this
     @Override
     public int hashCode() {
-        return 0;
+        int hash = this.componentBytes.length << 16;
+        for (byte b : this.componentBytes) {
+            hash += (b << 7);
+            hash ^= b;
+        }
+        return hash;
     }
     
     // TODO: Write tests for this
