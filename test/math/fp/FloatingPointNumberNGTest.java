@@ -171,6 +171,29 @@ public class FloatingPointNumberNGTest {
     }
     
     @Test
+    public void testDiffClassHashDiff() {
+        FloatingPointNumber someNumber = makeNumber();
+        byte[] bytes = someNumber.getBytes();
+        FloatingPointNumber kindaSameNumber 
+                = new FloatingPointNumberImpl(bytes) {
+            
+            @Override
+            public String toString() {
+                return "fp:" + super.toString();
+            }
+            
+        };
+        int hashA = someNumber.hashCode();
+        int hashB = kindaSameNumber.hashCode();
+        String msg = someNumber.getClass().getName() + " holding value " 
+                + someNumber.toString() + " hashes to " + hashA 
+                + " which should be different from " 
+                + kindaSameNumber.getClass().getName() + " holding value " 
+                + kindaSameNumber.toString() + " hashing to " + hashB;
+        assert hashA != hashB : msg;
+    }
+    
+    @Test
     public void testConstructorRejectsEmptyArray() {
         byte[] bytes = {};
         try {
