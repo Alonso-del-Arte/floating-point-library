@@ -115,10 +115,16 @@ public abstract class FloatingPointNumber
                 ((FloatingPointNumber) obj).componentBytes);
     }
     
-    // TODO: Write tests for this
+    /**
+     * Gives a hash code for this floating point number. The hash codes can't be 
+     * guaranteed to be unique if more than four bytes are used to represent the 
+     * number.
+     * @return A hash code.
+     */
     @Override
     public int hashCode() {
         int hash = this.componentBytes.length << 16;
+        hash += this.getClass().getName().hashCode();
         for (byte b : this.componentBytes) {
             hash += (b << 7);
             hash ^= b;
