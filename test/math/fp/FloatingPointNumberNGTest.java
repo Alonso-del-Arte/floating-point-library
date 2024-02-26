@@ -234,6 +234,16 @@ public class FloatingPointNumberNGTest {
         }
     
         @Override
+        public boolean isQuietNaN() {
+            return false;
+        }
+
+        @Override
+        public boolean isSignalingNaN() {
+            return false;
+        }
+
+        @Override
         public float to32BitPrimitive() {
             return -0.0f;
         }

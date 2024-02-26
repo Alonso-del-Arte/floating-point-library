@@ -38,7 +38,28 @@ public abstract class FloatingPointNumber
     
     public abstract boolean isInfinite();
     
+    /**
+     * Indicates whether or not this number is a Not a Number (NaN) value.
+     * @return True if this number is a NaN value, false in all other cases.
+     */
     public abstract boolean isNaN();
+    
+    /**
+     * Indicates whether or not this number is a quiet NaN value. A quiet NaN 
+     * value is not supposed to indicate any special error condition. 
+     * @return True if this number is a quiet NaN value, false in all other 
+     * cases.
+     */
+    public abstract boolean isQuietNaN();
+    
+    /**
+     * Indicates whether or not this number is a signaling NaN value. A 
+     * signaling NaN value is not supposed to indicate any special error 
+     * condition. 
+     * @return True if this number is a signaling NaN value, false in all other 
+     * cases.
+     */
+    public abstract boolean isSignalingNaN();
     
     public abstract float to32BitPrimitive();
     

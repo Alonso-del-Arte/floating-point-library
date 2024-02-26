@@ -67,6 +67,18 @@ public class SinglePrecisionNumber extends FloatingPointNumber {
     
     // TODO: Write tests for this
     @Override
+    public boolean isQuietNaN() {
+        return false;
+    }
+
+    // TODO: Write tests for this
+    @Override
+    public boolean isSignalingNaN() {
+        return false;
+    }
+
+    // TODO: Write tests for this
+    @Override
     public float to32BitPrimitive() {
         return -0.0f;
     }
