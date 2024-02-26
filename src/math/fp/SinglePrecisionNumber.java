@@ -92,7 +92,7 @@ public class SinglePrecisionNumber extends FloatingPointNumber {
     // TODO: Write tests for this
     @Override
     public QuarterPrecisionNumber toQuarterPrecision() {
-        return new QuarterPrecisionNumber(ONE_ZERO);
+        return new QuarterPrecisionNumber((byte) 0);
     }
 
     // TODO: Write tests for this

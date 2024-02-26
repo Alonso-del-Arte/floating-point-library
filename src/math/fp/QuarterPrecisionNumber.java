@@ -93,7 +93,7 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     // TODO: Write tests for this
     @Override
     public QuarterPrecisionNumber toQuarterPrecision() {
-        return new QuarterPrecisionNumber(ONE_ZERO);
+        return new QuarterPrecisionNumber((byte) 0);
     }
 
     // TODO: Write tests for this
@@ -133,11 +133,7 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     }
     
     public QuarterPrecisionNumber(byte b) {
-        this(new byte[]{b});
-    }
-    
-    private QuarterPrecisionNumber(byte[] bytes) {
-        super(bytes);
+        super(new byte[]{b});
     }
     
 }
