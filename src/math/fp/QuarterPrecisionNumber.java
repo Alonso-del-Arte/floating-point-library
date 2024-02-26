@@ -17,7 +17,8 @@
 package math.fp;
 
 /**
- *8-bit
+ * Represents an 8-bit or "quarter precision" floating point number. Also called 
+ * "minifloat."
  * @author Alonso del Arte
  */
 public class QuarterPrecisionNumber extends FloatingPointNumber {
@@ -131,7 +132,11 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
         return "SORRY, NOT IMPLEMENTED YET";
     }
     
-    QuarterPrecisionNumber(byte[] bytes) {
+    public QuarterPrecisionNumber(byte b) {
+        this(new byte[]{b});
+    }
+    
+    private QuarterPrecisionNumber(byte[] bytes) {
         super(bytes);
     }
     
