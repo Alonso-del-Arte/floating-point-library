@@ -25,8 +25,6 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
 
     private static final byte ZERO_BYTE = 0;
     
-    private static final byte[] ONE_ZERO = {ZERO_BYTE}; // quarter
-
     private static final byte[] TWO_ZEROS = {ZERO_BYTE, ZERO_BYTE}; // half
 
     private static final byte[] FOUR_ZEROS = {ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, 
@@ -124,6 +122,11 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     @Override
     public OctuplePrecisionNumber toOctuplePrecision() {
         return new OctuplePrecisionNumber(THIRTY_TWO_ZEROS);
+    }
+    
+    @Override
+    public String toString() {
+        return "-0.0";
     }
     
     // TODO: Write tests for this
