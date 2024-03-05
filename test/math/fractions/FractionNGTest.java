@@ -38,11 +38,13 @@ public class FractionNGTest {
         assertEquals(actual, expected);
     }
     
-//    @Test
+    @Test
     public void testGetDenominator() {
         int numer = 2 * RANDOM.nextInt();
-        int denom = Math.abs(numer) + 1;
-        Fraction fraction = new Fraction(numer, denom);
+        int expected = Math.abs(numer) + 1;
+        Fraction fraction = new Fraction(numer, expected);
+        long actual = fraction.getDenominator();
+        assertEquals(actual, expected);
     }
     
 }
