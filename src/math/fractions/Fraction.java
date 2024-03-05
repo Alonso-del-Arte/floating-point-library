@@ -33,6 +33,56 @@ public class Fraction implements Comparable<Fraction> {
     }
     
     // TODO: Write tests for this
+    public Fraction plus(Fraction addend) {
+        return this;
+    }
+    
+    // TODO: Write tests for this
+    public Fraction plus(int addend) {
+        return this;
+    }
+    
+    // TODO: Write tests for this
+    public Fraction negate() {
+        return this;
+    }
+    
+    // TODO: Write tests for this
+    public Fraction minus(Fraction subtrahend) {
+        return this;
+    }
+    
+    // TODO: Write tests for this
+    public Fraction minus(int subtrahend) {
+        return this;
+    }
+    
+    // TODO: Write tests for this
+    public Fraction times(Fraction multiplicand) {
+        return this;
+    }
+    
+    // TODO: Write tests for this
+    public Fraction times(int multiplicand) {
+        return this;
+    }
+    
+    // TODO: Write tests for this
+    public Fraction reciprocal() {
+        return this;
+    }
+    
+    // TODO: Write tests for this
+    public Fraction divides(Fraction divisor) {
+        return this;
+    }
+    
+    // TODO: Write tests for this
+    public Fraction divides(int divisor) {
+        return this;
+    }
+    
+    // TODO: Write tests for this
     @Override
     public int compareTo(Fraction other) {
         return 0;
