@@ -22,10 +22,22 @@ package math.fractions;
  */
 public class Fraction implements Comparable<Fraction> {
     
+    public long getNumerator() {
+        return Long.MAX_VALUE;
+    }
+    
+    public long getDenominator() {
+        return Long.MIN_VALUE;
+    }
+    
     // TODO: Write tests for this
     @Override
     public int compareTo(Fraction other) {
         return 0;
+    }
+    
+    public Fraction(long numer, long denom) {
+        //
     }
     
 }
