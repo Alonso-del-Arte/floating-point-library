@@ -16,6 +16,8 @@
  */
 package math.fractions;
 
+import java.util.Random;
+
 import static org.testng.Assert.*;
 import org.testng.annotations.Test;
 
@@ -25,10 +27,22 @@ import org.testng.annotations.Test;
  */
 public class FractionNGTest {
     
+    private static final Random RANDOM = new Random();
+    
     @Test
-    public void testSomeMethod() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testGetNumerator() {
+        int expected = 2 * RANDOM.nextInt();
+        int denom = Math.abs(expected) + 1;
+        Fraction fraction = new Fraction(expected, denom);
+        long actual = fraction.getNumerator();
+        assertEquals(actual, expected);
+    }
+    
+//    @Test
+    public void testGetDenominator() {
+        int numer = 2 * RANDOM.nextInt();
+        int denom = Math.abs(numer) + 1;
+        Fraction fraction = new Fraction(numer, denom);
     }
     
 }
