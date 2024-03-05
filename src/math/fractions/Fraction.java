@@ -22,14 +22,14 @@ package math.fractions;
  */
 public class Fraction implements Comparable<Fraction> {
     
-    private final long numerator;
+    private final long numerator, denominator;
     
     public long getNumerator() {
         return this.numerator;
     }
     
     public long getDenominator() {
-        return Long.MIN_VALUE;
+        return this.denominator;
     }
     
     // TODO: Write tests for this
@@ -40,6 +40,7 @@ public class Fraction implements Comparable<Fraction> {
     
     public Fraction(long numer, long denom) {
         this.numerator = numer;
+        this.denominator = denom;
     }
     
 }
