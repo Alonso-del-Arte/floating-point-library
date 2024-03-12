@@ -131,7 +131,10 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
         if (this.heldByte == 120) {
             return "Infinity";
         }
-        return "\u2212Infinity";
+        if (this.heldByte == -8) {
+            return "\u2212Infinity";
+        }
+        return "NaN";
     }
     
     // TODO: Write tests for this
