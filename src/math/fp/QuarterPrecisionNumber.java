@@ -128,22 +128,12 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     
     @Override
     public String toString() {
-        switch (this.heldByte) {
-            case -7:
-            case -6:
-            case -5:
-            case -4:
-            case -3:
-            case -2:
-            case -1:
-                return "NaN";
-            case -8:
-                return "\u2212Infinity";
-            case 120:
-                return "Infinity";
-            default:
-                return "\u22120.0";
-        }
+        return switch (this.heldByte) {
+            case -7, -6, -5, -4, -3, -2, -1 -> "NaN";
+            case -8 -> "\u2212Infinity";
+            case 120 -> "Infinity";
+            default -> "\u22120.0";
+        };
     }
     
     // TODO: Write tests for this
