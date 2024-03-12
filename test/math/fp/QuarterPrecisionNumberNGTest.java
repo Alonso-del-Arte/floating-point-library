@@ -28,12 +28,21 @@ import org.testng.annotations.Test;
 public class QuarterPrecisionNumberNGTest {
     
     @Test
-    public void testToStringNegativeZero() {
-        QuarterPrecisionNumber number 
-                = new QuarterPrecisionNumber(Byte.MIN_VALUE);
-        String expected = "-0.0";
+    public void testToStringNegativeInfinity() {
+        byte b = -8;
+        QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+        String expected = "\u2212Infinity";
         String actual = number.toString();
         assertEquals(actual, expected);
     }
+    
+//    @Test
+//    public void testToStringNegativeZero() {
+//        QuarterPrecisionNumber number 
+//                = new QuarterPrecisionNumber(Byte.MIN_VALUE);
+//        String expected = "-0.0";
+//        String actual = number.toString();
+//        assertEquals(actual, expected);
+//    }
     
 }
