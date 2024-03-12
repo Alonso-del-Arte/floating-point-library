@@ -72,4 +72,14 @@ public class QuarterPrecisionNumberNGTest {
         assertEquals(actual, expected);
     }
     
+    @Test
+    public void testToStringPositiveNaN() {
+        String expected = "NaN";
+        for (byte b = 121; b > 0; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String actual = number.toString();
+            assertEquals(actual, expected);
+        }
+    }
+    
 }
