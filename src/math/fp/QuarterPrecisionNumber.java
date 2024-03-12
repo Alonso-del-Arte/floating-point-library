@@ -126,7 +126,7 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     
     @Override
     public String toString() {
-        return "-0.0";
+        return "\u2212Infinity";
     }
     
     // TODO: Write tests for this
