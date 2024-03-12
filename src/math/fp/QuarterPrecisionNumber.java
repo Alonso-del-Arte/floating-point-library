@@ -130,7 +130,8 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     public String toString() {
         return switch (this.heldByte) {
             case -128 -> "\u22120.0";
-            case -7, -6, -5, -4, -3, -2, -1 -> "NaN";
+            case -7, -6, -5, -4, -3, -2, -1, 121, 122, 123, 124, 125, 126, 127 
+                -> "NaN";
             case -8 -> "\u2212Infinity";
             case 120 -> "Infinity";
             default -> "0.0";
