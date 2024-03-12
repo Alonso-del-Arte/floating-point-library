@@ -45,6 +45,8 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
         ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, 
         ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE}; 
 // octuple
+    
+    private final byte heldByte;
 
     // TODO: Write tests for this
     @Override
@@ -126,6 +128,9 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     
     @Override
     public String toString() {
+        if (this.heldByte == 120) {
+            return "Infinity";
+        }
         return "\u2212Infinity";
     }
     
@@ -137,6 +142,7 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     
     public QuarterPrecisionNumber(byte b) {
         super(new byte[]{b});
+        this.heldByte = b;
     }
     
 }
