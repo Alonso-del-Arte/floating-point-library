@@ -36,6 +36,15 @@ public class QuarterPrecisionNumberNGTest {
         assertEquals(actual, expected);
     }
     
+    @Test
+    public void testToStringPositiveInfinity() {
+        byte b = 120;
+        QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+        String expected = "Infinity";
+        String actual = number.toString();
+        assertEquals(actual, expected);
+    }
+    
 //    @Test
 //    public void testToStringNegativeZero() {
 //        QuarterPrecisionNumber number 
