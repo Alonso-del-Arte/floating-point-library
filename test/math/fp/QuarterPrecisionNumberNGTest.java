@@ -64,4 +64,12 @@ public class QuarterPrecisionNumberNGTest {
         assertEquals(actual, expected);
     }
     
+    @Test
+    public void testToStringPositiveZero() {
+        QuarterPrecisionNumber number = new QuarterPrecisionNumber((byte) 0);
+        String expected = "0.0";
+        String actual = number.toString();
+        assertEquals(actual, expected);
+    }
+    
 }
