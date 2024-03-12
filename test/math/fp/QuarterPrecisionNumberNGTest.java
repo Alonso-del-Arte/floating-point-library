@@ -45,6 +45,16 @@ public class QuarterPrecisionNumberNGTest {
         assertEquals(actual, expected);
     }
     
+    @Test
+    public void testToStringNegativeNaN() {
+        String expected = "NaN";
+        for (byte b = -7; b < 0; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String actual = number.toString();
+            assertEquals(actual, expected);
+        }
+    }
+    
 //    @Test
 //    public void testToStringNegativeZero() {
 //        QuarterPrecisionNumber number 
