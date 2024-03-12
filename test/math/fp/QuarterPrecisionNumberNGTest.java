@@ -55,13 +55,13 @@ public class QuarterPrecisionNumberNGTest {
         }
     }
     
-//    @Test
-//    public void testToStringNegativeZero() {
-//        QuarterPrecisionNumber number 
-//                = new QuarterPrecisionNumber(Byte.MIN_VALUE);
-//        String expected = "-0.0";
-//        String actual = number.toString();
-//        assertEquals(actual, expected);
-//    }
+    @Test
+    public void testToStringNegativeZero() {
+        QuarterPrecisionNumber number 
+                = new QuarterPrecisionNumber(Byte.MIN_VALUE);
+        String expected = "\u22120.0";
+        String actual = number.toString();
+        assertEquals(actual, expected);
+    }
     
 }
