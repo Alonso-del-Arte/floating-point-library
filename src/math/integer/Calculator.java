@@ -24,7 +24,7 @@ public class Calculator {
     
     // TODO: Write tests for this
     public static int euclideanGCD(int a, int b) {
-        return -Integer.MAX_VALUE;
+        return a;
     }
     
 }
