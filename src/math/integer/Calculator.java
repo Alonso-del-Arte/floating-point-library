@@ -22,9 +22,8 @@ package math.integer;
  */
 public class Calculator {
     
-    // TODO: Write tests for this
     public static int euclideanGCD(int a, int b) {
-        return a;
+        return Math.abs(a);
     }
     
 }
