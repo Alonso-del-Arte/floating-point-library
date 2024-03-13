@@ -16,7 +16,7 @@
  */
 package math.integer;
 
-import java.util.Random;
+import static math.integer.CalculatorNGTest.RANDOM;
 
 import static org.testng.Assert.*;
 import org.testng.annotations.Test;
@@ -26,8 +26,6 @@ import org.testng.annotations.Test;
  * @author Alonso del Arte
  */
 public class LongProcessorNGTest {
-    
-    private static final Random RANDOM = new Random(System.currentTimeMillis());
     
     @Test
     public void testFromBytesRejectsTooManyBytes() {

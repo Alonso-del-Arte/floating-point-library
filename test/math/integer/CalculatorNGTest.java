@@ -27,7 +27,7 @@ import org.testng.annotations.Test;
  */
 public class CalculatorNGTest {
     
-    private static final Random RANDOM = new Random(System.currentTimeMillis());
+    static final Random RANDOM = new Random(System.currentTimeMillis());
     
     @Test
     public void testEuclideanGCDSameNumber() {
