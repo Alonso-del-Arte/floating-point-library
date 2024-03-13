@@ -37,6 +37,13 @@ public class CalculatorNGTest {
     }
     
     @Test
+    public void testEuclideanGCDNegativeAPositiveB() {
+        int expected = RANDOM.nextInt(Short.MAX_VALUE) + 1;
+        int a = -expected;
+        int actual = Calculator.euclideanGCD(a, expected);
+        assertEquals(actual, expected);
+    }
+    
     public void testEuclideanGCDSameNegativeNumber() {
         int expected = RANDOM.nextInt(Short.MAX_VALUE) + 1;
         int a = -expected;
@@ -45,7 +52,7 @@ public class CalculatorNGTest {
     }
     
     /**
-     * Test of euclideanGCD method, of class Calculator.
+     * Test of the euclideanGCD function, of the Calculator class.
      */
 //    @Test
     public void testEuclideanGCD() {
