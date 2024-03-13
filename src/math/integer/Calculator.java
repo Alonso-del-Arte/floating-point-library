@@ -23,7 +23,7 @@ package math.integer;
 public class Calculator {
     
     public static int euclideanGCD(int a, int b) {
-        return b;
+        return Math.abs(a);
     }
     
 }
