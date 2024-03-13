@@ -36,6 +36,14 @@ public class CalculatorNGTest {
         assertEquals(actual, expected);
     }
     
+    @Test
+    public void testEuclideanGCDSameNegativeNumber() {
+        int expected = RANDOM.nextInt(Short.MAX_VALUE) + 1;
+        int a = -expected;
+        int actual = Calculator.euclideanGCD(a, a);
+        assertEquals(actual, expected);
+    }
+    
     /**
      * Test of euclideanGCD method, of class Calculator.
      */
