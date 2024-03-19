@@ -81,7 +81,7 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     // TODO: Write tests for this
     @Override
     public float to32BitPrimitive() {
-        return -0.0f;
+        return Float.NEGATIVE_INFINITY;
     }
 
     // TODO: Write tests for this
