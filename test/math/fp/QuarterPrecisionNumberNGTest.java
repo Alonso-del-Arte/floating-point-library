@@ -82,4 +82,13 @@ public class QuarterPrecisionNumberNGTest {
         }
     }
     
+    @Test
+    public void testTo32BitPrimitiveNegativeInfinity() {
+        byte b = -8;
+        QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+        float expected = Float.NEGATIVE_INFINITY;
+        float actual = number.to32BitPrimitive();
+        assertEquals(actual, expected);
+    }
+    
 }
