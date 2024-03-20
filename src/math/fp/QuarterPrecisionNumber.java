@@ -80,10 +80,14 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
 
     @Override
     public float to32BitPrimitive() {
-        if (this.heldByte == 120) {
-            return Float.POSITIVE_INFINITY;
+        switch (this.heldByte) {
+            case -8:
+                return Float.NEGATIVE_INFINITY;
+            case 120:
+                return Float.POSITIVE_INFINITY;
+            default:
+                return Float.NaN;
         }
-        return Float.NEGATIVE_INFINITY;
     }
 
     @Override
