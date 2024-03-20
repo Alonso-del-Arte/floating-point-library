@@ -78,16 +78,22 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
         return false;
     }
 
+    /**
+     * WORK IN PROGRESS...
+     * Gives a 32-bit primitive floating point number corresponding to this one. 
+     * Since quarter-precision numbers have less precision than single-precision 
+     * numbers, there should be a precise correspondence between all possible 
+     * quarter-precision values and the returned primitives. However, for NaN 
+     * values other than canonical NaN, we make no promises.
+     * @return A 32-bit floating point number primitive.
+     */
     @Override
     public float to32BitPrimitive() {
-        switch (this.heldByte) {
-            case -8:
-                return Float.NEGATIVE_INFINITY;
-            case 120:
-                return Float.POSITIVE_INFINITY;
-            default:
-                return Float.NaN;
-        }
+        return switch (this.heldByte) {
+            case -8 -> Float.NEGATIVE_INFINITY;
+            case 120 -> Float.POSITIVE_INFINITY;
+            default -> Float.NaN;
+        };
     }
 
     @Override
