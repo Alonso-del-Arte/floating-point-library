@@ -118,4 +118,22 @@ public class QuarterPrecisionNumberNGTest {
         assertEquals(actual, expected);
     }
     
+    @Test
+    public void testTo32BitPrimitiveCanonicalNaN() {
+        byte b = 124;
+        QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+        float expected = Float.NaN;
+        float actual = number.to32BitPrimitive();
+        assertEquals(actual, expected);
+    }
+    
+//    @Test
+//    public void testTo64BitPrimitivePositiveInfinity() {
+//        byte b = 120;
+//        QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+//        double expected = Double.POSITIVE_INFINITY;
+//        double actual = number.to64BitPrimitive();
+//        assertEquals(actual, expected);
+//    }
+    
 }
