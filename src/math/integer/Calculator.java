@@ -23,6 +23,11 @@ package math.integer;
 public class Calculator {
     
     public static int euclideanGCD(int a, int b) {
+        do {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        } while (b != 0);
         return Math.abs(a);
     }
     
