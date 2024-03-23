@@ -55,16 +55,16 @@ public class CalculatorNGTest {
     /**
      * Test of the euclideanGCD function, of the Calculator class.
      */
-//    @Test
+    @Test
     public void testEuclideanGCD() {
         System.out.println("euclideanGCD");
-        int a = 0;
-        int b = 0;
-        int expResult = 0;
-        int result = Calculator.euclideanGCD(a, b);
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        int expected = RANDOM.nextInt(Byte.MAX_VALUE) + 1;
+        int n = RANDOM.nextInt(Byte.MAX_VALUE) + 1;
+        int a = expected * n;
+        int b = expected * (n + 1);
+        int actual = Calculator.euclideanGCD(a, b);
+        String message = "gcd(" + a + ", " + b + ") expected to be " + expected;
+        assertEquals(actual, expected, message);
     }
     
 }
