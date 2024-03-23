@@ -31,4 +31,9 @@ public class Calculator {
         return Math.abs(a);
     }
     
+    // TODO: Write tests for this
+    public static int randomPowerOfTwo() {
+        return -1;
+    }
+    
 }
