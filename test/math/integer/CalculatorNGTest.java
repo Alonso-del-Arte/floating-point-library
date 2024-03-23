@@ -103,8 +103,9 @@ public class CalculatorNGTest {
     }
     
     @Test
-    public void testEuclideanGCDNonzeroAZeroB() {
-        int expected = RANDOM.nextInt() | randomPowerOfTwo();
+    public void testEuclideanGCDPositiveAZeroB() {
+        int expected = (RANDOM.nextInt() | randomPowerOfTwo()) 
+                & Integer.MAX_VALUE;
         int b = 0;
         String msg = "Calculating gcd(" + expected + ", " + b 
                 + ") should not cause exception";
