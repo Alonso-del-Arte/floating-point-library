@@ -16,11 +16,15 @@
  */
 package math.integer;
 
+import java.util.Random;
+
 /**
  *
  * @author Alonso del Arte
  */
 public class Calculator {
+    
+    private static final Random RANDOM = new Random(System.nanoTime());
     
     public static int euclideanGCD(int a, int b) {
         do {
@@ -31,9 +35,13 @@ public class Calculator {
         return Math.abs(a);
     }
     
-    // TODO: Write tests for this
+    /**
+     * Gives a pseudorandomly chosen power of two.
+     * @return A pseudorandomly chosen power of two. For example, 16384.
+     */
     public static int randomPowerOfTwo() {
-        return -1;
+        int shift = RANDOM.nextInt(31);
+        return 1 << shift;
     }
     
 }
