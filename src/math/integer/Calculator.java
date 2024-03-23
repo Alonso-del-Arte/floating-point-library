@@ -28,7 +28,7 @@ public class Calculator {
     
     public static int euclideanGCD(int a, int b) {
         if (b == 0) {
-            return a;
+            return Math.abs(a);
         }
         do {
             int temp = b;
