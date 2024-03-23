@@ -23,6 +23,8 @@ import java.util.Set;
 import static org.testng.Assert.*;
 import org.testng.annotations.Test;
 
+import static testframe.api.Asserters.assertDoesNotThrow;
+
 /**
  * Tests of the Calculator class.
  * @author Alonso del Arte
@@ -30,6 +32,18 @@ import org.testng.annotations.Test;
 public class CalculatorNGTest {
     
     static final Random RANDOM = new Random(System.currentTimeMillis());
+    
+    /**
+     * Gives a pseudorandomly chosen power of two. This duplicates {@link 
+     * Calculator#randomPowerOfTwo()}, but that one will be tested and possibly 
+     * refactored, while this one won't.
+     * @return A pseudorandomly chosen power of two. For example, 16384.
+     */
+    private static int randomPowerOfTwo() {
+        int shift = RANDOM.nextInt(31);
+        return 1 << shift;
+    }
+
     
     @Test
     public void testRandomPowerOfTwo() {
@@ -86,6 +100,20 @@ public class CalculatorNGTest {
         int actual = Calculator.euclideanGCD(a, b);
         String message = "gcd(" + a + ", " + b + ") expected to be " + expected;
         assertEquals(actual, expected, message);
+    }
+    
+    @Test
+    public void testEuclideanGCDNonzeroAZeroB() {
+        int expected = RANDOM.nextInt() | randomPowerOfTwo();
+        int b = 0;
+        String msg = "Calculating gcd(" + expected + ", " + b 
+                + ") should not cause exception";
+        assertDoesNotThrow(() -> {
+            int actual = Calculator.euclideanGCD(expected, b);
+            String message = "Expecting gcd(" + expected + ", " + b + ") to be " 
+                    + expected;
+            assertEquals(actual, expected, message);
+        }, msg);
     }
     
 }
