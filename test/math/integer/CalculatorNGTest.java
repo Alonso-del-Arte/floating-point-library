@@ -117,4 +117,20 @@ public class CalculatorNGTest {
         }, msg);
     }
     
+    @Test
+    public void testEuclideanGCDNegativeAZeroB() {
+        int a = (RANDOM.nextInt() | randomPowerOfTwo()) 
+                | Integer.MIN_VALUE;
+        int b = 0;
+        String msg = "Calculating gcd(" + a + ", " + b 
+                + ") should not cause exception";
+        assertDoesNotThrow(() -> {
+            int expected = Math.abs(a);
+            int actual = Calculator.euclideanGCD(a, b);
+            String message = "Expecting gcd(" + a + ", " + b + ") to be " 
+                    + expected;
+            assertEquals(actual, expected, message);
+        }, msg);
+    }
+    
 }
