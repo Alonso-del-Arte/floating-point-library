@@ -16,7 +16,9 @@
  */
 package math.integer;
 
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 import static org.testng.Assert.*;
 import org.testng.annotations.Test;
@@ -28,6 +30,25 @@ import org.testng.annotations.Test;
 public class CalculatorNGTest {
     
     static final Random RANDOM = new Random(System.currentTimeMillis());
+    
+    @Test
+    public void testRandomPowerOfTwo() {
+        int initialCapacity = 31;
+        Set<Integer> expected = new HashSet<>(initialCapacity);
+        Set<Integer> actual = new HashSet<>(initialCapacity);
+        int power = 1;
+        do {
+            expected.add(power);
+            power <<= 1;
+        } while (power > 0);
+        int maxNumberOfTries = 16 * initialCapacity;
+        int triesSoFar = 0;
+        while (triesSoFar < maxNumberOfTries) {
+            actual.add(Calculator.randomPowerOfTwo());
+            triesSoFar++;
+        }
+        assertEquals(actual, expected);
+    }
     
     @Test
     public void testEuclideanGCDSameNumber() {
