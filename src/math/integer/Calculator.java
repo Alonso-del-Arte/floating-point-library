@@ -26,6 +26,20 @@ public class Calculator {
     
     private static final Random RANDOM = new Random(System.nanoTime());
     
+    /**
+     * Calculates the greatest common divisor (GCD) of two integers using the 
+     * Euclidean algorithm. For now this function is not implemented with 
+     * recursion, but that could change in a later version of this program.
+     * @param a The first number. Need not be greater or smaller than
+     * <code>b</code>. For example, &minus;42.
+     * @param b The second number. Need not be greater or smaller than
+     * <code>a</code>. For example, &minus;49.
+     * @return The GCD. For example, 7. If one of <code>a</code> or 
+     * <code>b</code> is 0 but the other is not 0, the result will be the 
+     * absolute value of the nonzero number. As for gcd(0, 0), we make no 
+     * promises whatsoever that the current behavior will be maintained in later 
+     * versions, and should therefore not be relied upon.
+     */
     public static int euclideanGCD(int a, int b) {
         if (b == 0) {
             return Math.abs(a);
