@@ -27,6 +27,9 @@ public class Calculator {
     private static final Random RANDOM = new Random(System.nanoTime());
     
     public static int euclideanGCD(int a, int b) {
+        if (b == 0) {
+            return a;
+        }
         do {
             int temp = b;
             b = a % b;
