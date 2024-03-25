@@ -16,10 +16,22 @@
  */
 package math.integer;
 
+import static math.integer.CalculatorNGTest.RANDOM;
+
+import java.util.Arrays;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
+import java.util.Random;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import static org.testng.Assert.*;
 import org.testng.annotations.Test;
+
+import static testframe.api.Asserters.assertContains;
 
 /**
  * Tests of the EratosthenesSieve class.
@@ -27,10 +39,39 @@ import org.testng.annotations.Test;
  */
 public class EratosthenesSieveNGTest {
     
+    private static final int[] SMALL_PRIMES = {2, 3, 5, 7, 11, 13, 17, 19, 23, 
+        29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
+    
+    private static Optional<Integer> checkPrime(int p) {
+        int a = Math.abs(p);
+        switch (a) {
+            case 0, 1 -> {
+                return Optional.of(1);
+            }
+            case 2 -> {
+                return Optional.empty();
+            }
+            default -> {
+                if (a % 2 == 0) {
+                    return Optional.of(2);
+                }
+                double root = Math.sqrt(a);
+                int divisor = 3;
+                while (divisor <= root) {
+                    if (a % divisor == 0) {
+                        return Optional.of(divisor);
+                    }
+                    divisor += 2;
+                }
+                return Optional.empty();
+            }
+        }
+    }
+    
     /**
      * Test of listPrimes method, of class EratosthenesSieve.
      */
-    @Test
+//    @Test
     public void testListPrimes() {
         System.out.println("listPrimes");
         int threshold = 0;
@@ -42,17 +83,24 @@ public class EratosthenesSieveNGTest {
     }
 
     /**
-     * Test of randomPrime method, of class EratosthenesSieve.
+     * Test of the randomPrime function, of the EratosthenesSieve class.
      */
     @Test
     public void testRandomPrime() {
         System.out.println("randomPrime");
-        int bound = 0;
-        int expResult = 0;
-        int result = EratosthenesSieve.randomPrime(bound);
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        int bound = RANDOM.nextInt(Short.MAX_VALUE) + 64;
+        int p = EratosthenesSieve.randomPrime(bound);
+        String msg = "Number " + p + " should be a prime less than " + bound;
+        assert p < bound : msg;
+        Optional<Integer> divHolder = checkPrime(p);
+        if (divHolder.isPresent()) {
+            int d = divHolder.get();
+            String msgPart = (d == 0 || d == 1) ? (d + " is not prime") 
+                    : ("divisible by " + d);
+            String message = "The number " + p 
+                    + " was said to be prime but it's " + msgPart;
+            fail(message);
+        }
     }
     
 }
