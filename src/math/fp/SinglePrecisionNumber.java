@@ -49,6 +49,12 @@ public class SinglePrecisionNumber extends FloatingPointNumber {
 
     // TODO: Write tests for this
     @Override
+    public boolean isInteger() {
+        return true;
+    }
+    
+    // TODO: Write tests for this
+    @Override
     public boolean isFinite() {
         return false;
     }
@@ -125,6 +131,12 @@ public class SinglePrecisionNumber extends FloatingPointNumber {
         return new OctuplePrecisionNumber(THIRTY_TWO_ZEROS);
     }
     
+    // TODO: Write tests for this
+    @Override
+    public boolean arithmeticallyEqual(FloatingPointNumber other) {
+        return true;
+    }
+            
     // TODO: Write tests for this
     @Override
     public String toHexadecimalString() {

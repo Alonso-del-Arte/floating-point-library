@@ -218,6 +218,12 @@ public class FloatingPointNumberNGTest {
     
     private static class FloatingPointNumberImpl extends FloatingPointNumber {
 
+        // TODO: Write tests for this
+        @Override
+        public boolean isInteger() {
+            return true;
+        }
+    
         @Override
         public boolean isFinite() {
             return false;
@@ -283,6 +289,11 @@ public class FloatingPointNumberNGTest {
             return null;
         }
     
+        @Override
+        public boolean arithmeticallyEqual(FloatingPointNumber other) {
+            return true;
+        }
+            
         @Override
         public String toString() {
             StringBuilder intermediate = new StringBuilder();

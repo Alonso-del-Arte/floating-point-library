@@ -34,6 +34,8 @@ public abstract class FloatingPointNumber
         return copy;
     }
     
+    public abstract boolean isInteger();
+    
     public abstract boolean isFinite();
     
     public abstract boolean isInfinite();
@@ -103,6 +105,8 @@ public abstract class FloatingPointNumber
     public FloatingPointNumber divides(FloatingPointNumber divisor) {
         return this;
     }
+    
+    public abstract boolean arithmeticallyEqual(FloatingPointNumber other);
     
     /**
      * Compares this floating point number object for equality. For the 

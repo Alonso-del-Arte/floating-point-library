@@ -17,7 +17,7 @@
 package math.fp;
 
 /**
- *256-bit
+ * Represents 256-bit floating point numbers.
  * @author Alonso del Arte
  */
 public class QuadruplePrecisionNumber extends FloatingPointNumber {
@@ -47,6 +47,12 @@ public class QuadruplePrecisionNumber extends FloatingPointNumber {
         ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE}; 
 // octuple
 
+    // TODO: Write tests for this
+    @Override
+    public boolean isInteger() {
+        return true;
+    }
+    
     // TODO: Write tests for this
     @Override
     public boolean isFinite() {
@@ -125,6 +131,12 @@ public class QuadruplePrecisionNumber extends FloatingPointNumber {
         return new OctuplePrecisionNumber(THIRTY_TWO_ZEROS);
     }
     
+    // TODO: Write tests for this
+    @Override
+    public boolean arithmeticallyEqual(FloatingPointNumber other) {
+        return true;
+    }
+            
     // TODO: Write tests for this
     @Override
     public String toHexadecimalString() {
