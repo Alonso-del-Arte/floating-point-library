@@ -18,7 +18,7 @@ package math.integer;
 
 import static math.integer.CalculatorNGTest.RANDOM;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -88,19 +88,32 @@ public class EratosthenesSieveNGTest {
     @Test
     public void testRandomPrime() {
         System.out.println("randomPrime");
-        int bound = RANDOM.nextInt(Short.MAX_VALUE) + 64;
-        int p = EratosthenesSieve.randomPrime(bound);
-        String msg = "Number " + p + " should be a prime less than " + bound;
-        assert p < bound : msg;
-        Optional<Integer> divHolder = checkPrime(p);
-        if (divHolder.isPresent()) {
-            int d = divHolder.get();
-            String msgPart = (d == 0 || d == 1) ? (d + " is not prime") 
-                    : ("divisible by " + d);
-            String message = "The number " + p 
-                    + " was said to be prime but it's " + msgPart;
-            fail(message);
+        int bound = RANDOM.nextInt(Short.MAX_VALUE) + Byte.MAX_VALUE;
+        int expected = bound / 100 + 20;
+        int initialCapacity = 4 * expected;
+        List<Integer> primes = new ArrayList<>(initialCapacity);
+        int callCount = 0;
+        while (callCount < initialCapacity) {
+            int p = EratosthenesSieve.randomPrime(bound);
+            String msg = "Number " + p + " should be a prime less than " 
+                    + bound;
+            assert p < bound : msg;
+            Optional<Integer> divHolder = checkPrime(p);
+            if (divHolder.isPresent()) {
+                int d = divHolder.get();
+                String msgPart = (d == 0 || d == 1) ? (d + " is not prime")
+                        : ("divisible by " + d);
+                String message = "The number " + p 
+                        + " was said to be prime but it's " + msgPart;
+                fail(message);
+            }
+            primes.add(p);
+            callCount++;
         }
+        int actual = primes.size();
+        String msg = "Expected at least " + expected + " distinct primes, got " 
+                + actual;
+        assert expected < actual : msg;
     }
     
 }
