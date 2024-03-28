@@ -91,7 +91,7 @@ public class EratosthenesSieveNGTest {
         int bound = RANDOM.nextInt(Short.MAX_VALUE) + Byte.MAX_VALUE;
         int expected = bound / 100 + 20;
         int initialCapacity = 4 * expected;
-        List<Integer> primes = new ArrayList<>(initialCapacity);
+        Set<Integer> primes = new HashSet<>(initialCapacity);
         int callCount = 0;
         while (callCount < initialCapacity) {
             int p = EratosthenesSieve.randomPrime(bound);
