@@ -51,10 +51,24 @@ public class FractionNGTest {
     
     @Test
     public void testToString() {
+        System.out.println("toString");
         int numer = 2 * RANDOM.nextInt();
         int denom = numer + 1;
         Fraction fraction = new Fraction(numer, denom);
         String expected = numer + "/" + denom;
+        String actual = fraction.toString().replace(" ", "");
+        assertEquals(actual, expected);
+    }
+    
+    @Test
+    public void testToStringLowestTerms() {
+        int expDenom = randomPrime(Short.MAX_VALUE);
+        int expNumer = RANDOM.nextInt(expDenom - 1) + 1;
+        int multiplier = RANDOM.nextInt(expDenom - 2) + 2;
+        int numer = multiplier * expNumer;
+        int denom = multiplier * expDenom;
+        Fraction fraction = new Fraction(numer, denom);
+        String expected = expNumer + "/" + expDenom;
         String actual = fraction.toString().replace(" ", "");
         assertEquals(actual, expected);
     }
