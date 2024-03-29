@@ -18,6 +18,7 @@ package math.integer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Gathers prime numbers using the Eratosthenes sieve.
@@ -25,15 +26,52 @@ import java.util.List;
  */
 public class EratosthenesSieve {
     
+    private static final Random RANDOM 
+            = new Random(System.currentTimeMillis());
+    
     // TODO: Write tests for this
     public static List<Integer> listPrimes(int threshold) {
         List<Integer> list = new ArrayList<>();
         return list;
     }
     
-    // TODO: Write tests for this
+    private static boolean checkPrime(int p) {
+        switch (p) {
+            case 0:
+            case 1:
+                return false;
+            case 2:
+                return true;
+            default:
+                if (p % 2 == 0) {
+                    return false;
+                }
+                double root = Math.sqrt(p);
+                int divisor = 3;
+                while (divisor <= root) {
+                    if (p % divisor == 0) {
+                        return false;
+                    }
+                    divisor += 2;
+                }
+                return true;
+        }
+    }
+    
+    /**
+     * 
+     * @param bound
+     * @return 
+     */
     public static int randomPrime(int bound) {
-        return Integer.MIN_VALUE;
+        int p = RANDOM.nextInt(bound);
+        if (p < 2) {
+            return 2;
+        }
+        while (!checkPrime(p)) {
+            p--;
+        }
+        return p;
     }
     
 }
