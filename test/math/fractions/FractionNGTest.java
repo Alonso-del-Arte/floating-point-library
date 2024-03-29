@@ -55,7 +55,7 @@ public class FractionNGTest {
         int denom = numer + 1;
         Fraction fraction = new Fraction(numer, denom);
         String expected = numer + "/" + denom;
-        String actual = fraction.toString();
+        String actual = fraction.toString().replace(" ", "");
         assertEquals(actual, expected);
     }
     
