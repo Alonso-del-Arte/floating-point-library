@@ -18,6 +18,8 @@ package math.fractions;
 
 import java.util.Random;
 
+import static math.integer.EratosthenesSieve.randomPrime;
+
 import static org.testng.Assert.*;
 import org.testng.annotations.Test;
 
@@ -44,6 +46,16 @@ public class FractionNGTest {
         int expected = Math.abs(numer) + 1;
         Fraction fraction = new Fraction(numer, expected);
         long actual = fraction.getDenominator();
+        assertEquals(actual, expected);
+    }
+    
+    @Test
+    public void testToString() {
+        int numer = 2 * RANDOM.nextInt();
+        int denom = numer + 1;
+        Fraction fraction = new Fraction(numer, denom);
+        String expected = numer + "/" + denom;
+        String actual = fraction.toString();
         assertEquals(actual, expected);
     }
     
