@@ -88,6 +88,11 @@ public class Fraction implements Comparable<Fraction> {
         return 0;
     }
     
+    @Override
+    public String toString() {
+        return this.numerator + "/" + this.denominator;
+    }
+    
     public Fraction(long numer, long denom) {
         this.numerator = numer;
         this.denominator = denom;
