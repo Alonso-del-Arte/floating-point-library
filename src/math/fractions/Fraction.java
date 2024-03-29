@@ -16,6 +16,8 @@
  */
 package math.fractions;
 
+import static math.integer.Calculator.euclideanGCD;
+
 /**
  *
  * @author Alonso del Arte
@@ -90,7 +92,10 @@ public class Fraction implements Comparable<Fraction> {
     
     @Override
     public String toString() {
-        return this.numerator + "/" + this.denominator;
+        long adjust = euclideanGCD(this.numerator, this.denominator);
+        long numer = this.numerator / adjust;
+        long denom = this.denominator / adjust;
+        return numer + "/" + denom;
     }
     
     public Fraction(long numer, long denom) {
