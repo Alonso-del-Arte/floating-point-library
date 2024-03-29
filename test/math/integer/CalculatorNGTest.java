@@ -67,7 +67,7 @@ public class CalculatorNGTest {
     @Test
     public void testEuclideanGCDSameNumber() {
         int expected = RANDOM.nextInt(Short.MAX_VALUE) + 1;
-        int actual = Calculator.euclideanGCD(expected, expected);
+        long actual = Calculator.euclideanGCD(expected, expected);
         assertEquals(actual, expected);
     }
     
@@ -75,7 +75,7 @@ public class CalculatorNGTest {
     public void testEuclideanGCDNegativeAPositiveB() {
         int expected = RANDOM.nextInt(Short.MAX_VALUE) + 1;
         int a = -expected;
-        int actual = Calculator.euclideanGCD(a, expected);
+        long actual = Calculator.euclideanGCD(a, expected);
         assertEquals(actual, expected);
     }
     
@@ -83,7 +83,7 @@ public class CalculatorNGTest {
     public void testEuclideanGCDSameNegativeNumber() {
         int expected = RANDOM.nextInt(Short.MAX_VALUE) + 1;
         int a = -expected;
-        int actual = Calculator.euclideanGCD(a, a);
+        long actual = Calculator.euclideanGCD(a, a);
         assertEquals(actual, expected);
     }
     
@@ -97,7 +97,7 @@ public class CalculatorNGTest {
         int n = RANDOM.nextInt(Byte.MAX_VALUE) + 1;
         int a = expected * n;
         int b = expected * (n + 1);
-        int actual = Calculator.euclideanGCD(a, b);
+        long actual = Calculator.euclideanGCD(a, b);
         String message = "gcd(" + a + ", " + b + ") expected to be " + expected;
         assertEquals(actual, expected, message);
     }
@@ -110,7 +110,7 @@ public class CalculatorNGTest {
         String msg = "Calculating gcd(" + expected + ", " + b 
                 + ") should not cause exception";
         assertDoesNotThrow(() -> {
-            int actual = Calculator.euclideanGCD(expected, b);
+            long actual = Calculator.euclideanGCD(expected, b);
             String message = "Expecting gcd(" + expected + ", " + b + ") to be " 
                     + expected;
             assertEquals(actual, expected, message);
@@ -119,14 +119,13 @@ public class CalculatorNGTest {
     
     @Test
     public void testEuclideanGCDNegativeAZeroB() {
-        int a = (RANDOM.nextInt() | randomPowerOfTwo()) 
-                | Integer.MIN_VALUE;
+        int a = (RANDOM.nextInt() | randomPowerOfTwo()) | Integer.MIN_VALUE;
         int b = 0;
         String msg = "Calculating gcd(" + a + ", " + b 
                 + ") should not cause exception";
         assertDoesNotThrow(() -> {
             int expected = Math.abs(a);
-            int actual = Calculator.euclideanGCD(a, b);
+            long actual = Calculator.euclideanGCD(a, b);
             String message = "Expecting gcd(" + a + ", " + b + ") to be " 
                     + expected;
             assertEquals(actual, expected, message);

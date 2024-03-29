@@ -40,12 +40,12 @@ public class Calculator {
      * promises whatsoever that the current behavior will be maintained in later 
      * versions, and should therefore not be relied upon.
      */
-    public static int euclideanGCD(int a, int b) {
-        if (b == 0) {
+    public static long euclideanGCD(long a, long b) {
+        if (b == 0L) {
             return Math.abs(a);
         }
         do {
-            int temp = b;
+            long temp = b;
             b = a % b;
             a = temp;
         } while (b != 0);
