@@ -37,12 +37,13 @@ public class EratosthenesSieve {
     
     private static boolean checkPrime(int p) {
         switch (p) {
-            case 0:
-            case 1:
+            case 0, 1 -> {
                 return false;
-            case 2:
+            }
+            case 2 -> {
                 return true;
-            default:
+            }
+            default -> {
                 if (p % 2 == 0) {
                     return false;
                 }
@@ -55,13 +56,16 @@ public class EratosthenesSieve {
                     divisor += 2;
                 }
                 return true;
+            }
         }
     }
     
     /**
-     * 
-     * @param bound
-     * @return 
+     * Chooses a random prime between 2 and the least prime not greater than a 
+     * specified bound.
+     * @param bound The maximum number to go up to. For example, 100. This 
+     * number need not be prime.
+     * @return A prime number between 2 and <code>bound</code>. For example, 19.
      */
     public static int randomPrime(int bound) {
         int p = RANDOM.nextInt(bound);
