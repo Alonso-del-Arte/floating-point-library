@@ -87,4 +87,18 @@ public class FractionNGTest {
         assertEquals(actual, expected, message);
     }
     
+    @Test
+    public void testDenominatorInLowestTerms() {
+        int expected = randomPrime(Short.MAX_VALUE);
+        int expNumer = RANDOM.nextInt(expected - 1) + 1;
+        int multiplier = RANDOM.nextInt(expected - 2) + 2;
+        int numer = multiplier * expNumer;
+        int denom = multiplier * expected;
+        Fraction fraction = new Fraction(numer, denom);
+        long actual = fraction.getDenominator();
+        String message = "Denominator of " + fraction.toString() + " should be " 
+                + expected;
+        assertEquals(actual, expected, message);
+    }
+    
 }
