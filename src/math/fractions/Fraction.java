@@ -96,8 +96,8 @@ public class Fraction implements Comparable<Fraction> {
     }
     
     public Fraction(long numer, long denom) {
-        if (denom == 0 || denom == Long.MIN_VALUE) {
-            String excMsg = "Denominator 0 is not valid";
+        if ((denom & Long.MAX_VALUE) == 0L) {
+            String excMsg = "Denominator " + denom + " is not valid";
             throw new ArithmeticException(excMsg);
         }
         long adjust = euclideanGCD(numer, denom);
