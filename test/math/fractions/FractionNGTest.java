@@ -23,6 +23,8 @@ import static math.integer.EratosthenesSieve.randomPrime;
 import static org.testng.Assert.*;
 import org.testng.annotations.Test;
 
+import static testframe.api.Asserters.assertThrows;
+
 /**
  * Tests of the Fraction class.
  * @author Alonso del Arte
@@ -99,6 +101,23 @@ public class FractionNGTest {
         String message = "Denominator of " + fraction.toString() + " should be " 
                 + expected;
         assertEquals(actual, expected, message);
+    }
+    
+    @Test
+    public void testConstructorRejectsDenomZero() {
+        int numer = RANDOM.nextInt();
+        int badDenom = 0;
+        String msg = "Should not be able to make fraction " + numer + "/" 
+                + badDenom;
+        Exception e = assertThrows(() -> {
+            Fraction badFraction = new Fraction(numer, badDenom);
+            System.out.println("Should not have been able to instantiate " 
+                    + badFraction.toString());
+        }, ArithmeticException.class, msg);
+        String excMsg = e.getMessage();
+        assert excMsg != null : "Exception message should not be null";
+        assert !excMsg.isBlank() : "Exception message should not be blank";
+        System.out.println("\"" + excMsg + "\"");
     }
     
 }
