@@ -27,15 +27,11 @@ public class Fraction implements Comparable<Fraction> {
     private final long numerator, denominator;
     
     public long getNumerator() {
-        long adjust = euclideanGCD(this.numerator, this.denominator);
-        long numer = this.numerator / adjust;
-        return numer;
+        return this.numerator;
     }
     
     public long getDenominator() {
-        long adjust = euclideanGCD(this.numerator, this.denominator);
-        long denom = this.denominator / adjust;
-        return denom;
+        return this.denominator;
     }
     
     // TODO: Write tests for this
@@ -96,15 +92,13 @@ public class Fraction implements Comparable<Fraction> {
     
     @Override
     public String toString() {
-        long adjust = euclideanGCD(this.numerator, this.denominator);
-        long numer = this.numerator / adjust;
-        long denom = this.denominator / adjust;
-        return numer + "/" + denom;
+        return this.numerator + "/" + this.denominator;
     }
     
     public Fraction(long numer, long denom) {
-        this.numerator = numer;
-        this.denominator = denom;
+        long adjust = euclideanGCD(numer, denom);
+        this.numerator = numer / adjust;
+        this.denominator = denom / adjust;
     }
     
 }
