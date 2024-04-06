@@ -33,9 +33,9 @@ public class Fraction implements Comparable<Fraction> {
     }
     
     public long getDenominator() {
-//        long adjust = euclideanGCD(this.numerator, this.denominator);
-//        long denom = this.denominator / adjust;
-        return this.denominator;
+        long adjust = euclideanGCD(this.numerator, this.denominator);
+        long denom = this.denominator / adjust;
+        return denom;
     }
     
     // TODO: Write tests for this
