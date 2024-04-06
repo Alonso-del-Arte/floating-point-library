@@ -120,4 +120,21 @@ public class FractionNGTest {
         System.out.println("\"" + excMsg + "\"");
     }
     
+    @Test
+    public void testConstructorRejectsDenomLongMinimum() {
+        int numer = RANDOM.nextInt();
+        long badDenom = Long.MIN_VALUE;
+        String msg = "Should not be able to make fraction " + numer + "/" 
+                + badDenom;
+        Exception e = assertThrows(() -> {
+            Fraction badFraction = new Fraction(numer, badDenom);
+            System.out.println("Should not have been able to instantiate " 
+                    + badFraction.toString());
+        }, ArithmeticException.class, msg);
+        String excMsg = e.getMessage();
+        assert excMsg != null : "Exception message should not be null";
+        assert !excMsg.isBlank() : "Exception message should not be blank";
+        System.out.println("\"" + excMsg + "\"");
+    }
+    
 }
