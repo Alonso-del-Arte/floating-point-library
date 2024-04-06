@@ -27,10 +27,14 @@ public class Fraction implements Comparable<Fraction> {
     private final long numerator, denominator;
     
     public long getNumerator() {
-        return this.numerator;
+        long adjust = euclideanGCD(this.numerator, this.denominator);
+        long numer = this.numerator / adjust;
+        return numer;
     }
     
     public long getDenominator() {
+//        long adjust = euclideanGCD(this.numerator, this.denominator);
+//        long denom = this.denominator / adjust;
         return this.denominator;
     }
     
