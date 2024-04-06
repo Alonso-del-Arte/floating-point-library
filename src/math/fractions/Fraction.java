@@ -96,10 +96,10 @@ public class Fraction implements Comparable<Fraction> {
     }
     
     public Fraction(long numer, long denom) {
-//        if ((denom & Long.MAX_VALUE) == 0L) {
-//            String excMsg = "Denominator " + denom + " is not valid";
-//            throw new ArithmeticException(excMsg);
-//        }
+        if ((denom & Long.MAX_VALUE) == 0L) {
+            String excMsg = "Denominator " + denom + " is not valid";
+            throw new ArithmeticException(excMsg);
+        }
         long adjust = euclideanGCD(numer, denom);
         this.numerator = numer / adjust;
         this.denominator = denom / adjust;
