@@ -18,6 +18,7 @@ package math.fractions;
 
 import java.util.Random;
 
+import static math.integer.Calculator.euclideanGCD;
 import static math.integer.EratosthenesSieve.randomPrime;
 
 import static org.testng.Assert.*;
@@ -143,6 +144,22 @@ public class FractionNGTest {
                 + "\"";
         assert excMsg.contains(numStr) : containsMsg;
         System.out.println("\"" + excMsg + "\"");
+    }
+    
+    @Test
+    public void testConstructorTurnsNegativeDenominatorPositive() {
+        int numer = RANDOM.nextInt() | 1;
+        int denom = ((RANDOM.nextInt() << 1) | Integer.MIN_VALUE) + 1;
+        Fraction fraction = new Fraction(numer, denom);
+        long gcd = euclideanGCD(numer, denom);
+        long expNumer = -numer / gcd;
+        long expDenom = -denom / gcd;
+        long actNumer = fraction.getNumerator();
+        long actDenom = fraction.getDenominator();
+        String message = "Given numerator " + numer + " and denominator " 
+                + denom + " should be turned to " + expNumer + "/" + expDenom;
+        assertEquals(actNumer, expNumer, message);
+        assertEquals(actDenom, expDenom, message);
     }
     
 }
