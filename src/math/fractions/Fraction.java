@@ -100,7 +100,8 @@ public class Fraction implements Comparable<Fraction> {
             String excMsg = "Denominator " + denom + " is not valid";
             throw new ArithmeticException(excMsg);
         }
-        long adjust = euclideanGCD(numer, denom);
+        int sign = Long.signum(denom);
+        long adjust = euclideanGCD(numer, denom) * sign;
         this.numerator = numer / adjust;
         this.denominator = denom / adjust;
     }
