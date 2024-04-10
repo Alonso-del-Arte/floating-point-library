@@ -77,6 +77,17 @@ public class FractionNGTest {
     }
     
     @Test
+    public void testToStringNegative() {
+        long numer = -2 * RANDOM.nextInt(Short.MAX_VALUE) - 1;
+        long denom = RANDOM.nextInt(Short.MAX_VALUE) * 2;
+        Fraction fraction = new Fraction(numer, denom);
+        long gcd = euclideanGCD(numer, denom);
+        String expected = "\u2212" + (-numer / gcd) + "/" + (denom / gcd);
+        String actual = fraction.toString();
+        assertEquals(actual, expected);
+    }
+    
+    @Test
     public void testNumeratorInLowestTerms() {
         int expDenom = randomPrime(Short.MAX_VALUE);
         int expected = RANDOM.nextInt(expDenom - 1) + 1;
