@@ -78,9 +78,12 @@ public class EratosthenesSieve {
         return p;
     }
     
-    // TODO: Write tests for this
     public static int randomOddPrime() {
-        return -4;
+        int p = 2 * RANDOM.nextInt(Short.MAX_VALUE) + 1;
+        while (!checkPrime(p)) {
+            p -= 2;
+        }
+        return p;
     }
     
 }
