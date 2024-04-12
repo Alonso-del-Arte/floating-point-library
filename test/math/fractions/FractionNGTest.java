@@ -117,6 +117,14 @@ public class FractionNGTest {
     }
     
     @Test
+    public void testReferentialEquality() {
+        int numer = RANDOM.nextInt();
+        int denom = RANDOM.nextInt() | 1;
+        Fraction someFraction = new Fraction(numer, denom);
+        assertEquals(someFraction, someFraction);
+    }
+    
+//    @Test
     public void testPlusSameDenominator() {
         int denom = randomOddPrime();
         int numerA = RANDOM.nextInt(denom - 1) + 1;
