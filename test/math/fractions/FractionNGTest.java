@@ -19,6 +19,7 @@ package math.fractions;
 import java.util.Random;
 
 import static math.integer.Calculator.euclideanGCD;
+import static math.integer.EratosthenesSieve.randomOddPrime;
 import static math.integer.EratosthenesSieve.randomPrime;
 
 import static org.testng.Assert.*;
@@ -55,7 +56,7 @@ public class FractionNGTest {
     @Test
     public void testToString() {
         System.out.println("toString");
-        int numer = 2 * RANDOM.nextInt();
+        int numer = 2 * RANDOM.nextInt(Short.MAX_VALUE);
         int denom = numer + 1;
         Fraction fraction = new Fraction(numer, denom);
         String expected = numer + "/" + denom;
@@ -112,6 +113,21 @@ public class FractionNGTest {
         long actual = fraction.getDenominator();
         String message = "Denominator of " + fraction.toString() + " should be " 
                 + expected;
+        assertEquals(actual, expected, message);
+    }
+    
+//    @Test
+    public void testPlusSameDenominator() {
+        int denom = randomOddPrime();
+        int numerA = RANDOM.nextInt(denom - 1) + 1;
+        Fraction addendA = new Fraction(numerA, denom);
+        int expNumer = denom + RANDOM.nextInt(denom - 2) + 1;
+        int numerB = expNumer - numerA;
+        Fraction addendB = new Fraction(numerB, denom);
+        Fraction expected = new Fraction(expNumer, denom);
+        Fraction actual = addendA.plus(addendB);
+        String message = "Adding " + addendA.toString() + " to " 
+                + addendB.toString();
         assertEquals(actual, expected, message);
     }
     
