@@ -115,5 +115,37 @@ public class EratosthenesSieveNGTest {
                 + actual;
         assert expected < actual : msg;
     }
+
+    /**
+     * Test of the randomOddPrime function, of the EratosthenesSieve class.
+     */
+    @Test
+    public void testRandomOddPrime() {
+        System.out.println("randomOddPrime");
+        int initialCapacity = RANDOM.nextInt(64) + 36;
+        Set<Integer> primes = new HashSet<>(initialCapacity);
+        int callCount = 0;
+        while (callCount < initialCapacity) {
+            int p = EratosthenesSieve.randomOddPrime();
+            String msg = "Expected odd prime, got " + p;
+            assert p % 2 != 0 : msg;
+            Optional<Integer> divHolder = checkPrime(p);
+            if (divHolder.isPresent()) {
+                int d = divHolder.get();
+                String msgPart = (d == 0 || d == 1) ? (d + " is not prime")
+                        : ("divisible by " + d);
+                String message = "The number " + p 
+                        + " was said to be prime but it's " + msgPart;
+                fail(message);
+            }
+            primes.add(p);
+            callCount++;
+        }
+        int expected = 3 * initialCapacity / 5;
+        int actual = primes.size();
+        String msg = "Expected at least " + expected 
+                + " distinct odd primes, got " + actual;
+        assert expected < actual : msg;
+    }
     
 }
