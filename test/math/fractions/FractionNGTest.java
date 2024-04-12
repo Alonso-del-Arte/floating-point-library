@@ -124,6 +124,20 @@ public class FractionNGTest {
         assertEquals(someFraction, someFraction);
     }
     
+    private static Object provideNull() {
+        return null;
+    }
+    
+    @Test
+    public void testNotEqualsNull() {
+        int numer = RANDOM.nextInt();
+        int denom = RANDOM.nextInt() | 1;
+        Fraction someFraction = new Fraction(numer, denom);
+        String msg = someFraction.toString() + " should not equal null";
+        Object nil = provideNull();
+        assert !someFraction.equals(nil) : msg;
+    }
+    
 //    @Test
     public void testPlusSameDenominator() {
         int denom = randomOddPrime();
