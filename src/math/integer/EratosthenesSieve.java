@@ -78,4 +78,9 @@ public class EratosthenesSieve {
         return p;
     }
     
+    // TODO: Write tests for this
+    public static int randomOddPrime() {
+        return -4;
+    }
+    
 }
