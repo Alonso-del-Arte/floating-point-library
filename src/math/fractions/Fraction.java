@@ -35,8 +35,9 @@ public class Fraction implements Comparable<Fraction> {
     }
     
     // TODO: Write tests for this
-    public Fraction plus(Fraction addend) {
-        return this;
+    public Fraction plus(Fraction addend) {return this;
+//        return new Fraction(this.numerator + addend.numerator, 
+//                this.denominator);
     }
     
     // TODO: Write tests for this
@@ -82,6 +83,16 @@ public class Fraction implements Comparable<Fraction> {
     // TODO: Write tests for this
     public Fraction divides(int divisor) {
         return this;
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        return false;
+    }
+    
+    @Override
+    public int hashCode() {
+        return 0;
     }
     
     // TODO: Write tests for this
