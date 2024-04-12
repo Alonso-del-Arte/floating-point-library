@@ -91,13 +91,13 @@ public class Fraction implements Comparable<Fraction> {
     }
     
     @Override
-    public String toString() {return "SORRY";
-//        String absolute = Math.abs(this.numerator) + "/" + this.denominator;
-//        if (this.numerator < 0) {
-//            return "\u2212" + absolute;
-//        } else {
-//            return absolute;
-//        }
+    public String toString() {
+        String absolute = Math.abs(this.numerator) + "/" + this.denominator;
+        if (this.numerator < 0) {
+            return "\u2212" + absolute;
+        } else {
+            return absolute;
+        }
     }
     
     public Fraction(long numer, long denom) {
