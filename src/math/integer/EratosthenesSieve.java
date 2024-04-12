@@ -26,8 +26,7 @@ import java.util.Random;
  */
 public class EratosthenesSieve {
     
-    private static final Random RANDOM 
-            = new Random(System.currentTimeMillis());
+    private static final Random RANDOM = new Random();
     
     // TODO: Write tests for this
     public static List<Integer> listPrimes(int threshold) {
