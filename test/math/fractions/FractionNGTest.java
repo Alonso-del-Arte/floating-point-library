@@ -22,10 +22,10 @@ import static math.integer.Calculator.euclideanGCD;
 import static math.integer.EratosthenesSieve.randomOddPrime;
 import static math.integer.EratosthenesSieve.randomPrime;
 
+import static org.testframe.api.Asserters.assertThrows;
+
 import static org.testng.Assert.*;
 import org.testng.annotations.Test;
-
-import static testframe.api.Asserters.assertThrows;
 
 /**
  * Tests of the Fraction class.

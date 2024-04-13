@@ -28,10 +28,11 @@ import java.util.Random;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static org.testframe.api.Asserters.assertContainsSame;
+import static org.testframe.api.Asserters.assertDoesNotThrow;
+
 import static org.testng.Assert.*;
 import org.testng.annotations.Test;
-
-import static testframe.api.Asserters.assertContains;
 
 /**
  * Tests of the EratosthenesSieve class.

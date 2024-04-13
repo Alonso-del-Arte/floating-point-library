@@ -20,10 +20,10 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
+import static org.testframe.api.Asserters.assertDoesNotThrow;
+
 import static org.testng.Assert.*;
 import org.testng.annotations.Test;
-
-import static testframe.api.Asserters.assertDoesNotThrow;
 
 /**
  * Tests of the Calculator class.
