@@ -138,6 +138,26 @@ public class FractionNGTest {
         assert !someFraction.equals(nil) : msg;
     }
     
+    @Test
+    public void testNotEqualsDiffClass() {
+        int numer = RANDOM.nextInt();
+        int denom = RANDOM.nextInt() | 1;
+        Fraction someFraction = new Fraction(numer, denom);
+        Fraction diffClassFraction = new Fraction(numer, denom) {
+            
+            @Override
+            public String toString() {
+                return super.toString().replace("/", "\\");
+            }
+            
+        };
+        String message = "Fraction " + someFraction.toString() + " of class " 
+                + someFraction.getClass().getName() + " should not equal " 
+                + diffClassFraction.toString() + " of class " 
+                + diffClassFraction.getClass().getName();
+        assertNotEquals(someFraction, diffClassFraction, message);
+    }
+    
 //    @Test
     public void testPlusSameDenominator() {
         int denom = randomOddPrime();
