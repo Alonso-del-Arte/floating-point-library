@@ -16,7 +16,9 @@
  */
 package math.fractions;
 
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 import static math.integer.Calculator.euclideanGCD;
 import static math.integer.EratosthenesSieve.randomOddPrime;
@@ -192,6 +194,26 @@ public class FractionNGTest {
         String message = "Fractions " + fractionA.toString() + " and " 
                 + fractionB.toString() + " should not be considered equal";
         assertNotEquals(fractionA, fractionB, message);
+    }
+    
+    @Test
+    public void testHashCode() {
+        System.out.println("hashCode");
+        int initialCapacity = RANDOM.nextInt(64) + 36;
+        Set<Fraction> fractions = new HashSet<>(initialCapacity);
+        Set<Integer> hashes = new HashSet<>(initialCapacity);
+        for (int i = 0; i < initialCapacity; i++) {
+            int numer = i + RANDOM.nextInt(128) + initialCapacity;
+            int denom = randomOddPrime();
+            Fraction fraction = new Fraction(numer, denom);
+            fractions.add(fraction);
+            hashes.add(fraction.hashCode());
+        }
+        int expected = fractions.size();
+        int actual = hashes.size();
+        String message = "Set of " + expected 
+                + " distinct fractions should have as many distinct hash codes";
+        assertEquals(actual, expected, message);
     }
     
 //    @Test
