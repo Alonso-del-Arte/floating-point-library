@@ -158,6 +158,16 @@ public class FractionNGTest {
         assertNotEquals(someFraction, diffClassFraction, message);
     }
     
+    @Test
+    public void testEquals() {
+        System.out.println("equals");
+        int numer = 2 * RANDOM.nextInt(Short.MAX_VALUE) + 1;
+        int denom = (numer + 1) * (RANDOM.nextInt(Byte.MAX_VALUE) + 2);
+        Fraction someFraction = new Fraction(numer, denom);
+        Fraction sameFraction = new Fraction(numer, denom);
+        assertEquals(someFraction, sameFraction);
+    }
+    
 //    @Test
     public void testPlusSameDenominator() {
         int denom = randomOddPrime();
