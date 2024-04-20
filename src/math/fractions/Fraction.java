@@ -34,9 +34,12 @@ public class Fraction implements Comparable<Fraction> {
         return this.denominator;
     }
     
-    // TODO: Write tests for this
+    /**
+     * 
+     * @return 
+     */
     public boolean isInteger() {
-        return true;
+        return this.denominator == 1L;
     }
     
     // TODO: Write tests for this
@@ -133,7 +136,7 @@ public class Fraction implements Comparable<Fraction> {
     @Override
     public String toString() {
         String intermediate = Math.abs(this.numerator) + "/" + this.denominator;
-        if (this.numerator < 0) {
+        if (this.numerator < 0L) {
             intermediate = "\u2212" + intermediate;
         }
         if (this.denominator == 1L) {
