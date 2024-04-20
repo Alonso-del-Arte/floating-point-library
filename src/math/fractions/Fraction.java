@@ -93,7 +93,10 @@ public class Fraction implements Comparable<Fraction> {
         if (obj == null) {
             return false;
         }
-        return this.getClass().equals(obj.getClass());
+        if (!this.getClass().equals(obj.getClass())) {
+            return false;
+        }
+        return this.numerator == ((Fraction) obj).numerator;
     }
     
     // TODO: Write tests for this
