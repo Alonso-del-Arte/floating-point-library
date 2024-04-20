@@ -85,6 +85,11 @@ public class Fraction implements Comparable<Fraction> {
         return this;
     }
     
+    /**
+     * 
+     * @param obj
+     * @return 
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -103,10 +108,15 @@ public class Fraction implements Comparable<Fraction> {
         return this.denominator == other.denominator;
     }
     
-    // TODO: Write tests for this
+    /**
+     * 
+     * @return 
+     */
     @Override
     public int hashCode() {
-        return 0;
+        int hash = (int) this.numerator;
+        hash += (int) (this.denominator << 16);
+        return hash;
     }
     
     // TODO: Write tests for this
