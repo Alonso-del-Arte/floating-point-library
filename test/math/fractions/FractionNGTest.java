@@ -181,6 +181,19 @@ public class FractionNGTest {
         assertNotEquals(fractionA, fractionB, message);
     }
     
+    @Test
+    public void testNotEqualsDiffDenom() {
+        int numer = randomOddPrime();
+        int multNumer = 4 * (RANDOM.nextInt(Byte.MAX_VALUE) + 1) * numer;
+        int denomA = multNumer + 1;
+        Fraction fractionA = new Fraction(numer, denomA);
+        int denomB = multNumer + 2;
+        Fraction fractionB = new Fraction(numer, denomB);
+        String message = "Fractions " + fractionA.toString() + " and " 
+                + fractionB.toString() + " should not be considered equal";
+        assertNotEquals(fractionA, fractionB, message);
+    }
+    
 //    @Test
     public void testPlusSameDenominator() {
         int denom = randomOddPrime();
