@@ -36,7 +36,7 @@ public class Fraction implements Comparable<Fraction> {
     
     // TODO: Write tests for this
     public boolean isInteger() {
-        return false;
+        return true;
     }
     
     // TODO: Write tests for this
