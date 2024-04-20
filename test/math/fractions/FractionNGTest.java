@@ -119,6 +119,16 @@ public class FractionNGTest {
     }
     
     @Test
+    public void testToStringInteger() {
+        int numer = RANDOM.nextInt();
+        int denom = 1;
+        Fraction fraction = new Fraction(numer, denom);
+        String expected = Integer.toString(numer).replace("-", "\u2212");
+        String actual = fraction.toString();
+        assertEquals(actual, expected);
+    }
+    
+    @Test
     public void testReferentialEquality() {
         int numer = RANDOM.nextInt();
         int denom = RANDOM.nextInt() | 1;
