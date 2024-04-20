@@ -127,12 +127,14 @@ public class Fraction implements Comparable<Fraction> {
     
     @Override
     public String toString() {
-        String absolute = Math.abs(this.numerator) + "/" + this.denominator;
+        String intermediate = Math.abs(this.numerator) + "/" + this.denominator;
         if (this.numerator < 0) {
-            return "\u2212" + absolute;
-        } else {
-            return absolute;
+            intermediate = "\u2212" + intermediate;
         }
+        if (this.denominator == 1L) {
+            intermediate = intermediate.replace("/1", "");
+        }
+        return intermediate;
     }
     
     public Fraction(long numer, long denom) {
