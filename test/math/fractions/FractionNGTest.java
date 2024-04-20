@@ -129,6 +129,16 @@ public class FractionNGTest {
     }
     
     @Test
+    public void testIsInteger() {
+        int numer = RANDOM.nextInt();
+        int denom = 1;
+        Fraction fraction = new Fraction(numer, denom);
+        String msg = "Number " + fraction.toString() 
+                + " should be considered an integer";
+        assert fraction.isInteger() : msg;
+    }
+    
+    @Test
     public void testReferentialEquality() {
         int numer = RANDOM.nextInt();
         int denom = RANDOM.nextInt() | 1;
