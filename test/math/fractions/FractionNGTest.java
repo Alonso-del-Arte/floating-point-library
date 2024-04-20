@@ -130,12 +130,23 @@ public class FractionNGTest {
     
     @Test
     public void testIsInteger() {
+        System.out.println("isInteger");
         int numer = RANDOM.nextInt();
         int denom = 1;
         Fraction fraction = new Fraction(numer, denom);
         String msg = "Number " + fraction.toString() 
                 + " should be considered an integer";
         assert fraction.isInteger() : msg;
+    }
+    
+    @Test
+    public void testIsNotInteger() {
+        int numer = RANDOM.nextInt(64) + 36;
+        int denom = (RANDOM.nextInt(256) + 4) * numer + 1;
+        Fraction fraction = new Fraction(numer, denom);
+        String msg = "Number " + fraction.toString() 
+                + " should not be considered an integer";
+        assert !fraction.isInteger() : msg;
     }
     
     @Test
