@@ -96,7 +96,11 @@ public class Fraction implements Comparable<Fraction> {
         if (!this.getClass().equals(obj.getClass())) {
             return false;
         }
-        return this.numerator == ((Fraction) obj).numerator;
+        Fraction other = (Fraction) obj;
+        if (this.numerator != other.numerator) {
+            return false;
+        }
+        return this.denominator == other.denominator;
     }
     
     // TODO: Write tests for this
