@@ -35,6 +35,11 @@ public class Fraction implements Comparable<Fraction> {
     }
     
     // TODO: Write tests for this
+    public boolean isInteger() {
+        return false;
+    }
+    
+    // TODO: Write tests for this
     public Fraction plus(Fraction addend) {return this;
 //        return new Fraction(this.numerator + addend.numerator, 
 //                this.denominator);
