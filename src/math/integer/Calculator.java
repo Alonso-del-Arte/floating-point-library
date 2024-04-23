@@ -61,4 +61,9 @@ public class Calculator {
         return 1 << shift;
     }
     
+    // TODO: Write tests for this
+    public static int randomMod(int n, int m) {
+        return 0;
+    }
+    
 }
