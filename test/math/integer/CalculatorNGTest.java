@@ -21,6 +21,7 @@ import java.util.Random;
 import java.util.Set;
 
 import static org.testframe.api.Asserters.assertDoesNotThrow;
+import static org.testframe.api.Asserters.assertThrows;
 
 import static org.testng.Assert.*;
 import org.testng.annotations.Test;
@@ -136,22 +137,17 @@ public class CalculatorNGTest {
     public void testRandomModZeroCausesException() {
         int n = RANDOM.nextInt();
         int m = 0;
-        String msgPart = "Asking for random squarefree number congruent to " + n 
-                + " modulo " + m;
-        try {
+        String msg = "Asking for random number congruent to " + n + " modulo " 
+                + m + " should cause ArithmeticException";
+        Exception e = assertThrows(() -> {
             int badResult = Calculator.randomMod(n, m);
-            String message = msgPart + " somehow gave " + badResult 
-                    + " instead of causing an exception";
-            fail(message);
-        } catch (ArithmeticException ae) {
-            System.out.println(msgPart 
-                    + " correctly caused ArithmeticException");
-            System.out.println("\"" + ae.getMessage() + "\"");
-        } catch (RuntimeException re) {
-            String message = msgPart + " shouldn't have caused " 
-                    + re.getClass().getName();
-            fail(message);
-        }
+            System.out.println(badResult + " is said to be congruent to " + n 
+                    + " modulo " + m);
+        }, ArithmeticException.class, msg);
+        String excMsg = e.getMessage();
+        assert excMsg != null : "Exception message should not be null";
+        assert !excMsg.isBlank() : "Exception message should not be blank";
+        System.out.println("\"" + excMsg + "\"");
     }
     
 }
