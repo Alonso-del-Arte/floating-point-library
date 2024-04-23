@@ -132,4 +132,26 @@ public class CalculatorNGTest {
         }, msg);
     }
     
+    @Test
+    public void testRandomModZeroCausesException() {
+        int n = RANDOM.nextInt();
+        int m = 0;
+        String msgPart = "Asking for random squarefree number congruent to " + n 
+                + " modulo " + m;
+        try {
+            int badResult = Calculator.randomMod(n, m);
+            String message = msgPart + " somehow gave " + badResult 
+                    + " instead of causing an exception";
+            fail(message);
+        } catch (ArithmeticException ae) {
+            System.out.println(msgPart 
+                    + " correctly caused ArithmeticException");
+            System.out.println("\"" + ae.getMessage() + "\"");
+        } catch (RuntimeException re) {
+            String message = msgPart + " shouldn't have caused " 
+                    + re.getClass().getName();
+            fail(message);
+        }
+    }
+    
 }
