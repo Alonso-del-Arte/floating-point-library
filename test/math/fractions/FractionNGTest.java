@@ -247,7 +247,7 @@ public class FractionNGTest {
         assertEquals(actual, expected, message);
     }
     
-//    @Test
+    @Test
     public void testPlusSameDenominator() {
         int denom = randomOddPrime();
         int numerA = RANDOM.nextInt(denom - 1) + 1;
