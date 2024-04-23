@@ -63,6 +63,10 @@ public class Calculator {
     
     // TODO: Write tests for this
     public static int randomMod(int n, int m) {
+        if (m == 0) {
+            String excMsg = "Numbers " + n + " modulo "  + m + " are undefined";
+            throw new ArithmeticException(excMsg);
+        }
         return 0;
     }
     
