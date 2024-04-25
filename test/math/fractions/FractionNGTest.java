@@ -263,6 +263,31 @@ public class FractionNGTest {
     }
     
     @Test
+    public void testPlus() {
+        System.out.println("plus");
+        int p = randomOddPrime();
+        long numerA = 3 * p + RANDOM.nextInt(p - 1) + 1;
+        long denomA = 2 * p;
+        Fraction addendA = new Fraction(numerA, denomA);
+        long numerB = denomA - 1;
+        long denomB = numerA + 1;
+        Fraction addendB = new Fraction(numerB, denomB);
+        long interNumerA = numerA * denomB;
+        long interNumerB = numerB * denomA;
+        long resNumer = interNumerA + interNumerB;
+        long resDenom = denomA * denomB;
+        long gcd = euclideanGCD(resNumer, resDenom);
+        long numer = resNumer / gcd;
+        long denom = resDenom / gcd;
+        Fraction expected = new Fraction(numer, denom);
+        Fraction actual = addendA.plus(addendB);
+        System.out.println("p = " + p);
+        String message = "Adding " + addendA.toString() + " and " 
+                + addendB.toString();
+        assertEquals(actual, expected, message);
+    }
+    
+    @Test
     public void testConstructorRejectsDenomZero() {
         int numer = RANDOM.nextInt();
         int badDenom = 0;
