@@ -19,7 +19,8 @@ package math.fractions;
 import static math.integer.Calculator.euclideanGCD;
 
 /**
- *
+ * Represents a rational number symbolically. This class is limited to fractions 
+ * with numerators and denominators in the range of <code>long</code>.
  * @author Alonso del Arte
  */
 public class Fraction implements Comparable<Fraction> {
@@ -42,15 +43,19 @@ public class Fraction implements Comparable<Fraction> {
         return this.denominator == 1L;
     }
     
-    // TODO: Write tests for this
+    /**
+     * Adds a fraction to this one. For the example, let's say this fraction is 
+     * <sup>1</sup>&frasl;<sub>2</sub>.
+     * @param addend The fraction to add to this one. For example, 
+     * <sup>1</sup>&frasl;<sub>8</sub>.
+     * @return The sum of this fraction and <code>addend</code>. For example, 
+     * <sup>5</sup>&frasl;<sub>8</sub>.
+     */
     public Fraction plus(Fraction addend) {
         long interNumerA = this.numerator * addend.denominator;
         long interNumerB = addend.numerator * this.denominator;
-        long resNumer = interNumerA + interNumerB;
-        long resDenom = this.denominator * addend.denominator;
-        long gcd = euclideanGCD(resNumer, resDenom);
-        long numer = resNumer / gcd;
-        long denom = resDenom / gcd;
+        long numer = interNumerA + interNumerB;
+        long denom = this.denominator * addend.denominator;
         return new Fraction(numer, denom);
     }
     
