@@ -44,8 +44,14 @@ public class Fraction implements Comparable<Fraction> {
     
     // TODO: Write tests for this
     public Fraction plus(Fraction addend) {
-        return new Fraction(this.numerator + addend.numerator, 
-                this.denominator);
+        long interNumerA = this.numerator * addend.denominator;
+        long interNumerB = addend.numerator * this.denominator;
+        long resNumer = interNumerA + interNumerB;
+        long resDenom = this.denominator * addend.denominator;
+        long gcd = euclideanGCD(resNumer, resDenom);
+        long numer = resNumer / gcd;
+        long denom = resDenom / gcd;
+        return new Fraction(numer, denom);
     }
     
     // TODO: Write tests for this
