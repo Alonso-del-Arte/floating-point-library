@@ -36,8 +36,9 @@ public class Fraction implements Comparable<Fraction> {
     }
     
     /**
-     * 
-     * @return 
+     * Tells whether this fraction is an integer or not.
+     * @return True if this fraction is an integer, false otherwise. For 
+     * example, true for 22, false for <sup>22</sup>&frasl;<sub>7</sub>.
      */
     public boolean isInteger() {
         return this.denominator == 1L;
@@ -59,9 +60,15 @@ public class Fraction implements Comparable<Fraction> {
         return new Fraction(numer, denom);
     }
     
-    // TODO: Write tests for this
+    /**
+     * Adds an integer to this fraction. For the example, let's say this 
+     * fraction is <sup>25</sup>&frasl;<sub>68</sub>.
+     * @param addend The integer to add. For example, 18025.
+     * @return The sum. For example, <sup>1225725</sup>&frasl;<sub>68</sub>.
+     */
     public Fraction plus(int addend) {
-        return this;
+        long numer = this.numerator + this.denominator * addend;
+        return new Fraction(numer, this.denominator);
     }
     
     // TODO: Write tests for this
