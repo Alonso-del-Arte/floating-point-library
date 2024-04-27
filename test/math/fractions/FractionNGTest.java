@@ -288,6 +288,18 @@ public class FractionNGTest {
     }
     
     @Test
+    public void testPlusInt() {
+        int denom = RANDOM.nextInt(256) + 4;
+        int numer = RANDOM.nextInt(denom - 1) + 1;
+        Fraction fraction = new Fraction(numer, denom);
+        int addend = 2 * (RANDOM.nextInt(Short.MAX_VALUE) - 16384) + 1;
+        Fraction expected = new Fraction(numer + addend * denom, denom);
+        Fraction actual = fraction.plus(addend);
+        String message = "Adding " + fraction.toString() + " and " + addend;
+        assertEquals(actual, expected, message);
+    }
+    
+    @Test
     public void testConstructorRejectsDenomZero() {
         int numer = RANDOM.nextInt();
         int badDenom = 0;
