@@ -92,6 +92,15 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testPositiveInfinityIsNotNormal() {
+        byte b = 120;
+        QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+        String msg = "Number " + number.toString() 
+                + " should not be considered normal";
+        assert !number.isNormal() : msg;
+    }
+    
+    @Test
     public void testNegativeInfinityIsNotSubnormal() {
         byte b = -8;
         QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
