@@ -34,6 +34,26 @@ public abstract class FloatingPointNumber
         return copy;
     }
     
+    /**
+     * Indicates whether or not this number is normal. A number is said to be 
+     * normal in the IEEE-754 sense if its floating point representation 
+     * includes a tacit 1.  
+     * @return True if this number is finite and normal, false in all other 
+     * cases. Examples: true for rational approximations of <i>e</i> and &pi;; 
+     * false for &minus;0.0, infinity and canonical NaN.
+     */
+    public abstract boolean isNormal();
+    
+    /**
+     * Indicates whether or not this number is subnormal. A number is said to be 
+     * subnormal in the IEEE-754 sense if its floating point representation does 
+     * not include a tacit 1.  
+     * @return True if this number is finite and subnormal, false in all other 
+     * cases. Examples: true for &minus;0.0; false for rational approximations 
+     * of <i>e</i> and &pi;, infinity and canonical NaN.
+     */
+    public abstract boolean isSubnormal();
+    
     public abstract boolean isInteger();
     
     public abstract boolean isFinite();

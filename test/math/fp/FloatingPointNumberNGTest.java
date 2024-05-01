@@ -217,7 +217,17 @@ public class FloatingPointNumberNGTest {
     }
     
     private static class FloatingPointNumberImpl extends FloatingPointNumber {
+        
+        @Override
+        public boolean isNormal() {
+            return false;
+        }
 
+        @Override
+        public boolean isSubnormal() {
+            return false;
+        }
+        
         // TODO: Write tests for this
         @Override
         public boolean isInteger() {

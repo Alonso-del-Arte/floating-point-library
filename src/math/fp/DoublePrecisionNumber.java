@@ -49,6 +49,18 @@ public class DoublePrecisionNumber extends FloatingPointNumber {
 
     // TODO: Write tests for this
     @Override
+    public boolean isNormal() {
+        return false;
+    }
+    
+    // TODO: Write tests for this
+    @Override
+    public boolean isSubnormal() {
+        return false;
+    }
+    
+    // TODO: Write tests for this
+    @Override
     public boolean isInteger() {
         return true;
     }
