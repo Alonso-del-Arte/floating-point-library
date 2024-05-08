@@ -116,10 +116,11 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
 
     @Override
     public double to64BitPrimitive() {
-        if (this.heldByte == 120) {
-            return Double.POSITIVE_INFINITY;
-        }
-        return Double.NEGATIVE_INFINITY;
+        return switch (this.heldByte) {
+            case -8 -> Double.NEGATIVE_INFINITY;
+            case 120 -> Double.POSITIVE_INFINITY;
+            default -> Double.NaN;
+        };
     }
 
     // TODO: Write tests for this
