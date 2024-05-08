@@ -173,14 +173,13 @@ public class QuarterPrecisionNumberNGTest {
         assertEquals(actual, expected);
     }
     
-//    @Test
-//    public void testTo64BitPrimitiveNegativeZero() {
-//        QuarterPrecisionNumber number 
-//                = new QuarterPrecisionNumber(Byte.MIN_VALUE);
-//        double expected = -0.0;
-//        double actual = number.to64BitPrimitive();
-//        assertEquals(actual, expected);
-//    }
+    @Test
+    public void testTo64BitPrimitivePositiveZero() {
+        QuarterPrecisionNumber number = new QuarterPrecisionNumber((byte) 0);
+        double expected = 0.0;
+        double actual = number.to64BitPrimitive();
+        assertEquals(actual, expected);
+    }
     
     @Test
     public void testTo32BitPrimitivePositiveInfinity() {
