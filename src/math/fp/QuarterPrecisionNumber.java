@@ -108,6 +108,7 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     @Override
     public float to32BitPrimitive() {
         return switch (this.heldByte) {
+            case Byte.MIN_VALUE -> -0.0f;
             case -8 -> Float.NEGATIVE_INFINITY;
             case 120 -> Float.POSITIVE_INFINITY;
             default -> Float.NaN;
