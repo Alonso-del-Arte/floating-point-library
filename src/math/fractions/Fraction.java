@@ -73,9 +73,6 @@ public class Fraction implements Comparable<Fraction> {
     
     // TODO: Write tests for this
     public Fraction negate() {
-        if (this.numerator == 0) {
-            return new Fraction(-1, 2);
-        }
         if (this.numerator > 0) {
             return new Fraction(-this.numerator, this.denominator);
         }
