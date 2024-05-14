@@ -281,7 +281,6 @@ public class FractionNGTest {
         long denom = resDenom / gcd;
         Fraction expected = new Fraction(numer, denom);
         Fraction actual = addendA.plus(addendB);
-        System.out.println("p = " + p);
         String message = "Adding " + addendA.toString() + " and " 
                 + addendB.toString();
         assertEquals(actual, expected, message);
@@ -296,6 +295,30 @@ public class FractionNGTest {
         Fraction expected = new Fraction(numer + addend * denom, denom);
         Fraction actual = fraction.plus(addend);
         String message = "Adding " + fraction.toString() + " and " + addend;
+        assertEquals(actual, expected, message);
+    }
+    
+    @Test
+    public void testMinus() {
+        System.out.println("minus");
+        int p = randomOddPrime();
+        long numerA = 3 * p + RANDOM.nextInt(p - 1) + 1;
+        long denomA = 2 * p;
+        Fraction minuend = new Fraction(numerA, denomA);
+        long numerB = denomA - 1;
+        long denomB = numerA + 1;
+        Fraction subtrahend = new Fraction(numerB, denomB);
+        long interNumerA = numerA * denomB;
+        long interNumerB = numerB * denomA;
+        long resNumer = interNumerA - interNumerB;
+        long resDenom = denomA * denomB;
+        long gcd = euclideanGCD(resNumer, resDenom);
+        long numer = resNumer / gcd;
+        long denom = resDenom / gcd;
+        Fraction expected = new Fraction(numer, denom);
+        Fraction actual = minuend.minus(subtrahend);
+        String message = "Subracting " + subtrahend.toString() + " from " 
+                + minuend.toString();
         assertEquals(actual, expected, message);
     }
     
