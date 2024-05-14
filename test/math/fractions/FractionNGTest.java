@@ -299,6 +299,25 @@ public class FractionNGTest {
     }
     
     @Test
+    public void testMinusSameDenominator() {
+        int denom = randomOddPrime();
+        int numerA = denom + RANDOM.nextInt(denom - 1) + 1;
+        Fraction minuend = new Fraction(numerA, denom);
+        int numerB = RANDOM.nextInt(denom - 2) + 1;
+        int expNumer = numerA - numerB;
+        if (expNumer == denom) {
+            numerB++;
+            expNumer--;
+        }
+        Fraction subtrahend = new Fraction(numerB, denom);
+        Fraction expected = new Fraction(expNumer, denom);
+        Fraction actual = minuend.minus(subtrahend);
+        String message = "Subracting " + subtrahend.toString() + " from " 
+                + minuend.toString();
+        assertEquals(actual, expected, message);
+    }
+    
+    @Test
     public void testMinus() {
         System.out.println("minus");
         int p = randomOddPrime();
