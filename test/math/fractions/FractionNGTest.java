@@ -342,6 +342,20 @@ public class FractionNGTest {
     }
     
     @Test
+    public void testMinusInt() {
+        int denom = RANDOM.nextInt(256) + 4;
+        int squaredDenom = denom * denom;
+        int numer = squaredDenom + RANDOM.nextInt(denom - 1) + 1;
+        Fraction fraction = new Fraction(numer, denom);
+        int subtrahend = RANDOM.nextInt(denom - 1) + 1;
+        Fraction expected = new Fraction(numer - subtrahend * denom, denom);
+        Fraction actual = fraction.minus(subtrahend);
+        String message = "Subtracting " + subtrahend + " from " 
+                + fraction.toString();
+        assertEquals(actual, expected, message);
+    }
+    
+    @Test
     public void testConstructorRejectsDenomZero() {
         int numer = RANDOM.nextInt();
         int badDenom = 0;
