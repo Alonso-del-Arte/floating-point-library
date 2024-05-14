@@ -100,8 +100,7 @@ public class Fraction implements Comparable<Fraction> {
      * &minus;<sup>1225675</sup>&frasl;<sub>68</sub>.
      */
     public Fraction minus(int subtrahend) {
-        long numer = this.numerator - this.denominator * subtrahend;
-        return new Fraction(numer, this.denominator);
+        return this.plus(-subtrahend);
     }
     
     // TODO: Write tests for this
