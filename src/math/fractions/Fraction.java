@@ -92,9 +92,16 @@ public class Fraction implements Comparable<Fraction> {
         return new Fraction(numer, denom);
     }
     
-    // TODO: Write tests for this
+    /**
+     * Subtracts an integer from this fraction. For the example, let's say this 
+     * fraction is <sup>25</sup>&frasl;<sub>68</sub>.
+     * @param subtrahend The integer to subtract. For example, 18025.
+     * @return This fraction minus <code>subtrahend</code>. For example, 
+     * &minus;<sup>1225675</sup>&frasl;<sub>68</sub>.
+     */
     public Fraction minus(int subtrahend) {
-        return this;
+        long numer = this.numerator - this.denominator * subtrahend;
+        return new Fraction(numer, this.denominator);
     }
     
     // TODO: Write tests for this
