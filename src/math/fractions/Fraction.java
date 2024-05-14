@@ -76,10 +76,20 @@ public class Fraction implements Comparable<Fraction> {
         return this;
     }
     
-    // TODO: Write tests for this
+    /**
+     * Subtracts a fraction from this one. For the example, let's say this 
+     * fraction is <sup>1</sup>&frasl;<sub>2</sub>.
+     * @param subtrahend The fraction to subtract from this one. For example, 
+     * <sup>1</sup>&frasl;<sub>8</sub>.
+     * @return This fraction minus <code>subtrahend</code>. For example, 
+     * <sup>3</sup>&frasl;<sub>8</sub>.
+     */
     public Fraction minus(Fraction subtrahend) {
-        return new Fraction(this.numerator - subtrahend.numerator, 
-                this.denominator);
+        long interNumerA = this.numerator * subtrahend.denominator;
+        long interNumerB = subtrahend.numerator * this.denominator;
+        long numer = interNumerA - interNumerB;
+        long denom = this.denominator * subtrahend.denominator;
+        return new Fraction(numer, denom);
     }
     
     // TODO: Write tests for this
