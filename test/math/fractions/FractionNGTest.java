@@ -370,6 +370,13 @@ public class FractionNGTest {
     }
     
     @Test
+    public void testZeroNegatedIsStillZero() {
+        Fraction expected = new Fraction(0, 1);
+        Fraction actual = expected.negate();
+        assertEquals(actual, expected);
+    }
+    
+    @Test
     public void testConstructorRejectsDenomZero() {
         int numer = RANDOM.nextInt();
         int badDenom = 0;
