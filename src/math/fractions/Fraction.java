@@ -78,7 +78,8 @@ public class Fraction implements Comparable<Fraction> {
     
     // TODO: Write tests for this
     public Fraction minus(Fraction subtrahend) {
-        return this;
+        return new Fraction(this.numerator - subtrahend.numerator, 
+                this.denominator);
     }
     
     // TODO: Write tests for this
