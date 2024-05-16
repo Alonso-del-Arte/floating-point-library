@@ -75,12 +75,11 @@ public class Fraction implements Comparable<Fraction> {
      * Multiplies this fraction by &minus;1. For the example, let's say this 
      * fraction is <sup>25</sup>&frasl;<sub>68</sub>.
      * @return This fraction negated. For example, 
-     * &minus;<sup>25</sup>&frasl;<sub>68</sub>.
+     * &minus;<sup>25</sup>&frasl;<sub>68</sub>. In the special case of 0, we 
+     * make no guarantees as to whether the returned object is the original 
+     * object or a fresh instance.
      */
     public Fraction negate() {
-        if (this.numerator == 0) {
-            return this;
-        }
         return new Fraction(-this.numerator, this.denominator);
     }
     
