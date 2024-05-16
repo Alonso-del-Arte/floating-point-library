@@ -92,11 +92,7 @@ public class Fraction implements Comparable<Fraction> {
      * <sup>3</sup>&frasl;<sub>8</sub>.
      */
     public Fraction minus(Fraction subtrahend) {
-        long interNumerA = this.numerator * subtrahend.denominator;
-        long interNumerB = subtrahend.numerator * this.denominator;
-        long numer = interNumerA - interNumerB;
-        long denom = this.denominator * subtrahend.denominator;
-        return new Fraction(numer, denom);
+        return this.plus(subtrahend.negate());
     }
     
     /**
