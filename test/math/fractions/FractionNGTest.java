@@ -377,6 +377,19 @@ public class FractionNGTest {
     }
     
     @Test
+    public void testNegatedNegativeIsPositive() {
+        int denom = randomPrime(Short.MAX_VALUE) * randomOddPrime();
+        int numer = -RANDOM.nextInt(denom - 1) - 1;
+        while (euclideanGCD(numer, denom) > 1) {
+            numer--;
+        }
+        Fraction fraction = new Fraction(numer, denom);
+        Fraction expected = new Fraction(-numer, denom);
+        Fraction actual = fraction.negate();
+        assertEquals(actual, expected);
+    }
+    
+    @Test
     public void testConstructorRejectsDenomZero() {
         int numer = RANDOM.nextInt();
         int badDenom = 0;
