@@ -111,6 +111,7 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
             case Byte.MIN_VALUE -> -0.0f;
             case -8 -> Float.NEGATIVE_INFINITY;
             case 0 -> 0.0f;
+            case 56 -> 1.0f;
             case 120 -> Float.POSITIVE_INFINITY;
             default -> Float.NaN;
         };
