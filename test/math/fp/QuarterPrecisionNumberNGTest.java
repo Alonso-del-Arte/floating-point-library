@@ -16,6 +16,8 @@
  */
 package math.fp;
 
+import math.fractions.Fraction;
+
 import static org.testng.Assert.*;
 import org.testng.annotations.Test;
 
@@ -26,6 +28,11 @@ import org.testng.annotations.Test;
  * @author Alonso del Arte
  */
 public class QuarterPrecisionNumberNGTest {
+    
+    private static final Fraction ONE = new Fraction(1, 1);
+    
+    // TODO: Redefine as ONE.divides(8) once Fraction divides() proven, tested
+    private static final Fraction ONE_EIGHTH = new Fraction(1, 8);
     
     @Test
     public void testToStringNegativeInfinity() {
@@ -71,6 +78,21 @@ public class QuarterPrecisionNumberNGTest {
         String actual = number.toString();
         assertEquals(actual, expected);
     }
+    
+    @Test
+    public void testToStringPositiveOne() {
+        QuarterPrecisionNumber number = new QuarterPrecisionNumber((byte) 56);
+        String expected = "1.0";
+        String actual = number.toString();
+        assertEquals(actual, expected);
+    }
+    
+//    public void testToStringPositiveExponentZero() {
+//        Fraction currFract = ONE;
+//        for (byte b = 56; b < 64; b++) {
+//            currFract = currFract.plus(ONE_EIGHTH);
+//        }
+//    }
     
     @Test
     public void testToStringPositiveNaN() {
