@@ -178,6 +178,22 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testTo32BitPrimitiveNegativeOne() {
+        QuarterPrecisionNumber number = new QuarterPrecisionNumber((byte) -72);
+        float expected = -1.0f;
+        float actual = number.to32BitPrimitive();
+        assertEquals(actual, expected);
+    }
+    
+//    @Test
+//    public void testTo64BitPrimitivePositiveOne() {
+//        QuarterPrecisionNumber number = new QuarterPrecisionNumber((byte) -72);
+//        double expected = -1.0;
+//        double actual = number.to64BitPrimitive();
+//        assertEquals(actual, expected);
+//    }
+    
+    @Test
     public void testTo32BitPrimitiveNegativeZero() {
         QuarterPrecisionNumber number 
                 = new QuarterPrecisionNumber(Byte.MIN_VALUE);
