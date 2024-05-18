@@ -176,6 +176,7 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
             case -7, -6, -5, -4, -3, -2, -1, 121, 122, 123, 124, 125, 126, 127 
                 -> "NaN";
             case -8 -> "\u2212Infinity";
+            case 56 -> "1.0";
             case 120 -> "Infinity";
             default -> "0.0";
         };
