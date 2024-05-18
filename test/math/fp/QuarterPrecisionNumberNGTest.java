@@ -63,6 +63,14 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testToStringNegativeOne() {
+        QuarterPrecisionNumber number = new QuarterPrecisionNumber((byte) -72);
+        String expected = "\u22121.0";
+        String actual = number.toString();
+        assertEquals(actual, expected);
+    }
+    
+    @Test
     public void testToStringNegativeZero() {
         QuarterPrecisionNumber number 
                 = new QuarterPrecisionNumber(Byte.MIN_VALUE);
