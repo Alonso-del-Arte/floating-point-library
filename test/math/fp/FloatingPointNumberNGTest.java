@@ -21,6 +21,8 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
+import static org.testframe.api.Asserters.assertThrows;
+
 import static org.testng.Assert.*;
 import org.testng.annotations.Test;
 
@@ -196,24 +198,18 @@ public class FloatingPointNumberNGTest {
     @Test
     public void testConstructorRejectsEmptyArray() {
         byte[] bytes = {};
-        try {
+        String msg = "Constructor should reject empty byte array";
+        Throwable t = assertThrows(() -> {
             FloatingPointNumber badNumber = new FloatingPointNumberImpl(bytes);
-            String message = "Should not have been able to use create " 
+            System.out.println("Should not have been able to use create " 
                     + badNumber.getClass() + '@' 
                     + Integer.toHexString(badNumber.hashCode()) 
-                    + " with empty array";
-            fail(message);
-        } catch (IllegalArgumentException iae) {
-            System.out.println("Empty array correctly caused exception");
-            String excMsg = iae.getMessage();
-            assert excMsg != null : "Message should not be null";
-            assert !excMsg.isBlank() : "Message should not be blank";
-            System.out.println("\"" + excMsg + "\"");
-        } catch (RuntimeException re) {
-            String message = re.getClass().getName() 
-                    + " is the wrong exception for empty array to constructor";
-            fail(message);
-        }
+                    + " with empty array");
+        }, IllegalArgumentException.class, msg);
+        String excMsg = t.getMessage();
+        assert excMsg != null : "Message should not be null";
+        assert !excMsg.isBlank() : "Message should not be blank";
+        System.out.println("\"" + excMsg + "\"");
     }
     
     private static class FloatingPointNumberImpl extends FloatingPointNumber {
@@ -228,7 +224,6 @@ public class FloatingPointNumberNGTest {
             return false;
         }
         
-        // TODO: Write tests for this
         @Override
         public boolean isInteger() {
             return true;
