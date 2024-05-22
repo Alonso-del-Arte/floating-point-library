@@ -184,10 +184,10 @@ public abstract class FloatingPointNumber
     }
     
     public FloatingPointNumber(byte[] bytes) {
-        if (bytes.length == 0) {
-            String excMsg = "Byte array should have at least one number";
-            throw new IllegalArgumentException(excMsg);
-        }
+//        if (bytes.length == 0) {
+//            String excMsg = "Byte array should have at least one number";
+//            throw new IllegalArgumentException(excMsg);
+//        }
         this.componentBytes = bytes;
     }
     
