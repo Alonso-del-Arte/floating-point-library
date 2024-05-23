@@ -490,6 +490,18 @@ public class FractionNGTest {
     }
     
     @Test
+    public void testReciprocal() {
+        System.out.println("reciprocal");
+        int numer = 2 * randomOddPrime();
+        int denom = 2 * randomOddPrime() + 1;
+        Fraction fraction = new Fraction(numer, denom);
+        Fraction expected = new Fraction(denom, numer);
+        Fraction actual = fraction.reciprocal();
+        String message = "Taking reciprocal of " + fraction.toString();
+        assertEquals(actual, expected, message);
+    }
+    
+    @Test
     public void testConstructorRejectsDenomZero() {
         int numer = RANDOM.nextInt();
         int badDenom = 0;
