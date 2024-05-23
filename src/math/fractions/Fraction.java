@@ -134,6 +134,10 @@ public class Fraction implements Comparable<Fraction> {
     
     // TODO: Write tests for this
     public Fraction reciprocal() {
+        if (this.numerator == 0L) {
+            String excMsg = "Reciprocal of zero is undefined";
+            throw new ArithmeticException(excMsg);
+        }
         return this;
     }
     
