@@ -120,9 +120,16 @@ public class Fraction implements Comparable<Fraction> {
         return new Fraction(numer, denom);
     }
     
-    // TODO: Write tests for this
+    /**
+     * Multiplies this fraction by an integer. For the example, suppose this 
+     * fraction is <sup>2</sup>&frasl;<sub>3</sub>.
+     * @param multiplicand The integer to multiply by. For example, 7.
+     * @return The product of this fraction and the multiplicand. In the 
+     * example, <sup>14</sup>&frasl;<sub>3</sub>.
+     */
     public Fraction times(int multiplicand) {
-        return this;
+        long numer = this.numerator * multiplicand;
+        return new Fraction(numer, this.denominator);
     }
     
     // TODO: Write tests for this
