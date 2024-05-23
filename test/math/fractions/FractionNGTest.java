@@ -408,6 +408,20 @@ public class FractionNGTest {
     }
     
     @Test
+    public void testTimesInt() {
+        int numer = RANDOM.nextInt(128) + 2;
+        int denom = numer * randomPrime(64) + 1;
+        Fraction fraction = new Fraction(numer, denom);
+        int multiplicand = randomPrime(128) * randomOddPrime();
+        int expNumer = numer * multiplicand;
+        Fraction expected = new Fraction(expNumer, denom);
+        Fraction actual = fraction.times(multiplicand);
+        String message = "Multiplying " + fraction.toString() + " by " 
+                + multiplicand;
+        assertEquals(actual, expected, message);
+    }
+    
+    @Test
     public void testConstructorRejectsDenomZero() {
         int numer = RANDOM.nextInt();
         int badDenom = 0;
