@@ -390,6 +390,24 @@ public class FractionNGTest {
     }
     
     @Test
+    public void testTimes() {
+        System.out.println("times");
+        int numerA = RANDOM.nextInt(128) + 2;
+        int denomA = numerA * randomPrime(64) + 1;
+        Fraction multiplicandA = new Fraction(numerA, denomA);
+        int numerB = RANDOM.nextInt(128) + 2;
+        int denomB = numerB * randomPrime(64) + 1;
+        Fraction multiplicandB = new Fraction(numerB, denomB);
+        int expNumer = numerA * numerB;
+        int expDenom = denomA * denomB;
+        Fraction expected = new Fraction(expNumer, expDenom);
+        Fraction actual = multiplicandA.times(multiplicandB);
+        String message = "Multiplying " + multiplicandA.toString() + " by " 
+                + multiplicandB;
+        assertEquals(actual, expected, message);
+    }
+    
+    @Test
     public void testConstructorRejectsDenomZero() {
         int numer = RANDOM.nextInt();
         int badDenom = 0;
