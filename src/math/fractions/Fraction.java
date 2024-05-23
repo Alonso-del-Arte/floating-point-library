@@ -137,13 +137,20 @@ public class Fraction implements Comparable<Fraction> {
         return this;
     }
     
-    // TODO: Write tests for this
+    /**
+     * Divides this fraction by another.
+     * @param divisor
+     * @return
+     * @throws ArithmeticException If <code>divisor</code> is 0.
+     */
     public Fraction divides(Fraction divisor) {
         if (divisor.numerator == 0L) {
             String excMsg = "Can't divide " + this.toString() + " by 0";
             throw new ArithmeticException(excMsg);
         }
-        return this;
+        long numer = this.numerator * divisor.denominator;
+        long denom = this.denominator * divisor.numerator;
+        return new Fraction(numer, denom);
     }
     
     // TODO: Write tests for this
