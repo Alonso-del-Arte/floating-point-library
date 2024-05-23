@@ -474,6 +474,22 @@ public class FractionNGTest {
 //    }
     
     @Test
+    public void testNoReciprocalForZero() {
+        Fraction zero = new Fraction(0, 1);
+        String msg = "Trying to take reciprocal of " + zero.toString() 
+                + " should cause an exception";
+        Throwable t = assertThrows(() -> {
+            Fraction badResult = zero.reciprocal();
+            System.out.println(msg + ", not given result " 
+                    + badResult.toString());
+        }, ArithmeticException.class, msg);
+        String excMsg = t.getMessage();
+        assert excMsg != null : "Exception message should not be null";
+        assert !excMsg.isBlank() : "Exception message should not be blank";
+        System.out.println("\"" + excMsg + "\"");
+    }
+    
+    @Test
     public void testConstructorRejectsDenomZero() {
         int numer = RANDOM.nextInt();
         int badDenom = 0;
