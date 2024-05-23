@@ -144,9 +144,12 @@ public class Fraction implements Comparable<Fraction> {
     }
     
     /**
-     * Divides this fraction by another.
-     * @param divisor
-     * @return
+     * Divides this fraction by another. For the example, suppose this fraction 
+     * is <sup>2</sup>&frasl;<sub>3</sub>.
+     * @param divisor The fraction to divide this fraction by. For example, 
+     * <sup>5</sup>&frasl;<sub>7</sub>.
+     * @return This fraction divided by <code>divisor</code>. For example, 
+     * <sup>14</sup>&frasl;<sub>15</sub>.
      * @throws ArithmeticException If <code>divisor</code> is 0.
      */
     public Fraction divides(Fraction divisor) {
@@ -154,9 +157,7 @@ public class Fraction implements Comparable<Fraction> {
             String excMsg = "Can't divide " + this.toString() + " by 0";
             throw new ArithmeticException(excMsg);
         }
-        long numer = this.numerator * divisor.denominator;
-        long denom = this.denominator * divisor.numerator;
-        return new Fraction(numer, denom);
+        return this.times(divisor.reciprocal());
     }
     
     // TODO: Write tests for this
