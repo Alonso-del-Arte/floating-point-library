@@ -139,6 +139,10 @@ public class Fraction implements Comparable<Fraction> {
     
     // TODO: Write tests for this
     public Fraction divides(Fraction divisor) {
+        if (divisor.numerator == 0L) {
+            String excMsg = "Can't divide " + this.toString() + " by 0";
+            throw new ArithmeticException(excMsg);
+        }
         return this;
     }
     
