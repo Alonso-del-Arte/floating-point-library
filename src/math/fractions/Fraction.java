@@ -106,9 +106,18 @@ public class Fraction implements Comparable<Fraction> {
         return this.plus(-subtrahend);
     }
     
-    // TODO: Write tests for this
+    /**
+     * Multiplies this fraction by another. For the example, suppose this 
+     * fraction is <sup>2</sup>&frasl;<sub>3</sub>.
+     * @param multiplicand The fraction to multiply by. For example, 
+     * <sup>5</sup>&frasl;<sub>7</sub>.
+     * @return The product of this fraction and the multiplicand. In the 
+     * example, <sup>10</sup>&frasl;<sub>21</sub>.
+     */
     public Fraction times(Fraction multiplicand) {
-        return this;
+        long numer = this.numerator * multiplicand.numerator;
+        long denom = this.denominator * multiplicand.denominator;
+        return new Fraction(numer, denom);
     }
     
     // TODO: Write tests for this
