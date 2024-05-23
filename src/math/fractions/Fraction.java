@@ -136,13 +136,10 @@ public class Fraction implements Comparable<Fraction> {
      * Takes the reciprocal of this fraction. The reciprocal of a fraction is 1 
      * divided by the fraction. For the example, suppose this fraction is 
      * <sup>3</sup>&frasl;<sub>7</sub>.
-     * @return The reciprocal. For example, <sup>7</sup>&frasl;<sub>3</sub>..
+     * @return The reciprocal. For example, <sup>7</sup>&frasl;<sub>3</sub>.
+     * @throws ArithmeticException If this fraction is 0.
      */
     public Fraction reciprocal() {
-        if (this.numerator == 0L) {
-            String excMsg = "Reciprocal of zero is undefined";
-            throw new ArithmeticException(excMsg);
-        }
         return new Fraction(this.denominator, this.numerator);
     }
     
