@@ -439,21 +439,22 @@ public class FractionNGTest {
         System.out.println("\"" + excMsg + "\"");
     }
     
-//    public void testDivides() {
-//        System.out.println("divides");
-//        int numerA = RANDOM.nextInt(128) + 2;
-//        int denomA = numerA * randomPrime(64) + 1;
-//        Fraction dividend = new Fraction(numerA, denomA);
-//        int numerB = RANDOM.nextInt(128) + 2;
-//        int denomB = numerB * randomPrime(64) + 1;
-//        Fraction divisor = new Fraction(numerB, denomB);
-//        int expNumer = numerA * denomB;
-//        int expDenom = denomA * numerB;
-//        Fraction expected = new Fraction(expNumer, expDenom);
-//        Fraction actual = dividend.divides(divisor);
-//        String message = "Dividing " + dividend.toString() + " by " + divisor;
-//        assertEquals(actual, expected, message);
-//    }
+    @Test
+    public void testDivides() {
+        System.out.println("divides");
+        int numerA = RANDOM.nextInt(128) + 2;
+        int denomA = numerA * randomPrime(64) + 1;
+        Fraction dividend = new Fraction(numerA, denomA);
+        int numerB = RANDOM.nextInt(128) + 2;
+        int denomB = numerB * randomPrime(64) + 1;
+        Fraction divisor = new Fraction(numerB, denomB);
+        int expNumer = numerA * denomB;
+        int expDenom = denomA * numerB;
+        Fraction expected = new Fraction(expNumer, expDenom);
+        Fraction actual = dividend.divides(divisor);
+        String message = "Dividing " + dividend.toString() + " by " + divisor;
+        assertEquals(actual, expected, message);
+    }
     
 //    @Test
 //    public void testDivisionByZero() {
