@@ -514,6 +514,20 @@ public class FractionNGTest {
     }
     
     @Test
+    public void testNumericApproximation() {
+        System.out.println("numericApproximation");
+        int bound = 128;
+        int numer = 2 * randomPrime(bound);
+        int denom = numer * randomPrime(bound) + 1;
+        Fraction fraction = new Fraction(numer, denom);
+        double expected = ((double) numer) / denom;
+        double actual = fraction.numericApproximation();
+        String message = "Getting numeric approximation of fraction " 
+                + fraction.toString();
+        assertEquals(actual, expected, message);
+    }
+    
+    @Test
     public void testConstructorRejectsDenomZero() {
         int numer = RANDOM.nextInt();
         int badDenom = 0;
