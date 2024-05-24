@@ -156,8 +156,17 @@ public class Fraction implements Comparable<Fraction> {
         return this.times(divisor.reciprocal());
     }
     
-    // TODO: Write tests for this
+    /**
+     * 
+     * @param divisor
+     * @return
+     * @throws ArithmeticException If <code>divisor</code> is 0.
+     */
     public Fraction divides(int divisor) {
+        if (divisor == 0) {
+            String excMsg = "Can't divide " + this.toString() + " by 0";
+            throw new ArithmeticException(excMsg);
+        }
         return this;
     }
     
