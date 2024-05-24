@@ -168,9 +168,14 @@ public class Fraction implements Comparable<Fraction> {
         return new Fraction(this.numerator, this.denominator * divisor);
     }
     
-    // TODO: Write tests for this
+    /**
+     * Gives a numeric approximation of this fraction. For the example, suppose 
+     * this fraction is <sup>355</sup>&frasl;<sub>113</sub>.
+     * @return A floating point number approximating this fraction. For example, 
+     * 3.1415929203539825.
+     */
     public double numericApproximation() {
-        return Double.NaN;
+        return ((double) this.numerator) / this.denominator;
     }
     
     /**
