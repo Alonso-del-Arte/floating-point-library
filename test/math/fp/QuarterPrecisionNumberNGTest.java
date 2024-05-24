@@ -62,6 +62,20 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testToStringNegativeExponentZero() {
+        Fraction currFract = ONE.negate();
+        for (byte b = -71; b < -64; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            currFract = currFract.minus(ONE_EIGHTH);
+            String expected = "\u2212" + Double.toString(-currFract
+                    .numericApproximation());
+            String actual = number.toString();
+            String message = "Bit pattern " + Integer.toHexString(b + 256);
+            assertEquals(actual, expected, message);
+        }
+    }
+    
+    @Test
     public void testToStringNegativeOne() {
         QuarterPrecisionNumber number = new QuarterPrecisionNumber((byte) -72);
         String expected = "\u22121.0";
