@@ -157,9 +157,11 @@ public class Fraction implements Comparable<Fraction> {
     }
     
     /**
-     * 
-     * @param divisor
-     * @return
+     * Divides this fraction by an integer. For the example, suppose this 
+     * fraction is <sup>2</sup>&frasl;<sub>3</sub>.
+     * @param divisor The integer to divide this fraction by. For example, 7.
+     * @return This fraction divided by <code>divisor</code>. For example, 
+     * <sup>2</sup>&frasl;<sub>21</sub>.
      * @throws ArithmeticException If <code>divisor</code> is 0.
      */
     public Fraction divides(int divisor) {
@@ -167,7 +169,7 @@ public class Fraction implements Comparable<Fraction> {
             String excMsg = "Can't divide " + this.toString() + " by 0";
             throw new ArithmeticException(excMsg);
         }
-        return this;
+        return new Fraction(this.numerator, this.denominator * divisor);
     }
     
     /**
