@@ -168,6 +168,11 @@ public class Fraction implements Comparable<Fraction> {
         return new Fraction(this.numerator, this.denominator * divisor);
     }
     
+    // TODO: Write tests for this
+    public double numericApproximation() {
+        return Double.NaN;
+    }
+    
     /**
      * 
      * @param obj
