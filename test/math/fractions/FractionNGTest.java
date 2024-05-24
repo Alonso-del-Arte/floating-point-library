@@ -424,7 +424,7 @@ public class FractionNGTest {
     @Test
     public void testDivisionByZero() {
         int numer = RANDOM.nextInt(128) + 2;
-        int denom = numer * randomPrime(64) + 1;
+        int denom = numer * randomPrime(64) + 16;
         Fraction dividend = new Fraction(numer, denom);
         Fraction divisor = new Fraction(0, 1);
         String msg = "Dividing " + dividend.toString() + " by " 
@@ -456,22 +456,22 @@ public class FractionNGTest {
         assertEquals(actual, expected, message);
     }
     
-//    @Test
-//    public void testDivisionByZero() {
-//        int numer = RANDOM.nextInt(128) + 2;
-//        int denom = numer * randomPrime(64) + 1;
-//        Fraction dividend = new Fraction(numer, denom);
-//        String msg = "Dividing " + dividend.toString() 
-//                + " by 0 should cause exception";
-//        Throwable t = assertThrows(() -> {
-//            Fraction badResult = dividend.divides(0);
-//            System.out.println(msg + ", not given result " + badResult);
-//        }, ArithmeticException.class, msg);
-//        String excMsg = t.getMessage();
-//        assert excMsg != null : "Exception message should not be null";
-//        assert !excMsg.isBlank() : "Exception message should not be blank";
-//        System.out.println("\"" + excMsg + "\"");
-//    }
+    @Test
+    public void testDivisionByIntZero() {
+        int numer = RANDOM.nextInt(128) + 2;
+        int denom = numer * randomPrime(64) + 16;
+        Fraction dividend = new Fraction(numer, denom);
+        String msg = "Dividing " + dividend.toString() 
+                + " by 0 should cause exception";
+        Throwable t = assertThrows(() -> {
+            Fraction badResult = dividend.divides(0);
+            System.out.println(msg + ", not given result " + badResult);
+        }, ArithmeticException.class, msg);
+        String excMsg = t.getMessage();
+        assert excMsg != null : "Exception message should not be null";
+        assert !excMsg.isBlank() : "Exception message should not be blank";
+        System.out.println("\"" + excMsg + "\"");
+    }
     
     @Test
     public void testNoReciprocalForZero() {
