@@ -474,6 +474,18 @@ public class FractionNGTest {
     }
     
     @Test
+    public void testDividesInt() {
+        int numer = RANDOM.nextInt(128) + 2;
+        int denom = numer * randomPrime(64) + 1;
+        Fraction dividend = new Fraction(numer, denom);
+        int divisor = RANDOM.nextInt(256) + 4;
+        Fraction expected = new Fraction(numer, denom * divisor);
+        Fraction actual = dividend.divides(divisor);
+        String message = "Dividing " + dividend.toString() + " by " + divisor;
+        assertEquals(actual, expected, message);
+    }
+    
+    @Test
     public void testNoReciprocalForZero() {
         Fraction zero = new Fraction(0, 1);
         String msg = "Trying to take reciprocal of " + zero.toString() 
