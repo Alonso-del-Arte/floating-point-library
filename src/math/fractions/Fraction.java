@@ -165,10 +165,6 @@ public class Fraction implements Comparable<Fraction> {
      * @throws ArithmeticException If <code>divisor</code> is 0.
      */
     public Fraction divides(int divisor) {
-        if (divisor == 0) {
-            String excMsg = "Can't divide " + this.toString() + " by 0";
-            throw new ArithmeticException(excMsg);
-        }
         return new Fraction(this.numerator, this.denominator * divisor);
     }
     
