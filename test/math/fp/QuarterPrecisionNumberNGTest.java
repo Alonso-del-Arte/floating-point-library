@@ -31,8 +31,7 @@ public class QuarterPrecisionNumberNGTest {
     
     private static final Fraction ONE = new Fraction(1, 1);
     
-    // TODO: Redefine as ONE.divides(8) once Fraction divides() proven, tested
-    private static final Fraction ONE_EIGHTH = new Fraction(1, 8);
+    private static final Fraction ONE_EIGHTH = ONE.divides(8);
     
     @Test
     public void testToStringNegativeInfinity() {
@@ -95,12 +94,18 @@ public class QuarterPrecisionNumberNGTest {
         assertEquals(actual, expected);
     }
     
-//    public void testToStringPositiveExponentZero() {
-//        Fraction currFract = ONE;
-//        for (byte b = 56; b < 64; b++) {
-//            currFract = currFract.plus(ONE_EIGHTH);
-//        }
-//    }
+    @Test
+    public void testToStringPositiveExponentZero() {
+        Fraction currFract = ONE;
+        for (byte b = 57; b < 64; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            currFract = currFract.plus(ONE_EIGHTH);
+            String expected = Double.toString(currFract.numericApproximation());
+            String actual = number.toString();
+            String message = "Bit pattern " + Integer.toHexString(b);
+            assertEquals(actual, expected, message);
+        }
+    }
     
     @Test
     public void testToStringPositiveNaN() {
