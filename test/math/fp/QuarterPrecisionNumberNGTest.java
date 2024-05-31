@@ -210,6 +210,19 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testTo64BitPrimitiveNegativeExponentZero() {
+        Fraction currFract = ONE.negate();
+        for (byte b = -71; b < -64; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            currFract = currFract.minus(ONE_EIGHTH);
+            double expected = currFract.numericApproximation();
+            double actual = number.to64BitPrimitive();
+            String message = "Bit pattern " + Integer.toHexString(b + 256);
+            assertEquals(actual, expected, message);
+        }
+    }
+    
+    @Test
     public void testTo32BitPrimitiveNegativeOne() {
         QuarterPrecisionNumber number = new QuarterPrecisionNumber((byte) -72);
         float expected = -1.0f;
