@@ -222,6 +222,14 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
                 -> "NaN";
             case -8 -> "\u2212Infinity";
             case 0 -> "0.0";
+            case 64 -> "2.0";
+            case 65 -> "2.25";
+            case 66 -> "2.5";
+            case 67 -> "2.75";
+            case 68 -> "3.0";
+            case 69 -> "3.25";
+            case 70 -> "3.5";
+            case 71 -> "3.75";
             case 120 -> "Infinity";
             default -> this.toStringNormal();
         };
