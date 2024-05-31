@@ -272,6 +272,19 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testTo32BitPrimitivePositiveExponentZero() {
+        Fraction currFract = ONE;
+        for (byte b = 57; b < 64; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            currFract = currFract.plus(ONE_EIGHTH);
+            float expected = (float) currFract.numericApproximation();
+            float actual = number.to32BitPrimitive();
+            String message = "Bit pattern " + Integer.toHexString(b);
+            assertEquals(actual, expected, message);
+        }
+    }
+    
+    @Test
     public void testTo64BitPrimitivePositiveInfinity() {
         byte b = 120;
         QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
