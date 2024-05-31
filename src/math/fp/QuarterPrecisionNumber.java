@@ -116,6 +116,13 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
         return switch (this.heldByte) {
             case Byte.MIN_VALUE -> -0.0f;
             case -72 -> -1.0f;
+            case -71 -> -1.125f;
+            case -70 -> -1.25f;
+            case -69 -> -1.375f;
+            case -68 -> -1.5f;
+            case -67 -> -1.625f;
+            case -66 -> -1.75f;
+            case -65 -> -1.875f;
             case -8 -> Float.NEGATIVE_INFINITY;
             case 0 -> 0.0f;
             case 56 -> 1.0f;
