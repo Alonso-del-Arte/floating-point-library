@@ -31,7 +31,9 @@ public class QuarterPrecisionNumberNGTest {
     
     private static final Fraction ONE = new Fraction(1, 1);
     
-    private static final Fraction ONE_QUARTER = ONE.divides(4);
+    private static final Fraction ONE_HALF = ONE.divides(2);
+    
+    private static final Fraction ONE_QUARTER = ONE_HALF.divides(2);
     
     private static final Fraction ONE_EIGHTH = ONE_QUARTER.divides(2);
     
@@ -147,6 +149,19 @@ public class QuarterPrecisionNumberNGTest {
             String message = "Bit pattern " + Integer.toHexString(b);
             assertEquals(actual, expected, message);
             currFract = currFract.plus(ONE_QUARTER);
+        }
+    }
+    
+    @Test
+    public void testToStringPositiveExponentTwo() {
+        Fraction currFract = ONE.times(4);
+        for (byte b = 72; b < 80; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String expected = Double.toString(currFract.numericApproximation());
+            String actual = number.toString();
+            String message = "Bit pattern " + Integer.toHexString(b);
+            assertEquals(actual, expected, message);
+            currFract = currFract.plus(ONE_HALF);
         }
     }
     
