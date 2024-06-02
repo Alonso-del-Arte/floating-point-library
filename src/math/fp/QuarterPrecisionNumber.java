@@ -234,6 +234,14 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     public String toString() {
         return switch (this.heldByte) {
             case -128 -> "\u22120.0";
+            case -56 -> "\u22122.0";
+            case -55 -> "\u22122.25";
+            case -54 -> "\u22122.5";
+            case -53 -> "\u22122.75";
+            case -52 -> "\u22123.0";
+            case -51 -> "\u22123.25";
+            case -50 -> "\u22123.5";
+            case -49 -> "\u22123.75";
             case -7, -6, -5, -4, -3, -2, -1, 121, 122, 123, 124, 125, 126, 127 
                 -> "NaN";
             case -8 -> "\u2212Infinity";
