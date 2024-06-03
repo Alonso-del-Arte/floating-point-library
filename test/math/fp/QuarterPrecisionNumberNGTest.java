@@ -193,6 +193,20 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testToStringPositiveExponentFive() {
+        Fraction currFract = ONE.times(32);
+        Fraction addend = ONE.times(4);
+        for (byte b = 96; b < 104; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String expected = Double.toString(currFract.numericApproximation());
+            String actual = number.toString();
+            String message = "Bit pattern " + Integer.toHexString(b);
+            assertEquals(actual, expected, message);
+            currFract = currFract.plus(addend);
+        }
+    }
+    
+    @Test
     public void testToStringPositiveNaN() {
         String expected = "NaN";
         for (byte b = 121; b > 0; b++) {
