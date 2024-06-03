@@ -278,6 +278,14 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
             case 93 -> "26.0";
             case 94 -> "28.0";
             case 95 -> "30.0";
+            case 96 -> "32.0";
+            case 97 -> "36.0";
+            case 98 -> "40.0";
+            case 99 -> "44.0";
+            case 100 -> "48.0";
+            case 101 -> "52.0";
+            case 102 -> "56.0";
+            case 103 -> "60.0";
             case 120 -> "Infinity";
             default -> this.toStringNormal();
         };
