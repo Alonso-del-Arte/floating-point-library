@@ -224,7 +224,7 @@ public class QuarterPrecisionNumberNGTest {
     public void testToStringPositiveExponentSeven() {
         Fraction currFract = ONE.times(128);
         Fraction addend = ONE.times(16);
-        for (byte b = 104; b < 112; b++) {
+        for (byte b = 112; b < 120; b++) {
             QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
             String expected = Double.toString(currFract.numericApproximation());
             String actual = number.toString();
