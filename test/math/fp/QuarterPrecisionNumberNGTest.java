@@ -68,7 +68,7 @@ public class QuarterPrecisionNumberNGTest {
     @Test
     public void testToStringNegativeExponentTwo() {
         Fraction currFract = ONE.times(4).negate();
-        for (byte b = -64; b < -56; b++) {
+        for (byte b = -48; b < -32; b++) {
             QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
             String expected = "\u2212" + Double.toString(-currFract
                     .numericApproximation());
