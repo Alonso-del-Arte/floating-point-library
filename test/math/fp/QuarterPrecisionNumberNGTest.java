@@ -75,7 +75,7 @@ public class QuarterPrecisionNumberNGTest {
             String actual = number.toString();
             String message = "Bit pattern " + Integer.toHexString(b + 256);
             assertEquals(actual, expected, message);
-            currFract = currFract.plus(ONE_HALF);
+            currFract = currFract.minus(ONE_HALF);
         }
     }
     
