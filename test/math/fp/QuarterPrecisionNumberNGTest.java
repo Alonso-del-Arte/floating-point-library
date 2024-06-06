@@ -112,11 +112,10 @@ public class QuarterPrecisionNumberNGTest {
         }
     }
     
-    @org.testng.annotations.Ignore
     @Test
     public void testToStringNegativeExponentThree() {
         Fraction currFract = ONE.times(8).negate();
-        for (byte b = -40; b < -32; b++) {
+        for (byte b = -48; b < -40; b++) {
             QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
             String expected = "\u2212" + Double.toString(-currFract
                     .numericApproximation());
