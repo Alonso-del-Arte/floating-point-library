@@ -279,14 +279,14 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
             case -27 -> "\u221252.0";
             case -26 -> "\u221256.0";
             case -25 -> "\u221260.0";
-//            case -24 -> "\u221232.0";
-//            case -23 -> "\u221236.0";
-//            case -22 -> "\u221240.0";
-//            case -21 -> "\u221244.0";
-//            case -20 -> "\u221248.0";
-//            case -19 -> "\u221252.0";
-//            case -18 -> "\u221256.0";
-//            case -17 -> "\u221260.0";
+            case -24 -> "\u221264.0";
+            case -23 -> "\u221272.0";
+            case -22 -> "\u221280.0";
+            case -21 -> "\u221288.0";
+            case -20 -> "\u221296.0";
+            case -19 -> "\u2212104.0";
+            case -18 -> "\u2212112.0";
+            case -17 -> "\u2212120.0";
 //            case -16 -> "\u221264.0";
 //            case -15 -> "\u221272.0";
 //            case -14 -> "\u221280.0";
@@ -295,9 +295,9 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
 //            case -11 -> "\u2212104.0";
 //            case -10 -> "\u2212112.0";
 //            case -9 -> "\u2212120.0";
+            case -8 -> "\u2212Infinity";
             case -7, -6, -5, -4, -3, -2, -1, 121, 122, 123, 124, 125, 126, 127 
                 -> "NaN";
-            case -8 -> "\u2212Infinity";
             case 0 -> "0.0";
             case 64 -> "2.0";
             case 65 -> "2.25";
