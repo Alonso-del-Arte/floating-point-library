@@ -271,6 +271,14 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
             case -27 -> "\u221226.0";
             case -26 -> "\u221228.0";
             case -25 -> "\u221230.0";
+            case -24 -> "\u221232.0";
+            case -23 -> "\u221236.0";
+            case -22 -> "\u221240.0";
+            case -21 -> "\u221244.0";
+            case -20 -> "\u221248.0";
+            case -19 -> "\u221252.0";
+            case -18 -> "\u221256.0";
+            case -17 -> "\u221260.0";
             case -7, -6, -5, -4, -3, -2, -1, 121, 122, 123, 124, 125, 126, 127 
                 -> "NaN";
             case -8 -> "\u2212Infinity";
