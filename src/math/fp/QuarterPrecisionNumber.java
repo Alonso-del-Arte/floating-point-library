@@ -226,8 +226,8 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     private String toStringNormal() {
         int mantissaBitPattern = this.heldByte & 7;
         Fraction fraction = ONE.plus(ONE_EIGHTH.times(mantissaBitPattern));
-//        int exponent = ((Math.abs(this.heldByte) & 56) >> 3) + 1;
-//        while (exponent > 1) {
+//        int exponent = ((Math.abs(this.heldByte) & 120) >> 3) - 8;
+//        while (exponent > 0) {
 //            fraction = fraction.times(2);
 //            exponent--;
 //        }
@@ -263,6 +263,14 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
             case -35 -> "\u221213.0";
             case -34 -> "\u221214.0";
             case -33 -> "\u221215.0";
+            case -32 -> "\u221216.0";
+            case -31 -> "\u221218.0";
+            case -30 -> "\u221220.0";
+            case -29 -> "\u221222.0";
+            case -28 -> "\u221224.0";
+            case -27 -> "\u221226.0";
+            case -26 -> "\u221228.0";
+            case -25 -> "\u221230.0";
             case -7, -6, -5, -4, -3, -2, -1, 121, 122, 123, 124, 125, 126, 127 
                 -> "NaN";
             case -8 -> "\u2212Infinity";
