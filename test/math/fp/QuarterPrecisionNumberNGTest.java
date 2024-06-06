@@ -96,12 +96,11 @@ public class QuarterPrecisionNumberNGTest {
         }
     }
     
-    @org.testng.annotations.Ignore
     @Test
     public void testToStringNegativeExponentFour() {
         Fraction currFract = ONE.times(16).negate();
         Fraction subtrahend = ONE.times(2);
-        for (byte b = -32; b < -24; b++) {
+        for (byte b = -40; b < -32; b++) {
             QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
             String expected = "\u2212" + Double.toString(-currFract
                     .numericApproximation());
