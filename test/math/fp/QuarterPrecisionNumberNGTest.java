@@ -538,6 +538,19 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testTo32BitPrimitivePositiveExponentTwo() {
+        Fraction currFract = ONE.times(4);
+        for (byte b = 72; b < 80; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            float expected = (float) currFract.numericApproximation();
+            float actual = number.to32BitPrimitive();
+            String message = "Bit pattern " + Integer.toHexString(b);
+            assertEquals(actual, expected, message);
+            currFract = currFract.plus(ONE_HALF);
+        }
+    }
+    
+    @Test
     public void testTo64BitPrimitivePositiveExponentOne() {
         Fraction currFract = ONE.times(2);
         for (byte b = 64; b < 72; b++) {
