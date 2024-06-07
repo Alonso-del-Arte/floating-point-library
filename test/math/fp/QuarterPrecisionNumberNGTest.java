@@ -490,15 +490,6 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
-    public void testTo32BitPrimitivePositiveInfinity() {
-        byte b = 120;
-        QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
-        float expected = Float.POSITIVE_INFINITY;
-        float actual = number.to32BitPrimitive();
-        assertEquals(actual, expected);
-    }
-    
-    @Test
     public void testTo32BitPrimitivePositiveExponentZero() {
         Fraction currFract = ONE;
         for (byte b = 57; b < 64; b++) {
@@ -617,6 +608,20 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testTo64BitPrimitivePositiveExponentFour() {
+        Fraction currFract = ONE.times(16);
+        Fraction addend = ONE.times(2);
+        for (byte b = 88; b < 96; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            double expected = currFract.numericApproximation();
+            double actual = number.to64BitPrimitive();
+            String message = "Bit pattern " + Integer.toHexString(b);
+            assertEquals(actual, expected, message);
+            currFract = currFract.plus(addend);
+        }
+    }
+    
+    @Test
     public void testTo32BitPrimitivePositiveExponentFive() {
         Fraction currFract = ONE.times(32);
         Fraction addend = ONE.times(4);
@@ -656,6 +661,15 @@ public class QuarterPrecisionNumberNGTest {
             assertEquals(actual, expected, message);
             currFract = currFract.plus(addend);
         }
+    }
+    
+    @Test
+    public void testTo32BitPrimitivePositiveInfinity() {
+        byte b = 120;
+        QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+        float expected = Float.POSITIVE_INFINITY;
+        float actual = number.to32BitPrimitive();
+        assertEquals(actual, expected);
     }
     
     @Test
