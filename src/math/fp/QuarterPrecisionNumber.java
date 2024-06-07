@@ -184,6 +184,14 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
             case 101 -> 52.0f;
             case 102 -> 56.0f;
             case 103 -> 60.0f;
+            case 104 -> 64.0f;
+            case 105 -> 72.0f;
+            case 106 -> 80.0f;
+            case 107 -> 88.0f;
+            case 108 -> 96.0f;
+            case 109 -> 104.0f;
+            case 110 -> 112.0f;
+            case 111 -> 120.0f;
             case 120 -> Float.POSITIVE_INFINITY;
             default -> Float.NaN;
         };
