@@ -102,6 +102,17 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
         return false;
     }
 
+    private Fraction toNonNegativeFractionNormal() {
+        int mantissaBitPattern = this.heldByte & 7;
+        Fraction fraction = ONE.plus(ONE_EIGHTH.times(mantissaBitPattern));
+        int exponent = ((this.heldByte & 120) >> 3) - 7;
+        while (exponent > 0) {
+            fraction = fraction.times(2);
+            exponent--;
+        }
+        return fraction;
+    }
+            
     /**
      * WORK IN PROGRESS...
      * Gives a 32-bit primitive floating point number corresponding to this one. 
@@ -224,17 +235,11 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     }
     
     private String toStringNormal() {
-        int mantissaBitPattern = this.heldByte & 7;
-        Fraction fraction = ONE.plus(ONE_EIGHTH.times(mantissaBitPattern));
-        int exponent = ((this.heldByte & 120) >> 3) - 7;
-        while (exponent > 0) {
-            fraction = fraction.times(2);
-            exponent--;
-        }
-        String intermediate = Double.toString(fraction.numericApproximation());
+        String intermediate = Double.toString(this.toNonNegativeFractionNormal()
+                .numericApproximation());
         return (this.heldByte < 0) ? "\u2212" + intermediate : intermediate;
     }
-            
+    
     @Override
     public String toString() {
         return switch (this.heldByte) {
