@@ -538,6 +538,19 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testTo64BitPrimitivePositiveExponentOne() {
+        Fraction currFract = ONE.times(2);
+        for (byte b = 64; b < 72; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            double expected = currFract.numericApproximation();
+            double actual = number.to64BitPrimitive();
+            String message = "Bit pattern " + Integer.toHexString(b);
+            assertEquals(actual, expected, message);
+            currFract = currFract.plus(ONE_QUARTER);
+        }
+    }
+    
+    @Test
     public void testTo32BitPrimitivePositiveExponentTwo() {
         Fraction currFract = ONE.times(4);
         for (byte b = 72; b < 80; b++) {
@@ -564,15 +577,16 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
-    public void testTo64BitPrimitivePositiveExponentOne() {
-        Fraction currFract = ONE.times(2);
-        for (byte b = 64; b < 72; b++) {
+    public void testTo32BitPrimitivePositiveExponentFour() {
+        Fraction currFract = ONE.times(16);
+        Fraction addend = ONE.times(2);
+        for (byte b = 88; b < 96; b++) {
             QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
-            double expected = currFract.numericApproximation();
-            double actual = number.to64BitPrimitive();
+            float expected = (float) currFract.numericApproximation();
+            float actual = number.to32BitPrimitive();
             String message = "Bit pattern " + Integer.toHexString(b);
             assertEquals(actual, expected, message);
-            currFract = currFract.plus(ONE_QUARTER);
+            currFract = currFract.plus(addend);
         }
     }
     
