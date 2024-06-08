@@ -112,6 +112,12 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
         }
         return fraction;
     }
+    
+    private double toDoubleNormal() {
+        Fraction fraction = this.toNonNegativeFractionNormal();
+        double sign = (this.heldByte < 0) ? -1.0 : 1.0;
+        return sign * fraction.numericApproximation();
+    }
             
     /**
      * WORK IN PROGRESS...
@@ -126,138 +132,12 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     public float to32BitPrimitive() {
         return switch (this.heldByte) {
             case Byte.MIN_VALUE -> -0.0f;
-            case -72 -> -1.0f;
-            case -71 -> -1.125f;
-            case -70 -> -1.25f;
-            case -69 -> -1.375f;
-            case -68 -> -1.5f;
-            case -67 -> -1.625f;
-            case -66 -> -1.75f;
-            case -65 -> -1.875f;
-            case -64 -> -2.0f;
-            case -63 -> -2.25f;
-            case -62 -> -2.5f;
-            case -61 -> -2.75f;
-            case -60 -> -3.0f;
-            case -59 -> -3.25f;
-            case -58 -> -3.5f;
-            case -57 -> -3.75f;
-            case -56 -> -4.0f;
-            case -55 -> -4.5f;
-            case -54 -> -5.0f;
-            case -53 -> -5.5f;
-            case -52 -> -6.0f;
-            case -51 -> -6.5f;
-            case -50 -> -7.0f;
-            case -49 -> -7.5f;
-            case -48 -> -8.0f;
-            case -47 -> -9.0f;
-            case -46 -> -10.0f;
-            case -45 -> -11.0f;
-            case -44 -> -12.0f;
-            case -43 -> -13.0f;
-            case -42 -> -14.0f;
-            case -41 -> -15.0f;
-            case -40 -> -16.0f;
-            case -39 -> -18.0f;
-            case -38 -> -20.0f;
-            case -37 -> -22.0f;
-            case -36 -> -24.0f;
-            case -35 -> -26.0f;
-            case -34 -> -28.0f;
-            case -33 -> -30.0f;
-            case -32 -> -32.0f;
-            case -31 -> -36.0f;
-            case -30 -> -40.0f;
-            case -29 -> -44.0f;
-            case -28 -> -48.0f;
-            case -27 -> -52.0f;
-            case -26 -> -56.0f;
-            case -25 -> -60.0f;
-            case -24 -> -64.0f;
-            case -23 -> -72.0f;
-            case -22 -> -80.0f;
-            case -21 -> -88.0f;
-            case -20 -> -96.0f;
-            case -19 -> -104.0f;
-            case -18 -> -112.0f;
-            case -17 -> -120.0f;
-            case -16 -> -128.0f;
-            case -15 -> -144.0f;
-            case -14 -> -160.0f;
-            case -13 -> -176.0f;
-            case -12 -> -192.0f;
-            case -11 -> -208.0f;
-            case -10 -> -224.0f;
-            case -9 -> -240.0f;
             case -8 -> Float.NEGATIVE_INFINITY;
+            case -7, -6, -5, -4, -3, -2, -1, 121, 122, 123, 124, 125, 126, 127 
+                -> Float.NaN;
             case 0 -> 0.0f;
-            case 56 -> 1.0f;
-            case 57 -> 1.125f;
-            case 58 -> 1.25f;
-            case 59 -> 1.375f;
-            case 60 -> 1.5f;
-            case 61 -> 1.625f;
-            case 62 -> 1.75f;
-            case 63 -> 1.875f;
-            case 64 -> 2.0f;
-            case 65 -> 2.25f;
-            case 66 -> 2.5f;
-            case 67 -> 2.75f;
-            case 68 -> 3.0f;
-            case 69 -> 3.25f;
-            case 70 -> 3.5f;
-            case 71 -> 3.75f;
-            case 72 -> 4.0f;
-            case 73 -> 4.5f;
-            case 74 -> 5.0f;
-            case 75 -> 5.5f;
-            case 76 -> 6.0f;
-            case 77 -> 6.5f;
-            case 78 -> 7.0f;
-            case 79 -> 7.5f;
-            case 80 -> 8.0f;
-            case 81 -> 9.0f;
-            case 82 -> 10.0f;
-            case 83 -> 11.0f;
-            case 84 -> 12.0f;
-            case 85 -> 13.0f;
-            case 86 -> 14.0f;
-            case 87 -> 15.0f;
-            case 88 -> 16.0f;
-            case 89 -> 18.0f;
-            case 90 -> 20.0f;
-            case 91 -> 22.0f;
-            case 92 -> 24.0f;
-            case 93 -> 26.0f;
-            case 94 -> 28.0f;
-            case 95 -> 30.0f;
-            case 96 -> 32.0f;
-            case 97 -> 36.0f;
-            case 98 -> 40.0f;
-            case 99 -> 44.0f;
-            case 100 -> 48.0f;
-            case 101 -> 52.0f;
-            case 102 -> 56.0f;
-            case 103 -> 60.0f;
-            case 104 -> 64.0f;
-            case 105 -> 72.0f;
-            case 106 -> 80.0f;
-            case 107 -> 88.0f;
-            case 108 -> 96.0f;
-            case 109 -> 104.0f;
-            case 110 -> 112.0f;
-            case 111 -> 120.0f;
-            case 112 -> 128.0f;
-            case 113 -> 144.0f;
-            case 114 -> 160.0f;
-            case 115 -> 176.0f;
-            case 116 -> 192.0f;
-            case 117 -> 208.0f;
-            case 118 -> 224.0f;
-            case 119 -> 240.0f;
             case 120 -> Float.POSITIVE_INFINITY;
-            default -> Float.NaN;
+            default -> (float) this.toDoubleNormal();
         };
     }
 
