@@ -522,18 +522,18 @@ public class QuarterPrecisionNumberNGTest {
         }
     }
     
-//    @Test
-//    public void testTo64BitPrimitiveNegativeExponentThree() {
-//        Fraction currFract = ONE.times(8).negate();
-//        for (byte b = -48; b < -40; b++) {
-//            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
-//            double expected = currFract.numericApproximation();
-//            double actual = number.to64BitPrimitive();
-//            String message = "Bit pattern " + Integer.toHexString(b + 256);
-//            assertEquals(actual, expected, message);
-//            currFract = currFract.minus(ONE);
-//        }
-//    }
+    @Test
+    public void testTo64BitPrimitiveNegativeExponentThree() {
+        Fraction currFract = ONE.times(8).negate();
+        for (byte b = -48; b < -40; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            double expected = currFract.numericApproximation();
+            double actual = number.to64BitPrimitive();
+            String message = "Bit pattern " + Integer.toHexString(b + 256);
+            assertEquals(actual, expected, message);
+            currFract = currFract.minus(ONE);
+        }
+    }
     
     @Test
     public void testTo32BitPrimitiveNegativeExponentTwo() {
