@@ -411,19 +411,19 @@ public class QuarterPrecisionNumberNGTest {
         }
     }
     
-//    @Test
-//    public void testTo64BitPrimitiveNegativeExponentSeven() {
-//        Fraction currFract = ONE.times(128).negate();
-//        Fraction subtrahend = ONE.times(16);
-//        for (byte b = -16; b < -8; b++) {
-//            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
-//            double expected = currFract.numericApproximation();
-//            double actual = number.to64BitPrimitive();
-//            String message = "Bit pattern " + Integer.toHexString(b + 256);
-//            assertEquals(actual, expected, message);
-//            currFract = currFract.minus(subtrahend);
-//        }
-//    }
+    @Test
+    public void testTo64BitPrimitiveNegativeExponentSeven() {
+        Fraction currFract = ONE.times(128).negate();
+        Fraction subtrahend = ONE.times(16);
+        for (byte b = -16; b < -8; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            double expected = currFract.numericApproximation();
+            double actual = number.to64BitPrimitive();
+            String message = "Bit pattern " + Integer.toHexString(b + 256);
+            assertEquals(actual, expected, message);
+            currFract = currFract.minus(subtrahend);
+        }
+    }
 
     @Test
     public void testTo32BitPrimitiveNegativeExponentSix() {
