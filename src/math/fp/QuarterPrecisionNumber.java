@@ -289,6 +289,14 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
             case -51 -> -6.5;
             case -50 -> -7.0;
             case -49 -> -7.5;
+            case -48 -> -8.0;
+            case -47 -> -9.0;
+            case -46 -> -10.0;
+            case -45 -> -11.0;
+            case -44 -> -12.0;
+            case -43 -> -13.0;
+            case -42 -> -14.0;
+            case -41 -> -15.0;
             case -8 -> Double.NEGATIVE_INFINITY;
             case 0 -> 0.0;
             case 56 -> 1.0;
