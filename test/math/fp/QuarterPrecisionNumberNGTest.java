@@ -574,18 +574,18 @@ public class QuarterPrecisionNumberNGTest {
         }
     }
     
-//    @Test
-//    public void testTo64BitPrimitiveNegativeExponentOne() {
-//        Fraction currFract = ONE.times(2).negate();
-//        for (byte b = -64; b < -56; b++) {
-//            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
-//            double expected = currFract.numericApproximation();
-//            double actual = number.to64BitPrimitive();
-//            String message = "Bit pattern " + Integer.toHexString(b + 256);
-//            assertEquals(actual, expected, message);
-//            currFract = currFract.minus(ONE_QUARTER);
-//        }
-//    }
+    @Test
+    public void testTo64BitPrimitiveNegativeExponentOne() {
+        Fraction currFract = ONE.times(2).negate();
+        for (byte b = -64; b < -56; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            double expected = currFract.numericApproximation();
+            double actual = number.to64BitPrimitive();
+            String message = "Bit pattern " + Integer.toHexString(b + 256);
+            assertEquals(actual, expected, message);
+            currFract = currFract.minus(ONE_QUARTER);
+        }
+    }
     
     @Test
     public void testTo32BitPrimitiveNegativeExponentZero() {
