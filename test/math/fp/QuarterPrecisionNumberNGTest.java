@@ -398,6 +398,34 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testTo32BitPrimitiveNegativeExponentFive() {
+        Fraction currFract = ONE.times(32).negate();
+        Fraction subtrahend = ONE.times(4);
+        for (byte b = -32; b < -24; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            float expected = (float) currFract.numericApproximation();
+            float actual = number.to32BitPrimitive();
+            String message = "Bit pattern " + Integer.toHexString(b + 256);
+            assertEquals(actual, expected, message);
+            currFract = currFract.minus(subtrahend);
+        }
+    }
+    
+//    @Test
+//    public void testTo64BitPrimitiveNegativeExponentFive() {
+//        Fraction currFract = ONE.times(32).negate();
+//        Fraction subtrahend = ONE.times(4);
+//        for (byte b = -32; b < -24; b++) {
+//            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+//            double expected = currFract.numericApproximation();
+//            double actual = number.to64BitPrimitive();
+//            String message = "Bit pattern " + Integer.toHexString(b + 256);
+//            assertEquals(actual, expected, message);
+//            currFract = currFract.minus(subtrahend);
+//        }
+//    }
+    
+    @Test
     public void testTo32BitPrimitiveNegativeExponentFour() {
         Fraction currFract = ONE.times(16).negate();
         Fraction subtrahend = ONE.times(2);
