@@ -210,6 +210,14 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
             case -7, -6, -5, -4, -3, -2, -1, 121, 122, 123, 124, 125, 126, 127 
                 -> "NaN";
             case 0 -> "0.0";
+            case 32 -> "0.125";
+            case 33 -> "0.140625";
+            case 34 -> "0.15625";
+            case 35 -> "0.171875";
+            case 36 -> "0.1875";
+            case 37 -> "0.203125";
+            case 38 -> "0.21875";
+            case 39 -> "0.234375";
             case 40 -> "0.25";
             case 41 -> "0.28125";
             case 42 -> "0.3125";
