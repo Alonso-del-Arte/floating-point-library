@@ -207,6 +207,20 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testToStringPositiveWithExponentNegativeFour() {
+        Fraction currFract = ONE.divides(16);
+        Fraction addend = ONE.divides(128);
+        for (byte b = 24; b < 32; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String expected = Double.toString(currFract.numericApproximation());
+            String actual = number.toString();
+            String message = "Bit pattern " + Integer.toHexString(b);
+            assertEquals(actual, expected, message);
+            currFract = currFract.plus(addend);
+        }
+    }
+    
+    @Test
     public void testToStringPositiveWithExponentNegativeThree() {
         Fraction currFract = ONE_EIGHTH;
         Fraction addend = ONE.divides(64);
