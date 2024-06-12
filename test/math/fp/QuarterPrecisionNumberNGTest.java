@@ -250,6 +250,21 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testToStringNegativeWithExponentNegativeFive() {
+        Fraction currFract = ONE.divides(32).negate();
+        Fraction subtrahend = ONE.divides(256);
+        for (byte b = -112; b < -104; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String expected = "\u2212" + Double.toString(-currFract
+                    .numericApproximation());
+            String actual = number.toString();
+            String message = "Bit pattern " + Integer.toHexString(b + 256);
+            assertEquals(actual, expected, message);
+            currFract = currFract.minus(subtrahend);
+        }
+    }
+    
+    @Test
     public void testToStringNegativeZero() {
         QuarterPrecisionNumber number 
                 = new QuarterPrecisionNumber(Byte.MIN_VALUE);
