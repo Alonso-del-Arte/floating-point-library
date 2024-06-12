@@ -206,6 +206,14 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     public String toString() {
         return switch (this.heldByte) {
             case -128 -> "\u22120.0";
+            case -96 -> "\u22120.125";
+            case -95 -> "\u22120.140625";
+            case -94 -> "\u22120.15625";
+            case -93 -> "\u22120.171875";
+            case -92 -> "\u22120.1875";
+            case -91 -> "\u22120.203125";
+            case -90 -> "\u22120.21875";
+            case -89 -> "\u22120.234375";
             case -88 -> "\u22120.25";
             case -87 -> "\u22120.28125";
             case -86 -> "\u22120.3125";
