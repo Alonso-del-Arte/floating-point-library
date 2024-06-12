@@ -190,6 +190,21 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testToStringNegativeWithExponentNegativeOne() {
+        Fraction currFract = ONE_HALF.negate();
+        Fraction subtrahend = ONE.divides(16);
+        for (byte b = -80; b < -72; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String expected = "\u2212" + Double.toString(-currFract
+                    .numericApproximation());
+            String actual = number.toString();
+            String message = "Bit pattern " + Integer.toHexString(b + 256);
+            assertEquals(actual, expected, message);
+            currFract = currFract.minus(subtrahend);
+        }
+    }
+    
+    @Test
     public void testToStringNegativeZero() {
         QuarterPrecisionNumber number 
                 = new QuarterPrecisionNumber(Byte.MIN_VALUE);
