@@ -230,6 +230,11 @@ public class Fraction implements Comparable<Fraction> {
         return intermediate;
     }
     
+    // TODO: Write tests for this constructor
+    public Fraction(long numer) {
+        this(1, numer);
+    }
+    
     public Fraction(long numer, long denom) {
         if ((denom & Long.MAX_VALUE) == 0L) {
             String excMsg = "Denominator " + denom + " is not valid";
