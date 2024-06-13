@@ -76,6 +76,17 @@ public class EratosthenesSieveNGTest {
         assertContainsSame(expected, actual);
     }
     
+    @Test
+    public void testEmptyListOfPrimes() {
+        List<Integer> expected = new ArrayList<>();
+        String msgPart = "Expecting empty list of primes for threshold ";
+        for (int threshold = -1; threshold < 2; threshold++) {
+            List<Integer> actual = EratosthenesSieve.listPrimes(threshold);
+            String msg = msgPart + threshold;
+            assertContainsSame(expected, actual, msg);
+        }
+    }
+    
     /**
      * Test of listPrimes method, of class EratosthenesSieve.
      */
