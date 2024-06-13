@@ -280,6 +280,21 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testToStringNegativeSubnormal() {
+        Fraction subtrahend = ONE.divides(512);
+        Fraction currFract = subtrahend.negate();
+        for (byte b = -127; b < -120; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String expected = "\u2212" + Double.toString(-currFract
+                    .numericApproximation());
+            String actual = number.toString();
+            String message = "Bit pattern " + Integer.toHexString(b + 256);
+            assertEquals(actual, expected, message);
+            currFract = currFract.minus(subtrahend);
+        }
+    }
+    
+    @Test
     public void testToStringNegativeZero() {
         QuarterPrecisionNumber number 
                 = new QuarterPrecisionNumber(Byte.MIN_VALUE);
