@@ -297,6 +297,20 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testToStringPositiveSubnormal() {
+        Fraction addend = ONE.divides(512);
+        Fraction currFract = addend;
+        for (byte b = 1; b < 8; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String expected = Double.toString(currFract.numericApproximation());
+            String actual = number.toString();
+            String message = "Bit pattern " + Integer.toHexString(b);
+            assertEquals(actual, expected, message);
+            currFract = currFract.plus(addend);
+        }
+    }
+    
+    @Test
     public void testToStringPositiveWithExponentNegativeSix() {
         Fraction currFract = ONE.divides(64);
         Fraction addend = ONE.divides(512);
