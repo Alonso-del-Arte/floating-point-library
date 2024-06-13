@@ -206,10 +206,25 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
         return (this.heldByte < 0) ? "\u2212" + intermediate : intermediate;
     }
     
+    /**
+     * Gives a textual representation of this number. For negative numbers, 
+     * including negative zero, the "&minus;" character is used.
+     * @return A textual representation in base 10. For example, "0.0859375". 
+     * Special cases: "NaN" for all NaN values regardless of bit pattern, 
+     * "&minus;Infinity" and "Infinity" for negative and positive infinity 
+     * respectively.
+     */
     @Override
     public String toString() {
         return switch (this.heldByte) {
             case -128 -> "\u22120.0";
+            case -127 -> "\u22120.001953125";
+            case -126 -> "\u22120.00390625";
+            case -125 -> "\u22120.005859375";
+            case -124 -> "\u22120.0078125";
+            case -123 -> "\u22120.009765625";
+            case -122 -> "\u22120.01171875";
+            case -121 -> "\u22120.013671875";
             case -8 -> "\u2212Infinity";
             case -7, -6, -5, -4, -3, -2, -1, 121, 122, 123, 124, 125, 126, 127 
                 -> "NaN";
