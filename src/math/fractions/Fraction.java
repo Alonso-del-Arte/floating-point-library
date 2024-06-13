@@ -230,11 +230,26 @@ public class Fraction implements Comparable<Fraction> {
         return intermediate;
     }
     
-    // TODO: Write tests for this constructor
+    /**
+     * Auxiliary constructor. Constructor for a fraction that is arithmetically 
+     * equal to an integer. The denominator 1 is tacit. For the example, 
+     * consider the fraction <sup>39</sup>&frasl;<sub>1</sub> = 39.
+     * @param numer The fraction's numerator. For example, 39.
+     */
     public Fraction(long numer) {
-        this(1, numer);
+        this(numer, 1);
     }
     
+    /**
+     * Primary constructor. For the examples, consider the fraction 
+     * <sup>22</sup>&frasl;<sub>7</sub>.
+     * @param numer The fraction's numerator. For example, 22.
+     * @param denom The fraction's denominator. For example, 7.
+     * @throws ArithmeticException If <code>denom</code> is either 0 or 
+     * &minus;9223372036854775808. The latter is problematic only because this 
+     * class uses 64-bit integer primitives, the former is invalid regardless of 
+     * the data type used to represent integers.
+     */
     public Fraction(long numer, long denom) {
         if ((denom & Long.MAX_VALUE) == 0L) {
             String excMsg = "Denominator " + denom + " is not valid";
