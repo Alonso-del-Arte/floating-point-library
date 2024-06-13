@@ -585,4 +585,12 @@ public class FractionNGTest {
         assertEquals(actDenom, expDenom, message);
     }
     
+    @Test
+    public void testAuxiliaryConstructor() {
+        int numer = RANDOM.nextInt();
+        Fraction expected = new Fraction(numer, 1);
+        Fraction actual = new Fraction(numer);
+        assertEquals(actual, expected);
+    }
+    
 }
