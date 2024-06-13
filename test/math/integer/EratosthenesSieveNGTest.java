@@ -69,6 +69,13 @@ public class EratosthenesSieveNGTest {
         }
     }
     
+    @Test
+    public void testListSmallPrimes() {
+        List<Integer> expected = List.of(2, 3, 5, 7);
+        List<Integer> actual = EratosthenesSieve.listPrimes(10);
+        assertContainsSame(expected, actual);
+    }
+    
     /**
      * Test of listPrimes method, of class EratosthenesSieve.
      */
