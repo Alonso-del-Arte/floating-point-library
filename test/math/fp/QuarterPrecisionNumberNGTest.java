@@ -1049,6 +1049,20 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testTo64BitPrimitivePositiveExponentNegativeSix() {
+        Fraction currFract = ONE.divides(64);
+        Fraction addend = ONE.divides(512);
+        for (byte b = 8; b < 16; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            double expected = currFract.numericApproximation();
+            double actual = number.to64BitPrimitive();
+            String message = "Bit pattern " + Integer.toHexString(b);
+            assertEquals(actual, expected, message);
+            currFract = currFract.plus(addend);
+        }
+    }
+    
+    @Test
     public void testTo32BitPrimitivePositiveExponentNegativeFive() {
         Fraction currFract = ONE.divides(32);
         Fraction addend = ONE.divides(256);
