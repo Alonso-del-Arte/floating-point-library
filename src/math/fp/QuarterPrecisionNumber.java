@@ -151,7 +151,6 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
             case 26 -> 1.2f;
             case 35 -> 1.3f;
             case 44 -> 1.4f;
-            case 53 -> 1.5f;
             case 120 -> Float.POSITIVE_INFINITY;
             default -> (float) this.toDoubleNormal();
         };
