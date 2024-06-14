@@ -154,7 +154,6 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
             case -102 -> 1.2;
             case -93 -> 1.3;
             case -84 -> 1.4;
-            case -75 -> 1.5;
             case -8 -> Double.NEGATIVE_INFINITY;
             case -7, -6, -5, -4, -3, -2, -1, 121, 122, 123, 124, 125, 126, 127 
                 -> Double.NaN;
