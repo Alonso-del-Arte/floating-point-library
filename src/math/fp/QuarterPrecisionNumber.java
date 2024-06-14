@@ -136,10 +136,22 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     public float to32BitPrimitive() {
         return switch (this.heldByte) {
             case Byte.MIN_VALUE -> -0.0f;
+            case -120 -> 1.0f;
+            case -111 -> 1.1f;
+            case -102 -> 1.2f;
+            case -93 -> 1.3f;
+            case -84 -> 1.4f;
+            case -75 -> 1.5f;
             case -8 -> Float.NEGATIVE_INFINITY;
             case -7, -6, -5, -4, -3, -2, -1, 121, 122, 123, 124, 125, 126, 127 
                 -> Float.NaN;
             case 0 -> 0.0f;
+            case 8 -> 1.0f;
+            case 17 -> 1.1f;
+            case 26 -> 1.2f;
+            case 35 -> 1.3f;
+            case 44 -> 1.4f;
+            case 53 -> 1.5f;
             case 120 -> Float.POSITIVE_INFINITY;
             default -> (float) this.toDoubleNormal();
         };
@@ -149,10 +161,22 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     public double to64BitPrimitive() {
         return switch (this.heldByte) {
             case Byte.MIN_VALUE -> -0.0;
+            case -120 -> 1.0;
+            case -111 -> 1.1;
+            case -102 -> 1.2;
+            case -93 -> 1.3;
+            case -84 -> 1.4;
+            case -75 -> 1.5;
             case -8 -> Double.NEGATIVE_INFINITY;
             case -7, -6, -5, -4, -3, -2, -1, 121, 122, 123, 124, 125, 126, 127 
                 -> Double.NaN;
             case 0 -> 0.0;
+            case 8 -> 1.0;
+            case 17 -> 1.1;
+            case 26 -> 1.2;
+            case 35 -> 1.3;
+            case 44 -> 1.4;
+            case 53 -> 1.5;
             case 120 -> Double.POSITIVE_INFINITY;
             default -> this.toDoubleNormal();
         };
