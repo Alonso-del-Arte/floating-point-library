@@ -136,6 +136,13 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     public float to32BitPrimitive() {
         return switch (this.heldByte) {
             case Byte.MIN_VALUE -> -0.0f;
+            case -127 -> -0.001953125f;
+            case -126 -> -0.00390625f;
+            case -125 -> -0.005859375f;
+            case -124 -> -0.0078125f;
+            case -123 -> -0.009765625f;
+            case -122 -> -0.01171875f;
+            case -121 -> -0.013671875f;
             case -8 -> Float.NEGATIVE_INFINITY;
             case -7, -6, -5, -4, -3, -2, -1, 121, 122, 123, 124, 125, 126, 127 
                 -> Float.NaN;
