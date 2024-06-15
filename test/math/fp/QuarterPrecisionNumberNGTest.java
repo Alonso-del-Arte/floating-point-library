@@ -1063,6 +1063,20 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testTo32BitPrimitivePositiveSubnormal() {
+        Fraction addend = ONE.divides(512);
+        Fraction currFract = addend;
+        for (byte b = 1; b < 8; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            float expected = (float) currFract.numericApproximation();
+            float actual = number.to32BitPrimitive();
+            String message = "Bit pattern " + Integer.toHexString(b);
+            assertEquals(actual, expected, message);
+            currFract = currFract.plus(addend);
+        }
+    }
+    
+    @Test
     public void testTo32BitPrimitivePositiveExponentNegativeSix() {
         Fraction currFract = ONE.divides(64);
         Fraction addend = ONE.divides(512);
