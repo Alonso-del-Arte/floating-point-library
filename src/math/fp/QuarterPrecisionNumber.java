@@ -174,6 +174,13 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
             case -7, -6, -5, -4, -3, -2, -1, 121, 122, 123, 124, 125, 126, 127 
                 -> Double.NaN;
             case 0 -> 0.0;
+            case 1 -> 0.001953125;
+            case 2 -> 0.00390625;
+            case 3 -> 0.005859375;
+            case 4 -> 0.0078125;
+            case 5 -> 0.009765625;
+            case 6 -> 0.01171875;
+            case 7 -> 0.013671875;
             case 120 -> Double.POSITIVE_INFINITY;
             default -> this.toDoubleNormal();
         };
