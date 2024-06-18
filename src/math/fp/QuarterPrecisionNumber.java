@@ -200,7 +200,7 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     // TODO: Write tests for this
     @Override
     public QuarterPrecisionNumber toQuarterPrecision() {
-        return new QuarterPrecisionNumber((byte) 0);
+        return new QuarterPrecisionNumber(Byte.MIN_VALUE);
     }
 
     // TODO: Write tests for this
