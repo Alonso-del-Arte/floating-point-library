@@ -198,12 +198,15 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     }
 
     /**
-     * 
-     * @return 
+     * Converts this number to a quarter precision number. Since in this 
+     * instance the number is already in quarter precision, there is no 
+     * narrowing or widening conversion necessary.
+     * @return Either this same instance or a fresh new instance with the same 
+     * byte value passed to its constructor.
      */
     @Override
     public QuarterPrecisionNumber toQuarterPrecision() {
-        return new QuarterPrecisionNumber(this.heldByte);
+        return this;
     }
 
     // TODO: Write tests for this
