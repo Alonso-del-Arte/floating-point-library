@@ -1526,5 +1526,16 @@ public class QuarterPrecisionNumberNGTest {
         assertEquals(actual, expected);
     }
     
+    @Test
+    public void testToQuarterPrecisionNumber() {
+        System.out.println("toQuarterPrecision");
+        for (int i = Byte.MIN_VALUE; i <= Byte.MAX_VALUE; i++) {
+            byte b = (byte) i;
+            QuarterPrecisionNumber expected = new QuarterPrecisionNumber(b);
+            QuarterPrecisionNumber actual = expected.toQuarterPrecision();
+            assertEquals(actual, expected);
+        }
+    }
+    
     
 }
