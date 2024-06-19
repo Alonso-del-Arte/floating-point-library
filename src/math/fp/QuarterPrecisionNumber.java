@@ -197,10 +197,13 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
         };
     }
 
-    // TODO: Write tests for this
+    /**
+     * 
+     * @return 
+     */
     @Override
     public QuarterPrecisionNumber toQuarterPrecision() {
-        return new QuarterPrecisionNumber(Byte.MIN_VALUE);
+        return new QuarterPrecisionNumber(this.heldByte);
     }
 
     // TODO: Write tests for this
