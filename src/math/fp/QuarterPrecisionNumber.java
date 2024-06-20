@@ -54,10 +54,17 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     
     private final byte heldByte;
 
-    // TODO: Write tests for this
+    /**
+     * Tells whether this number is a finite normal number. A normal number, or 
+     * normalized number, has an implied leading 1 in its mantissa.
+     * @return True if this number's absolute value is at least 0.015625 and at 
+     * most 240.0, false in all other cases (namely the NaN values, the 
+     * infinities and the numbers from &minus;0.013671875 to 0.013671875).
+     */
     @Override
     public boolean isNormal() {
-        return (this.heldByte & 120) != 120;
+        byte signMasked = (byte) (this.heldByte & Byte.MAX_VALUE);
+        return signMasked > 7 && signMasked < 120;
     }
     
     // TODO: Write tests for this
