@@ -564,12 +564,32 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
-    public void testPositveNaNIsNotNormal() {
+    public void testPositiveNaNIsNotNormal() {
         for (byte b = 121; b > 0; b++) {
             QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
             String msg = "Number " + number.toString() 
                     + " should not be considered normal";
             assert !number.isNormal() : msg;
+        }
+    }
+    
+    @Test
+    public void testIsNormalNegative() {
+        for (byte b = -120; b < -16; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String msg = "Number " + number.toString() 
+                    + " should be considered normal";
+            assert number.isNormal() : msg;
+        }
+    }
+    
+    @Test
+    public void testIsNormalPositive() {
+        for (byte b = 8; b < 120; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String msg = "Number " + number.toString() 
+                    + " should be considered normal";
+            assert number.isNormal() : msg;
         }
     }
     
