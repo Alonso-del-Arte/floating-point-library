@@ -56,8 +56,8 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
 
     // TODO: Write tests for this
     @Override
-    public boolean isNormal() {
-        return (this.heldByte & 120) != 120;
+    public boolean isNormal() {return false;
+//        return (this.heldByte & 120) != 120;
     }
     
     // TODO: Write tests for this
