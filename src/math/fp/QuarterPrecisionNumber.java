@@ -87,14 +87,14 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
      */
     @Override
     public boolean isInteger() {
-        return false;
+        return this.heldByte == Byte.MIN_VALUE;
     }
     
     /**
      * Tells whether or not this number is finite or not. Note that NaN is 
      * considered not finite even though it is also considered not infinite.
      * @return True if this number is normal or subnormal, false in all other 
-     * cases (negative infinite, positive infinity, NaN).
+     * cases (negative infinity, positive infinity, NaN).
      */
     @Override
     public boolean isFinite() {
@@ -122,7 +122,7 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     // TODO: Write tests for this
     @Override
     public boolean isSignalingNaN() {
-        return false;
+        return true;
     }
 
     private Fraction toNonNegativeFractionNormal() {
