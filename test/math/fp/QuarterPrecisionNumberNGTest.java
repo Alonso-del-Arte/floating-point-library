@@ -694,6 +694,15 @@ public class QuarterPrecisionNumberNGTest {
     // TODO: Write tests for isInteger()
     
     @Test
+    public void testNegativeInfinityIsNotFinite() {
+        byte b = -8;
+        QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+        String msg = "Number " + number.toString() 
+                + " should not be considered finite";
+        assert !number.isFinite() : msg;
+    }
+    
+    @Test
     public void testNegativeFiniteIsFinite() {
         for (byte b = Byte.MIN_VALUE; b < -8; b++) {
             QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
@@ -711,6 +720,15 @@ public class QuarterPrecisionNumberNGTest {
                     + " should be considered finite";
             assert number.isFinite() : msg;
         }
+    }
+    
+    @Test
+    public void testPositiveInfinityIsNotFinite() {
+        byte b = 120;
+        QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+        String msg = "Number " + number.toString() 
+                + " should not be considered finite";
+        assert !number.isFinite() : msg;
     }
     
     @Test
