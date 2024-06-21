@@ -632,15 +632,6 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
-    public void testTo32BitPrimitiveNegativeInfinity() {
-        byte b = -8;
-        QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
-        float expected = Float.NEGATIVE_INFINITY;
-        float actual = number.to32BitPrimitive();
-        assertEquals(actual, expected);
-    }
-    
-    @Test
     public void testNegativeSubnormal() {
         for (byte b = Byte.MIN_VALUE; b < -120; b++) {
             QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
@@ -651,14 +642,43 @@ public class QuarterPrecisionNumberNGTest {
     }
     
 //    @Test
-//    public void testPositiveSubnormalIsNotNormal() {
+//    public void testPositiveSubnormal() {
 //        for (byte b = 0; b < 8; b++) {
 //            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
 //            String msg = "Number " + number.toString() 
-//                    + " should not be considered normal";
-//            assert !number.isNormal() : msg;
+//                    + " should be considered subnormal";
+//            assert number.isSubnormal() : msg;
 //        }
 //    }
+    
+    @Test
+    public void testNegativeNormalIsNotSubnormal() {
+        for (byte b = -120; b < -16; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String msg = "Number " + number.toString() 
+                    + " should not be considered subnormal";
+            assert !number.isSubnormal() : msg;
+        }
+    }
+    
+    @Test
+    public void testPositiveNormalIsNotSubnormal() {
+        for (byte b = 8; b < 120; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String msg = "Number " + number.toString() 
+                    + " should not be considered subnormal";
+            assert !number.isSubnormal() : msg;
+        }
+    }
+    
+    @Test
+    public void testTo32BitPrimitiveNegativeInfinity() {
+        byte b = -8;
+        QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+        float expected = Float.NEGATIVE_INFINITY;
+        float actual = number.to32BitPrimitive();
+        assertEquals(actual, expected);
+    }
     
     @Test
     public void testTo64BitPrimitiveNegativeInfinity() {
