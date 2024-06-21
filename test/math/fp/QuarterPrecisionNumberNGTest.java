@@ -722,6 +722,15 @@ public class QuarterPrecisionNumberNGTest {
     // TODO: Write tests for isInteger()
     
     @Test
+    public void testPositiveZeroIsInteger() {
+        byte b = 0;
+        QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+        String msg = "Number " + number.toString() 
+                + " should be considered an integer";
+        assert number.isInteger() : msg;
+    }
+    
+    @Test
     public void testPositiveNaNIsNotInteger() {
         for (byte b = 121; b > 0; b++) {
             QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
