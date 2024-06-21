@@ -672,6 +672,26 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testNegativeNaNIsNotSubnormal() {
+        for (byte b = -7; b < 0; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String msg = "Number " + number.toString() + " from byte " + b
+                    + " should not be considered subnormal";
+            assert !number.isSubnormal() : msg;
+        }
+    }
+    
+    @Test
+    public void testPositiveNaNIsNotSubnormal() {
+        for (byte b = 121; b > 0; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String msg = "Number " + number.toString()  + " from byte " + b
+                    + " should not be considered subnormal";
+            assert !number.isSubnormal() : msg;
+        }
+    }
+    
+    @Test
     public void testTo32BitPrimitiveNegativeInfinity() {
         byte b = -8;
         QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
