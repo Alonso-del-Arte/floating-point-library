@@ -703,6 +703,16 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testNegativeNaNIsNotFinite() {
+        for (byte b = -7; b < 0; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String msg = "Number " + number.toString() + " from byte " + b 
+                    + " should not be considered finite";
+            assert !number.isFinite() : msg;
+        }
+    }
+    
+    @Test
     public void testNegativeFiniteIsFinite() {
         for (byte b = Byte.MIN_VALUE; b < -8; b++) {
             QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
@@ -719,6 +729,16 @@ public class QuarterPrecisionNumberNGTest {
             String msg = "Number " + number.toString()
                     + " should be considered finite";
             assert number.isFinite() : msg;
+        }
+    }
+    
+    @Test
+    public void testPositiveNaNIsNotFinite() {
+        for (byte b = 121; b > 0; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String msg = "Number " + number.toString() + " from byte " + b 
+                    + " should not be considered finite";
+            assert !number.isFinite() : msg;
         }
     }
     
