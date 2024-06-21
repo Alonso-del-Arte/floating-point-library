@@ -623,6 +623,15 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testPositiveInfinityIsNotSubnormal() {
+        byte b = 120;
+        QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+        String msg = "Number " + number.toString() 
+                + " should not be considered subnormal";
+        assert !number.isSubnormal() : msg;
+    }
+    
+    @Test
     public void testTo32BitPrimitiveNegativeInfinity() {
         byte b = -8;
         QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
