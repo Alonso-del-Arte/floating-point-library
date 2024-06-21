@@ -641,15 +641,15 @@ public class QuarterPrecisionNumberNGTest {
         }
     }
     
-//    @Test
-//    public void testPositiveSubnormal() {
-//        for (byte b = 0; b < 8; b++) {
-//            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
-//            String msg = "Number " + number.toString() 
-//                    + " should be considered subnormal";
-//            assert number.isSubnormal() : msg;
-//        }
-//    }
+    @Test
+    public void testPositiveSubnormal() {
+        for (byte b = 0; b < 8; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String msg = "Number " + number.toString() 
+                    + " should be considered subnormal";
+            assert number.isSubnormal() : msg;
+        }
+    }
     
     @Test
     public void testNegativeNormalIsNotSubnormal() {
