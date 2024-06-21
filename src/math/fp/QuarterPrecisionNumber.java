@@ -67,10 +67,18 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
         return signMasked > 7 && signMasked < 120;
     }
     
-    // TODO: Write tests for this
+    /**
+     * Tells whether this number is a subnormal number. A floating point number 
+     * is subnormal if its exponent is all zeroes and therefore has no implied 
+     * leading 1 in its mantissa.
+     * @return True if this number is in the range from &minus;0.013671875 to 
+     * 0.013671875, false in all other cases (namely the NaN values, the 
+     * infinities and the finite numbers with absolute value greater than 
+     * 0.013671875).
+     */
     @Override
     public boolean isSubnormal() {
-        return this.heldByte < -120;
+        return (this.heldByte & Byte.MAX_VALUE) < 8;
     }
     
     // TODO: Write tests for this
