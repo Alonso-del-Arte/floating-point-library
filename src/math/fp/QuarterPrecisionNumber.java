@@ -70,7 +70,7 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     // TODO: Write tests for this
     @Override
     public boolean isSubnormal() {
-        return this.heldByte != -8;
+        return false;
     }
     
     // TODO: Write tests for this
