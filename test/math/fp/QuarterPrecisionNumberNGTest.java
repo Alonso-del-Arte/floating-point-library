@@ -685,9 +685,31 @@ public class QuarterPrecisionNumberNGTest {
     public void testPositiveNaNIsNotSubnormal() {
         for (byte b = 121; b > 0; b++) {
             QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
-            String msg = "Number " + number.toString()  + " from byte " + b
+            String msg = "Number " + number.toString() + " from byte " + b
                     + " should not be considered subnormal";
             assert !number.isSubnormal() : msg;
+        }
+    }
+    
+    // TODO: Write tests for isInteger()
+    
+    @Test
+    public void testNegativeFiniteIsFinite() {
+        for (byte b = Byte.MIN_VALUE; b < -8; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String msg = "Number " + number.toString()
+                    + " should be considered finite";
+            assert number.isFinite() : msg;
+        }
+    }
+    
+    @Test
+    public void testPositiveFiniteIsFinite() {
+        for (byte b = 0; b < 120; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String msg = "Number " + number.toString()
+                    + " should be considered finite";
+            assert number.isFinite() : msg;
         }
     }
     
