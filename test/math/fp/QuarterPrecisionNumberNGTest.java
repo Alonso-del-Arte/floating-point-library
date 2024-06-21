@@ -710,6 +710,15 @@ public class QuarterPrecisionNumberNGTest {
         }
     }
     
+    @Test
+    public void testNegativeZeroIsInteger() {
+        byte b = Byte.MIN_VALUE;
+        QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+        String msg = "Number " + number.toString() 
+                + " should be considered an integer";
+        assert number.isInteger() : msg;
+    }
+    
     // TODO: Write tests for isInteger()
     
     @Test
