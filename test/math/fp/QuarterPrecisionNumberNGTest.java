@@ -691,7 +691,45 @@ public class QuarterPrecisionNumberNGTest {
         }
     }
     
+    @Test
+    public void testNegativeInfinityIsNotInteger() {
+        byte b = -8;
+        QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+        String msg = "Number " + number.toString() 
+                + " should not be considered an integer";
+        assert !number.isInteger() : msg;
+    }
+    
+    @Test
+    public void testNegativeNaNIsNotInteger() {
+        for (byte b = -7; b < 0; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String msg = "Number " + number.toString() + " from byte " + b 
+                    + " should not be considered an integer";
+            assert !number.isInteger() : msg;
+        }
+    }
+    
     // TODO: Write tests for isInteger()
+    
+    @Test
+    public void testPositiveNaNIsNotInteger() {
+        for (byte b = 121; b > 0; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String msg = "Number " + number.toString() + " from byte " + b 
+                    + " should not be considered an integer";
+            assert !number.isInteger() : msg;
+        }
+    }
+    
+    @Test
+    public void testPositiveInfinityIsNotInteger() {
+        byte b = 120;
+        QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+        String msg = "Number " + number.toString() 
+                + " should not be considered an integer";
+        assert !number.isInteger() : msg;
+    }
     
     @Test
     public void testNegativeInfinityIsNotFinite() {
