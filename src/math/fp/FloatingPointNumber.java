@@ -76,8 +76,12 @@ public abstract class FloatingPointNumber
     
     /**
      * Indicates whether or not this number is a signaling NaN value. A 
-     * signaling NaN value is not supposed to indicate any special error 
-     * condition. 
+     * signaling NaN value is supposed to indicate a special error condition, 
+     * but there has been no widespread agreement on how different error 
+     * conditions are to be signaled. The Java Virtual Machine bypasses the 
+     * whole issue by always or almost always giving a canonical quiet NaN for 
+     * operations that give NaN (such as taking the square root of a negative 
+     * number).
      * @return True if this number is a signaling NaN value, false in all other 
      * cases.
      */
