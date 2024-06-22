@@ -87,7 +87,7 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
      */
     @Override
     public boolean isInteger() {
-        return (this.heldByte & 120) == 0;
+        return (this.heldByte & Byte.MAX_VALUE) == 0;
     }
     
     /**
