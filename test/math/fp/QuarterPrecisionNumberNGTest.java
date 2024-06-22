@@ -711,6 +711,16 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testNumberBetweenNegativeOneAndZeroIsNotInteger() {
+        for (byte b = -127; b < -72; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String msg = "Number " + number.toString() 
+                    + " should not be considered an integer";
+            assert !number.isInteger() : msg;
+        }
+    }
+    
+    @Test
     public void testNegativeZeroIsInteger() {
         byte b = Byte.MIN_VALUE;
         QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
@@ -728,6 +738,16 @@ public class QuarterPrecisionNumberNGTest {
         String msg = "Number " + number.toString() 
                 + " should be considered an integer";
         assert number.isInteger() : msg;
+    }
+    
+    @Test
+    public void testNumberBetweenZeroAndOneIsNotInteger() {
+        for (byte b = 1; b < 56; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String msg = "Number " + number.toString() 
+                    + " should not be considered an integer";
+            assert !number.isInteger() : msg;
+        }
     }
     
     @Test
