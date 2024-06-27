@@ -880,6 +880,15 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testNegativeInfinityIsInfinite() {
+        byte b = -8;
+        QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+        String msg = "Number " + number.toString() 
+                + " should be considered infinite";
+        assert number.isInfinite() : msg;
+    }
+    
+    @Test
     public void testTo32BitPrimitiveNegativeInfinity() {
         byte b = -8;
         QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
