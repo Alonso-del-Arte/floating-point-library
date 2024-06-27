@@ -114,7 +114,7 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     // TODO: Write tests for this
     @Override
     public boolean isInfinite() {
-        return false;
+        return this.heldByte == -8;
     }
     
     // TODO: Write tests for this
