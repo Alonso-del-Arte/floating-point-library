@@ -82,12 +82,22 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     }
     
     /**
-     * 
-     * @return 
+     * Determines whether this floating point number represents an integer or 
+     * not. Keep in mind that infinities and NaN values will always be 
+     * considered to not be integers even if they stand in for integers that 
+     * overflowed or real integers multiplied by the imaginary unit <i>i</i>.
+     * @return True if this floating point number is an integer, false in all 
+     * other cases (such as nonzero subnormal numbers). Examples: true for 
+     * &minus;240.0, false for negative infinity, true for 7.0, false for 7.5.
      */
     @Override
     public boolean isInteger() {
-        return (this.heldByte & Byte.MAX_VALUE) == 0;
+        return switch(this.heldByte) {
+            case Byte.MIN_VALUE, 0 -> true;
+            case -8, -7, -6, -5, -4, -3, -2, -1, 120, 121, 122, 123, 124, 125, 
+                126, 127 -> false;
+            default -> this.toNonNegativeFractionNormal().isInteger();
+        };
     }
     
     /**
