@@ -711,6 +711,33 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testNegativeIsInteger() {
+        byte b = -72;
+        final byte interval = 8;
+        byte increment = interval;
+        while (b < -8) {
+            byte outerThreshold = (byte) (b + interval);
+            while (b < outerThreshold) {
+                byte innerThreshold = (byte) (b + increment);
+                QuarterPrecisionNumber integer = new QuarterPrecisionNumber(b);
+                String msg = "Number " + integer.toString() 
+                        + " should be considered an integer";
+                assert integer.isInteger() : msg;
+                b++;
+                while (b < innerThreshold) {
+                    QuarterPrecisionNumber number 
+                            = new QuarterPrecisionNumber(b);
+                    String msgNot = "Number " + number.toString() 
+                            + " should not be considered an integer";
+                    assert !number.isInteger() : msgNot;
+                    b++;
+                }
+            }
+            increment = (byte) (increment / 2 + (increment % 2));
+        }
+    }
+    
+    @Test
     public void testNumberBetweenNegativeOneAndZeroIsNotInteger() {
         for (byte b = -127; b < -72; b++) {
             QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
@@ -729,8 +756,6 @@ public class QuarterPrecisionNumberNGTest {
         assert number.isInteger() : msg;
     }
     
-    // TODO: Write tests for isInteger()
-    
     @Test
     public void testPositiveZeroIsInteger() {
         byte b = 0;
@@ -747,6 +772,33 @@ public class QuarterPrecisionNumberNGTest {
             String msg = "Number " + number.toString() 
                     + " should not be considered an integer";
             assert !number.isInteger() : msg;
+        }
+    }
+    
+    @Test
+    public void testPositiveIsInteger() {
+        byte b = 56;
+        final byte interval = 8;
+        byte increment = interval;
+        while (b < 120) {
+            byte outerThreshold = (byte) (b + interval);
+            while (b < outerThreshold) {
+                byte innerThreshold = (byte) (b + increment);
+                QuarterPrecisionNumber integer = new QuarterPrecisionNumber(b);
+                String msg = "Number " + integer.toString() 
+                        + " should be considered an integer";
+                assert integer.isInteger() : msg;
+                b++;
+                while (b < innerThreshold) {
+                    QuarterPrecisionNumber number 
+                            = new QuarterPrecisionNumber(b);
+                    String msgNot = "Number " + number.toString() 
+                            + " should not be considered an integer";
+                    assert !number.isInteger() : msgNot;
+                    b++;
+                }
+            }
+            increment = (byte) (increment / 2 + (increment % 2));
         }
     }
     
