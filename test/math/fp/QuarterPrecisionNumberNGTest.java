@@ -900,6 +900,16 @@ public class QuarterPrecisionNumberNGTest {
         }
     }
     
+    @Test
+    public void testPositiveFinitesAreNotInfinite() {
+        for (byte b = 0; b < 120; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String msg = "Number " + number.toString() 
+                + " should not be considered infinite";
+        assert !number.isInfinite() : msg;
+        }
+    }
+    
     // TODO: Write test positive NaNs are NOT infinite
     
     @Test
