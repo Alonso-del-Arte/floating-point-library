@@ -888,8 +888,16 @@ public class QuarterPrecisionNumberNGTest {
         assert number.isInfinite() : msg;
     }
     
-    // TODO: Write test negative NaNs are NOT infinite
-    
+    @Test
+    public void testNegativeNaNsAreNotInfinite() {
+        for (byte b = -7; b < 0; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String msg = "Number " + number.toString() + " from byte " + b
+                + " should not be considered infinite";
+        assert !number.isInfinite() : msg;
+        }
+    }
+        
     @Test
     public void testNegativeFinitesAreNotInfinite() {
         for (byte b = Byte.MIN_VALUE; b < -8; b++) {
@@ -910,7 +918,15 @@ public class QuarterPrecisionNumberNGTest {
         }
     }
     
-    // TODO: Write test positive NaNs are NOT infinite
+    @Test
+    public void testPositiveNaNsAreNotInfinite() {
+        for (byte b = 121; b > 0; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String msg = "Number " + number.toString() + " from byte " + b
+                + " should not be considered infinite";
+        assert !number.isInfinite() : msg;
+        }
+    }
     
     @Test
     public void testPositiveInfinityIsInfinite() {
