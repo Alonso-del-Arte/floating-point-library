@@ -128,7 +128,7 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
      */
     @Override
     public boolean isNaN() {
-        return true;
+        return (this.heldByte & 120) == 120;
     }
     
     // TODO: Write tests for this
