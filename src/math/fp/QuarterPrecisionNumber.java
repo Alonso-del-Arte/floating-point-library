@@ -111,16 +111,24 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
         return (this.heldByte & 120) != 120;
     }
     
-    // TODO: Write tests for this
+    /**
+     * Tells whether or not this number is infinite or not. Note that NaN is 
+     * considered not infinite even though it is also considered not finite.
+     * @return True if this number is &plusmn;&infin;, false in all other cases, 
+     * including NaN.
+     */
     @Override
     public boolean isInfinite() {
         return (this.heldByte & Byte.MAX_VALUE) == 120;
     }
     
-    // TODO: Write tests for this
+    /**
+     * 
+     * @return 
+     */
     @Override
     public boolean isNaN() {
-        return false;
+        return true;
     }
     
     // TODO: Write tests for this
