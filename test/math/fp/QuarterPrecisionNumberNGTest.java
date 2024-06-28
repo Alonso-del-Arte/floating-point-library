@@ -893,7 +893,7 @@ public class QuarterPrecisionNumberNGTest {
         for (byte b = -7; b < 0; b++) {
             QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
             String msg = "Number " + number.toString() + " from byte " + b
-                + " should not be considered infinite";
+                    + " should not be considered infinite";
             assert !number.isInfinite() : msg;
         }
     }
@@ -903,7 +903,7 @@ public class QuarterPrecisionNumberNGTest {
         for (byte b = Byte.MIN_VALUE; b < -8; b++) {
             QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
             String msg = "Number " + number.toString() 
-                + " should not be considered infinite";
+                    + " should not be considered infinite";
             assert !number.isInfinite() : msg;
         }
     }
@@ -913,7 +913,7 @@ public class QuarterPrecisionNumberNGTest {
         for (byte b = 0; b < 120; b++) {
             QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
             String msg = "Number " + number.toString() 
-                + " should not be considered infinite";
+                    + " should not be considered infinite";
             assert !number.isInfinite() : msg;
         }
     }
@@ -923,7 +923,7 @@ public class QuarterPrecisionNumberNGTest {
         for (byte b = 121; b > 0; b++) {
             QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
             String msg = "Number " + number.toString() + " from byte " + b
-                + " should not be considered infinite";
+                    + " should not be considered infinite";
             assert !number.isInfinite() : msg;
         }
     }
@@ -942,11 +942,31 @@ public class QuarterPrecisionNumberNGTest {
         for (byte b = -7; b < 0; b++) {
             QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
             String msg = "Number " + number.toString() + " from byte " + b
-                + " should be considered NaN";
+                    + " should be considered NaN";
             assert number.isNaN() : msg;
         }
     }
         
+    @Test
+    public void testNegativeFinitesAreNotNaN() {
+        for (byte b = Byte.MIN_VALUE; b < -8; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String msg = "Number " + number.toString() 
+                    + " should not be considered NaN";
+            assert !number.isNaN() : msg;
+        }
+    }
+    
+    @Test
+    public void testPositiveFinitesAreNotNaN() {
+        for (byte b = 0; b < 120; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String msg = "Number " + number.toString() 
+                    + " should not be considered NaN";
+            assert !number.isNaN() : msg;
+        }
+    }
+    
     @Test
     public void testPositiveNaNsAreNaN() {
         for (byte b = 121; b > 0; b++) {
