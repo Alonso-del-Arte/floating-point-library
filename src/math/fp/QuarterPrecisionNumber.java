@@ -137,7 +137,7 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     // TODO: Write tests for this
     @Override
     public boolean isQuietNaN() {
-        return true;
+        return false;
     }
 
     // TODO: Write tests for this
