@@ -938,6 +938,15 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testNegativeInfinityIsNotNaN() {
+        byte b = -8;
+        QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+        String msg = "Number " + number.toString() 
+                + " should not be considered NaN";
+        assert !number.isNaN() : msg;
+    }
+    
+    @Test
     public void testNegativeNaNsAreNaN() {
         for (byte b = -7; b < 0; b++) {
             QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
@@ -975,6 +984,15 @@ public class QuarterPrecisionNumberNGTest {
                 + " should be considered NaN";
             assert number.isNaN() : msg;
         }
+    }
+    
+    @Test
+    public void testPositiveInfinityIsNotNaN() {
+        byte b = 120;
+        QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+        String msg = "Number " + number.toString() 
+                + " should not be considered NaN";
+        assert !number.isNaN() : msg;
     }
     
     @Test
