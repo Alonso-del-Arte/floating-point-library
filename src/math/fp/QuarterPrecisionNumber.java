@@ -123,12 +123,15 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     }
     
     /**
-     * 
-     * @return 
+     * Indicates whether or not this number is a Not a Number (NaN) value. Note 
+     * that the infinities are not considered NaN, even though they don't 
+     * represent finite numbers either.
+     * @return True if this number is a NaN value, false in all other cases, 
+     * including &plusmn;&infin;.
      */
     @Override
     public boolean isNaN() {
-        return (this.heldByte & 120) == 120;
+        return (this.heldByte & Byte.MAX_VALUE) > 120;
     }
     
     // TODO: Write tests for this
