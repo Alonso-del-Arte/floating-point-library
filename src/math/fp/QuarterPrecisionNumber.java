@@ -95,7 +95,7 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
         return switch(this.heldByte) {
             case Byte.MIN_VALUE, 0 -> true;
             case -8, -7, -6, -5, -4, -3, -2, -1, 120, 121, 122, 123, 124, 125, 
-                126, 127 -> false;
+                126, Byte.MAX_VALUE -> false;
             default -> this.toNonNegativeFractionNormal().isInteger();
         };
     }
@@ -189,8 +189,8 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
             case -122 -> -0.01171875f;
             case -121 -> -0.013671875f;
             case -8 -> Float.NEGATIVE_INFINITY;
-            case -7, -6, -5, -4, -3, -2, -1, 121, 122, 123, 124, 125, 126, 127 
-                -> Float.NaN;
+            case -7, -6, -5, -4, -3, -2, -1, 121, 122, 123, 124, 125, 126, 
+                Byte.MAX_VALUE -> Float.NaN;
             case 0 -> 0.0f;
             case 1 -> 0.001953125f;
             case 2 -> 0.00390625f;
@@ -226,8 +226,8 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
             case -122 -> -0.01171875;
             case -121 -> -0.013671875;
             case -8 -> Double.NEGATIVE_INFINITY;
-            case -7, -6, -5, -4, -3, -2, -1, 121, 122, 123, 124, 125, 126, 127 
-                -> Double.NaN;
+            case -7, -6, -5, -4, -3, -2, -1, 121, 122, 123, 124, 125, 126, 
+                Byte.MAX_VALUE -> Double.NaN;
             case 0 -> 0.0;
             case 1 -> 0.001953125;
             case 2 -> 0.00390625;
@@ -315,8 +315,8 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
             case -122 -> "\u22120.01171875";
             case -121 -> "\u22120.013671875";
             case -8 -> "\u2212Infinity";
-            case -7, -6, -5, -4, -3, -2, -1, 121, 122, 123, 124, 125, 126, 127 
-                -> "NaN";
+            case -7, -6, -5, -4, -3, -2, -1, 121, 122, 123, 124, 125, 126, 
+                Byte.MAX_VALUE -> "NaN";
             case 0 -> "0.0";
             case 1 -> "0.001953125";
             case 2 -> "0.00390625";
