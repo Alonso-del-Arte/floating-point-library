@@ -1009,6 +1009,19 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testNotNaNAtAllIsCertainlyNotSignalingNaNEither() {
+        for (int i = Byte.MIN_VALUE; i <= Byte.MAX_VALUE; i++) {
+            byte b = (byte) i;
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            if (!number.isNaN()) {
+                String msg = "Said to not be NaN, " + number.toString() 
+                        + " should not be signaling NaN either";
+                assert !number.isSignalingNaN() : msg;
+            }
+        }
+    }
+    
+    @Test
     public void testTo32BitPrimitiveNegativeInfinity() {
         byte b = -8;
         QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
