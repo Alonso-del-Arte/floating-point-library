@@ -1020,6 +1020,17 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testNegativeSignalingNaNIsNotQuietNaN() {
+        for (byte b = -4; b < 0; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String msg = number.toString() + " from bit pattern " 
+                    + Integer.toHexString(b + 256) 
+                    + " should not be considered quiet NaN";
+            assert !number.isQuietNaN() : msg;
+        }
+    }
+    
+    @Test
     public void testNotNaNAtAllIsCertainlyNotSignalingNaNEither() {
         for (int i = Byte.MIN_VALUE; i <= Byte.MAX_VALUE; i++) {
             byte b = (byte) i;
