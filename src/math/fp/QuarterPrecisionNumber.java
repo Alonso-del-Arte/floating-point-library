@@ -138,7 +138,7 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     @Override
     public boolean isQuietNaN() {
         return (this.heldByte > -8 && this.heldByte < -4) 
-                || this.heldByte > 120;
+                || (this.heldByte > 120 && this.heldByte < 124);
     }
 
     // TODO: Write tests for this
