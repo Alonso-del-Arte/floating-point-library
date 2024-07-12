@@ -134,11 +134,16 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
         return (this.heldByte & Byte.MAX_VALUE) > 120;
     }
     
-    // TODO: Write tests for this
+    /**
+     * Indicates whether or not this number is a quiet NaN value. A quiet NaN 
+     * value is not supposed to indicate any special error condition.
+     * @return True if the bit pattern is &minus;7, &minus;6, &minus;5, 121, 
+     * 122 or 123, false in all other cases.
+     */
     @Override
     public boolean isQuietNaN() {
-        return (this.heldByte > -8 && this.heldByte < -4) 
-                || (this.heldByte > 120 && this.heldByte < 124);
+        int masked = this.heldByte & Byte.MAX_VALUE;
+        return masked > 120 && masked < 124;
     }
 
     // TODO: Write tests for this
