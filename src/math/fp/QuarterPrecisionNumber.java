@@ -149,7 +149,7 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     // TODO: Write tests for this
     @Override
     public boolean isSignalingNaN() {
-        return this.isNaN();
+        return this.heldByte > -5 && this.heldByte < 0;
     }
 
     private Fraction toNonNegativeFractionNormal() {
