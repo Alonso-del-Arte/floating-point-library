@@ -149,6 +149,11 @@ public class DoublePrecisionNumber extends FloatingPointNumber {
         return this;
     }
     
+    @Override
+    public FloatingPointNumber negate() {
+        return this;
+    }
+    
     // TODO: Write tests for this
     @Override
     public FloatingPointNumber minus(FloatingPointNumber subtrahend) {
@@ -158,6 +163,11 @@ public class DoublePrecisionNumber extends FloatingPointNumber {
     // TODO: Write tests for this
     @Override
     public FloatingPointNumber times(FloatingPointNumber multiplicand) {
+        return this;
+    }
+    
+    @Override
+    public FloatingPointNumber reciprocal() {
         return this;
     }
     

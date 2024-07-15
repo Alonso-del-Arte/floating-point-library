@@ -142,6 +142,15 @@ public abstract class FloatingPointNumber
      */
     public abstract FloatingPointNumber plus(FloatingPointNumber addend);
     
+    /**
+     * Negates this number. For the example, suppose this number is 3.1415927 
+     * (the 32-bit approximation to &pi;).
+     * @return This number with the sign bit toggled. For example, 
+     * &minus;3.1415927. Note that {@code this.negate().negate().equals(this)} 
+     * should be true.
+     */
+    public abstract FloatingPointNumber negate();
+    
     // TODO: Write tests for this
     /**
      * Subtracts a floating point number from this one. Overflows or underflows 
@@ -164,6 +173,13 @@ public abstract class FloatingPointNumber
      * @return This number times the multiplicand.
      */
     public abstract FloatingPointNumber times(FloatingPointNumber multiplicand);
+    
+    /**
+     * Divides 1.0 by this number. For the example, suppose this number is 
+     * 3.1415927 (the 32-bit approximation to &pi;).
+     * @return 1.0 divided by this number. For example, 0.31830987.
+     */
+    public abstract FloatingPointNumber reciprocal();
     
     // TODO: Write tests for this
     /**
