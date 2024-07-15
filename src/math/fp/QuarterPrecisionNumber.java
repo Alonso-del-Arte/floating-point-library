@@ -299,6 +299,30 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     
     // TODO: Write tests for this
     @Override
+    public FloatingPointNumber plus(FloatingPointNumber addend) {
+        return this;
+    }
+    
+    // TODO: Write tests for this
+    @Override
+    public FloatingPointNumber minus(FloatingPointNumber subtrahend) {
+        return this;
+    }
+    
+    // TODO: Write tests for this
+    @Override
+    public FloatingPointNumber times(FloatingPointNumber multiplicand) {
+        return this;
+    }
+    
+    // TODO: Write tests for this
+    @Override
+    public FloatingPointNumber divides(FloatingPointNumber divisor) {
+        return this;
+    }
+    
+    // TODO: Write tests for this
+    @Override
     public boolean arithmeticallyEqual(FloatingPointNumber other) {
         return true;
     }
