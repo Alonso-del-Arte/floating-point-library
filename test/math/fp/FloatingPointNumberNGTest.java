@@ -294,6 +294,24 @@ public class FloatingPointNumberNGTest {
             return null;
         }
     
+        // TODO: Write tests for this
+        @Override
+        public FloatingPointNumber plus(FloatingPointNumber addend) {
+            return this;
+        }
+    
+        // TODO: Write tests for this
+        @Override
+        public FloatingPointNumber times(FloatingPointNumber multiplicand) {
+            return this;
+        }
+    
+        // TODO: Write tests for this
+        @Override
+        public FloatingPointNumber divides(FloatingPointNumber divisor) {
+            return this;
+        }
+    
         @Override
         public boolean arithmeticallyEqual(FloatingPointNumber other) {
             return true;

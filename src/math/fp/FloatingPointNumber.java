@@ -54,10 +54,32 @@ public abstract class FloatingPointNumber
      */
     public abstract boolean isSubnormal();
     
+    /**
+     * Determines whether this floating point number represents an integer or 
+     * not. Keep in mind that infinities and NaN values will always be 
+     * considered to not be integers even if they stand in for integers that 
+     * overflowed or real integers multiplied by the imaginary unit <i>i</i>.
+     * @return True if this floating point number is an integer, false in all 
+     * other cases (such as nonzero subnormal numbers). Examples: true for 
+     * &minus;240.0, false for positive infinity, true for 7.0, false for 
+     * 7.068583470577035.
+     */
     public abstract boolean isInteger();
     
+    /**
+     * Tells whether or not this number is finite or not. Note that NaN is 
+     * considered not finite even though it is also considered not infinite.
+     * @return True if this number is normal or subnormal, false in all other 
+     * cases (negative infinity, positive infinity, NaN).
+     */
     public abstract boolean isFinite();
     
+    /**
+     * Tells whether or not this number is infinite or not. Note that NaN is 
+     * considered not infinite even though it is also considered not finite.
+     * @return True if this number is &plusmn;&infin;, false in all other cases, 
+     * including NaN.
+     */
     public abstract boolean isInfinite();
     
     /**
@@ -110,22 +132,48 @@ public abstract class FloatingPointNumber
         return null;
     }
     
-    // TODO: Write tests for this
-    public FloatingPointNumber plus(FloatingPointNumber addend) {
-        return this;
-    }
+    /**
+     * Adds a floating point number to this one. This is guaranteed to be a 
+     * commutative operation if both operands are of the same runtime class. But 
+     * if there are narrowing or widening conversions involved, the result might 
+     * overflow to an infinity in one direction or one addend might vanish to 0.
+     * @param addend The number to add. For example, 0.25.
+     * @return This number plus the addend.
+     */
+    public abstract FloatingPointNumber plus(FloatingPointNumber addend);
     
     // TODO: Write tests for this
+    /**
+     * Subtracts a floating point number from this one. Overflows or underflows 
+     * might occur if the operands are of different runtime classes.
+     * @param subtrahend The number to subtract. For example, 3.125.
+     * @return This number minus the subtrahend.
+     */
     public FloatingPointNumber minus(FloatingPointNumber subtrahend) {
         return this;
     }
     
-    // TODO: Write tests for this
-    public FloatingPointNumber times(FloatingPointNumber multiplicand) {
-        return this;
-    }
+    /**
+     * Multiplies this number by a floating point number to this one. This is 
+     * guaranteed to be a commutative operation if both operands are of the same 
+     * runtime class. But if there are narrowing or widening conversions 
+     * involved, the result might overflow to an infinity in one direction or 
+     * one multiplicand might vanish to 0, causing the result to also vanish to 
+     * 0.
+     * @param multiplicand The number to multiply by. For example, 0.25.
+     * @return This number times the multiplicand.
+     */
+    public abstract FloatingPointNumber times(FloatingPointNumber multiplicand);
     
     // TODO: Write tests for this
+    /**
+     * Divides this number by a floating point number. This operation should 
+     * never cause an exception.
+     * @param divisor The number to divide by. For example, 3.125. The numbers 
+     * 0.0, &minus;0.0, the infinities and the various NaNs are all acceptable 
+     * divisors.
+     * @return This number divided by the divisor. 
+     */
     public FloatingPointNumber divides(FloatingPointNumber divisor) {
         return this;
     }
