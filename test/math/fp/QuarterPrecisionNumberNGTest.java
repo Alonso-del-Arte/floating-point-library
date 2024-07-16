@@ -2063,6 +2063,29 @@ public class QuarterPrecisionNumberNGTest {
             assertEquals(actual, expected);
         }
     }
+
+    // TODO: Write tests for plus()
     
+    @Test
+    public void testNegate() {
+        System.out.println("negate");
+        for (int i = Byte.MIN_VALUE; i < 128; i++) {
+            byte b = (byte) i;
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            byte csb = (byte) (b ^ Byte.MIN_VALUE);
+            QuarterPrecisionNumber expected = new QuarterPrecisionNumber(csb);
+            QuarterPrecisionNumber actual = number.negate();
+            String message = "Negating " + number.toString();
+            assertEquals(actual, expected, message);
+        }
+    }
+    
+    // TODO: Write tests for minus()
+
+    // TODO: Write tests for times()
+    
+    // TODO: Write tests for reciprocal()
+    
+    // TODO: Write tests for divides()
     
 }
