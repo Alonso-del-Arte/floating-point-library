@@ -2077,6 +2077,29 @@ public class QuarterPrecisionNumberNGTest {
             assertEquals(actual, expected, message);
         }
     }
+    
+    @Test
+    public void testPositiveZeroPlusNegativeZeroIsPositiveZero() {
+        QuarterPrecisionNumber expected = new QuarterPrecisionNumber((byte) 0);
+        QuarterPrecisionNumber negativeZero 
+                = new QuarterPrecisionNumber(Byte.MIN_VALUE);
+        QuarterPrecisionNumber actual = expected.plus(negativeZero);
+        String message = "Calculating " + expected.toString() + " + " 
+                + negativeZero.toString();
+        assertEquals(actual, expected, message);
+    }
+
+//    @Test
+//    public void testPositiveZeroPlusSomeNumberIsUsuallySomeNumber() {
+//        QuarterPrecisionNumber zero = new QuarterPrecisionNumber((byte) 0);
+//        for (byte b = -127; b > Byte.MIN_VALUE; b++) {
+//            QuarterPrecisionNumber expected = new QuarterPrecisionNumber(b);
+//            QuarterPrecisionNumber actual = zero.plus(expected);
+//            String message = "Calculating " + zero.toString() + " + " 
+//                    + expected.toString();
+//            assertEquals(actual, expected, message);
+//        }
+//    }
 
     // TODO: Write more tests for plus()
     
