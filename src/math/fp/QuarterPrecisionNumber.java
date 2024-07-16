@@ -299,35 +299,35 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     
     // TODO: Write tests for this
     @Override
-    public FloatingPointNumber plus(FloatingPointNumber addend) {
+    public QuarterPrecisionNumber plus(FloatingPointNumber addend) {
         return this;
     }
     
     @Override
-    public FloatingPointNumber negate() {
-        return this;
-    }
-    
-    // TODO: Write tests for this
-    @Override
-    public FloatingPointNumber minus(FloatingPointNumber subtrahend) {
+    public QuarterPrecisionNumber negate() {
         return this;
     }
     
     // TODO: Write tests for this
     @Override
-    public FloatingPointNumber times(FloatingPointNumber multiplicand) {
-        return this;
-    }
-    
-    @Override
-    public FloatingPointNumber reciprocal() {
+    public QuarterPrecisionNumber minus(FloatingPointNumber subtrahend) {
         return this;
     }
     
     // TODO: Write tests for this
     @Override
-    public FloatingPointNumber divides(FloatingPointNumber divisor) {
+    public QuarterPrecisionNumber times(FloatingPointNumber multiplicand) {
+        return this;
+    }
+    
+    @Override
+    public QuarterPrecisionNumber reciprocal() {
+        return this;
+    }
+    
+    // TODO: Write tests for this
+    @Override
+    public QuarterPrecisionNumber divides(FloatingPointNumber divisor) {
         return this;
     }
     
