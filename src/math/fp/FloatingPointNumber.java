@@ -151,15 +151,18 @@ public abstract class FloatingPointNumber
      */
     public abstract FloatingPointNumber negate();
     
-    // TODO: Write tests for this
     /**
      * Subtracts a floating point number from this one. Overflows or underflows 
-     * might occur if the operands are of different runtime classes.
+     * might occur if the operands are of different runtime classes. A default 
+     * implementation is provided which uses {@link 
+     * #plus(math.fp.FloatingPointNumber) plus} and {@link #negate()}. Depending 
+     * on the implementations of those functions, it may or may not be more 
+     * efficient to override this function.
      * @param subtrahend The number to subtract. For example, 3.125.
      * @return This number minus the subtrahend.
      */
     public FloatingPointNumber minus(FloatingPointNumber subtrahend) {
-        return this;
+        return this.plus(subtrahend.negate());
     }
     
     /**
