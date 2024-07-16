@@ -303,9 +303,16 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
         return this;
     }
     
+    /**
+     * Negates this number. For the example, suppose this number is 0.009765625.
+     * @return This number with the sign bit toggled. For example, 
+     * &minus;0.009765625. Note that {@code this.negate().negate().equals(this)} 
+     * will be true.
+     */
     @Override
     public QuarterPrecisionNumber negate() {
-        return this;
+        byte b = (byte) (this.heldByte ^ Byte.MIN_VALUE);
+        return new QuarterPrecisionNumber(b);
     }
     
     // TODO: Write tests for this
