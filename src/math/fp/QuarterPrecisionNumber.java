@@ -322,7 +322,8 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     @Override
     public QuarterPrecisionNumber plus(FloatingPointNumber addend) {
         if (addend instanceof QuarterPrecisionNumber alreadyQuarter) {
-            if (this.heldByte == 0) {
+            if (this.heldByte == 0 
+                    && alreadyQuarter.heldByte == Byte.MIN_VALUE) {
                 return this;
             }
             return alreadyQuarter;
