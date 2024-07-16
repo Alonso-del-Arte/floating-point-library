@@ -196,6 +196,21 @@ public class FloatingPointNumberNGTest {
     }
     
     @Test
+    public void testMinus() {
+        System.out.println("minus");
+        FloatingPointNumber minuend = makeNumber();
+        int len = minuend.componentBytes.length;
+        byte[] bytes = new byte[len];
+        RANDOM.nextBytes(bytes);
+        FloatingPointNumber subtrahend = new FloatingPointNumberImpl(bytes);
+        FloatingPointNumber expected = minuend.plus(subtrahend.negate());
+        FloatingPointNumber actual = minuend.minus(subtrahend);
+        String message = "Subtracting " + subtrahend.toString() + " from " 
+                + minuend.toString();
+        assertEquals(actual, expected, message);
+    }
+    
+    @Test
     public void testConstructorRejectsEmptyArray() {
         byte[] bytes = {};
         String msg = "Constructor should reject empty byte array";
@@ -294,18 +309,30 @@ public class FloatingPointNumberNGTest {
             return null;
         }
     
-        // TODO: Write tests for this
         @Override
         public FloatingPointNumber plus(FloatingPointNumber addend) {
+            if (addend instanceof FloatingPointNumberImpl sameTypeNum) {
+                int len = this.componentBytes.length;
+                byte[] addedBytes = new byte[len];
+                for (int i = 0; i < len; i++) {
+                    addedBytes[i] = (byte) (this.componentBytes[i] 
+                            + sameTypeNum.componentBytes[i]);
+                }
+                return new FloatingPointNumberImpl(addedBytes);
+            }
             return this;
         }
     
         @Override
         public FloatingPointNumber negate() {
-            return this;
+            int len = this.componentBytes.length;
+            byte[] negatedBytes = new byte[len];
+            for (int i = 0; i < len; i++) {
+                negatedBytes[i] = (byte) (~this.componentBytes[i]);
+            }
+            return new FloatingPointNumberImpl(negatedBytes);
         }
     
-        // TODO: Write tests for this
         @Override
         public FloatingPointNumber times(FloatingPointNumber multiplicand) {
             return this;
@@ -313,12 +340,6 @@ public class FloatingPointNumberNGTest {
     
         @Override
         public FloatingPointNumber reciprocal() {
-            return this;
-        }
-    
-        // TODO: Write tests for this
-        @Override
-        public FloatingPointNumber divides(FloatingPointNumber divisor) {
             return this;
         }
     
