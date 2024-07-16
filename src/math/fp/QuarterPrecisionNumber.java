@@ -297,9 +297,35 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
         return new OctuplePrecisionNumber(THIRTY_TWO_ZEROS);
     }
     
-    // TODO: Write tests for this
+    /** WORK IN PROGRESS...
+     * Adds a floating point number to this one. This is guaranteed to be a 
+     * commutative operation if both operands are of the same runtime class. But 
+     * if there are narrowing involved, the result might overflow to an infinity 
+     * in one direction or one addend might vanish to 0.
+     * @param addend The number to add. For example, 0.25.
+     * @return This number plus the addend.
+     * <p>Special cases:</p>
+     * <ul>
+     * <li>Negative zero plus <i>x</i> equals <i>x</i>, even if <i>x</i> is 
+     * positive zero.</li>
+     * <li></li>
+     * <li></li>
+     * <li></li>
+     * <li></li>
+     * <li></li>
+     * <li></li>
+     * <li></li>
+     * <li></li>
+     * <li></li>
+     * </ul>
+     */
     @Override
     public QuarterPrecisionNumber plus(FloatingPointNumber addend) {
+        if (addend instanceof QuarterPrecisionNumber alreadyQuarter) {
+            return alreadyQuarter;
+//        } else {
+//            return this.plus(addend.toQuarterPrecision());
+        }
         return this;
     }
     
