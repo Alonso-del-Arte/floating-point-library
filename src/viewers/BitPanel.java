@@ -29,7 +29,11 @@ import javax.swing.JPanel;
 public class BitPanel extends JPanel {
     
     public BitPanel(boolean on, Color colorCode, short index) {
-        //
+        if (index < 0) {
+            String excMsg = "Index " + index 
+                    + " not valid, should be 0 or positive";
+            throw new IllegalArgumentException(excMsg);
+        }
     }
     
 }
