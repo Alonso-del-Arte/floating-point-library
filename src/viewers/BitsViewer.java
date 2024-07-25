@@ -29,12 +29,12 @@ import javax.swing.JPanel;
 public class BitsViewer {
     
     // TODO: Write test for this
-    private static final Color DEFAULT_SIGN_BIT_COLOR = Color.BLACK;
+    static final Color DEFAULT_SIGN_BIT_COLOR = Color.BLACK;
     
     // TODO: Write test for this
-    private static final Color DEFAULT_EXPONENT_BITS_COLOR = Color.BLACK;
+    static final Color DEFAULT_EXPONENT_BITS_COLOR = Color.BLACK;
     
     // TODO: Write test for this
-    private static final Color DEFAULT_MANTISSA_BITS_COLOR = Color.BLACK;
+    static final Color DEFAULT_MANTISSA_BITS_COLOR = Color.BLACK;
     
 }
