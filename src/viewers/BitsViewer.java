@@ -40,7 +40,10 @@ public class BitsViewer {
      */
     static final Color DEFAULT_EXPONENT_BITS_COLOR = new Color(13172672);
     
-    // TODO: Write test for this
-    static final Color DEFAULT_MANTISSA_BITS_COLOR = Color.BLACK;
+    /**
+     * The default color for the mantissa bit panels. The RGB values for this 
+     * color are 255, 192, 184.
+     */
+    static final Color DEFAULT_MANTISSA_BITS_COLOR = new Color(16761016);
     
 }
