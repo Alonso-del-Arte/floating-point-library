@@ -23,19 +23,40 @@ import java.awt.Graphics;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import static math.integer.CalculatorNGTest.RANDOM;
+
+import static org.testframe.api.Asserters.assertThrows;
+
 import static org.testng.Assert.*;
 import org.testng.annotations.Test;
 
 /**
- *
+ * Tests of the BitPanel class.
  * @author Alonso del Arte
  */
 public class BitPanelNGTest extends JFrame {
     
+    private static final int RGB_THRESHOLD = 1 << 24;
+    
+    private static Color chooseColor() {
+        int rgb = RANDOM.nextInt(RGB_THRESHOLD);
+        return new Color(rgb);
+    }
+    
     @Test
-    public void testSomeMethod() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testConstructorRejectsNegativeIndex() {
+        short badIndex = (short) (RANDOM.nextInt() | Short.MIN_VALUE);
+        String msg = "Should not have been able to create bit panel with index " 
+                + badIndex;
+        Throwable t = assertThrows(() -> {
+            BitPanel badPanel = new BitPanel(RANDOM.nextBoolean(), 
+                    chooseColor(), badIndex);
+            System.out.println(msg + ", but created " + badPanel.toString());
+        }, IllegalArgumentException.class, msg);
+        String excMsg = t.getMessage();
+        assert excMsg != null : "Exception message should not be null";
+        assert !excMsg.isBlank() : "Exception message should not be blank";
+        System.out.println("\"" + excMsg + "\"");
     }
     
 }
