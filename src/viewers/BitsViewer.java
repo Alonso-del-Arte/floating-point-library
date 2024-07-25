@@ -28,8 +28,11 @@ import javax.swing.JPanel;
  */
 public class BitsViewer {
     
-    // TODO: Write test for this
-    static final Color DEFAULT_SIGN_BIT_COLOR = Color.BLACK;
+    /**
+     * The default color for the sign bit panel. The RGB values for this color 
+     * are 184, 184, 255.
+     */
+    static final Color DEFAULT_SIGN_BIT_COLOR = new Color(12105983);
     
     // TODO: Write test for this
     static final Color DEFAULT_EXPONENT_BITS_COLOR = Color.BLACK;
