@@ -32,7 +32,7 @@ import org.testng.annotations.Test;
  */
 public class CalculatorNGTest {
     
-    static final Random RANDOM = new Random(System.currentTimeMillis());
+    public static final Random RANDOM = new Random(System.currentTimeMillis());
     
     /**
      * Gives a pseudorandomly chosen power of two. This duplicates {@link 
