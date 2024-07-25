@@ -39,4 +39,11 @@ public class BitsViewerNGTest extends JFrame {
         assertEquals(actual, expected);
     }
     
+    @Test
+    public void testDefaultExponentBitsColor() {
+        Color expected = new Color(200, 255, 192);
+        Color actual = BitsViewer.DEFAULT_EXPONENT_BITS_COLOR;
+        assertEquals(actual, expected);
+    }
+    
 }
