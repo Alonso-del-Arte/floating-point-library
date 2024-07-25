@@ -46,4 +46,11 @@ public class BitsViewerNGTest extends JFrame {
         assertEquals(actual, expected);
     }
     
+    @Test
+    public void testDefaultMantissaBitsColor() {
+        Color expected = new Color(255, 192, 184);
+        Color actual = BitsViewer.DEFAULT_MANTISSA_BITS_COLOR;
+        assertEquals(actual, expected);
+    }
+    
 }
