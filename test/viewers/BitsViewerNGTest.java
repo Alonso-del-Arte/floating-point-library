@@ -27,15 +27,16 @@ import static org.testng.Assert.*;
 import org.testng.annotations.Test;
 
 /**
- *
+ * Tests of the BitsViewer class.
  * @author Alonso del Arte
  */
 public class BitsViewerNGTest extends JFrame {
     
     @Test
-    public void testSomeMethod() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testDefaultSignBitColor() {
+        Color expected = new Color(184, 184, 255);
+        Color actual = BitsViewer.DEFAULT_SIGN_BIT_COLOR;
+        assertEquals(actual, expected);
     }
     
 }
