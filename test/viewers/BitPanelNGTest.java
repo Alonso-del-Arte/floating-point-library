@@ -38,7 +38,7 @@ public class BitPanelNGTest extends JFrame {
     
     private static final int RGB_THRESHOLD = 1 << 24;
     
-    private static Color chooseColor() {
+    static Color chooseColor() {
         int rgb = RANDOM.nextInt(RGB_THRESHOLD);
         return new Color(rgb);
     }
