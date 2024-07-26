@@ -29,7 +29,10 @@ import javax.swing.JPanel;
 public class BytePanel extends JPanel {
     
     public BytePanel(BitPanel[] bitPanels) {
-        //
+        if (bitPanels == null) {
+            String excMsg = "Bit panels array should not be null";
+            throw new NullPointerException(excMsg);
+        }
     }
     
 }
