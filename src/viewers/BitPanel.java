@@ -35,7 +35,7 @@ public class BitPanel extends JPanel {
     private final short indexNum;
     
     public boolean getStatus() {
-        return true;
+        return this.status;
     }
     
     public void toggleStatus() {
@@ -59,6 +59,7 @@ public class BitPanel extends JPanel {
                     + " not valid, should be 0 or positive";
             throw new IllegalArgumentException(excMsg);
         }
+        this.status = on;
         this.color = Color.BLACK;
         this.indexNum = Short.MAX_VALUE;
     }
