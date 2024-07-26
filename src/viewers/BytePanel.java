@@ -28,6 +28,11 @@ import javax.swing.JPanel;
  */
 public class BytePanel extends JPanel {
     
+    // TODO: Write tests for this
+    public byte getValue() {
+        return Byte.MIN_VALUE;
+    }
+    
     /**
      * Sole constructor.
      * @param bitPanels An array of bit panels. Should have no fewer than eight 
