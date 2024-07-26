@@ -34,12 +34,22 @@ public class BitPanel extends JPanel {
     
     private final short indexNum;
     
+    /**
+     * Retrieves the panel's status. Guaranteed to be the same as the status the 
+     * instance was constructed with if {@link #toggleStatus()} hasn't been 
+     * called on this status.
+     * @return Either true or false.
+     */
     public boolean getStatus() {
         return this.status;
     }
     
+    /**
+     * Toggles the panel's status. Thus the display changes from 0 to 1 or 
+     * vice-versa.
+     */
     public void toggleStatus() {
-        // TODO: Write tests for this
+        this.status = !this.status;
     }
     
     // TODO: Write test for this
