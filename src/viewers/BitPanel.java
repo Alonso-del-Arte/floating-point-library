@@ -52,9 +52,12 @@ public class BitPanel extends JPanel {
         this.status = !this.status;
     }
     
-    // TODO: Write test for this
+    /**
+     * Retrieves this panel's color code. Note that this is immutable.
+     * @return The color for the color coding. For example, light green.
+     */
     public Color getColorCode() {
-        return new Color(80, 80, 80, 80);
+        return this.color;
     }
     
     // TODO: Write test for this
@@ -70,7 +73,7 @@ public class BitPanel extends JPanel {
             throw new IllegalArgumentException(excMsg);
         }
         this.status = on;
-        this.color = Color.BLACK;
+        this.color = colorCode;
         this.indexNum = Short.MAX_VALUE;
     }
     
