@@ -54,7 +54,7 @@ public class BitPanel extends JPanel {
     
     // TODO: Write test for this
     public Color getColorCode() {
-        return Color.DARK_GRAY;
+        return new Color(80, 80, 80, 80);
     }
     
     // TODO: Write test for this
