@@ -28,12 +28,39 @@ import javax.swing.JPanel;
  */
 public class BitPanel extends JPanel {
     
+    private boolean status;
+    
+    private final Color color;
+    
+    private final short indexNum;
+    
+    public boolean getStatus() {
+        return false;
+    }
+    
+    public void toggleStatus() {
+        // TODO: Write tests for this
+    }
+    
+    // TODO: Write test for this
+    public Color getColorCode() {
+        return Color.DARK_GRAY;
+    }
+    
+    // TODO: Write test for this
+    public int getIndex() {
+        return -1;
+    }
+    
+    // TODO: Write test for this
     public BitPanel(boolean on, Color colorCode, short index) {
         if (index < 0) {
             String excMsg = "Index " + index 
                     + " not valid, should be 0 or positive";
             throw new IllegalArgumentException(excMsg);
         }
+        this.color = Color.BLACK;
+        this.indexNum = Short.MAX_VALUE;
     }
     
 }
