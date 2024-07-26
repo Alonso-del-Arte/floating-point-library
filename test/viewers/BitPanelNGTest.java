@@ -82,6 +82,16 @@ public class BitPanelNGTest extends JFrame {
     }
     
     @Test
+    public void testGetIndex() {
+        System.out.println("getIndex");
+        short expected = (short) RANDOM.nextInt(64);
+        BitPanel instance = new BitPanel(RANDOM.nextBoolean(), chooseColor(), 
+                expected);
+        short actual = instance.getIndex();
+        assertEquals(actual, expected);
+    }
+    
+    @Test
     public void testConstructorRejectsNegativeIndex() {
         short badIndex = (short) (RANDOM.nextInt() | Short.MIN_VALUE);
         String msg = "Should not have been able to create bit panel with index " 
