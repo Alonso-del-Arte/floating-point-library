@@ -58,6 +58,21 @@ public class BitPanelNGTest extends JFrame {
     }
     
     @Test
+    public void testToggleStatus() {
+        System.out.println("toggleStatus");
+        boolean expected = RANDOM.nextBoolean();
+        short index = (short) RANDOM.nextInt(64);
+        BitPanel instance = new BitPanel(expected, chooseColor(), index);
+        expected = !expected;
+        instance.toggleStatus();
+        String msg = "Status should've been toggled";
+        assert instance.getStatus() == expected : msg;
+        expected = !expected;
+        instance.toggleStatus();
+        assert instance.getStatus() == expected : msg;
+    }
+    
+    @Test
     public void testConstructorRejectsNegativeIndex() {
         short badIndex = (short) (RANDOM.nextInt() | Short.MIN_VALUE);
         String msg = "Should not have been able to create bit panel with index " 
