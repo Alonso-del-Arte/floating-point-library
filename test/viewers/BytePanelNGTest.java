@@ -36,6 +36,17 @@ import org.testng.annotations.Test;
  */
 public class BytePanelNGTest extends JFrame {
     
+    private BitPanel[] makeBitPanelArray(byte value) {
+        BitPanel[] array = new BitPanel[8];
+        for (short index = 0; index < 8; index++) {
+            boolean on = value % 2 != 0;
+            value >>= 1;
+            Color colorCode = BitPanelNGTest.chooseColor();
+            array[index] = new BitPanel(on, colorCode, index);
+        }
+        return array;
+    }
+    
     private BitPanel[] makeBitPanelArray(int length) {
         BitPanel[] array = new BitPanel[length];
         for (short index = 0; index < length; index++) {
@@ -44,6 +55,18 @@ public class BytePanelNGTest extends JFrame {
             array[index] = new BitPanel(on, colorCode, index);
         }
         return array;
+    }
+    
+    @Test
+    public void testGetValue() {
+        System.out.println("getValue");
+        for (int i = Byte.MIN_VALUE; i < 128; i++) {
+            byte expected = (byte) i;
+            BitPanel[] bitPanels = makeBitPanelArray(expected);
+            BytePanel instance = new BytePanel(bitPanels);
+            byte actual = instance.getValue();
+            assertEquals(actual, expected);
+        }
     }
     
     @Test
