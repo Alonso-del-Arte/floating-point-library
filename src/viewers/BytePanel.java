@@ -33,6 +33,13 @@ public class BytePanel extends JPanel {
             String excMsg = "Bit panels array should not be null";
             throw new NullPointerException(excMsg);
         }
+        int len = bitPanels.length;
+        if (len < Byte.SIZE) {
+            int deficit = Byte.SIZE - len;
+            String excMsg = "Bit panels array only has " + len 
+                    + " bit panel(s), needs " + deficit + " more";
+            throw new IllegalArgumentException(excMsg);
+        }
     }
     
 }
