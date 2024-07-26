@@ -35,7 +35,7 @@ public class BitPanel extends JPanel {
     private final short indexNum;
     
     public boolean getStatus() {
-        return false;
+        return true;
     }
     
     public void toggleStatus() {
