@@ -37,9 +37,18 @@ import org.testng.annotations.Test;
 public class BytePanelNGTest extends JFrame {
     
     @Test
-    public void testSomeMethod() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testConstructorRejectsNullArray() {
+        BitPanel[] bitPanels = null;
+        String msg = "Shouldn't be able to instantiate panel with null array";
+        Throwable t = assertThrows(() -> {
+            BytePanel badPanel = new BytePanel(bitPanels);
+            System.out.println(msg + ", but instantiated " 
+                    + badPanel.toString());
+        }, NullPointerException.class, msg);
+        String excMsg = t.getMessage();
+        assert excMsg != null : "Exception message should not be null";
+        assert !excMsg.isBlank() : "Exception message should not be blank";
+        System.out.println("\"" + excMsg + "\"");
     }
     
 }
