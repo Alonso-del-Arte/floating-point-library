@@ -65,6 +65,26 @@ public class BytePanelNGTest extends JFrame {
     }
     
     @Test
+    public void testConstructorRejectsArrayWithNullPanels() {
+        String msgPart 
+                = "Shouldn't be able to construct byte panel with panel ";
+        for (int index = 0; index < 8; index++) {
+            BitPanel[] bitPanels = makeBitPanelArray(8);
+            bitPanels[index] = null;
+            String msg = msgPart + index + " null";
+            Throwable t = assertThrows(() -> {
+                BytePanel badPanel = new BytePanel(bitPanels);
+                System.out.println(msg + ", but instantiated " 
+                        + badPanel.toString());
+            }, IllegalArgumentException.class, msg);
+            String excMsg = t.getMessage();
+            assert excMsg != null : "Exception message should not be null";
+            assert !excMsg.isBlank() : "Exception message should not be blank";
+            System.out.println("\"" + excMsg + "\"");
+        }
+    }
+    
+    @Test
     public void testConstructorRejectsNullArray() {
         BitPanel[] bitPanels = null;
         String msg = "Shouldn't be able to instantiate panel with null array";
