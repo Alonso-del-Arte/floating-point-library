@@ -61,7 +61,7 @@ public class BitPanel extends JPanel {
     }
     
     // TODO: Write test for this
-    public int getIndex() {
+    public short getIndex() {
         return -1;
     }
     
