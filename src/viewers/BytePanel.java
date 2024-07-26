@@ -28,6 +28,16 @@ import javax.swing.JPanel;
  */
 public class BytePanel extends JPanel {
     
+    /**
+     * Sole constructor.
+     * @param bitPanels An array of bit panels. Should have no fewer than eight 
+     * panels. However, extra panels will be ignored. A separate byte panel 
+     * should be instantiated for the extra bit panels.
+     * @throws IllegalArgumentException If there are fewer than eight bit panels 
+     * in {@code bitPanels}.
+     * @throws NullPointerException If {@code bitPanels} is null, or if any of 
+     * the first eight panels are null.
+     */
     public BytePanel(BitPanel[] bitPanels) {
         if (bitPanels == null) {
             String excMsg = "Bit panels array should not be null";
@@ -39,6 +49,12 @@ public class BytePanel extends JPanel {
             String excMsg = "Bit panels array only has " + len 
                     + " bit panel(s), needs " + deficit + " more";
             throw new IllegalArgumentException(excMsg);
+        }
+        for (int i = 0; i < Byte.SIZE; i++) {
+            if (bitPanels[i] == null) {
+                String excMsg = "Bit panel " + i + " should not be null";
+                throw new NullPointerException(excMsg);
+            }
         }
     }
     
