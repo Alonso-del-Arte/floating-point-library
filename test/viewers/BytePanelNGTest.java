@@ -36,6 +36,34 @@ import org.testng.annotations.Test;
  */
 public class BytePanelNGTest extends JFrame {
     
+    private BitPanel[] makeBitPanelArray(int length) {
+        BitPanel[] array = new BitPanel[length];
+        for (short index = 0; index < length; index++) {
+            boolean on = RANDOM.nextBoolean();
+            Color colorCode = BitPanelNGTest.chooseColor();
+            array[index] = new BitPanel(on, colorCode, index);
+        }
+        return array;
+    }
+    
+    @Test
+    public void testConstructorRejectsFewerThanEightPanels() {
+        String msgPart = "Shouldn't be able to construct byte panel with ";
+        for (int length = 0; length < 8; length++) {
+            BitPanel[] bitPanels = makeBitPanelArray(length);
+            String msg = msgPart + length + " panel(s) rather than 8";
+            Throwable t = assertThrows(() -> {
+                BytePanel badPanel = new BytePanel(bitPanels);
+                System.out.println(msg + ", but instantiated " 
+                        + badPanel.toString());
+            }, IllegalArgumentException.class, msg);
+            String excMsg = t.getMessage();
+            assert excMsg != null : "Exception message should not be null";
+            assert !excMsg.isBlank() : "Exception message should not be blank";
+            System.out.println("\"" + excMsg + "\"");
+        }
+    }
+    
     @Test
     public void testConstructorRejectsNullArray() {
         BitPanel[] bitPanels = null;
