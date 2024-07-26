@@ -76,7 +76,7 @@ public class BytePanelNGTest extends JFrame {
                 BytePanel badPanel = new BytePanel(bitPanels);
                 System.out.println(msg + ", but instantiated " 
                         + badPanel.toString());
-            }, IllegalArgumentException.class, msg);
+            }, NullPointerException.class, msg);
             String excMsg = t.getMessage();
             assert excMsg != null : "Exception message should not be null";
             assert !excMsg.isBlank() : "Exception message should not be blank";
