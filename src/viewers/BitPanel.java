@@ -60,12 +60,26 @@ public class BitPanel extends JPanel {
         return this.color;
     }
     
-    // TODO: Write test for this
+    /**
+     * Retrieves the panel's index. Note that this is immutable.
+     * @return The index. For example, 63 in the case of the sign bit of a 
+     * double precision number.
+     */
     public short getIndex() {
-        return -1;
+        return this.indexNum;
     }
     
-    // TODO: Write test for this
+    /**
+     * Sole constructor.
+     * @param on The bit, true for 1, false for 0. May be changed with {@link 
+     * #toggleStatus()}.
+     * @param colorCode The color code for the color coding. For example, light 
+     * green for the exponent bits. This is immutable.
+     * @param index The index for the bit. For example, 51 for the leading 
+     * mantissa bit in a double precision number. This is immutable. Note that 
+     * the least significant mantissa bit is always 0.
+     * @throws IllegalArgumentException If <code>index</code> is negative.
+     */
     public BitPanel(boolean on, Color colorCode, short index) {
         if (index < 0) {
             String excMsg = "Index " + index 
@@ -74,7 +88,7 @@ public class BitPanel extends JPanel {
         }
         this.status = on;
         this.color = colorCode;
-        this.indexNum = Short.MAX_VALUE;
+        this.indexNum = index;
     }
     
 }
