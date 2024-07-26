@@ -23,14 +23,31 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 /**
- *
+ * Holds eight bit panels together. The constructor requires eight non-null bit 
+ * panels.
  * @author Alonso del Arte
  */
 public class BytePanel extends JPanel {
     
-    // TODO: Write tests for this
+    private final BitPanel[] panels;
+    
+    /**
+     * Calculates the aggregate value of the bit panels. This is mutable, it 
+     * changes according to the values of the individual bit panels being 
+     * toggled. For the example, suppose every other bit panel is on and the 
+     * others are off, with the least significant bit panel being on.
+     * @return The aggregate value of the bit panels. In the example, this would 
+     * be 64 + 16 + 4 + 1 = 85.
+     */
     public byte getValue() {
-        return Byte.MIN_VALUE;
+        byte value = 0;
+        for (int i = 7; i > -1; i--) {
+            value <<= 1;
+            if (this.panels[i].getStatus()) {
+                value++;
+            }
+        }
+        return value;
     }
     
     /**
@@ -61,6 +78,7 @@ public class BytePanel extends JPanel {
                 throw new NullPointerException(excMsg);
             }
         }
+        this.panels = bitPanels;
     }
     
 }
