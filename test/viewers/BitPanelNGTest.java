@@ -44,17 +44,17 @@ public class BitPanelNGTest extends JFrame {
     }
     
     @Test
-    public void testGetStatusConstructedWithTrue() {
+    public void testIsOnForInstanceConstructedWithTrue() {
         short index = (short) RANDOM.nextInt(64);
         BitPanel instance = new BitPanel(true, chooseColor(), index);
-        assert instance.getStatus() : "Instance should have status bit on";
+        assert instance.isOn() : "Instance should have status bit on";
     }
     
     @Test
-    public void testGetStatusConstructedWithFalse() {
+    public void testIsOnForInstanceConstructedWithFalse() {
         short index = (short) RANDOM.nextInt(64);
         BitPanel instance = new BitPanel(false, chooseColor(), index);
-        assert !instance.getStatus() : "Instance should have status bit off";
+        assert !instance.isOn() : "Instance should have status bit off";
     }
     
     @Test
@@ -66,10 +66,10 @@ public class BitPanelNGTest extends JFrame {
         expected = !expected;
         instance.toggleStatus();
         String msg = "Status should've been toggled";
-        assert instance.getStatus() == expected : msg;
+        assert instance.isOn() == expected : msg;
         expected = !expected;
         instance.toggleStatus();
-        assert instance.getStatus() == expected : msg;
+        assert instance.isOn() == expected : msg;
     }
     
     @Test

@@ -37,10 +37,10 @@ public class BitPanel extends JPanel {
     /**
      * Retrieves the panel's status. Guaranteed to be the same as the status the 
      * instance was constructed with if {@link #toggleStatus()} hasn't been 
-     * called on this status.
+     * called on this instance.
      * @return Either true or false.
      */
-    public boolean getStatus() {
+    public boolean isOn() {
         return this.status;
     }
     

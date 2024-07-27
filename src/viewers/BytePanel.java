@@ -43,7 +43,7 @@ public class BytePanel extends JPanel {
         byte value = 0;
         for (int i = 7; i > -1; i--) {
             value <<= 1;
-            if (this.panels[i].getStatus()) {
+            if (this.panels[i].isOn()) {
                 value++;
             }
         }
