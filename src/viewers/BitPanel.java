@@ -19,14 +19,17 @@ package viewers;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
 
 /**
- *
+ * A panel to display a single bit. An instance of this class is meant to be 
+ * grouped with other instances in a {@link BytePanel}.
  * @author Alonso del Arte
  */
-public class BitPanel extends JPanel {
+public class BitPanel extends JPanel implements MouseListener {
     
     private boolean status;
     
@@ -67,6 +70,31 @@ public class BitPanel extends JPanel {
      */
     public short getIndex() {
         return this.indexNum;
+    }
+    
+    @Override
+    public void mouseClicked(MouseEvent event) {
+        // TODO: Write tests for this
+    }
+    
+    @Override
+    public void mouseEntered(MouseEvent event) {
+        // TODO: Write tests for this
+    }
+    
+    @Override
+    public void mouseExited(MouseEvent event) {
+        // TODO: Write tests for this
+    }
+    
+    @Override
+    public void mousePressed(MouseEvent event) {
+        // TODO: Write tests for this
+    }
+    
+    @Override
+    public void mouseReleased(MouseEvent event) {
+        // TODO: Write tests for this
     }
     
     /**
