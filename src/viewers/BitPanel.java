@@ -106,6 +106,10 @@ public class BitPanel extends JPanel implements MouseListener {
         // TODO: Write tests for this
     }
     
+    void activate() {
+        // TODO: Write tests for this
+    }
+    
     /**
      * Sole constructor.
      * @param on The bit, true for 1, false for 0. May be changed with {@link 
