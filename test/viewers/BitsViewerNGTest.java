@@ -35,21 +35,21 @@ public class BitsViewerNGTest extends JFrame {
     
     @Test
     public void testDefaultSignBitColor() {
-        Color expected = new Color(184, 184, 255);
+        Color expected = new Color(152, 152, 224);
         Color actual = BitsViewer.DEFAULT_SIGN_BIT_COLOR;
         assertEquals(actual, expected);
     }
     
     @Test
     public void testDefaultExponentBitsColor() {
-        Color expected = new Color(200, 255, 192);
+        Color expected = new Color(168, 224, 160);
         Color actual = BitsViewer.DEFAULT_EXPONENT_BITS_COLOR;
         assertEquals(actual, expected);
     }
     
     @Test
     public void testDefaultMantissaBitsColor() {
-        Color expected = new Color(255, 192, 184);
+        Color expected = new Color(224, 160, 152);
         Color actual = BitsViewer.DEFAULT_MANTISSA_BITS_COLOR;
         assertEquals(actual, expected);
     }
