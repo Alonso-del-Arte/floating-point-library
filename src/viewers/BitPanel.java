@@ -73,6 +73,11 @@ public class BitPanel extends JPanel implements MouseListener {
     }
     
     @Override
+    public void paintComponent(Graphics g) {
+        g.drawString("FOR TESTING PURPOSES ONLY", 50, 50);
+    }
+    
+    @Override
     public void mouseClicked(MouseEvent event) {
         // TODO: Write tests for this
     }
