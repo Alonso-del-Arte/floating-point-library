@@ -122,4 +122,36 @@ public class BytePanelNGTest extends JFrame {
         System.out.println("\"" + excMsg + "\"");
     }
     
+    static class CallCountingBytePanel extends BytePanel {
+        
+        int prepareCallCount = 0;
+        
+        int updateValueCallCount = 0;
+        
+        int subscribeCallCount = 0;
+        
+        @Override
+        void prepare() {
+            super.prepare();
+            this.prepareCallCount++;
+        }
+        
+        @Override
+        void updateValue() {
+            super.updateValue();
+            this.updateValueCallCount++;
+        }
+        
+        @Override
+        void subscribe(BitsViewer subscriber) {
+            super.subscribe(subscriber);
+            this.subscribeCallCount++;
+        }
+        
+        CallCountingBytePanel(BitPanel[] bitPanels) {
+            super(bitPanels);
+        }
+        
+    }
+    
 }

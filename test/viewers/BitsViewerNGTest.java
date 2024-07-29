@@ -22,6 +22,7 @@ import java.awt.Graphics;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import math.fp.FloatingPointNumber;
 
 import static org.testng.Assert.*;
 import org.testng.annotations.Test;
@@ -51,6 +52,21 @@ public class BitsViewerNGTest extends JFrame {
         Color expected = new Color(255, 192, 184);
         Color actual = BitsViewer.DEFAULT_MANTISSA_BITS_COLOR;
         assertEquals(actual, expected);
+    }
+    
+    static class CallCountingBitsViewer extends BitsViewer {
+        
+        int updateValueCallCount = 0;
+        
+        void updateValue() {
+            super.updateValue();
+            this.updateValueCallCount++;
+        }
+        
+        public CallCountingBitsViewer(FloatingPointNumber number) {
+            super(number);
+        }
+        
     }
     
 }
