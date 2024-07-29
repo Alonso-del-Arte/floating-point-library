@@ -33,21 +33,21 @@ public class BitsViewer {
     
     /**
      * The default color for the sign bit panel. The RGB values for this color 
-     * are 184, 184, 255.
+     * are 152, 152, 224.
      */
-    static final Color DEFAULT_SIGN_BIT_COLOR = new Color(12105983);
+    static final Color DEFAULT_SIGN_BIT_COLOR = new Color(10000608);
     
     /**
      * The default color for the exponent bit panels. The RGB values for this 
-     * color are 200, 255, 192.
+     * color are 168, 224, 160.
      */
-    static final Color DEFAULT_EXPONENT_BITS_COLOR = new Color(13172672);
+    static final Color DEFAULT_EXPONENT_BITS_COLOR = new Color(11067552);
     
     /**
      * The default color for the mantissa bit panels. The RGB values for this 
-     * color are 255, 192, 184.
+     * color are 224, 160, 152.
      */
-    static final Color DEFAULT_MANTISSA_BITS_COLOR = new Color(16761016);
+    static final Color DEFAULT_MANTISSA_BITS_COLOR = new Color(14721176);
     
     void updateValue() {
         //
