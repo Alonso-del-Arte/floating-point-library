@@ -19,6 +19,8 @@ package viewers;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -105,6 +107,38 @@ public class BitPanelNGTest extends JFrame {
         assert excMsg != null : "Exception message should not be null";
         assert !excMsg.isBlank() : "Exception message should not be blank";
         System.out.println("\"" + excMsg + "\"");
+    }
+    
+    private static class CallCountingBitPanel extends BitPanel {
+        
+        int mouseClickedCallCount = 0;
+        
+        int mouseEnteredCallCount = 0;
+        
+        int mouseExitedCallCount = 0;
+
+        @Override
+        public void mouseClicked(MouseEvent event) {
+            super.mouseClicked(event);
+            this.mouseClickedCallCount++;
+        }
+        
+        @Override
+        public void mouseEntered(MouseEvent event) {
+            super.mouseEntered(event);
+            this.mouseEnteredCallCount++;
+        }
+        
+        @Override
+        public void mouseExited(MouseEvent event) {
+            super.mouseExited(event);
+            this.mouseExitedCallCount++;
+        }
+        
+        public CallCountingBitPanel(boolean on, Color colorCode, short index) {
+            super(on, colorCode, index);
+        }
+        
     }
     
 }
