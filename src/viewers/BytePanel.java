@@ -50,6 +50,18 @@ public class BytePanel extends JPanel {
         return value;
     }
     
+    void prepare() {
+        // TODO: Write tests for this
+    }
+    
+    void updateValue() {
+        // TODO: Write tests for this
+    }
+    
+    void subscribe(BitsViewer subscriber) {
+        // TODO: Write tests for this
+    }
+    
     /**
      * Sole constructor.
      * @param bitPanels An array of bit panels. Should have no fewer than eight 

@@ -22,6 +22,9 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
+import math.fp.FloatingPointNumber;
+import math.fp.QuarterPrecisionNumber;
+
 /**
  *
  * @author Alonso del Arte
@@ -45,5 +48,17 @@ public class BitsViewer {
      * color are 255, 192, 184.
      */
     static final Color DEFAULT_MANTISSA_BITS_COLOR = new Color(16761016);
+    
+    void updateValue() {
+        //
+    }
+    
+    public void activate() {
+        //
+    }
+    
+    public BitsViewer(FloatingPointNumber number) {
+        //
+    }
     
 }
