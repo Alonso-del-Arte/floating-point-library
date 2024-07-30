@@ -17,9 +17,11 @@
 package viewers;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Graphics;
+import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -94,6 +96,33 @@ public class BitPanelNGTest extends JFrame {
         assertEquals(actual, expected);
     }
     
+    private MouseEvent[] makeMouseEventArray(Component instance) {
+        long when = System.currentTimeMillis();
+        MouseEvent enterEvent = new MouseEvent(instance, 
+                MouseEvent.MOUSE_ENTERED, when, 0, 0, 0, 0, false);
+        when++;
+        MouseEvent clickEvent = new MouseEvent(instance, 
+                MouseEvent.MOUSE_CLICKED, when, 0, 0, 0, 1, false);
+        when++;
+        MouseEvent exitEvent = new MouseEvent(instance, 
+                MouseEvent.MOUSE_ENTERED, when, 0, 0, 0, 0, false);
+        MouseEvent[] array = {enterEvent, clickEvent, exitEvent};
+        return array;
+    }
+    
+    @Test
+    public void testActivate() {
+        System.out.println("activate");
+        Color colorCode = chooseColor();
+        short index = (short) RANDOM.nextInt(64);
+        BitPanel instance = new BitPanel(RANDOM.nextBoolean(), colorCode, 
+                index);
+        instance.activate();
+        MouseListener[] expected = {instance};
+        MouseListener[] actual = instance.getMouseListeners();
+        assertEquals(actual, expected);
+    }
+
     @Test
     public void testConstructorRejectsNegativeIndex() {
         short badIndex = (short) (RANDOM.nextInt() | Short.MIN_VALUE);
