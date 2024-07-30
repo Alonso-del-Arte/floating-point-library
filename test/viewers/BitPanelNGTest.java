@@ -50,6 +50,13 @@ public class BitPanelNGTest extends JFrame {
         assertEquals(actual, expected);
     }
     
+    @Test
+    public void testDefaultPanelWidth() {
+        int expected = 100;
+        int actual = BitPanel.DEFAULT_PANEL_WIDTH;
+        assertEquals(actual, expected);
+    }
+    
     static Color chooseColor() {
         int rgb = RANDOM.nextInt(RGB_THRESHOLD);
         return new Color(rgb);
