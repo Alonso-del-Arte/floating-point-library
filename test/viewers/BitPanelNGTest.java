@@ -18,6 +18,7 @@ package viewers;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -116,22 +117,27 @@ public class BitPanelNGTest extends JFrame {
         int mouseEnteredCallCount = 0;
         
         int mouseExitedCallCount = 0;
+        
+        MouseEvent mostRecentMouseEvent = null;
 
         @Override
         public void mouseClicked(MouseEvent event) {
             super.mouseClicked(event);
+            this.mostRecentMouseEvent = event;
             this.mouseClickedCallCount++;
         }
         
         @Override
         public void mouseEntered(MouseEvent event) {
             super.mouseEntered(event);
+            this.mostRecentMouseEvent = event;
             this.mouseEnteredCallCount++;
         }
         
         @Override
         public void mouseExited(MouseEvent event) {
             super.mouseExited(event);
+            this.mostRecentMouseEvent = event;
             this.mouseExitedCallCount++;
         }
         
