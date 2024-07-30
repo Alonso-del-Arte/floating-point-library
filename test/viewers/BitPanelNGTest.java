@@ -43,6 +43,13 @@ public class BitPanelNGTest extends JFrame {
     
     private static final int RGB_THRESHOLD = 1 << 24;
     
+    @Test
+    public void testDefaultPanelHeight() {
+        int expected = 200;
+        int actual = BitPanel.DEFAULT_PANEL_HEIGHT;
+        assertEquals(actual, expected);
+    }
+    
     static Color chooseColor() {
         int rgb = RANDOM.nextInt(RGB_THRESHOLD);
         return new Color(rgb);
