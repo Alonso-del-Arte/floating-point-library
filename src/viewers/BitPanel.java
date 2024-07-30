@@ -32,8 +32,7 @@ import javax.swing.JPanel;
  */
 public class BitPanel extends JPanel implements MouseListener {
     
-    // TODO: Write tests for this
-    static final int DEFAULT_PANEL_HEIGHT = 2;//00;
+    static final int DEFAULT_PANEL_HEIGHT = 200;
     
     // TODO: Write tests for this
     static final int DEFAULT_PANEL_WIDTH = 1;//00;
