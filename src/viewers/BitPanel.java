@@ -36,9 +36,8 @@ public class BitPanel extends JPanel implements MouseListener {
     
     static final int DEFAULT_PANEL_WIDTH = 100;
     
-    // TODO: Write tests for this
     static final Dimension DEFAULT_PREFERRED_DIMENSION 
-            = new Dimension(DEFAULT_PANEL_WIDTH + 1, DEFAULT_PANEL_HEIGHT + 1);
+            = new Dimension(DEFAULT_PANEL_WIDTH, DEFAULT_PANEL_HEIGHT);
     
     private static final String FONT_NAME = "Helvetica";
     
