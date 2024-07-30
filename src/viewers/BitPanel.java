@@ -18,6 +18,7 @@ package viewers;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -30,6 +31,30 @@ import javax.swing.JPanel;
  * @author Alonso del Arte
  */
 public class BitPanel extends JPanel implements MouseListener {
+    
+    // TODO: Write tests for this
+    static final int DEFAULT_PANEL_HEIGHT = 2;//00;
+    
+    // TODO: Write tests for this
+    static final int DEFAULT_PANEL_WIDTH = 1;//00;
+    
+    // TODO: Write tests for this
+    static final Dimension DEFAULT_PREFERRED_DIMENSION 
+            = new Dimension(DEFAULT_PANEL_WIDTH + 1, DEFAULT_PANEL_HEIGHT + 1);
+    
+    private static final String FONT_NAME = "Helvetica";
+    
+    private static final int DEFAULT_INDEX_FONT_SIZE = 12;
+    
+    private static final int DEFAULT_BIT_FONT_SIZE = 120;
+    
+    // TODO: Write tests for this
+    static final Font DEFAULT_INDEX_FONT = new Font(FONT_NAME, 
+            Font.PLAIN, 2 * DEFAULT_INDEX_FONT_SIZE);
+    
+    // TODO: Write tests for this
+    static final Font DEFAULT_BIT_FONT = new Font(FONT_NAME, Font.BOLD, 
+            5 * DEFAULT_BIT_FONT_SIZE);
     
     private boolean status;
     
