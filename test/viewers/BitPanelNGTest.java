@@ -19,9 +19,7 @@ package viewers;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.Graphics;
-import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -54,6 +52,14 @@ public class BitPanelNGTest extends JFrame {
     public void testDefaultPanelWidth() {
         int expected = 100;
         int actual = BitPanel.DEFAULT_PANEL_WIDTH;
+        assertEquals(actual, expected);
+    }
+    
+    @Test
+    public void testDefaultPreferredDimension() {
+        Dimension expected = new Dimension(BitPanel.DEFAULT_PANEL_WIDTH, 
+                BitPanel.DEFAULT_PANEL_HEIGHT);
+        Dimension actual = BitPanel.DEFAULT_PREFERRED_DIMENSION;
         assertEquals(actual, expected);
     }
     
