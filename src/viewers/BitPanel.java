@@ -106,12 +106,18 @@ public class BitPanel extends JPanel implements MouseListener {
         // TODO: Write tests for this
     }
     
+    /**
+     * Registers this instance as a mouse listener. Once activated and placed on 
+     * a visible component, this instance will notice mouse clicks and mouse 
+     * movements in and out of this panel.
+     */
     void activate() {
-        // TODO: Write tests for this
+        this.addMouseListener(this);
     }
     
     /**
-     * Sole constructor.
+     * Sole constructor. Be sure to write a call to {@link #activate()} prior to 
+     * expecting this instance to respond to mouse events.
      * @param on The bit, true for 1, false for 0. May be changed with {@link 
      * #toggleStatus()}.
      * @param colorCode The color code for the color coding. For example, light 
