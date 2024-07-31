@@ -297,6 +297,13 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
         return new OctuplePrecisionNumber(THIRTY_TWO_ZEROS);
     }
     
+    private QuarterPrecisionNumber plusQPN(QuarterPrecisionNumber qpn) {
+        if (this.heldByte == 0 && qpn.heldByte == Byte.MIN_VALUE) {
+            return this;
+        }
+        return qpn;
+    }
+    
     /** WORK IN PROGRESS...
      * Adds a floating point number to this one. This is guaranteed to be a 
      * commutative operation if both operands are of the same runtime class. But 
@@ -321,12 +328,8 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
      */
     @Override
     public QuarterPrecisionNumber plus(FloatingPointNumber addend) {
-        if (addend instanceof QuarterPrecisionNumber alreadyQuarter) {
-            if (this.heldByte == 0 
-                    && alreadyQuarter.heldByte == Byte.MIN_VALUE) {
-                return this;
-            }
-            return alreadyQuarter;
+        if (addend instanceof QuarterPrecisionNumber qpn) {
+            return this.plusQPN(qpn);
 //        } else {
 //            return this.plus(addend.toQuarterPrecision());
         }
