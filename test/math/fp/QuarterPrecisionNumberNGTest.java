@@ -2122,8 +2122,8 @@ public class QuarterPrecisionNumberNGTest {
     public void testPlusNegativeSubnormals() {
         for (byte b = Byte.MIN_VALUE; b < -120; b++) {
             QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
-            byte threshold = (byte) (-120 - b);
-            for (byte c = Byte.MIN_VALUE; c < threshold; c++) {
+            byte start = (byte) (b + 1);
+            for (byte c = start; c < -120; c++) {
                 QuarterPrecisionNumber addend = new QuarterPrecisionNumber(c);
                 QuarterPrecisionNumber expected 
                         = new QuarterPrecisionNumber((byte) (b 
