@@ -25,3 +25,6 @@ of Java floating point primitives.
 
 This project uses TestNG 6 and TestFrame 0.95 (will upgrade to TestFrame 1.0 as 
 soon as that's available).
+
+[A document on the basics of floating point numbers](Basics.md) will explain the 
+basic concepts.
