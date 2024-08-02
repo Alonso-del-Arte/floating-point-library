@@ -305,9 +305,6 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
                 return qpn;
             }
         }
-        if (this.heldByte == Byte.MIN_VALUE && qpn.heldByte == Byte.MIN_VALUE) {
-            return this;
-        }
         if (this.heldByte == Byte.MIN_VALUE) {
             return qpn;
         }
