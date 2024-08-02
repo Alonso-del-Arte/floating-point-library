@@ -298,18 +298,22 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     }
     
     private QuarterPrecisionNumber plusQPN(QuarterPrecisionNumber qpn) {
-        if (this.heldByte == 0) {
-            if (qpn.heldByte == Byte.MIN_VALUE) {
+//        if (this.heldByte == 0) {
+//            if (qpn.heldByte == Byte.MIN_VALUE) {
                 return this;
-            } else {
-                return qpn;
-            }
-        }
-        if (this.heldByte == Byte.MIN_VALUE) {
-            return qpn;
-        }
-        byte b = (byte) (this.heldByte + qpn.heldByte);
-        return new QuarterPrecisionNumber(b);
+//            } else {
+//                return qpn;
+//            }
+//        }
+//        if (this.heldByte == Byte.MIN_VALUE) {
+//            return qpn;
+//        }
+//        if (qpn.heldByte < 0) {
+//            byte b = (byte) (this.heldByte + (Byte.MIN_VALUE ^ qpn.heldByte));
+//            return new QuarterPrecisionNumber(b);
+//        }
+//        byte b = (byte) (this.heldByte + qpn.heldByte);
+//        return new QuarterPrecisionNumber(b);
     }
     
     /** WORK IN PROGRESS...
