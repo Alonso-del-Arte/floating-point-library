@@ -31,7 +31,7 @@ the sign bit column because it's all 1s.
 | None     | Quadruple |        128 |            15 |           112 |
 | None     | Octuple   |        256 |            19 |           236 |
 
-On Wikipedia, I saw the formula $4 \log_2 k - 13$, but I have not been able to 
+On Wikipedia, I saw the formula $4 \log_2(k) - 13$, but I have not been able to 
 verify if that comes from some official source. The $k$ stands for the total 
 number of bits.
 
