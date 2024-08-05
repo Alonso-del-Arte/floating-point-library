@@ -297,6 +297,7 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
         return new OctuplePrecisionNumber(THIRTY_TWO_ZEROS);
     }
     
+    // TODO: Refactor once all the plus and minus test cases are written
     private QuarterPrecisionNumber plusQPN(QuarterPrecisionNumber qpn) {
         if (this.heldByte == 0) {
             if (qpn.heldByte == Byte.MIN_VALUE) {
@@ -308,6 +309,9 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
         if (this.heldByte == Byte.MIN_VALUE) {
             return qpn;
         }
+        if (this.isNormal() && qpn.isNormal()) {
+            return new QuarterPrecisionNumber((byte) (this.heldByte + 8));
+        } 
         if (qpn.heldByte < 0) {
             byte b = (byte) (this.heldByte + (Byte.MIN_VALUE ^ qpn.heldByte));
             return new QuarterPrecisionNumber(b);
