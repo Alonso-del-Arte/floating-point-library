@@ -2135,6 +2135,36 @@ public class QuarterPrecisionNumberNGTest {
             }
         }
     }
+    
+    @Test
+    public void testNegativeNormalPlusItselfWithinRange() {
+        for (byte exponent = -120; exponent < -16; exponent += 8) {
+            byte stop = (byte) (exponent + 8);
+            for (byte b = exponent; b < stop; b++) {
+                QuarterPrecisionNumber addend = new QuarterPrecisionNumber(b);
+                QuarterPrecisionNumber expected 
+                        = new QuarterPrecisionNumber((byte) (b + 8));
+                QuarterPrecisionNumber actual = addend.plus(addend);
+                String message = "Adding " + addend.toString() + " to itself";
+                assertEquals(actual, expected, message);
+            }
+        }
+    }
+
+    @Test
+    public void testPositiveNormalPlusItselfWithinRange() {
+        for (byte exponent = 8; exponent < 112; exponent += 8) {
+            byte stop = (byte) (exponent + 8);
+            for (byte b = exponent; b < stop; b++) {
+                QuarterPrecisionNumber addend = new QuarterPrecisionNumber(b);
+                QuarterPrecisionNumber expected 
+                        = new QuarterPrecisionNumber((byte) (b + 8));
+                QuarterPrecisionNumber actual = addend.plus(addend);
+                String message = "Adding " + addend.toString() + " to itself";
+                assertEquals(actual, expected, message);
+            }
+        }
+    }
 
     // TODO: Write more tests for plus()
     
