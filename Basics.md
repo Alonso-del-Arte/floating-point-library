@@ -20,7 +20,9 @@ these formats differently than what almost everyone does.
 
 Therefore, the apportionments on the following table should be considered as 
 suggestions for all formats other than 32- and 64-bit. The following table omits 
-the sign bit column because it's all 1s.
+the sign bit column because it's all 1s. It was decided long ago that 32-bit 
+floating point is "single" precision, and the other formats are reckoned in 
+relation to it.
 
 | JVM type | Term      | Total bits | Exponent bits | Mantissa bits |
 |----------|-----------|-----------:|--------------:|--------------:|
@@ -60,14 +62,33 @@ be $-(2^{w - 1}) + 1$, so that an unbiased exponent of $2^{w - 1} - 1$ biases to
 0. However, both unbiased exponents 0 and 1 bias to $-(2^{w - 1}) + 2$, as 
 unbiased exponent 0 has a special meaning that will be explained later in this 
 document. Unbiased exponent $2^w - 1$ also has a special meaning that will also 
-be explained later.
+be explained later. The following table shows typical biases:
+
+| Precision | Minimum biased | 0 unbiased |
+|-----------|---------------:|-----------:|
+| Quarter   |       &minus;6 |          7 |
+| Half      |      &minus;14 |         15 |
+| Single    |     &minus;126 |        127 |
+| Double    |    &minus;1022 |       1023 |
+| Quadruple |    PLACEHOLDER |  PLACEHOLD |
+| Octuple   |    PLACEHOLDER |  PLACEHOLD |
+
+Note that 0 unbiased is also the maximum biased exponent. Technically, the 
+maximum available biased exponent is one greater than is shown in this table, 
+but given the special meaning of the maximum exponent, the number is moot.
+
+If all the exponent bits are on, but all the mantissa bits are off, the value 
+represents positive or negative infinity, according to the sign bit. But if the 
+exponent bits are all on and even just one of the mantissa bits is also on, the 
+value represents the special quantity Not a Number (NaN). I will elaborate NaN 
+more later on in this document.
 
 When the exponent is not the lowest nor the highest, the mantissa bits are 
 understood to contain an implied leading 1. Therefore, with typical biases, the 
 number 1.0 is represented with the sign bit off, all exponent bits on except the 
 highest one, and all the mantissa bits off.
 
-| Term      | Bit pattern of 1.0 in hexadecimal |
+| Precision | Bit pattern of 1.0 in hexadecimal |
 |-----------|----------------------------------:|
 | Quarter   |                                38 |
 | Half      |                             3C 00 |
@@ -86,4 +107,52 @@ number does not have an implied leading 1 and is therefore said to be
 **subnormal**. The biased exponent for unbiased exponent 0 is the same as for 
 unbiased exponent 1.
 
+Therefore 0.0 is represented with all bits off. But if the sign bit is on and 
+all other bits are off, the number is actually &minus;0.0, which is 
+arithmetically equal to 0.0.
+
+Nonzero subnormal numbers vastly complicate floating point arithmetic, 
+especially when one operand is subnormal and the other one is not.
+
+## More about NaN
+
 FINISH WRITING
+
+## Floating point arithmetic
+
+FINISH WRITING
+
+### Addition and subtraction
+
+FINISH WRITING
+
+### Multiplication and division
+
+FINISH WRITING
+
+### Roots and logarithms
+
+FINISH WRITING
+
+### Trigonometric operations
+
+FINISH WRITING
+
+## Java and `strictfp`
+
+FINISH WRITING
+
+FINISH WRITING
+
+FINISH WRITING
+
+FINISH WRITING
+
+FINISH WRITING
+
+FINISH WRITING
+
+FINISH WRITING
+
+FINISH WRITING
+
