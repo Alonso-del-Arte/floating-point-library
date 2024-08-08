@@ -2190,4 +2190,29 @@ public class QuarterPrecisionNumberNGTest {
     
     // TODO: Write tests for divides()
     
+    @Test
+    public void testNaNIsNeverArithmeticallyEqual() {
+        byte[] bitPatterns = {-7, -6, -5, -4, -3, -2, -1, 121, 122, 123, 124, 
+            125, 126, Byte.MAX_VALUE};
+        int len = bitPatterns.length;
+        QuarterPrecisionNumber[] numbers = new QuarterPrecisionNumber[len];
+        for (int i = 0; i < len; i++) {
+            numbers[i] = new QuarterPrecisionNumber(bitPatterns[i]);
+        }
+        String[] numberTexts = new String[len];
+        for (int j = 0; j < len; j++) {
+            int pat = (bitPatterns[j] < 0) ? bitPatterns[j] + 256 
+                    : bitPatterns[j];
+            numberTexts[j] = numbers[j].toString() + " from bit pattern " 
+                    + Integer.toString(pat, 16);
+        }
+        String msgPart = " should not be arithmetically equal to ";
+        for (int a = 0; a < len; a++) {
+            for (int b = 0; b < len; b++) {
+                String msg = numberTexts[a] + msgPart + numberTexts[b];
+                assert !numbers[a].arithmeticallyEqual(numbers[b]) : msg;
+            }
+        }
+    }
+    
 }
