@@ -390,7 +390,7 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     // TODO: Write tests for this
     @Override
     public boolean arithmeticallyEqual(FloatingPointNumber other) {
-        return false;
+        return !this.isNaN();
     }
     
     private String toStringNormal() {
