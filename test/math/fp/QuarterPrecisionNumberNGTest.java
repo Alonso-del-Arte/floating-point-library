@@ -2215,4 +2215,22 @@ public class QuarterPrecisionNumberNGTest {
         }
     }
     
+    private static void assertArithEqualItself(QuarterPrecisionNumber number) {
+        String msg = "Number " + number.toString() 
+                + " should be arithmetically equal to itself";
+        assert number.arithmeticallyEqual(number) : msg;
+    }
+    
+    @Test
+    public void testArithmeticallyEqual() {
+        System.out.println("arithmeticallyEqual");
+        for (byte b = Byte.MIN_VALUE; b < -7; b++) {
+            QuarterPrecisionNumber negativeNumber = new QuarterPrecisionNumber(b);
+            QuarterPrecisionNumber positiveNumber 
+                    = new QuarterPrecisionNumber((byte) (b + 128));
+            assertArithEqualItself(negativeNumber);
+            assertArithEqualItself(positiveNumber);
+        }
+    }
+    
 }
