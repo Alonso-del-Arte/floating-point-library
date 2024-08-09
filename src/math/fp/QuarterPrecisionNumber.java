@@ -387,10 +387,38 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
         return this;
     }
     
-    // TODO: Write tests for this
+    private boolean arithEq(QuarterPrecisionNumber alreadyQPN) {
+        if (this.isNaN() || alreadyQPN.isNaN()) {
+            return false;
+        }
+        return this.heldByte == alreadyQPN.heldByte;
+    }
+    
+    /** WORK IN PROGRESS... CURRENTLY TESTING WITH QUARTER PREC INSTANCES
+     * Determines whether or not this number is arithmetically equal to another 
+     * according to the IEEE-754 standard. This diverges somewhat from the 
+     * results of {@link #equals(java.lang.Object) equals()}.
+     * For the examples, suppose this number is &minus;0.001953125.
+     * @param other The number to compare against. Examples: &minus;0.001953125, 
+     * &minus;0.0019550323486328125, 0.001953125, 240.0, positive infinity, NaN 
+     * from bit pattern 0xFF.
+     * @return True if {@code other} is arithmetically equal to this number, 
+     * false otherwise. In the examples, true for the first one, false for the 
+     * others, even though one of the examples would be equal in a narrowing 
+     * conversion and another example is equal in absolute value. Special cases 
+     * to consider:
+     * <ul>
+     * <li>NaN is never arithmetically equal to itself, even if both instances 
+     * are constructed from the same bit pattern.</li>
+     * </ul>
+     */
     @Override
     public boolean arithmeticallyEqual(FloatingPointNumber other) {
-        return !this.isNaN();
+        if (other instanceof QuarterPrecisionNumber alreadyQPN) {
+            return this.arithEq(alreadyQPN);
+        } else {
+            return true;
+        }
     }
     
     private String toStringNormal() {
