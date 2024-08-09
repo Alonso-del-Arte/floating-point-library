@@ -2233,4 +2233,42 @@ public class QuarterPrecisionNumberNGTest {
         }
     }
     
+    @Test
+    public void testNegativeNumbersNotEqualToOthers() {
+        for (byte b = -127; b < -7; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String msgPart = "Number " + number.toString() 
+                    + " should not be equal to ";
+            for (int c = Byte.MIN_VALUE; c < 128; c++) {
+                if (b != c) {
+                    QuarterPrecisionNumber other 
+                            = new QuarterPrecisionNumber((byte) c);
+                    String msg = msgPart + other.toString();
+                    assert !number.arithmeticallyEqual(other) : msg;
+                }
+            }
+        }
+    }
+    
+    @Test
+    public void testPositiveNumbersNotEqualToOthers() {
+        for (byte b = 1; b < 121; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String msgPart = "Number " + number.toString() 
+                    + " should not be equal to ";
+            for (int c = Byte.MIN_VALUE; c < 128; c++) {
+                if (b != c) {
+                    QuarterPrecisionNumber other 
+                            = new QuarterPrecisionNumber((byte) c);
+                    String msg = msgPart + other.toString();
+                    assert !number.arithmeticallyEqual(other) : msg;
+                }
+            }
+        }
+    }
+    
+    public void testNotArithmeticallyEqualToOtherNonzeroValues() {
+        fail("HAVEN'T WRITTEN TEST YET");
+    }
+    
 }
