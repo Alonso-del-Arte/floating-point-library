@@ -717,6 +717,13 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testNegativeZeroIsZero() {
+        QuarterPrecisionNumber number 
+                = new QuarterPrecisionNumber(Byte.MIN_VALUE);
+        assert number.isZero() : "\u22120.0 should be considered zero";
+    }
+    
+    @Test
     public void testNegativeInfinityIsNotInteger() {
         byte b = -8;
         QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
