@@ -81,9 +81,13 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
         return (this.heldByte & Byte.MAX_VALUE) < 8;
     }
     
-    // TODO: Write tests for this
+    /**
+     * Tells whether this number is zero or not. Remember that there is negative 
+     * zero in floating point.
+     * @return True if this number is &plusmn;0.0, false otherwise.
+     */
     public boolean isZero() {
-        return this.heldByte == Byte.MIN_VALUE || this.heldByte == 0;
+        return (this.heldByte & Byte.MAX_VALUE) == 0;
     }
     
     /**
