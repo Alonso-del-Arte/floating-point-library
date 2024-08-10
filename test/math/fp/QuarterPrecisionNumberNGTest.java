@@ -699,6 +699,24 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testNegativeNonZeroIsNotZero() {
+        for (byte b = -127; b < 0; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String msg = number.toString() + " should not be considered zero";
+            assert !number.isZero() : msg;
+        }
+    }
+    
+    @Test
+    public void testPositiveNonZeroIsNotZero() {
+        for (byte b = 1; b > 0; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String msg = number.toString() + " should not be considered zero";
+            assert !number.isZero() : msg;
+        }
+    }
+    
+    @Test
     public void testNegativeInfinityIsNotInteger() {
         byte b = -8;
         QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
