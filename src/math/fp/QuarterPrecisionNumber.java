@@ -81,6 +81,11 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
         return (this.heldByte & Byte.MAX_VALUE) < 8;
     }
     
+    // TODO: Write tests for this
+    public boolean isZero() {
+        return false;
+    }
+    
     /**
      * Determines whether this floating point number represents an integer or 
      * not. Keep in mind that infinities and NaN values will always be 
