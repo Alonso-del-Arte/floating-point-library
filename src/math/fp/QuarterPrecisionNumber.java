@@ -83,7 +83,7 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     
     // TODO: Write tests for this
     public boolean isZero() {
-        return this.heldByte == 0;
+        return this.heldByte == Byte.MIN_VALUE || this.heldByte == 0;
     }
     
     /**
