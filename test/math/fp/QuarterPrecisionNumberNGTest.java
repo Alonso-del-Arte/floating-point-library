@@ -692,6 +692,13 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testIsZero() {
+        System.out.println("isZero");
+        QuarterPrecisionNumber number = new QuarterPrecisionNumber((byte) 0);
+        assert number.isZero() : "0.0 should be considered zero";
+    }
+    
+    @Test
     public void testNegativeInfinityIsNotInteger() {
         byte b = -8;
         QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
@@ -2267,7 +2274,7 @@ public class QuarterPrecisionNumberNGTest {
         }
     }
     
-    public void testNotArithmeticallyEqualToOtherNonzeroValues() {
+    public void testZeroesArithmeticallyEqualToEachOther() {
         fail("HAVEN'T WRITTEN TEST YET");
     }
     
