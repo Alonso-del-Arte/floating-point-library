@@ -54,6 +54,11 @@ public abstract class FloatingPointNumber
      */
     public abstract boolean isSubnormal();
     
+    // TODO: Write tests for this
+    public boolean isZero() {
+        return false;
+    }
+    
     /**
      * Determines whether this floating point number represents an integer or 
      * not. Keep in mind that infinities and NaN values will always be 

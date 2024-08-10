@@ -86,6 +86,7 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
      * zero in floating point.
      * @return True if this number is &plusmn;0.0, false otherwise.
      */
+    @Override
     public boolean isZero() {
         return (this.heldByte & Byte.MAX_VALUE) == 0;
     }
