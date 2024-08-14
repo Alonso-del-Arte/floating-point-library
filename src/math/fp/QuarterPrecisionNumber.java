@@ -54,6 +54,18 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     
     private final byte heldByte;
 
+    // TODO: Write tests for this
+    @Override
+    public int getUnbiasedExponent() {
+        return Integer.MIN_VALUE;
+    }
+    
+    // TODO: Write tests for this
+    @Override
+    public int getBiasedExponent() {
+        return Integer.MAX_VALUE;
+    }
+    
     /**
      * Tells whether this number is a finite normal number. A normal number, or 
      * normalized number, has an implied leading 1 in its mantissa.

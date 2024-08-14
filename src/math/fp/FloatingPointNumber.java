@@ -35,6 +35,21 @@ public abstract class FloatingPointNumber
     }
     
     /**
+     * Gives the number's unbiased exponent. Should never be negative.
+     * @return The number's unbiased exponent. Should be 0 for subnormal 
+     * numbers, 2<sup><i>w</i></sup> &minus; 1 for infinities and NaNs, where 
+     * <i>w</i> is the number of exponent bits.
+     */
+    public abstract int getUnbiasedExponent();
+    
+    /**
+     * Gives the number's biased exponent. May be negative.
+     * @return The number's biased exponent. Should be the same for subnormal 
+     * numbers and the normal numbers closest to the subnormal numbers.
+     */
+    public abstract int getBiasedExponent();
+    
+    /**
      * Indicates whether or not this number is normal. A number is said to be 
      * normal in the IEEE-754 sense if its floating point representation 
      * includes a tacit 1.  

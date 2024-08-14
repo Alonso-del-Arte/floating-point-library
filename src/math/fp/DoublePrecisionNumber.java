@@ -49,6 +49,18 @@ public class DoublePrecisionNumber extends FloatingPointNumber {
 
     // TODO: Write tests for this
     @Override
+    public int getUnbiasedExponent() {
+        return Integer.MIN_VALUE;
+    }
+    
+    // TODO: Write tests for this
+    @Override
+    public int getBiasedExponent() {
+        return Integer.MAX_VALUE;
+    }
+    
+    // TODO: Write tests for this
+    @Override
     public boolean isNormal() {
         return false;
     }

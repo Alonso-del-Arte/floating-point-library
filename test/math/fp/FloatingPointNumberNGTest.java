@@ -230,6 +230,16 @@ public class FloatingPointNumberNGTest {
     private static class FloatingPointNumberImpl extends FloatingPointNumber {
         
         @Override
+        public int getUnbiasedExponent() {
+            return 0;
+        }
+    
+        @Override
+        public int getBiasedExponent() {
+            return (1 << 19) - 1;
+        }
+        
+        @Override
         public boolean isNormal() {
             return false;
         }
