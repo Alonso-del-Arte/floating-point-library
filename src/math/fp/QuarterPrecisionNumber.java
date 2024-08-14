@@ -324,6 +324,10 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
                     && qpn.heldByte < -8) {
                 return new QuarterPrecisionNumber((byte) -8);
             }
+            if (this.heldByte > 112 && this.heldByte < 120 && qpn.heldByte > 112 
+                    && qpn.heldByte < 120) {
+                return new QuarterPrecisionNumber((byte) 120);
+            }
             return new QuarterPrecisionNumber((byte) (this.heldByte + 8));
         } 
         if (qpn.heldByte < 0) {
