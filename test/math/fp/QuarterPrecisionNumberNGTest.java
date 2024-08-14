@@ -2197,6 +2197,18 @@ public class QuarterPrecisionNumberNGTest {
             }
         }
     }
+    
+    @Test
+    public void testNegativePlusItselfOverflowsToNegativeInfinity() {
+        QuarterPrecisionNumber expected = new QuarterPrecisionNumber((byte) -8);
+        for (byte b = -16; b < -8; b++) {
+            QuarterPrecisionNumber addend = new QuarterPrecisionNumber(b);
+            QuarterPrecisionNumber actual = addend.plus(addend);
+            String message = "Adding " + addend.toString() 
+                    + " overflows 8-bit floating point";
+            assertEquals(actual, expected, message);
+        }
+    }
 
     // TODO: Write more tests for plus()
     
