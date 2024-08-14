@@ -320,6 +320,10 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
             return qpn;
         }
         if (this.isNormal() && qpn.isNormal()) {
+            if (this.heldByte > -17 && this.heldByte < -8 && qpn.heldByte > -17 
+                    && qpn.heldByte < -8) {
+                return new QuarterPrecisionNumber((byte) -8);
+            }
             return new QuarterPrecisionNumber((byte) (this.heldByte + 8));
         } 
         if (qpn.heldByte < 0) {
