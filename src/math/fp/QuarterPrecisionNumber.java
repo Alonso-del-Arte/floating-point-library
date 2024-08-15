@@ -75,6 +75,9 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
         if (this.heldByte < -120) {
             return -6;
         }
+        if (this.heldByte > -1 && this.heldByte < 8) {
+            return -6;
+        }
         return ((this.heldByte & 120) >> 3) - 7;
     }
     
