@@ -68,7 +68,7 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     // TODO: Write tests for this
     @Override
     public int getBiasedExponent() {
-        return Integer.MAX_VALUE;
+        return (this.heldByte >> 3) + 9;
     }
     
     /**
