@@ -567,6 +567,21 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testGetBiasedExponentPositiveNormalOrInfinite() {
+        for (int i = 8; i < Byte.MAX_VALUE; i += 8) {
+            int expected = ((i & 120) >> 3) - 7;
+            byte stop = (byte) (i + 8);
+            for (byte b = (byte) i; b < stop; b++) {
+                QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+                int actual = number.getBiasedExponent();
+                String message = "Getting biased exponent of " 
+                        + number.toString();
+                assertEquals(actual, expected, message);
+            }
+        }
+    }
+    
+    @Test
     public void testNegativeInfinityIsNotNormal() {
         byte b = -8;
         QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
