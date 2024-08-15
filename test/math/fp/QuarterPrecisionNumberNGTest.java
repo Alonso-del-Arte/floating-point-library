@@ -594,6 +594,18 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testGetBiasedExponentPositiveSubnormal() {
+        int expected = -6;
+        for (byte b = 0; b < 8; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String message = "Subnormal number " + number.toString() 
+                    + " should have biased exponent \u22126";
+            int actual = number.getBiasedExponent();
+            assertEquals(actual, expected, message);
+        }
+    }
+    
+    @Test
     public void testNegativeInfinityIsNotNormal() {
         byte b = -8;
         QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
