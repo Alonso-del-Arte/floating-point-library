@@ -65,9 +65,16 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
         return (this.heldByte & 120) >> 3;
     }
     
-    // TODO: Write tests for this
+    /**
+     * Gives the number's biased exponent. May be negative.
+     * @return The number's biased exponent: &minus;6 for subnormal numbers and 
+     * normal numbers close to subnormal, 7 for finite numbers
+     */
     @Override
     public int getBiasedExponent() {
+        if (this.heldByte < -120) {
+            return -6;
+        }
         return ((this.heldByte & 120) >> 3) - 7;
     }
     
