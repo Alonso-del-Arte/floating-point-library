@@ -558,7 +558,7 @@ public class QuarterPrecisionNumberNGTest {
             byte stop = (byte) (i + 8);
             for (byte b = (byte) i; b < stop; b++) {
                 QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
-                int actual = number.getUnbiasedExponent();
+                int actual = number.getBiasedExponent();
                 String message = "Getting biased exponent of " 
                         + number.toString();
                 assertEquals(actual, expected, message);
