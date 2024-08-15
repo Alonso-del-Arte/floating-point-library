@@ -54,10 +54,15 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     
     private final byte heldByte;
 
-    // TODO: Write tests for this
+    /**
+     * Gives the number's unbiased exponent. Will never be negative.
+     * @return The number's unbiased exponent. 0 for subnormal numbers, 
+     * 2<sup><i>w</i></sup> &minus; 1 for infinities and NaNs, where 
+     * <i>w</i> is the number of exponent bits.
+     */
     @Override
     public int getUnbiasedExponent() {
-        return Integer.MIN_VALUE;
+        return (this.heldByte & 120) >> 3;
     }
     
     // TODO: Write tests for this
