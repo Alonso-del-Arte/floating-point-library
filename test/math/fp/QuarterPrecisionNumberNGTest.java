@@ -539,12 +539,14 @@ public class QuarterPrecisionNumberNGTest {
     public void testGetUnbiasedExponent() {
         System.out.println("getUnbiasedExponent");
         for (int i = Byte.MIN_VALUE; i < Byte.MAX_VALUE; i += 8) {
-            int expected = (i & Byte.MAX_VALUE) >> 3;
+            int expected = (i & 120) >> 3;
             byte stop = (byte) (i + 8);
             for (byte b = (byte) i; b < stop; b++) {
                 QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
                 int actual = number.getUnbiasedExponent();
-                assertEquals(actual, expected);
+                String message = "Getting unbiased exponent of " 
+                        + number.toString();
+                assertEquals(actual, expected, message);
             }
         }
     }
