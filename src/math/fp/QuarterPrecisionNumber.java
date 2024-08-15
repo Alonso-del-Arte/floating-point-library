@@ -28,6 +28,12 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     private static final Fraction ONE = new Fraction(1, 1);
     
     private static final Fraction ONE_EIGHTH = ONE.divides(8);
+    
+    /**
+     * Bit mask for the exponent bits. Also happens to be the byte for positive 
+     * infinity.
+     */
+    private static final byte EXPONENT_MASK = 120;
 
     private static final byte ZERO_BYTE = 0;
     
@@ -58,22 +64,24 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
      * Gives the number's unbiased exponent. Will never be negative.
      * @return The number's unbiased exponent. 0 for subnormal numbers, 
      * 2<sup><i>w</i></sup> &minus; 1 for infinities and NaNs, where 
-     * <i>w</i> is the number of exponent bits.
+     * <i>w</i> is the number of exponent bits, and numbers in between for the 
+     * other numbers.
      */
     @Override
     public int getUnbiasedExponent() {
-        return (this.heldByte & 120) >> 3;
+        return (this.heldByte & EXPONENT_MASK) >> 3;
     }
     
     /**
      * Gives the number's biased exponent. May be negative.
      * @return The number's biased exponent: &minus;6 for subnormal numbers and 
      * normal numbers close to subnormal, 7 for finite numbers with the largest 
-     * absolute values, and 8 for infinities and NaN values.
+     * absolute values, and 8 for infinities and NaN values, and numbers in 
+     * between for the other numbers.
      */
     @Override
     public int getBiasedExponent() {
-        int absolute = this.heldByte & 120;
+        int absolute = this.heldByte & EXPONENT_MASK;
         if (absolute < 8) {
             return -6;
         }
@@ -144,7 +152,7 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
      */
     @Override
     public boolean isFinite() {
-        return (this.heldByte & 120) != 120;
+        return (this.heldByte & EXPONENT_MASK) != EXPONENT_MASK;
     }
     
     /**
@@ -155,7 +163,7 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
      */
     @Override
     public boolean isInfinite() {
-        return (this.heldByte & Byte.MAX_VALUE) == 120;
+        return (this.heldByte & Byte.MAX_VALUE) == EXPONENT_MASK;
     }
     
     /**
@@ -167,7 +175,7 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
      */
     @Override
     public boolean isNaN() {
-        return (this.heldByte & Byte.MAX_VALUE) > 120;
+        return (this.heldByte & Byte.MAX_VALUE) > EXPONENT_MASK;
     }
     
     /**
@@ -199,7 +207,7 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     private Fraction toNonNegativeFractionNormal() {
         int mantissaBitPattern = this.heldByte & 7;
         Fraction fraction = ONE.plus(ONE_EIGHTH.times(mantissaBitPattern));
-        int exponent = ((this.heldByte & 120) >> 3) - 7;
+        int exponent = ((this.heldByte & EXPONENT_MASK) >> 3) - 7;
         while (exponent < 0) {
             fraction = fraction.divides(2);
             exponent++;
