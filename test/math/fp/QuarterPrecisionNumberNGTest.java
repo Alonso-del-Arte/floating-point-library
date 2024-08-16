@@ -2410,10 +2410,21 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
-    public void testBitPatternHexadecimalPositiveExponentNegativeFiveUp() {
+    public void testBitPatternHexadecimalPositiveExponentNegativeFiveAndUp() {
         for (byte b = 16; b > 0; b++) {
             QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
             String expected = Integer.toHexString(b);
+            String actual = number.bitPatternHexadecimal();
+            String message = "Getting bit pattern for " + number.toString();
+            assertEquals(actual, expected, message);
+        }
+    }
+    
+    @Test
+    public void testBitPatternHexadecimalPositiveExponentNegativeSix() {
+        for (byte b = 0; b < 17; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String expected = '0' + Integer.toHexString(b);
             String actual = number.bitPatternHexadecimal();
             String message = "Getting bit pattern for " + number.toString();
             assertEquals(actual, expected, message);
