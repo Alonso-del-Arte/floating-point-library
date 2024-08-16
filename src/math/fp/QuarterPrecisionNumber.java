@@ -517,7 +517,7 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     // TODO: Write tests for this
     @Override
     public String bitPatternHexadecimal() {
-        return Integer.toHexString(this.heldByte + 256);
+        return Integer.toHexString(Byte.toUnsignedInt(this.heldByte));
     }
     
     public QuarterPrecisionNumber(byte b) {
