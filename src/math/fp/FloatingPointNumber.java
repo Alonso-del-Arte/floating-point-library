@@ -145,7 +145,10 @@ public abstract class FloatingPointNumber
     
     public abstract OctuplePrecisionNumber toOctuplePrecision();
     
-    public abstract String bitPatternHexadecimal();
+    // TODO: Write tests for this
+    public String bitPatternHexadecimal() {
+        return "SORRY, NOT IMPLEMENTED YET";
+    }
     
     // TODO: Write tests for this
     public static FloatingPointNumber apply(byte[] bytes) {

@@ -367,11 +367,6 @@ public class FloatingPointNumberNGTest {
             return intermediate.toString();
         }
         
-        @Override
-        public String bitPatternHexadecimal() {
-            return "FOR TESTING PURPOSES ONLY";
-        }
-    
         FloatingPointNumberImpl(byte[] bytes) {
             super(bytes);
         }
