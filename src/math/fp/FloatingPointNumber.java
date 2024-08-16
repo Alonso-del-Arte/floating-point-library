@@ -145,9 +145,26 @@ public abstract class FloatingPointNumber
     
     public abstract OctuplePrecisionNumber toOctuplePrecision();
     
-    // TODO: Write tests for this
+    /**
+     * Gives the bit pattern of this number as the textual representation of an 
+     * unsigned hexadecimal number. The nice thing about hexadecimal is that one 
+     * hexadecimal digit neatly corresponds to four bits. For the example, 
+     * suppose this is floating point number made up of the bytes &minus;1 
+     * (unsigned 255), &minus;128 (unsigned 128), 3, 5, 90.
+     * @return A sequence of twice as many hexadecimal digit characters as the 
+     * number has component bytes. In the example, this would be "FF8003055A".
+     */
     public String bitPatternHexadecimal() {
-        return "SORRY, NOT IMPLEMENTED YET";
+        int capacity = 2 * this.componentBytes.length;
+        StringBuilder builder = new StringBuilder(capacity);
+        for (byte b : this.componentBytes) {
+            String str = Integer.toHexString(Byte.toUnsignedInt(b));
+            if (str.length() == 1) {
+                str = '0' + str;
+            }
+            builder.append(str);
+        }
+        return builder.toString();
     }
     
     // TODO: Write tests for this
