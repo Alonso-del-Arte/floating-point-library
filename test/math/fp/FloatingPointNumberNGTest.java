@@ -17,6 +17,7 @@
 package math.fp;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
@@ -193,6 +194,27 @@ public class FloatingPointNumberNGTest {
                 + kindaSameNumber.getClass().getName() + " holding value " 
                 + kindaSameNumber.toString() + " hashing to " + hashB;
         assert hashA != hashB : msg;
+    }
+    
+    private static String hexConvert(byte b) {
+        String intermediate = Integer.toHexString(Byte.toUnsignedInt(b));
+        return (intermediate.length() == 1) ? '0' + intermediate : intermediate;
+    }
+    
+    @Test
+    public void testBitPatternHexadecimal() {
+        System.out.println("bitPatternHexadecimal");
+        FloatingPointNumber number = makeNumber();
+        int capacity = 2 * number.componentBytes.length;
+        StringBuilder intermediate = new StringBuilder(capacity);
+        for (byte b : number.componentBytes) {
+            intermediate.append(hexConvert(b));
+        }
+        String expected = intermediate.toString();
+        String actual = number.bitPatternHexadecimal();
+        String message = "Reckoning bit pattern for number from bytes " 
+                + Arrays.toString(number.componentBytes);
+        assertEquals(actual, expected, message);
     }
     
     @Test
