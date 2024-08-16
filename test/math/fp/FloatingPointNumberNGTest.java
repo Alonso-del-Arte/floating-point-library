@@ -368,7 +368,7 @@ public class FloatingPointNumberNGTest {
         }
         
         @Override
-        public String toHexadecimalString() {
+        public String bitPatternHexadecimal() {
             return "FOR TESTING PURPOSES ONLY";
         }
     

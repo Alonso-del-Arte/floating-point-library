@@ -197,7 +197,7 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
             
     // TODO: Write tests for this
     @Override
-    public String toHexadecimalString() {
+    public String bitPatternHexadecimal() {
         return "SORRY, NOT IMPLEMENTED YET";
     }
     
