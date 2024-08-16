@@ -2409,4 +2409,15 @@ public class QuarterPrecisionNumberNGTest {
         }
     }
     
+    @Test
+    public void testBitPatternHexadecimalPositiveExponentNegativeFiveUp() {
+        for (byte b = 16; b > 0; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String expected = Integer.toHexString(b);
+            String actual = number.bitPatternHexadecimal();
+            String message = "Getting bit pattern for " + number.toString();
+            assertEquals(actual, expected, message);
+        }
+    }
+    
 }
