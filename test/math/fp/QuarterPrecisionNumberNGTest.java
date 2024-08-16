@@ -2398,4 +2398,15 @@ public class QuarterPrecisionNumberNGTest {
         fail("HAVEN'T WRITTEN TEST YET");
     }
     
+    @Test
+    public void testBitPatternHexadecimalNegative() {
+        for (byte b = Byte.MIN_VALUE; b < 0; b++) {
+            QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
+            String expected = Integer.toHexString(b + 256);
+            String actual = number.bitPatternHexadecimal();
+            String message = "Getting bit pattern for " + number.toString();
+            assertEquals(actual, expected, message);
+        }
+    }
+    
 }
