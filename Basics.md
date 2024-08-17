@@ -140,7 +140,43 @@ FINISH WRITING
 
 ## Java and `strictfp`
 
-FINISH WRITING
+It was mentioned earlier that when Java first came out, some of the machines 
+that the Java Virtual Machine could run on were capable of 80-bit floating point 
+arithmetic.
+
+That could have meant that in some cases floating point calculations on a JVM on 
+a particular device could return a result that's slightly different from a JVM 
+on a different device.
+
+Theoretically, for example, a result that vanishes to zero in 64-bit floating 
+point arithmetic might be nonzero in 80-bit floating point and get rounded up to 
+the smallest positive value that 64-bit floating point can represent, resulting 
+in one computer using Java to give one result and another computer also running 
+Java to give a slightly different result (I have not ever been able to find 
+evidence of this happening).
+
+So the reserved word `strictfp` was introduced in Java 1.2. It is a modifier 
+that requires all floating point calculations to be done in 32- or 64-bit 
+floating point, according to their declared data types, and not 40- or 80-bit 
+floating point or any other floating point format that might be available on the 
+host machine.
+
+Indeed in the Java Development Kit (JDK) for Java 8, we find that the 
+`java.lang.StrictMath` class is declared with the `strictfp` modifier, and so 
+all of its static functions are also `strictfp`. But a lot of static functions 
+in `java.lang.Math` call their counterparts in `java.lang.StrictMath`.
+
+Also, many programmers only needed approximate values that their programs would 
+round up to integers, so losing subnormal numbers close to zero was just not an 
+issue.
+
+From Java 17 onwards, using `strictfp` is unnecessary because all floating point 
+calculations are evaluated "strictly." Writing `strictfp` is still allowed, 
+because `strictfp` is still a reserved word, but the compiler gives a warning. 
+In the Java 21 JDK source, "`strictfp`" is not used as a modifier nor is it even 
+mentioned in the Javadoc. The `strictfp` modifier would be a historical 
+curiosity except that a lot of devices are still running Java 8 and Java 11, and 
+maybe some non-LTS versions prior to Java 17.
 
 FINISH WRITING
 
