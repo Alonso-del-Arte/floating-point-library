@@ -514,10 +514,20 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
         };
     }
     
-    // TODO: Write tests for this
+    /**
+     * Gives the bit pattern of this number as the textual representation of an 
+     * unsigned hexadecimal number. Will be zero-padded on the left as needed.
+     * @return A sequence of two hexadecimal digit characters, zero-padded if 
+     * necessary. For example, for the byte 60 corresponding to the quarter 
+     * precision number 1.5, this function will return "3c". If you prefer the 
+     * output to use uppercase letters for the digits A, B, C, D, E, F, simply 
+     * use {@code toUpperCase()} on the return of this function.
+     */
     @Override
     public String bitPatternHexadecimal() {
-        return Integer.toHexString(Byte.toUnsignedInt(this.heldByte));
+        String intermediate 
+                = Integer.toHexString(Byte.toUnsignedInt(this.heldByte));
+        return (intermediate.length() == 1) ? '0' + intermediate : intermediate;
     }
     
     public QuarterPrecisionNumber(byte b) {
