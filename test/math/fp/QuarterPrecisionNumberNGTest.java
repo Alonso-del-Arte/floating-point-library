@@ -2422,7 +2422,7 @@ public class QuarterPrecisionNumberNGTest {
     
     @Test
     public void testBitPatternHexadecimalPositiveExponentNegativeSix() {
-        for (byte b = 0; b < 17; b++) {
+        for (byte b = 0; b < 16; b++) {
             QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
             String expected = '0' + Integer.toHexString(b);
             String actual = number.bitPatternHexadecimal();
