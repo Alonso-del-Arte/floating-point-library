@@ -90,6 +90,17 @@ public class FloatingPointNumberNGTest {
         assert !number.isZero() : msg;
     }
     
+    @Test
+    public void testNegativeZeroIsZero() {
+        int len = RANDOM.nextInt(8) + 2;
+        byte[] bytes = new byte[len];
+        bytes[0] = Byte.MIN_VALUE;
+        FloatingPointNumber number = new FloatingPointNumberImpl(bytes);
+        String msg = "Number from bit pattern " + number.bitPatternHexadecimal() 
+                + " should be considered zero";
+        assert number.isZero() : msg;
+    }
+    
     private static FloatingPointNumber makeNumber() {
         int length = RANDOM.nextInt(16) + 4;
         byte[] bytes = new byte[length];
