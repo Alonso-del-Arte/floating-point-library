@@ -45,11 +45,11 @@ public class LongProcessor {
     public static long fromBytes(byte[] source) {
         int len = source.length;
         if (len == 0) return 0L;
-        if (len > Double.BYTES) {
-            int excess = len - Double.BYTES;
-            String excMsg = "Source array has " + len + " bytes, " + excess 
-                    + " too many";
-            throw new IllegalArgumentException(excMsg);
+        if (len > Double.BYTES) {return Long.MAX_VALUE;
+//            int excess = len - Double.BYTES;
+//            String excMsg = "Source array has " + len + " bytes, " + excess 
+//                    + " too many";
+//            throw new IllegalArgumentException(excMsg);
         }
         long intermediate = 0L;
         for (byte b : source) {
