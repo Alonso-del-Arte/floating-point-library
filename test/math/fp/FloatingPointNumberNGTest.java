@@ -64,6 +64,17 @@ public class FloatingPointNumberNGTest {
         assertEquals(actual, expected);
     }
     
+    @Test
+    public void testIsZero() {
+        System.out.println("isZero");
+        int len = RANDOM.nextInt(8) + 2;
+        byte[] bytes = new byte[len];
+        FloatingPointNumber number = new FloatingPointNumberImpl(bytes);
+        String msg = "Number from bit pattern " + number.bitPatternHexadecimal() 
+                + " should be considered zero";
+        assert number.isZero() : msg;
+    }
+    
     private static FloatingPointNumber makeNumber() {
         int length = RANDOM.nextInt(16) + 4;
         byte[] bytes = new byte[length];
