@@ -75,6 +75,21 @@ public class FloatingPointNumberNGTest {
         assert number.isZero() : msg;
     }
     
+    @Test
+    public void testIsNotZero() {
+        int len = RANDOM.nextInt(8) + 2;
+        byte[] bytes = new byte[len];
+        byte replacementByteSign = RANDOM.nextBoolean() ? Byte.MIN_VALUE : 0;
+        byte replacementByte = (byte) (replacementByteSign + RANDOM.nextInt(127) 
+                + 1);
+        int replacementIndex = RANDOM.nextInt(len);
+        bytes[replacementIndex] = replacementByte;
+        FloatingPointNumber number = new FloatingPointNumberImpl(bytes);
+        String msg = "Number from bit pattern " + number.bitPatternHexadecimal() 
+                + " should not be considered zero";
+        assert !number.isZero() : msg;
+    }
+    
     private static FloatingPointNumber makeNumber() {
         int length = RANDOM.nextInt(16) + 4;
         byte[] bytes = new byte[length];
