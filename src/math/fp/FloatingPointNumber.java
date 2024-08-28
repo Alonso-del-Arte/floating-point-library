@@ -71,7 +71,7 @@ public abstract class FloatingPointNumber
     
     // TODO: Write tests for this
     public boolean isZero() {
-        return false;
+        return true;
     }
     
     /**
