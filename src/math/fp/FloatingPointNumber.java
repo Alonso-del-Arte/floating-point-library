@@ -71,7 +71,13 @@ public abstract class FloatingPointNumber
     
     // TODO: Write tests for this
     public boolean isZero() {
-        return true;
+        boolean allZeroSoFar = true;
+        int index = 0;
+        while (allZeroSoFar && index < this.componentBytes.length) {
+            allZeroSoFar &= (this.componentBytes[index] == 0);
+            index++;
+        }
+        return allZeroSoFar;
     }
     
     /**
