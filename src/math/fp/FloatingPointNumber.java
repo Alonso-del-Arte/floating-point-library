@@ -69,10 +69,19 @@ public abstract class FloatingPointNumber
      */
     public abstract boolean isSubnormal();
     
-    // TODO: Write tests for this
+    /**
+     * Determines whether or not this number is zero. Remember that zero has two 
+     * representations in each floating point number format.
+     * @return True if this number is &minus;0.0 or +0.0, false in all other 
+     * cases.
+     */
     public boolean isZero() {
+        byte masked = (byte) (this.componentBytes[0] & Byte.MAX_VALUE);
+        if (masked != 0) {
+            return false;
+        }
         boolean allZeroSoFar = true;
-        int index = 0;
+        int index = 1;
         while (allZeroSoFar && index < this.componentBytes.length) {
             allZeroSoFar &= (this.componentBytes[index] == 0);
             index++;
