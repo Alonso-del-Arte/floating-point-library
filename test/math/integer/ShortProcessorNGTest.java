@@ -86,17 +86,18 @@ public class ShortProcessorNGTest {
     }
     
     /**
-     * Test of toBytes method, of class ShortProcessor.
+     * Test of the toBytes function, of the ShortProcessor class.
      */
-//    @Test
+    @Test
     public void testToBytes() {
         System.out.println("toBytes");
-        long source = 0L;
-        byte[] expResult = null;
-        byte[] result = ShortProcessor.toBytes(source);
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        short source = (short) RANDOM.nextInt();
+        byte b0 = (byte) ((source >> 8) & 255);
+        byte b1 = (byte) source;
+        byte[] expected = {b0, b1};
+        byte[] actual = ShortProcessor.toBytes(source);
+        String message = "Processing 16-bit number " + source;
+        assertEquals(actual, expected, message);
     }
     
 }
