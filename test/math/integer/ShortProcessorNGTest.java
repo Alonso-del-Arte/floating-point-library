@@ -16,6 +16,10 @@
  */
 package math.integer;
 
+import static math.integer.CalculatorNGTest.RANDOM;
+
+import static org.testframe.api.Asserters.assertThrows;
+
 import static org.testng.Assert.*;
 import org.testng.annotations.Test;
 
@@ -25,27 +29,29 @@ import org.testng.annotations.Test;
  */
 public class ShortProcessorNGTest {
     
-    public ShortProcessorNGTest() {
-    }
-
     /**
-     * Test of fromBytes method, of class ShortProcessor.
+     * Test of the fromBytes function, of the ShortProcessor class.
      */
     @Test
     public void testFromBytes() {
-        System.out.println("fromBytes");
-        byte[] bytes = null;
-        short expResult = 0;
-        short result = ShortProcessor.fromBytes(bytes);
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        int size = RANDOM.nextInt(8) + Short.BYTES + 2;
+        byte[] source = new byte[size];
+        String msg = "Using array of " + size 
+                + " bytes should have caused an exception";
+        Throwable t = assertThrows(() -> {
+            short badShort = ShortProcessor.fromBytes(source);
+            System.out.println(msg + ", not given result " + badShort);
+        }, IllegalArgumentException.class, msg);
+        String excMsg = t.getMessage();
+        assert excMsg != null : "Exception message should not be null";
+        assert !excMsg.isBlank() : "Exception message should not be blank";
+        System.out.println("\"" + excMsg + "\"");
     }
 
     /**
      * Test of toBytes method, of class ShortProcessor.
      */
-    @Test
+//    @Test
     public void testToBytes() {
         System.out.println("toBytes");
         long source = 0L;
