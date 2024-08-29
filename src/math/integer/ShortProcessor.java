@@ -34,27 +34,27 @@ public class ShortProcessor {
      * number, the array must have two bytes with the first byte being at least 
      * &minus;128 and at most &minus;1. For example, {&minus;128, 126}, 
      * corresponding to the hexadecimal representation 807E.
-     * @return The converted 16-bit integer. For example, 259, 
-     * corresponding to the 103 example. Or, for example, if the 
-     * array only has one byte, say &minus;1, that becomes 255. With the 
-     * 807E7C7A78767472 example, the result would be &minus;32642.
+     * @return The converted 16-bit integer. For example, 259, corresponding to 
+     * the 103 example. Or, for example, if the array only has one byte, say 
+     * &minus;1, that becomes 255. With the 807E example, the result would be 
+     * &minus;32642.
      * @throws IllegalArgumentException If {@code source} has 3 or more bytes.
      */
     public static short fromBytes(byte[] source) {
         int len = source.length;
-        switch (len) {
-            case 0:
-                return 0;
-            case 1:
-                return (short) (source[0] & 255);
-            case 2:
-                return (short) (((source[0] & 255) << 8) + (source[1] & 255));
-            default:
-                int excess = len - Short.BYTES;
-                String excMsg = "Source array has " + len + " bytes, " + excess 
-                        + " too many";
-                throw new IllegalArgumentException(excMsg);
+        if (len == 0) return 0;
+        if (len > Short.BYTES) {
+            int excess = len - Short.BYTES;
+            String excMsg = "Source array has " + len + " bytes, " + excess 
+                    + " too many";
+            throw new IllegalArgumentException(excMsg);
         }
+        int intermediate = source[0] & 255;
+        if (len == 2) {
+            intermediate <<= 8;
+            intermediate += (source[1] & 255);
+        }
+        return (short) intermediate;
     }
     
     // TODO: Write tests for this
