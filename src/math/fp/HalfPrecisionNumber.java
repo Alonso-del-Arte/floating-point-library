@@ -16,8 +16,10 @@
  */
 package math.fp;
 
+import math.integer.ShortProcessor;
+
 /**
- *16-bit
+ * Represents a 16-bit or "half precision" floating point number.
  * @author Alonso del Arte
  */
 public class HalfPrecisionNumber extends FloatingPointNumber {
@@ -203,6 +205,10 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
     
     HalfPrecisionNumber(byte[] bytes) {
         super(bytes);
+    }
+    
+    public HalfPrecisionNumber(short sh) {
+        super(ShortProcessor.toBytes(sh));
     }
     
 }
