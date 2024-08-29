@@ -65,6 +65,17 @@ public class ShortProcessorNGTest {
         assertEquals(actual, expected);
     }
     
+    @Test
+    public void testFromBytes() {
+        System.out.println("fromBytes");
+        byte[] source = new byte[Short.BYTES];
+        RANDOM.nextBytes(source);
+        short expected = (short) ((source[0] << 8) + (source[1] & 255));
+        short actual = ShortProcessor.fromBytes(source);
+        String message = "Processing bytes " + source[0] + " and " + source[1];
+        assertEquals(actual, expected, message);
+    }
+    
     /**
      * Test of toBytes method, of class ShortProcessor.
      */
