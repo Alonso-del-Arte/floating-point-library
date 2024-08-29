@@ -58,7 +58,7 @@ public class ShortProcessor {
     }
     
     // TODO: Write tests for this
-    public static byte[] toBytes(long source) {
+    public static byte[] toBytes(short source) {
         byte[] bytes = {};
         return bytes;
     }
