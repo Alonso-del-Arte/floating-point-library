@@ -58,9 +58,18 @@ public class ShortProcessorNGTest {
     
     @Test
     public void testFromOneByte() {
-        byte b = (byte) RANDOM.nextInt();
+        byte b = (byte) (RANDOM.nextInt() & Byte.MAX_VALUE);
         byte[] source = {b};
         short expected = b;
+        short actual = ShortProcessor.fromBytes(source);
+        assertEquals(actual, expected);
+    }
+    
+    @Test
+    public void testFromOneByteNegative() {
+        byte b = (byte) (RANDOM.nextInt(128) - 128);
+        byte[] source = {b};
+        short expected = (short) (b + 256);
         short actual = ShortProcessor.fromBytes(source);
         assertEquals(actual, expected);
     }
