@@ -33,7 +33,7 @@ public class ShortProcessorNGTest {
      * Test of the fromBytes function, of the ShortProcessor class.
      */
     @Test
-    public void testFromBytes() {
+    public void testFromBytesRejectsTooManyBytes() {
         int size = RANDOM.nextInt(8) + Short.BYTES + 2;
         byte[] source = new byte[size];
         String msg = "Using array of " + size 
@@ -48,6 +48,14 @@ public class ShortProcessorNGTest {
         System.out.println("\"" + excMsg + "\"");
     }
 
+    @Test
+    public void testFromBytesEmptyArrayGivesZero() {
+        byte[] source = {};
+        short expected = 0;
+        short actual = ShortProcessor.fromBytes(source);
+        assertEquals(actual, expected);
+    }
+    
     /**
      * Test of toBytes method, of class ShortProcessor.
      */
