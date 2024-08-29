@@ -22,14 +22,31 @@ package math.integer;
  */
 public class ShortProcessor {
     
-    // TODO: Write tests for this
+    /**
+     * Converts an array of bytes to a signed 16-bit integer.
+     * @param source The bytes to convert, with the most significant byte first 
+     * and the least significant byte last. If the array has two bytes, the 
+     * first byte's first bit is understood to be the sign bit. For example, {1, 
+     * 3}, which corresponds to the hexadecimal representation 103. The array 
+     * may have less than two bytes, in which case the single byte becomes the 
+     * least significant byte and the number is positive, even in the case of a 
+     * negative byte, or if the array is empty the number is 0. For a negative 
+     * number, the array must have two bytes with the first byte being at least 
+     * &minus;128 and at most &minus;1. For example, {&minus;128, 126}, 
+     * corresponding to the hexadecimal representation 807E.
+     * @return The converted 16-bit integer. For example, 259, 
+     * corresponding to the 103 example. Or, for example, if the 
+     * array only has one byte, say &minus;1, that becomes 255. With the 
+     * 807E7C7A78767472 example, the result would be &minus;32642.
+     * @throws IllegalArgumentException If {@code source} has 3 or more bytes.
+     */
     public static short fromBytes(byte[] source) {
         int len = source.length;
         switch (len) {
             case 0:
                 return 0;
             case 1:
-                return source[0];
+                return (short) (source[0] & 255);
             case 2:
                 return (short) (((source[0] & 255) << 8) + (source[1] & 255));
             default:
