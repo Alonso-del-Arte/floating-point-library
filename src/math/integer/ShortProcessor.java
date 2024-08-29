@@ -25,13 +25,14 @@ public class ShortProcessor {
     // TODO: Write tests for this
     public static short fromBytes(byte[] source) {
         int len = source.length;
+        if (len == 0) return 0;
         if (len > Short.BYTES) {
             int excess = len - Short.BYTES;
             String excMsg = "Source array has " + len + " bytes, " + excess 
                     + " too many";
             throw new IllegalArgumentException(excMsg);
         }
-        return 0;
+        return source[0];
     }
     
     // TODO: Write tests for this
