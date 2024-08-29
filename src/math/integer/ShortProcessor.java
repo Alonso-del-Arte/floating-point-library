@@ -31,7 +31,7 @@ public class ShortProcessor {
                     + " too many";
             throw new IllegalArgumentException(excMsg);
         }
-        return -1;
+        return 0;
     }
     
     // TODO: Write tests for this
