@@ -44,7 +44,6 @@ public class LongProcessor {
      */
     public static long fromBytes(byte[] source) {
         int len = source.length;
-        if (len == 0) return 0L;
         if (len > Double.BYTES) {
             int excess = len - Double.BYTES;
             String excMsg = "Source array has " + len + " bytes, " + excess 
