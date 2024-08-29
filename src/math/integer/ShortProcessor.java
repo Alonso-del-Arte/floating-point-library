@@ -23,8 +23,15 @@ package math.integer;
 public class ShortProcessor {
     
     // TODO: Write tests for this
-    public static short fromBytes(byte[] bytes) {
-        return 0;
+    public static short fromBytes(byte[] source) {
+        int len = source.length;
+        if (len > Short.BYTES) {
+            int excess = len - Short.BYTES;
+            String excMsg = "Source array has " + len + " bytes, " + excess 
+                    + " too many";
+            throw new IllegalArgumentException(excMsg);
+        }
+        return -1;
     }
     
     // TODO: Write tests for this
