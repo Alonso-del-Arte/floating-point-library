@@ -59,7 +59,9 @@ public class ShortProcessor {
     
     // TODO: Write tests for this
     public static byte[] toBytes(short source) {
-        byte[] bytes = {};
+        byte mostSignificant = (byte) (source >> 8);
+        byte leastSignificant = (byte) source;
+        byte[] bytes = {mostSignificant, leastSignificant};
         return bytes;
     }
     
