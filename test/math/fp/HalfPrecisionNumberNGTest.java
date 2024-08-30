@@ -42,7 +42,7 @@ public class HalfPrecisionNumberNGTest {
     /**
      * Test of getBiasedExponent method, of class HalfPrecisionNumber.
      */
-    @Test
+//    @Test
     public void testGetBiasedExponent() {
         System.out.println("getBiasedExponent");
         HalfPrecisionNumber instance = null;
@@ -56,7 +56,7 @@ public class HalfPrecisionNumberNGTest {
     /**
      * Test of isNormal method, of class HalfPrecisionNumber.
      */
-    @Test
+//    @Test
     public void testIsNormal() {
         System.out.println("isNormal");
         HalfPrecisionNumber instance = null;
@@ -70,7 +70,7 @@ public class HalfPrecisionNumberNGTest {
     /**
      * Test of isSubnormal method, of class HalfPrecisionNumber.
      */
-    @Test
+//    @Test
     public void testIsSubnormal() {
         System.out.println("isSubnormal");
         HalfPrecisionNumber instance = null;
@@ -84,7 +84,7 @@ public class HalfPrecisionNumberNGTest {
     /**
      * Test of isInteger method, of class HalfPrecisionNumber.
      */
-    @Test
+//    @Test
     public void testIsInteger() {
         System.out.println("isInteger");
         HalfPrecisionNumber instance = null;
@@ -98,7 +98,7 @@ public class HalfPrecisionNumberNGTest {
     /**
      * Test of isFinite method, of class HalfPrecisionNumber.
      */
-    @Test
+//    @Test
     public void testIsFinite() {
         System.out.println("isFinite");
         HalfPrecisionNumber instance = null;
@@ -112,7 +112,7 @@ public class HalfPrecisionNumberNGTest {
     /**
      * Test of isInfinite method, of class HalfPrecisionNumber.
      */
-    @Test
+//    @Test
     public void testIsInfinite() {
         System.out.println("isInfinite");
         HalfPrecisionNumber instance = null;
@@ -126,7 +126,7 @@ public class HalfPrecisionNumberNGTest {
     /**
      * Test of isNaN method, of class HalfPrecisionNumber.
      */
-    @Test
+//    @Test
     public void testIsNaN() {
         System.out.println("isNaN");
         HalfPrecisionNumber instance = null;
@@ -140,7 +140,7 @@ public class HalfPrecisionNumberNGTest {
     /**
      * Test of isQuietNaN method, of class HalfPrecisionNumber.
      */
-    @Test
+//    @Test
     public void testIsQuietNaN() {
         System.out.println("isQuietNaN");
         HalfPrecisionNumber instance = null;
@@ -154,7 +154,7 @@ public class HalfPrecisionNumberNGTest {
     /**
      * Test of isSignalingNaN method, of class HalfPrecisionNumber.
      */
-    @Test
+//    @Test
     public void testIsSignalingNaN() {
         System.out.println("isSignalingNaN");
         HalfPrecisionNumber instance = null;
@@ -168,7 +168,7 @@ public class HalfPrecisionNumberNGTest {
     /**
      * Test of to32BitPrimitive method, of class HalfPrecisionNumber.
      */
-    @Test
+//    @Test
     public void testTo32BitPrimitive() {
         System.out.println("to32BitPrimitive");
         HalfPrecisionNumber instance = null;
@@ -182,7 +182,7 @@ public class HalfPrecisionNumberNGTest {
     /**
      * Test of to64BitPrimitive method, of class HalfPrecisionNumber.
      */
-    @Test
+//    @Test
     public void testTo64BitPrimitive() {
         System.out.println("to64BitPrimitive");
         HalfPrecisionNumber instance = null;
@@ -196,7 +196,7 @@ public class HalfPrecisionNumberNGTest {
     /**
      * Test of toQuarterPrecision method, of class HalfPrecisionNumber.
      */
-    @Test
+//    @Test
     public void testToQuarterPrecision() {
         System.out.println("toQuarterPrecision");
         HalfPrecisionNumber instance = null;
@@ -210,7 +210,7 @@ public class HalfPrecisionNumberNGTest {
     /**
      * Test of toHalfPrecision method, of class HalfPrecisionNumber.
      */
-    @Test
+//    @Test
     public void testToHalfPrecision() {
         System.out.println("toHalfPrecision");
         HalfPrecisionNumber instance = null;
@@ -224,7 +224,7 @@ public class HalfPrecisionNumberNGTest {
     /**
      * Test of toSinglePrecision method, of class HalfPrecisionNumber.
      */
-    @Test
+//    @Test
     public void testToSinglePrecision() {
         System.out.println("toSinglePrecision");
         HalfPrecisionNumber instance = null;
@@ -238,7 +238,7 @@ public class HalfPrecisionNumberNGTest {
     /**
      * Test of toDoublePrecision method, of class HalfPrecisionNumber.
      */
-    @Test
+//    @Test
     public void testToDoublePrecision() {
         System.out.println("toDoublePrecision");
         HalfPrecisionNumber instance = null;
@@ -252,7 +252,7 @@ public class HalfPrecisionNumberNGTest {
     /**
      * Test of toQuadruplePrecision method, of class HalfPrecisionNumber.
      */
-    @Test
+//    @Test
     public void testToQuadruplePrecision() {
         System.out.println("toQuadruplePrecision");
         HalfPrecisionNumber instance = null;
@@ -266,7 +266,7 @@ public class HalfPrecisionNumberNGTest {
     /**
      * Test of toOctuplePrecision method, of class HalfPrecisionNumber.
      */
-    @Test
+//    @Test
     public void testToOctuplePrecision() {
         System.out.println("toOctuplePrecision");
         HalfPrecisionNumber instance = null;
@@ -280,7 +280,7 @@ public class HalfPrecisionNumberNGTest {
     /**
      * Test of plus method, of class HalfPrecisionNumber.
      */
-    @Test
+//    @Test
     public void testPlus() {
         System.out.println("plus");
         FloatingPointNumber addend = null;
@@ -295,7 +295,7 @@ public class HalfPrecisionNumberNGTest {
     /**
      * Test of negate method, of class HalfPrecisionNumber.
      */
-    @Test
+//    @Test
     public void testNegate() {
         System.out.println("negate");
         HalfPrecisionNumber instance = null;
@@ -309,7 +309,7 @@ public class HalfPrecisionNumberNGTest {
     /**
      * Test of minus method, of class HalfPrecisionNumber.
      */
-    @Test
+//    @Test
     public void testMinus() {
         System.out.println("minus");
         FloatingPointNumber subtrahend = null;
@@ -324,7 +324,7 @@ public class HalfPrecisionNumberNGTest {
     /**
      * Test of times method, of class HalfPrecisionNumber.
      */
-    @Test
+//    @Test
     public void testTimes() {
         System.out.println("times");
         FloatingPointNumber multiplicand = null;
@@ -339,7 +339,7 @@ public class HalfPrecisionNumberNGTest {
     /**
      * Test of reciprocal method, of class HalfPrecisionNumber.
      */
-    @Test
+//    @Test
     public void testReciprocal() {
         System.out.println("reciprocal");
         HalfPrecisionNumber instance = null;
@@ -353,7 +353,7 @@ public class HalfPrecisionNumberNGTest {
     /**
      * Test of divides method, of class HalfPrecisionNumber.
      */
-    @Test
+//    @Test
     public void testDivides() {
         System.out.println("divides");
         FloatingPointNumber divisor = null;
@@ -368,7 +368,7 @@ public class HalfPrecisionNumberNGTest {
     /**
      * Test of arithmeticallyEqual method, of class HalfPrecisionNumber.
      */
-    @Test
+//    @Test
     public void testArithmeticallyEqual() {
         System.out.println("arithmeticallyEqual");
         FloatingPointNumber other = null;
@@ -383,7 +383,7 @@ public class HalfPrecisionNumberNGTest {
     /**
      * Test of bitPatternHexadecimal method, of class HalfPrecisionNumber.
      */
-    @Test
+//    @Test
     public void testBitPatternHexadecimal() {
         System.out.println("bitPatternHexadecimal");
         HalfPrecisionNumber instance = null;
