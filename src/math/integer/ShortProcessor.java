@@ -57,12 +57,19 @@ public class ShortProcessor {
         return (short) intermediate;
     }
     
-    // TODO: Write tests for this
+    /**
+     * Converts a 16-bit integer to an array of two bytes.
+     * @param source The 16-bit integer to convert from. Three examples: 1000, 
+     * 103, &minus;32510.
+     * @return An array of two bytes, the first byte is the most significant 
+     * byte of {@code source}, the second byte is the least significant. In the 
+     * examples, 1000 becomes {3, &minus;24}, 103 becomes {0, 103} and 
+     * &minus;32510 becomes {&minus;127, 2}.
+     */
     public static byte[] toBytes(short source) {
         byte mostSignificant = (byte) (source >> 8);
         byte leastSignificant = (byte) source;
-        byte[] bytes = {mostSignificant, leastSignificant};
-        return bytes;
+        return new byte[]{mostSignificant, leastSignificant};
     }
     
 }
