@@ -211,9 +211,12 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
         super(bytes);
     }
     
-    // TODO: Write tests for this
+    /**
+     * 
+     * @param sh 
+     */
     public HalfPrecisionNumber(short sh) {
-        super(ShortProcessor.toBytes(Short.MIN_VALUE));
+        super(ShortProcessor.toBytes(sh));
     }
     
 }
