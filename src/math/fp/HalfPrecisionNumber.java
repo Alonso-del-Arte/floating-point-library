@@ -203,9 +203,12 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
         return "SORRY, NOT IMPLEMENTED YET";
     }
     
-    // TODO: Write tests for this
+    /**
+     * 
+     * @param bytes 
+     */
     HalfPrecisionNumber(byte[] bytes) {
-        super(new byte[]{Byte.MIN_VALUE, 0});
+        super(bytes);
     }
     
     // TODO: Write tests for this
