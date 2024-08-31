@@ -17,6 +17,7 @@
 package math.fp;
 
 import static math.fp.FloatingPointNumberNGTest.RANDOM;
+import math.integer.ShortProcessor;
 
 import static org.testng.Assert.*;
 import org.testng.annotations.Test;
@@ -402,6 +403,17 @@ public class HalfPrecisionNumberNGTest {
         byte leastSignificant = (byte) (RANDOM.nextInt(256) - 128);
         byte[] expected = {mostSignificant, leastSignificant};
         HalfPrecisionNumber number = new HalfPrecisionNumber(expected);
+        byte[] actual = number.getBytes();
+        assertEquals(actual, expected);
+    }
+    
+    @Test
+    public void test16BitIntegerConstructorPassesBytesAlong() {
+        byte mostSignificant = (byte) (RANDOM.nextInt(256) - 128);
+        byte leastSignificant = (byte) (RANDOM.nextInt(256) - 128);
+        byte[] expected = {mostSignificant, leastSignificant};
+        short sh = ShortProcessor.fromBytes(expected);
+        HalfPrecisionNumber number = new HalfPrecisionNumber(sh);
         byte[] actual = number.getBytes();
         assertEquals(actual, expected);
     }
