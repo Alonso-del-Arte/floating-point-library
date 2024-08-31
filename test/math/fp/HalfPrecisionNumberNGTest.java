@@ -16,6 +16,8 @@
  */
 package math.fp;
 
+import static math.fp.FloatingPointNumberNGTest.RANDOM;
+
 import static org.testng.Assert.*;
 import org.testng.annotations.Test;
 
@@ -392,6 +394,16 @@ public class HalfPrecisionNumberNGTest {
         assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
+    }
+    
+    @Test
+    public void testByteArrayConstructorPassesBytesAlong() {
+        byte mostSignificant = (byte) (RANDOM.nextInt(256) - 128);
+        byte leastSignificant = (byte) (RANDOM.nextInt(256) - 128);
+        byte[] expected = {mostSignificant, leastSignificant};
+        HalfPrecisionNumber number = new HalfPrecisionNumber(expected);
+        byte[] actual = number.getBytes();
+        assertEquals(actual, expected);
     }
     
 }
