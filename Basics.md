@@ -116,6 +116,17 @@ especially when one operand is subnormal and the other one is not.
 
 ## More about NaN
 
+There are two kinds of NaN: quiet NaN (qNaN) and signaling NaN (sNaN). A quiet 
+NaN should not cause any sort of exception or error. A signaling NaN is supposed 
+to cause some kind of exception or error, but whether or not that actually 
+happens depends on several factors, some of which are hardware-dependent.
+
+A quiet NaN has the highest explicit mantissa bit on. A signaling NaN should 
+have the highest explicit mantissa bit off and obviously at least one of the 
+less significant bits on (otherwise the value is an infinity, not NaN).
+
+Beyond this, there has never been any agreement on what the
+
 FINISH WRITING
 
 ## Floating point arithmetic
@@ -191,4 +202,3 @@ FINISH WRITING
 FINISH WRITING
 
 FINISH WRITING
-
