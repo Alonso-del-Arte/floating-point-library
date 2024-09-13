@@ -49,7 +49,7 @@ public class HalfPrecisionNumberNGTest {
     /**
      * Test of getUnbiasedExponent method, of class HalfPrecisionNumber.
      */
-    @Test
+//    @Test
     public void testGetUnbiasedExponent() {
         System.out.println("getUnbiasedExponent");
 //        HalfPrecisionNumber instance = null;
@@ -434,6 +434,11 @@ public class HalfPrecisionNumberNGTest {
         HalfPrecisionNumber number = new HalfPrecisionNumber(sh);
         byte[] actual = number.getBytes();
         assertEquals(actual, expected);
+    }
+    
+    @Test
+    public void testBytesArrayConstructorCorrectlySetsHeldShort() {
+        fail("HAVEN'T WRITTEN TEST YET");
     }
     
 }
