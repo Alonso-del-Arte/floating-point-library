@@ -22,7 +22,8 @@ Therefore, the apportionments on the following table should be considered as
 suggestions for all formats other than 32- and 64-bit. The following table omits 
 the sign bit column because it's all 1s. It was decided long ago that 32-bit 
 floating point is "single" precision, and the other formats are reckoned in 
-relation to it.
+relation to it. The Java Virtual Machine (JVM) has instructions for "single" and 
+"double" precision floating point.
 
 | JVM type | Term      | Total bits | Exponent bits | Mantissa bits |
 |----------|-----------|-----------:|--------------:|--------------:|
@@ -149,7 +150,14 @@ FINISH WRITING
 
 FINISH WRITING
 
-## Java and `strictfp`
+## Floating point in Java
+
+The Java programming language has two primitive floating point types, with 
+corresponding instructions for the JVM. Java reserves `float` and `double` for 
+32-bit and 64-bit floating point, respectively. These have the object wrappers 
+`java.lang.Float` and `java.lang.Double`.
+
+### Java and `strictfp`
 
 It was mentioned earlier that when Java first came out, some of the machines 
 that the Java Virtual Machine could run on were capable of 80-bit floating point 
