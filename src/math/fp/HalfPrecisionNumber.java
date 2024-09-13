@@ -48,6 +48,8 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
         ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, 
         ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE}; 
 // octuple
+    
+    private final short heldShort;
 
     // TODO: Write tests for this
     @Override
@@ -199,6 +201,9 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
     
     @Override
     public String toString() {
+        if (this.heldShort == 31744) {
+            return "Infinity";
+        }
         return "\u2212Infinity";
     }
             
@@ -214,6 +219,8 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
      */
     HalfPrecisionNumber(byte[] bytes) {
         super(bytes);
+        // TODO: Write test that this field is set correctly
+        this.heldShort = (short) ~bytes[0];
     }
     
     /**
@@ -222,6 +229,7 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
      */
     public HalfPrecisionNumber(short sh) {
         super(ShortProcessor.toBytes(sh));
+        this.heldShort = sh;
     }
     
 }
