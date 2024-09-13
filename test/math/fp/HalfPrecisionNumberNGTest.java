@@ -37,6 +37,15 @@ public class HalfPrecisionNumberNGTest {
         assertEquals(actual, expected);
     }
     
+    @Test
+    public void testToStringPositiveInfinity() {
+        short sh = 31744;
+        HalfPrecisionNumber number = new HalfPrecisionNumber(sh);
+        String expected = "Infinity";
+        String actual = number.toString();
+        assertEquals(actual, expected);
+    }
+    
     /**
      * Test of getUnbiasedExponent method, of class HalfPrecisionNumber.
      */
