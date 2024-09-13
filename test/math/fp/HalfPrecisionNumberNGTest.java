@@ -28,16 +28,25 @@ import org.testng.annotations.Test;
  */
 public class HalfPrecisionNumberNGTest {
     
+    @Test
+    public void testToStringNegativeInfinity() {
+        short sh = -1024;
+        HalfPrecisionNumber number = new HalfPrecisionNumber(sh);
+        String expected = "\u2212Infinity";
+        String actual = number.toString();
+        assertEquals(actual, expected);
+    }
+    
     /**
      * Test of getUnbiasedExponent method, of class HalfPrecisionNumber.
      */
     @Test
     public void testGetUnbiasedExponent() {
         System.out.println("getUnbiasedExponent");
-        HalfPrecisionNumber instance = null;
-        int expResult = 0;
-        int result = instance.getUnbiasedExponent();
-        assertEquals(result, expResult);
+//        HalfPrecisionNumber instance = null;
+//        int expResult = 0;
+//        int result = instance.getUnbiasedExponent();
+//        assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
