@@ -201,10 +201,13 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
     
     @Override
     public String toString() {
+        if (this.heldShort == -1024) {
+            return "\u2212Infinity";
+        }
         if (this.heldShort == 31744) {
             return "Infinity";
         }
-        return "\u2212Infinity";
+        return "NaN";
     }
             
     // TODO: Write tests for this
