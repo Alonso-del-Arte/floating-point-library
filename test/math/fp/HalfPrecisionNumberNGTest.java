@@ -46,6 +46,16 @@ public class HalfPrecisionNumberNGTest {
         assertEquals(actual, expected);
     }
     
+    @Test
+    public void testToStringNegativeNaN() {
+        String expected = "NaN";
+        for (short sh = -1023; sh < 0; sh++) {
+            HalfPrecisionNumber number = new HalfPrecisionNumber(sh);
+            String actual = number.toString();
+            assertEquals(actual, expected);
+        }
+    }
+
     /**
      * Test of getUnbiasedExponent method, of class HalfPrecisionNumber.
      */
