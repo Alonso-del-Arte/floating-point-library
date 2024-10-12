@@ -20,7 +20,7 @@ these formats differently than what almost everyone does.
 
 Therefore, the apportionments on the following table should be considered as 
 suggestions for all formats other than 32- and 64-bit. The following table omits 
-the sign bit column because it's all 1s. It was decided long ago that 32-bit 
+the sign bit column because it's always 1. It was decided long ago that 32-bit 
 floating point is "single" precision, and the other formats are reckoned in 
 relation to it. The Java Virtual Machine (JVM) has instructions for "single" and 
 "double" precision floating point.
@@ -36,7 +36,8 @@ relation to it. The Java Virtual Machine (JVM) has instructions for "single" and
 
 On Wikipedia, I saw the formula $4 \log_2(k) - 13$, but I have not been able to 
 verify if that comes from some official source. The $k$ stands for the total 
-number of bits.
+number of bits. For single precision, there is one more exponent bit than the 
+formula indicates. The formula doesn't quite work for half or quarter precision.
 
 The total number of bits doesn't have to be a power of two, but that certainly 
 simplifies the calculation of $\log_2 k$. For example, when Java first came out, 
@@ -44,6 +45,23 @@ some physical chips like the Intel 8087 provided 80-bit floating point numbers.
 The formula suggests an 80-bit floating point number ought to have roughly 
 12.287712379549447 exponent bits, which in this case we round down to 12, or we 
 might decide to round up to 13.
+
+We could define "extended" formats thus:
+
+| Term               | Total bits | Exponent bits | Mantissa bits |
+|--------------------|-----------:|--------------:|--------------:|
+| Extended quarter   |         10 |             4 |             5 |
+| Extended half      |         20 |             5 |            14 |
+| Extended single    |         40 |             8 |            31 |
+| Extended double    |         80 |            12 |            67 |
+| Extended quadruple |        160 |            16 |           143 |
+| Extended octuple   |        320 |            20 |           299 |
+
+The fact that bytes are made up of eight bits would seem to be the only reason 
+why formats smaller than quarter precision haven't had much general use until 
+fairly recently.
+
+The 4-bit format (FINISH WRITING)
 
 Note that the sign bit applies to the mantissa, not the exponent. Then it would 
 seem that the exponent bits can't represent negative numbers. The lowest number 
