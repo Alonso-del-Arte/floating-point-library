@@ -126,7 +126,8 @@ A quiet NaN has the highest explicit mantissa bit on. A signaling NaN should
 have the highest explicit mantissa bit off and obviously at least one of the 
 less significant bits on (otherwise the value is an infinity, not NaN).
 
-Beyond this, there has never been any agreement on what the
+Beyond this, there has never been any agreement on what the other mantissa bits 
+of a NaN value should represent.
 
 FINISH WRITING
 
