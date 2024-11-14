@@ -64,6 +64,14 @@ public class HalfPrecisionNumberNGTest {
         assertEquals(actual, expected);
     }
     
+    @Test
+    public void testToStringPositiveZero() {
+        HalfPrecisionNumber zero = new HalfPrecisionNumber((short) 0);
+        String expected = "0.0";
+        String actual = zero.toString();
+        assertEquals(actual, expected);
+    }
+    
     public void testToStringPositiveNaN() {
         String expected = "NaN";
         for (short sh = 31745; sh > 0; sh++) {
