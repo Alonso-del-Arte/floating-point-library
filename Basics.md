@@ -59,9 +59,8 @@ We could define "extended" formats thus:
 
 The fact that bytes are made up of eight bits would seem to be the only reason 
 why formats smaller than quarter precision haven't had much general use until 
-fairly recently.
-
-The 4-bit format (FINISH WRITING)
+fairly recently. I will write more about those formats later on in this 
+document.
 
 Note that the sign bit applies to the mantissa, not the exponent. Then it would 
 seem that the exponent bits can't represent negative numbers. The lowest number 
@@ -146,6 +145,15 @@ less significant bits on (otherwise the value is an infinity, not NaN).
 
 Beyond this, there has never been any agreement on what the other mantissa bits 
 of a NaN value should represent.
+
+FINISH WRITING
+
+## Formats smaller than eight bits
+
+Five-bit floating point is the smallest possible floating point number possible 
+according to the rules outlined in this document so far, including the ability 
+to distinguish between quiet NaNs and signaling NaNs. One sign bit, two exponent 
+bits and two mantissa bits.
 
 FINISH WRITING
 
