@@ -23,8 +23,7 @@ according to `equals()` if they have the same bit pattern.
 Also, signaling NaNs will be preserved to the extent that they can be kept out 
 of Java floating point primitives.
 
-This project uses TestNG 6 and TestFrame 0.95 (will upgrade to TestFrame 1.0 as 
-soon as that's available).
+This project uses TestNG 6 and TestFrame 1.0.
 
 [A document on the basics of floating point numbers](Basics.md) will explain the 
 basic concepts.
