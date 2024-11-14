@@ -204,10 +204,13 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
         if (this.heldShort == -1024) {
             return "\u2212Infinity";
         }
+        if (this.heldShort > -1024 && this.heldShort < 0) {
+            return "NaN";
+        }
         if (this.heldShort == 31744) {
             return "Infinity";
         }
-        return "NaN";
+        return "\u22120.0";
     }
             
     // TODO: Write tests for this
