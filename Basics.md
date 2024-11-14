@@ -153,7 +153,13 @@ FINISH WRITING
 Five-bit floating point is the smallest possible floating point number possible 
 according to the rules outlined in this document so far, including the ability 
 to distinguish between quiet NaNs and signaling NaNs. One sign bit, two exponent 
-bits and two mantissa bits.
+bits and two mantissa bits, plus an implicit leading 1 bit for the mantissa for 
+normalized numbers.
+
+However, since hardly anyone seems to care about distinguishing between quiet 
+and signaling NaNs, it's possible to do 4-bit floating point: one sign bit, two 
+exponent bits and a single mantissa bit. Thanks to normalization, this format 
+has two effective mantissa bits for most finite values.
 
 FINISH WRITING
 
