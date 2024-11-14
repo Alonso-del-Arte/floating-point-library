@@ -56,6 +56,23 @@ public class HalfPrecisionNumberNGTest {
         }
     }
 
+    @Test
+    public void testToStringNegativeZero() {
+        HalfPrecisionNumber zero = new HalfPrecisionNumber(Short.MIN_VALUE);
+        String expected = "\u22120.0";
+        String actual = zero.toString();
+        assertEquals(actual, expected);
+    }
+    
+    public void testToStringPositiveNaN() {
+        String expected = "NaN";
+        for (short sh = 31745; sh > 0; sh++) {
+            HalfPrecisionNumber number = new HalfPrecisionNumber(sh);
+            String actual = number.toString();
+            assertEquals(actual, expected);
+        }
+    }
+
     /**
      * Test of getUnbiasedExponent method, of class HalfPrecisionNumber.
      */
