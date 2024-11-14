@@ -12,7 +12,10 @@ available through Java Virtual Machine primitives. Specifically:
 * **Quadruple precision** &mdash; 128-bit.
 * **Octuple precision** &mdash; 256-bit.
 
-The floating point format is intended to comply with the IEEE-754 standard, 
+Formats narrower than quarter precision or wider than octuple precision will not 
+be provided.
+
+These floating point formats are intended to comply with the IEEE-754 standard, 
 subject to the following caveats:
 
 * Two objects representing not a number (NaN) values will be considered equal 
