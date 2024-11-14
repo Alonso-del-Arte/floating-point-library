@@ -201,6 +201,9 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
     
     @Override
     public String toString() {
+        if (this.heldShort == Short.MIN_VALUE) {
+            return "\u22120.0";
+        }
         if (this.heldShort == -1024) {
             return "\u2212Infinity";
         }
@@ -210,7 +213,7 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
         if (this.heldShort == 31744) {
             return "Infinity";
         }
-        return "\u22120.0";
+        return "0.0";
     }
             
     // TODO: Write tests for this
