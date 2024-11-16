@@ -161,6 +161,27 @@ and signaling NaNs, it's possible to do 4-bit floating point: one sign bit, two
 exponent bits and a single mantissa bit. Thanks to normalization, this format 
 has two effective mantissa bits for most finite values.
 
+It is easy to list all possible 4-bit values in this document.
+
+| Bit pattern | Value           |
+|-------------|-----------------|
+| 1 00 0      | &minus;0.0      |
+| 1 00 1      | FINISH WRITING  |
+| 1 01 0      |                 |
+| 1 01 1      |                 |
+| 1 10 0      |                 |
+| 1 10 1      |                 |
+| 1 11 0      | &minus;Infinity |
+| 1 11 1      | NaN             |
+| 0 00 0      | 0.0             |
+| 0 00 1      |                 |
+| 0 01 0      |                 |
+| 0 01 1      |                 |
+| 0 10 0      |                 |
+| 0 10 1      |                 |
+| 0 11 0      | +Infinity       |
+| 0 11 1      | NaN             |
+
 FINISH WRITING
 
 ## Floating point arithmetic
