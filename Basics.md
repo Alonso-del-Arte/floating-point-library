@@ -161,24 +161,27 @@ and signaling NaNs, it's possible to do 4-bit floating point: one sign bit, two
 exponent bits and a single mantissa bit. Thanks to normalization, this format 
 has two effective mantissa bits for most finite values.
 
+The bias by the usual rules then winds up being 0, which is technically 
+unbiased.
+
 It is easy to list all possible 4-bit values in this document.
 
 | Bit pattern | Value           |
 |-------------|-----------------|
 | 1 00 0      | &minus;0.0      |
-| 1 00 1      | FINISH WRITING  |
-| 1 01 0      |                 |
-| 1 01 1      |                 |
-| 1 10 0      |                 |
-| 1 10 1      |                 |
+| 1 00 1      | &minus;0.5  |
+| 1 01 0      | &minus;1.0      |
+| 1 01 1      | &minus;1.5      |
+| 1 10 0      | &minus;2.0      |
+| 1 10 1      | &minus;3.0      |
 | 1 11 0      | &minus;Infinity |
 | 1 11 1      | NaN             |
 | 0 00 0      | 0.0             |
-| 0 00 1      |                 |
-| 0 01 0      |                 |
-| 0 01 1      |                 |
-| 0 10 0      |                 |
-| 0 10 1      |                 |
+| 0 00 1      | 0.5             |
+| 0 01 0      | 1.0             |
+| 0 01 1      | 1.5             |
+| 0 10 0      | 2.0             |
+| 0 10 1      | 3.0             |
 | 0 11 0      | +Infinity       |
 | 0 11 1      | NaN             |
 
