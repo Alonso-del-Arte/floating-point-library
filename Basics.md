@@ -162,7 +162,7 @@ exponent bits and a single mantissa bit. Thanks to normalization, this format
 has two effective mantissa bits for most finite values.
 
 The bias by the usual rules then winds up being 0, which is technically 
-unbiased.
+unbiased. Normalization becomes meaningless.
 
 It is easy to list all possible 4-bit values in this document.
 
@@ -184,6 +184,12 @@ It is easy to list all possible 4-bit values in this document.
 | 0 10 1      | 3.0             |
 | 0 11 0      | +Infinity       |
 | 0 11 1      | NaN             |
+
+Despite the apparent simplifying effect of not having to worry about 
+normalization, 4-bit floating point arithmetic still has plenty of complexity. 
+For example, consider that adding 3.0 to any of the five positive values should 
+overflow to positive infinity in each case, not wrap around to NaN, negative 
+zero or a negative value.
 
 FINISH WRITING
 
