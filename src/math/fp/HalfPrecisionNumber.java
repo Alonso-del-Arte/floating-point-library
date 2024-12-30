@@ -215,27 +215,26 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
     
     @Override
     public String toString() {
-        if (this.heldShort == Short.MIN_VALUE) {
-            return MINUS_SIGN + "0.0";
-        }
-        if (this.heldShort == -1024) {
-            return MINUS_SIGN + "Infinity";
-        }
-        if (this.heldShort > -1024 && this.heldShort < 0) {
-            return "NaN";
-        }
-        if (this.heldShort == 0) {
-            return "0.0";
-        }
-        if (this.heldShort == 31744) {
-            return "Infinity";
-        }
-        int mantissa = this.heldShort & Short.MAX_VALUE;
-        BigDecimal multiplicand = new BigDecimal(mantissa);
-        BigDecimal product 
-                = RECIPROCAL_OF_TWO_TO_THE_24TH.multiply(multiplicand);
-        String sign = (this.heldShort < 0) ? MINUS_SIGN_STR : "";
-        return sign + product.toPlainString();
+        return switch (this.heldShort) {
+            case Short.MIN_VALUE -> MINUS_SIGN + "0.0";
+            case -1024 -> MINUS_SIGN + "Infinity";
+            case 0 -> "0.0";
+            case 31744 -> "Infinity";
+            default -> {
+                if ((this.heldShort > -1024 && this.heldShort < 0) 
+                        || this.heldShort > 31744) {
+                    yield "NaN";
+                } else {
+                    int mantissa = this.heldShort & Short.MAX_VALUE;
+                    BigDecimal multiplicand = new BigDecimal(mantissa);
+                    BigDecimal product 
+                            = RECIPROCAL_OF_TWO_TO_THE_24TH
+                                    .multiply(multiplicand);
+                    String sign = (this.heldShort < 0) ? MINUS_SIGN_STR : "";
+                    yield sign + product.toPlainString();
+                }
+            }
+        };
     }
             
     // TODO: Write tests for this
