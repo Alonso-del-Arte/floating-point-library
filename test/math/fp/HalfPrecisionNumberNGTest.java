@@ -38,6 +38,22 @@ public class HalfPrecisionNumberNGTest {
     }
     
     @Test
+    public void testToStringNegativeZero() {
+        HalfPrecisionNumber zero = new HalfPrecisionNumber(Short.MIN_VALUE);
+        String expected = "\u22120.0";
+        String actual = zero.toString();
+        assertEquals(actual, expected);
+    }
+    
+    @Test
+    public void testToStringPositiveZero() {
+        HalfPrecisionNumber zero = new HalfPrecisionNumber((short) 0);
+        String expected = "0.0";
+        String actual = zero.toString();
+        assertEquals(actual, expected);
+    }
+    
+    @Test
     public void testToStringPositiveInfinity() {
         short sh = 31744;
         HalfPrecisionNumber number = new HalfPrecisionNumber(sh);
@@ -56,22 +72,6 @@ public class HalfPrecisionNumberNGTest {
         }
     }
 
-    @Test
-    public void testToStringNegativeZero() {
-        HalfPrecisionNumber zero = new HalfPrecisionNumber(Short.MIN_VALUE);
-        String expected = "\u22120.0";
-        String actual = zero.toString();
-        assertEquals(actual, expected);
-    }
-    
-    @Test
-    public void testToStringPositiveZero() {
-        HalfPrecisionNumber zero = new HalfPrecisionNumber((short) 0);
-        String expected = "0.0";
-        String actual = zero.toString();
-        assertEquals(actual, expected);
-    }
-    
     public void testToStringPositiveNaN() {
         String expected = "NaN";
         for (short sh = 31745; sh > 0; sh++) {
