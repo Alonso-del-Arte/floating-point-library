@@ -16,6 +16,8 @@
  */
 package math.fp;
 
+import java.math.BigDecimal;
+
 import math.integer.ShortProcessor;
 
 /**
@@ -23,6 +25,14 @@ import math.integer.ShortProcessor;
  * @author Alonso del Arte
  */
 public class HalfPrecisionNumber extends FloatingPointNumber {
+    
+    private static final int A_POWER_OF_TWO = 1 << 24;
+    
+    private static final BigDecimal TWO_TO_THE_24TH 
+            = new BigDecimal(A_POWER_OF_TWO);
+    
+    private static final BigDecimal RECIPROCAL_OF_TWO_TO_THE_24TH 
+            = BigDecimal.ONE.divide(TWO_TO_THE_24TH);
     
     private static final byte ZERO_BYTE = 0;
     
@@ -210,10 +220,17 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
         if (this.heldShort > -1024 && this.heldShort < 0) {
             return "NaN";
         }
+        if (this.heldShort == 0) {
+            return "0.0";
+        }
         if (this.heldShort == 31744) {
             return "Infinity";
         }
-        return "0.0";
+        int mantissa = this.heldShort & Short.MAX_VALUE;
+        BigDecimal multiplicand = new BigDecimal(mantissa);
+        BigDecimal product 
+                = RECIPROCAL_OF_TWO_TO_THE_24TH.multiply(multiplicand);
+        return product.toPlainString();
     }
             
     // TODO: Write tests for this
