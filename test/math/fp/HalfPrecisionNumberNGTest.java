@@ -16,6 +16,8 @@
  */
 package math.fp;
 
+import java.math.BigDecimal;
+
 import static math.fp.FloatingPointNumberNGTest.RANDOM;
 import math.integer.ShortProcessor;
 
@@ -27,6 +29,16 @@ import org.testng.annotations.Test;
  * @author Alonso del Arte
  */
 public class HalfPrecisionNumberNGTest {
+    
+    private static final char MINUS_SIGN = '\u2212';
+    
+    private static final int A_POWER_OF_TWO = 1 << 24;
+    
+    private static final BigDecimal TWO_TO_THE_24TH 
+            = new BigDecimal(A_POWER_OF_TWO);
+    
+    private static final BigDecimal RECIPROCAL_OF_TWO_TO_THE_24TH 
+            = BigDecimal.ONE.divide(TWO_TO_THE_24TH);
     
     @Test
     public void testToStringNegativeInfinity() {
@@ -471,7 +483,7 @@ public class HalfPrecisionNumberNGTest {
         assertEquals(actual, expected);
     }
     
-    @Test
+//    @Test
     public void testBytesArrayConstructorCorrectlySetsHeldShort() {
         fail("HAVEN'T WRITTEN TEST YET");
     }
