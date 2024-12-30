@@ -59,7 +59,9 @@ We could define "extended" formats thus:
 
 The fact that bytes are made up of eight bits would seem to be the only reason 
 why formats smaller than quarter precision haven't had much general use until 
-fairly recently. I will write more about those formats later on in this 
+fairly recently. And even quarter precision was largely forgotten outside the 
+realm of embedded systems as 16-bit processors became common for personal 
+computers. I will write more about the smallest formats later on in this 
 document.
 
 Note that the sign bit applies to the mantissa, not the exponent. Then it would 
@@ -71,29 +73,37 @@ But this would mean that the binary point can only be moved to the left, either
 leaving the mantissa unchanged or doubling it, quadrupling it, etc., but never 
 halving, quartering, etc.
 
-So the concept of bias was introduced. The **bias** is a number, usually 
-negative, that is added to the exponent. For example, if the bias is &minus;510, 
-adding that to the unbiased exponent 1 gives the biased exponent &minus;509.
+It certainly would be possible to have a separate sign bit for the exponent, but 
+the format is complex enough as it is. So the concept of bias was introduced. 
+The **bias** is a number, usually negative, that is added to the exponent. For 
+example, if the bias is &minus;510, adding that to the unbiased exponent 1 gives 
+the biased exponent &minus;509.
 
-If $w$ is the number of exponent bits, then the bias is almost always chosen to 
-be $-(2^{w - 1}) + 1$, so that an unbiased exponent of $2^{w - 1} - 1$ biases to 
-0. However, both unbiased exponents 0 and 1 bias to $-(2^{w - 1}) + 2$, as 
-unbiased exponent 0 has a special meaning that will be explained later in this 
-document. Unbiased exponent $2^w - 1$ also has a special meaning that will also 
-be explained later. The following table shows typical biases:
+If $w$ is the number of exponent bits, then the bias seems to be chosen to be 
+$-(2^{w - 1}) + 1$, so that an unbiased exponent of $2^{w - 1} - 1$ biases to 0. 
+However, both unbiased exponents 0 and 1 bias to $-(2^{w - 1}) + 2$, as unbiased 
+exponent 0 has a special meaning that will be explained later in this document. 
+Then, from 1 to $2^{w - 1} - 2$, the biased exponent increases as one would 
+expect. Unbiased exponent $2^w - 1$ also has a special meaning that will also be 
+explained later. The following table shows typical biases:
 
-| Precision | Minimum biased | 0 unbiased |
-|-----------|---------------:|-----------:|
-| Quarter   |       &minus;6 |          7 |
-| Half      |      &minus;14 |         15 |
-| Single    |     &minus;126 |        127 |
-| Double    |    &minus;1022 |       1023 |
-| Quadruple |    PLACEHOLDER |  PLACEHOLD |
-| Octuple   |    PLACEHOLDER |  PLACEHOLD |
+| Precision |        Bias | Minimum biased | Maximum biased |
+|-----------|------------:|---------------:|---------------:|
+| Quarter   |    &minus;7 |       &minus;6 |              7 |
+| Half      |   &minus;15 |      &minus;14 |             15 |
+| Single    |  &minus;127 |     &minus;126 |            127 |
+| Double    | &minus;1023 |    &minus;1022 |           1023 |
+| Quadruple | PLACEHOLDER |    PLACEHOLDER |    PLACEHOLDER |
+| Octuple   | PLACEHOLDER |    PLACEHOLDER |    PLACEHOLDER |
 
-Note that 0 unbiased is also the maximum biased exponent. Technically, the 
-maximum available biased exponent is one greater than is shown in this table, 
-but given the special meaning of the maximum exponent, the number is moot.
+Note that the the maximum biased exponent translated to an unbiased exponent and 
+then reinterpreted as a biased exponent works out to 0. For example, in quarter 
+precision, the bit pattern 0 1110 001 has an unbiased exponent of 14, which 
+biases to 7.
+
+Technically, the maximum available biased exponent is one greater than is shown 
+in this table, but given the special meaning of the maximum exponent, the number 
+is moot.
 
 If all the exponent bits are on, but all the mantissa bits are off, the value 
 represents positive or negative infinity, according to the sign bit. But if the 
@@ -169,7 +179,7 @@ It is easy to list all possible 4-bit values in this document.
 | Bit pattern | Value           |
 |-------------|-----------------|
 | 1 00 0      | &minus;0.0      |
-| 1 00 1      | &minus;0.5  |
+| 1 00 1      | &minus;0.5      |
 | 1 01 0      | &minus;1.0      |
 | 1 01 1      | &minus;1.5      |
 | 1 10 0      | &minus;2.0      |
