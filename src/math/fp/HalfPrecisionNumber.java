@@ -230,7 +230,8 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
         BigDecimal multiplicand = new BigDecimal(mantissa);
         BigDecimal product 
                 = RECIPROCAL_OF_TWO_TO_THE_24TH.multiply(multiplicand);
-        return product.toPlainString();
+        String sign = (this.heldShort < 0) ? "\u2212" : "";
+        return sign + product.toPlainString();
     }
             
     // TODO: Write tests for this
