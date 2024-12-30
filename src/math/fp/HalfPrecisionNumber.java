@@ -26,6 +26,10 @@ import math.integer.ShortProcessor;
  */
 public class HalfPrecisionNumber extends FloatingPointNumber {
     
+    private static final char MINUS_SIGN = '\u2212';
+    
+    private static final String MINUS_SIGN_STR = Character.toString(MINUS_SIGN);
+    
     private static final int A_POWER_OF_TWO = 1 << 24;
     
     private static final BigDecimal TWO_TO_THE_24TH 
@@ -212,10 +216,10 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
     @Override
     public String toString() {
         if (this.heldShort == Short.MIN_VALUE) {
-            return "\u22120.0";
+            return MINUS_SIGN + "0.0";
         }
         if (this.heldShort == -1024) {
-            return "\u2212Infinity";
+            return MINUS_SIGN + "Infinity";
         }
         if (this.heldShort > -1024 && this.heldShort < 0) {
             return "NaN";
@@ -230,7 +234,7 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
         BigDecimal multiplicand = new BigDecimal(mantissa);
         BigDecimal product 
                 = RECIPROCAL_OF_TWO_TO_THE_24TH.multiply(multiplicand);
-        String sign = (this.heldShort < 0) ? "\u2212" : "";
+        String sign = (this.heldShort < 0) ? MINUS_SIGN_STR : "";
         return sign + product.toPlainString();
     }
             
