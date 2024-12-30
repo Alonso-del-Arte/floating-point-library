@@ -66,6 +66,20 @@ public class HalfPrecisionNumberNGTest {
     }
     
     @Test
+    public void testToStringPositiveSubnormal() {
+        BigDecimal curr = RECIPROCAL_OF_TWO_TO_THE_24TH;
+        for (short sh = 1; sh < 1024; sh++) {
+            HalfPrecisionNumber instance = new HalfPrecisionNumber(sh);
+            String expected = curr.toPlainString();
+            String actual = instance.toString();
+            String message = "For bit pattern " 
+                    + Integer.toHexString(sh + 65536).substring(1);
+            assertEquals(actual, expected, message);
+            curr = curr.add(RECIPROCAL_OF_TWO_TO_THE_24TH);
+        }
+    }
+    
+    @Test
     public void testToStringPositiveInfinity() {
         short sh = 31744;
         HalfPrecisionNumber number = new HalfPrecisionNumber(sh);
