@@ -140,7 +140,26 @@ all other bits are off, the number is actually &minus;0.0, which is
 arithmetically equal to 0.0.
 
 Nonzero subnormal numbers vastly complicate floating point arithmetic, 
-especially when one operand is subnormal and the other one is not.
+especially when one operand is subnormal and the other one is not. In many 
+cases, adding a subnormal number to a normal number results in a loss of the 
+subnormal number.
+
+Just representing a number, without necessarily trying to do arithmetic with it, 
+often involves approximation. Consider for example the representation of one 
+third, that is, 1.0 divided by 3. In half precision, that is represented as 
+$$\frac{1 + \frac{1}{4} + \frac{1}{16} + \frac{1}{64} + \frac{1}{256} + 
+\frac{1}{1024}}{4}.$$
+
+The bit pattern is 35 55, with sign bit 0, exponent 13 biased to &minus;2 and 
+mantissa bits 0.3331 normalized to 1.3331, to represent 0.3333. In 32-bit 
+floating point, we can improve that to 0.33333334 (bit pattern 3E AA AA AB) and 
+in 64-bit floating point we get 0.3333333333333333 (bit pattern 3F D5 55 55 55 
+55 55 55), which should be good enough for most practical purposes.
+
+But at least in that example, improving precision is usually a simple matter of 
+repeating the bit pattern. With irrational numbers like &pi; and $\sqrt 2$, 
+improving precision probably requires repeating the calculation in the larger 
+format.
 
 ## More about NaN
 
