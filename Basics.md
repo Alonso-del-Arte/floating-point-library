@@ -161,6 +161,11 @@ repeating the bit pattern. With irrational numbers like &pi; and $\sqrt 2$,
 improving precision probably requires repeating the calculation in the larger 
 format.
 
+When a number becomes too large in absolute value after one or more arithmetic 
+operations for the format to represent it with any degree of approximation, it 
+should overflow to positive or negative infinity. Similarly, when a number 
+becomes too small in absolute value, it should vanish to &plusmn;0.0.
+
 ## More about NaN
 
 There are two kinds of NaN: quiet NaN (qNaN) and signaling NaN (sNaN). A quiet 
@@ -174,6 +179,15 @@ less significant bits on (otherwise the value is an infinity, not NaN).
 
 Beyond this, there has never been any agreement on what the other mantissa bits 
 of a NaN value should represent.
+
+"Not a number" more precisely means "not a number that can be meaningfully 
+represented in this format." It is quite distinct from numbers that could be 
+represented more accurately in a floating point format with more bits.
+
+For example, the number $i$, which the number such that $i^2 = -1$, can't be 
+represented meaningfully in floating point, but it can be represented in some 
+kind of struct holding two floating point values (one for the real part, the 
+other for the imaginary part).
 
 FINISH WRITING
 
