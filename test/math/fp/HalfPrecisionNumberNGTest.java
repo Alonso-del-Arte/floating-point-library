@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 Alonso del Arte
+ * Copyright (C) 2025 Alonso del Arte
  *
  * This program is free software: you can redistribute it and/or modify it under 
  * the terms of the GNU General Public License as published by the Free Software 
@@ -95,6 +95,23 @@ public class HalfPrecisionNumberNGTest {
         }
     }
     
+    @Test
+    public void testToStringPositiveNormalExponentNegative14() {
+        int twoToThe14th = 1 << 14;
+        BigDecimal power = new BigDecimal(twoToThe14th);
+        BigDecimal curr = BigDecimal.ONE.divide(power);
+        short start = 1024;
+        short stop = 2048;
+        for (short sh = start; sh < stop; sh++) {
+            HalfPrecisionNumber instance = new HalfPrecisionNumber(sh);
+            String expected = curr.toPlainString();
+            String actual = instance.toString();
+            String message = "For bit pattern " 
+                    + Integer.toHexString(sh + 65536).substring(1);
+            assertEquals(actual, expected, message);
+            curr = curr.add(RECIPROCAL_OF_TWO_TO_THE_24TH).stripTrailingZeros();
+        }
+    }
     @Test
     public void testToStringPositiveInfinity() {
         short sh = 31744;
