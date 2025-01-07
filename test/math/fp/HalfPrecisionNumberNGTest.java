@@ -61,7 +61,7 @@ public class HalfPrecisionNumberNGTest {
             String message = "For bit pattern " 
                     + Integer.toHexString(sh).substring(4);
             assertEquals(actual, expected, message);
-            curr = curr.add(RECIPROCAL_OF_TWO_TO_THE_24TH);
+            curr = curr.add(RECIPROCAL_OF_TWO_TO_THE_24TH).stripTrailingZeros();
         }
     }
     
@@ -91,7 +91,7 @@ public class HalfPrecisionNumberNGTest {
             String message = "For bit pattern " 
                     + Integer.toHexString(sh + 65536).substring(1);
             assertEquals(actual, expected, message);
-            curr = curr.add(RECIPROCAL_OF_TWO_TO_THE_24TH);
+            curr = curr.add(RECIPROCAL_OF_TWO_TO_THE_24TH).stripTrailingZeros();
         }
     }
     
@@ -112,6 +112,7 @@ public class HalfPrecisionNumberNGTest {
             curr = curr.add(RECIPROCAL_OF_TWO_TO_THE_24TH).stripTrailingZeros();
         }
     }
+    
     @Test
     public void testToStringPositiveInfinity() {
         short sh = 31744;
