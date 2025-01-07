@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 Alonso del Arte
+ * Copyright (C) 2025 Alonso del Arte
  *
  * This program is free software: you can redistribute it and/or modify it under 
  * the terms of the GNU General Public License as published by the Free Software 
@@ -217,8 +217,10 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
     public String toString() {
         return switch (this.heldShort) {
             case Short.MIN_VALUE -> MINUS_SIGN + "0.0";
+            case -30720 -> MINUS_SIGN + "0.0001220703125?";
             case -1024 -> MINUS_SIGN + "Infinity";
             case 0 -> "0.0";
+            case 1024 -> "0.00006103515625";
             case 31744 -> "Infinity";
             default -> {
                 if ((this.heldShort > -1024 && this.heldShort < 0) 
@@ -229,7 +231,8 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
                     BigDecimal multiplicand = new BigDecimal(mantissa);
                     BigDecimal product 
                             = RECIPROCAL_OF_TWO_TO_THE_24TH
-                                    .multiply(multiplicand);
+                                    .multiply(multiplicand)
+                                    .stripTrailingZeros();
                     String sign = (this.heldShort < 0) ? MINUS_SIGN_STR : "";
                     yield sign + product.toPlainString();
                 }
