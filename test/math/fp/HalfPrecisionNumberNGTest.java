@@ -50,6 +50,27 @@ public class HalfPrecisionNumberNGTest {
     }
     
     @Test
+    public void testToStringNegativeNormalExponentNegative10() {
+        int twoToThe10th = 1 << 10;
+        BigDecimal power = new BigDecimal(twoToThe10th);
+        BigDecimal curr = BigDecimal.ONE.divide(power);
+        int twoToThe20th = 1 << 20;
+        BigDecimal greaterPower = new BigDecimal(twoToThe20th);
+        BigDecimal augend = BigDecimal.ONE.divide(greaterPower);
+        short start = Short.MIN_VALUE + 5120;
+        short stop = (short) (start + 1024);
+        for (short sh = start; sh < stop; sh++) {
+            HalfPrecisionNumber instance = new HalfPrecisionNumber(sh);
+            String expected = MINUS_SIGN + curr.toPlainString();
+            String actual = instance.toString();
+            String message = "For bit pattern " 
+                    + Integer.toHexString(sh).substring(4);
+            assertEquals(actual, expected, message);
+            curr = curr.add(augend).stripTrailingZeros();
+        }
+    }
+    
+    @Test
     public void testToStringNegativeNormalExponentNegative11() {
         int twoToThe11th = 1 << 11;
         BigDecimal power = new BigDecimal(twoToThe11th);
@@ -244,6 +265,27 @@ public class HalfPrecisionNumberNGTest {
         BigDecimal greaterPower = new BigDecimal(twoToThe21st);
         BigDecimal augend = BigDecimal.ONE.divide(greaterPower);
         short start = 4096;
+        short stop = (short) (start + 1024);
+        for (short sh = start; sh < stop; sh++) {
+            HalfPrecisionNumber instance = new HalfPrecisionNumber(sh);
+            String expected = curr.toPlainString();
+            String actual = instance.toString();
+            String message = "For bit pattern " 
+                    + Integer.toHexString(sh + 65536).substring(1);
+            assertEquals(actual, expected, message);
+            curr = curr.add(augend).stripTrailingZeros();
+        }
+    }
+    
+    @Test
+    public void testToStringPositiveNormalExponentNegative10() {
+        int twoToThe10th = 1 << 10;
+        BigDecimal power = new BigDecimal(twoToThe10th);
+        BigDecimal curr = BigDecimal.ONE.divide(power);
+        int twoToThe20th = 1 << 20;
+        BigDecimal greaterPower = new BigDecimal(twoToThe20th);
+        BigDecimal augend = BigDecimal.ONE.divide(greaterPower);
+        short start = 5120;
         short stop = (short) (start + 1024);
         for (short sh = start; sh < stop; sh++) {
             HalfPrecisionNumber instance = new HalfPrecisionNumber(sh);
