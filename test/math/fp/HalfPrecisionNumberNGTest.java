@@ -50,6 +50,23 @@ public class HalfPrecisionNumberNGTest {
     }
     
     @Test
+    public void testToStringNegativeNormalExponentNegative14() {
+        int twoToThe14th = 1 << 14;
+        BigDecimal power = new BigDecimal(twoToThe14th);
+        BigDecimal curr = BigDecimal.ONE.divide(power);
+        short start = Short.MIN_VALUE + 1024;
+        short stop = (short) (start + 1024);
+        for (short sh = start; sh < stop; sh++) {
+            HalfPrecisionNumber instance = new HalfPrecisionNumber(sh);
+            String expected = MINUS_SIGN + curr.toPlainString();
+            String actual = instance.toString();
+            String message = "For bit pattern " 
+                    + Integer.toHexString(sh).substring(4);
+            assertEquals(actual, expected, message);
+            curr = curr.add(RECIPROCAL_OF_TWO_TO_THE_24TH).stripTrailingZeros();
+        }
+    }
+        @Test
     public void testToStringNegativeSubnormal() {
         BigDecimal curr = RECIPROCAL_OF_TWO_TO_THE_24TH;
         short start = Short.MIN_VALUE + 1;
