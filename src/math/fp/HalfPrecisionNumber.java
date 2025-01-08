@@ -215,10 +215,13 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
     
     private String toStringNormal() {
         int exponent = ((this.heldShort & 31744) >> 10) - 15;
+        // TODO: Refactor to simpler arithmetic once all negative exponent tests 
+        //  have been written
         int shift = switch (exponent) {
             case -13 -> 23;
             case -12 -> 22;
             case -11 -> 21;
+            case -10 -> 20;
             default -> 24;
         };
         int power = 1 << shift;
