@@ -50,6 +50,27 @@ public class HalfPrecisionNumberNGTest {
     }
     
     @Test
+    public void testToStringNegativeNormalExponentNegative12() {
+        int twoToThe12th = 1 << 12;
+        BigDecimal power = new BigDecimal(twoToThe12th);
+        BigDecimal curr = BigDecimal.ONE.divide(power);
+        int twoToThe22nd = 1 << 22;
+        BigDecimal greaterPower = new BigDecimal(twoToThe22nd);
+        BigDecimal augend = BigDecimal.ONE.divide(greaterPower);
+        short start = Short.MIN_VALUE + 3072;
+        short stop = (short) (start + 1024);
+        for (short sh = start; sh < stop; sh++) {
+            HalfPrecisionNumber instance = new HalfPrecisionNumber(sh);
+            String expected = MINUS_SIGN + curr.toPlainString();
+            String actual = instance.toString();
+            String message = "For bit pattern " 
+                    + Integer.toHexString(sh).substring(4);
+            assertEquals(actual, expected, message);
+            curr = curr.add(augend).stripTrailingZeros();
+        }
+    }
+    
+    @Test
     public void testToStringNegativeNormalExponentNegative13() {
         int twoToThe13th = 1 << 13;
         BigDecimal power = new BigDecimal(twoToThe13th);
@@ -171,7 +192,29 @@ public class HalfPrecisionNumberNGTest {
             curr = curr.add(augend).stripTrailingZeros();
         }
     }
-        @Test
+    
+    @Test
+    public void testToStringPositiveNormalExponentNegative12() {
+        int twoToThe12th = 1 << 12;
+        BigDecimal power = new BigDecimal(twoToThe12th);
+        BigDecimal curr = BigDecimal.ONE.divide(power);
+        int twoToThe22nd = 1 << 22;
+        BigDecimal greaterPower = new BigDecimal(twoToThe22nd);
+        BigDecimal augend = BigDecimal.ONE.divide(greaterPower);
+        short start = 3072;
+        short stop = (short) (start + 1024);
+        for (short sh = start; sh < stop; sh++) {
+            HalfPrecisionNumber instance = new HalfPrecisionNumber(sh);
+            String expected = curr.toPlainString();
+            String actual = instance.toString();
+            String message = "For bit pattern " 
+                    + Integer.toHexString(sh + 65536).substring(1);
+            assertEquals(actual, expected, message);
+            curr = curr.add(augend).stripTrailingZeros();
+        }
+    }
+    
+    @Test
     public void testToStringPositiveInfinity() {
         short sh = 31744;
         HalfPrecisionNumber number = new HalfPrecisionNumber(sh);
