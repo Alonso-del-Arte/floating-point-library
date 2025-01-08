@@ -216,7 +216,7 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
     private String toStringNormal() {
         int exponent = ((this.heldShort & 31744) >> 10) - 15;
         int shift = (exponent == -12) ? 22 : 23;
-        int power = 1 << 23;
+        int power = 1 << shift;
         BigDecimal divisor = new BigDecimal(power);
         BigDecimal pow = BigDecimal.ONE.divide(divisor);
         int mantissaBits = 1024 + (this.heldShort & 1023);
