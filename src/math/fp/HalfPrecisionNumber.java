@@ -213,6 +213,19 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
         return true;
     }
     
+    private String toStringNormal() {
+        int exponent = ((this.heldShort & 31744) >> 10) - 15;
+        int shift = (exponent == -12) ? 22 : 23;
+        int power = 1 << shift;
+        BigDecimal divisor = new BigDecimal(power);
+        BigDecimal pow = BigDecimal.ONE.divide(divisor);
+        int mantissaBits = 1024 + (this.heldShort & 1023);
+        BigDecimal mantissa = new BigDecimal(mantissaBits);
+        BigDecimal figuredNumber = mantissa.multiply(pow).stripTrailingZeros();
+        String sign = (this.heldShort < 0) ? MINUS_SIGN_STR : "";
+        return sign + figuredNumber.toPlainString();
+    }
+    
     @Override
     public String toString() {
         return switch (this.heldShort) {
@@ -225,6 +238,11 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
                         || this.heldShort > 31744) {
                     yield "NaN";
                 } else {
+                    // TODO: Refactor to not calculate exponent here
+                    int exponent = ((this.heldShort & 31744) >> 10) - 15;
+                    if (exponent > -14) {
+                        yield this.toStringNormal();
+                    }
                     int mantissa = this.heldShort & Short.MAX_VALUE;
                     BigDecimal multiplicand = new BigDecimal(mantissa);
                     BigDecimal product 
