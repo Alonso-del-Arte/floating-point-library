@@ -50,6 +50,24 @@ public class HalfPrecisionNumberNGTest {
     }
     
     @Test
+    public void testToStringNegativeNormalExponentNegative6() {
+        double curr = 1.0 / 64;
+        int twoToThe16th = 1 << 16;
+        double augend = 1.0 / twoToThe16th;
+        short start = Short.MIN_VALUE + 9216;
+        short stop = (short) (start + 1024);
+        for (short sh = start; sh < stop; sh++) {
+            HalfPrecisionNumber instance = new HalfPrecisionNumber(sh);
+            String expected = MINUS_SIGN + Double.toString(curr);
+            String actual = instance.toString();
+            String message = "For bit pattern " 
+                    + Integer.toHexString(sh).substring(4);
+            assertEquals(actual, expected, message);
+            curr += augend;
+        }
+    }
+    
+    @Test
     public void testToStringNegativeNormalExponentNegative7() {
         double curr = 1.0 / 128;
         int twoToThe17th = 1 << 17;
@@ -398,6 +416,24 @@ public class HalfPrecisionNumberNGTest {
         int twoToThe17th = 1 << 17;
         double augend = 1.0 / twoToThe17th;
         short start = 8192;
+        short stop = (short) (start + 1024);
+        for (short sh = start; sh < stop; sh++) {
+            HalfPrecisionNumber instance = new HalfPrecisionNumber(sh);
+            String expected = Double.toString(curr);
+            String actual = instance.toString();
+            String message = "For bit pattern " 
+                    + Integer.toHexString(sh + 65536).substring(1);
+            assertEquals(actual, expected, message);
+            curr += augend;
+        }
+    }
+    
+    @Test
+    public void testToStringPositiveNormalExponentNegative6() {
+        double curr = 1.0 / 64;
+        int twoToThe16th = 1 << 16;
+        double augend = 1.0 / twoToThe16th;
+        short start = 9216;
         short stop = (short) (start + 1024);
         for (short sh = start; sh < stop; sh++) {
             HalfPrecisionNumber instance = new HalfPrecisionNumber(sh);
