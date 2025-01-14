@@ -231,6 +231,7 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
             case -3 -> 13;
             case -2 -> 12;
             case -1 -> 11;
+            case 0 -> 10;
             default -> 24;
         };
         int power = 1 << shift;
@@ -247,8 +248,10 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
     public String toString() {
         return switch (this.heldShort) {
             case Short.MIN_VALUE -> MINUS_SIGN + "0.0";
+            case -17408 -> MINUS_SIGN + "1.0";
             case -1024 -> MINUS_SIGN + "Infinity";
             case 0 -> "0.0";
+            case 15360 -> "1.0";
             case 31744 -> "Infinity";
             default -> {
                 if ((this.heldShort > -1024 && this.heldShort < 0) 
