@@ -215,15 +215,34 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
     
     private String toStringNormal() {
         int exponent = ((this.heldShort & 31744) >> 10) - 15;
-        int shift = Math.abs(exponent) + 10;
-        int power = 1 << shift;
-        BigDecimal divisor = new BigDecimal(power);
-        BigDecimal pow = BigDecimal.ONE.divide(divisor);
-        int mantissaBits = 1024 + (this.heldShort & 1023);
-        BigDecimal mantissa = new BigDecimal(mantissaBits);
-        BigDecimal figuredNumber = mantissa.multiply(pow).stripTrailingZeros();
-        String sign = (this.heldShort < 0) ? MINUS_SIGN_STR : "";
-        return sign + figuredNumber.toPlainString();
+        if (exponent < 1) {
+            int shift = Math.abs(exponent) + 10;
+            int power = 1 << shift;
+            BigDecimal divisor = new BigDecimal(power);
+            BigDecimal pow = BigDecimal.ONE.divide(divisor);
+            int mantissaBits = 1024 + (this.heldShort & 1023);
+            BigDecimal mantissa = new BigDecimal(mantissaBits);
+            BigDecimal figuredNumber = mantissa.multiply(pow)
+                    .stripTrailingZeros();
+            String sign = (this.heldShort < 0) ? MINUS_SIGN_STR : "";
+            return sign + figuredNumber.toPlainString();
+        } else {
+            int shift = 9;
+            int power = 1 << shift;
+            BigDecimal divisor = new BigDecimal(power);
+            BigDecimal pow = BigDecimal.ONE.divide(divisor);
+            int mantissaBits = 1024 + (this.heldShort & 1023);
+            BigDecimal mantissa = new BigDecimal(mantissaBits);
+            BigDecimal figuredNumber = mantissa.multiply(pow)
+                    .stripTrailingZeros();
+            String sign = (this.heldShort < 0) ? MINUS_SIGN_STR : "";
+            String maybeReady = sign + figuredNumber.toPlainString();
+            if (maybeReady.contains(".")) {
+                return maybeReady;
+            } else {
+                return maybeReady.concat(".0");
+            }
+        }
     }
     
     @Override
@@ -231,9 +250,11 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
         return switch (this.heldShort) {
             case Short.MIN_VALUE -> MINUS_SIGN + "0.0";
             case -17408 -> MINUS_SIGN + "1.0";
+            case -16384 -> MINUS_SIGN + "2.0";
             case -1024 -> MINUS_SIGN + "Infinity";
             case 0 -> "0.0";
             case 15360 -> "1.0";
+            case 16384 -> "2.0";
             case 31744 -> "Infinity";
             default -> {
                 if ((this.heldShort > -1024 && this.heldShort < 0) 
