@@ -219,7 +219,7 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
         if (exponent < 1) {
             shift = Math.abs(exponent) + 10;
         } else {
-            shift = 9;
+            shift = (exponent == 1) ? 9 : 8;
         }
         int power = 1 << shift;
         BigDecimal divisor = new BigDecimal(power);
