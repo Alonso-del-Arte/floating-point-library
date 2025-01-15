@@ -215,33 +215,24 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
     
     private String toStringNormal() {
         int exponent = ((this.heldShort & 31744) >> 10) - 15;
+        int shift;
         if (exponent < 1) {
-            int shift = Math.abs(exponent) + 10;
-            int power = 1 << shift;
-            BigDecimal divisor = new BigDecimal(power);
-            BigDecimal pow = BigDecimal.ONE.divide(divisor);
-            int mantissaBits = 1024 + (this.heldShort & 1023);
-            BigDecimal mantissa = new BigDecimal(mantissaBits);
-            BigDecimal figuredNumber = mantissa.multiply(pow)
-                    .stripTrailingZeros();
-            String sign = (this.heldShort < 0) ? MINUS_SIGN_STR : "";
-            return sign + figuredNumber.toPlainString();
+            shift = Math.abs(exponent) + 10;
         } else {
-            int shift = 9;
-            int power = 1 << shift;
-            BigDecimal divisor = new BigDecimal(power);
-            BigDecimal pow = BigDecimal.ONE.divide(divisor);
-            int mantissaBits = 1024 + (this.heldShort & 1023);
-            BigDecimal mantissa = new BigDecimal(mantissaBits);
-            BigDecimal figuredNumber = mantissa.multiply(pow)
-                    .stripTrailingZeros();
-            String sign = (this.heldShort < 0) ? MINUS_SIGN_STR : "";
-            String maybeReady = sign + figuredNumber.toPlainString();
-            if (maybeReady.contains(".")) {
-                return maybeReady;
-            } else {
-                return maybeReady.concat(".0");
-            }
+            shift = 9;
+        }
+        int power = 1 << shift;
+        BigDecimal divisor = new BigDecimal(power);
+        BigDecimal pow = BigDecimal.ONE.divide(divisor);
+        int mantissaBits = 1024 + (this.heldShort & 1023);
+        BigDecimal mantissa = new BigDecimal(mantissaBits);
+        BigDecimal figuredNumber = mantissa.multiply(pow).stripTrailingZeros();
+        String sign = (this.heldShort < 0) ? MINUS_SIGN_STR : "";
+        String maybeReady = sign + figuredNumber.toPlainString();
+        if (maybeReady.contains(".")) {
+            return maybeReady;
+        } else {
+            return maybeReady.concat(".0");
         }
     }
     
