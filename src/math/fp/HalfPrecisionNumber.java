@@ -224,7 +224,9 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
                 case 1 -> 9;
                 case 2 -> 8;
                 case 3 -> 7;
-                default -> 6;
+                case 4 -> 6;
+                case 5 -> 5;
+                default -> 20;
             };
         }
         int power = 1 << shift;
