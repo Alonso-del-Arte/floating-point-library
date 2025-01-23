@@ -219,20 +219,7 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
         if (exponent < 1) {
             shift = Math.abs(exponent) + 10;
         } else {
-            // TODO: Refactor once tests cover all cases with left shift
-            shift = switch (exponent) {
-                case 1 -> 9;
-                case 2 -> 8;
-                case 3 -> 7;
-                case 4 -> 6;
-                case 5 -> 5;
-                case 6 -> 4;
-                case 7 -> 3;
-                case 8 -> 2;
-                case 9 -> 1;
-                case 10 -> 0;
-                default -> 20;
-            };
+            shift = 10 - exponent;
         }
         int power = 1 << shift;
         BigDecimal divisor = new BigDecimal(power);
