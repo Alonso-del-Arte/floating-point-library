@@ -226,6 +226,7 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
                 case 3 -> 7;
                 case 4 -> 6;
                 case 5 -> 5;
+                case 6 -> 4;
                 default -> 20;
             };
         }
