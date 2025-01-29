@@ -222,15 +222,9 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
             BigDecimal divisor = new BigDecimal(power);
             pow = BigDecimal.ONE.divide(divisor);
         } else {
-            int val = switch (exponent) {
-                case 11 -> 2;
-                case 12 -> 4;
-                case 13 -> 8;
-                case 14 -> 16;
-                case 15 -> 32;
-                default -> -1;
-            };
-            pow = BigDecimal.valueOf(val);
+            int shift = exponent - 10;
+            int power = 1 << shift;
+            pow = BigDecimal.valueOf(power);
         }
         int mantissaBits = 1024 + (this.heldShort & 1023);
         BigDecimal mantissa = new BigDecimal(mantissaBits);
