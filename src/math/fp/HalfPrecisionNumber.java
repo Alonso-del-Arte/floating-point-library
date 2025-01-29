@@ -222,6 +222,9 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
         if (exponent == 11) {
             pow = BigDecimal.ONE.add(BigDecimal.ONE);
         }
+        if (exponent == 12) {
+            pow = BigDecimal.valueOf(4);
+        }
         int mantissaBits = 1024 + (this.heldShort & 1023);
         BigDecimal mantissa = new BigDecimal(mantissaBits);
         BigDecimal figuredNumber = mantissa.multiply(pow).stripTrailingZeros();
