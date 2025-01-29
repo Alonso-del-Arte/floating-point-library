@@ -242,12 +242,8 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
     public String toString() {
         return switch (this.heldShort) {
             case Short.MIN_VALUE -> MINUS_SIGN + "0.0";
-            case -17408 -> MINUS_SIGN + "1.0";
-            case -16384 -> MINUS_SIGN + "2.0";
             case -1024 -> MINUS_SIGN + "Infinity";
             case 0 -> "0.0";
-            case 15360 -> "1.0";
-            case 16384 -> "2.0";
             case 31744 -> "Infinity";
             default -> {
                 if ((this.heldShort > -1024 && this.heldShort < 0) 
