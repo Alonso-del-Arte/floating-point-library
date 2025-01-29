@@ -250,9 +250,7 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
                         || this.heldShort > 31744) {
                     yield "NaN";
                 } else {
-                    // TODO: Refactor to not calculate exponent here
-                    int exponent = ((this.heldShort & 31744) >> 10) - 15;
-                    if (exponent > -14) {
+                    if ((this.heldShort & 31744) != 0) {
                         yield this.toStringNormal();
                     }
                     int mantissa = this.heldShort & Short.MAX_VALUE;
