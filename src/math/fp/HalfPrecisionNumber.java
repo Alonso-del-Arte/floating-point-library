@@ -273,18 +273,23 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
     }
     
     /**
-     * 
-     * @param bytes 
+     * Secondary constructor. For the example, consider the number 
+     * 0.00264739990234375 with bit pattern 196C.
+     * @param bytes The bytes to create the instance from. For example, the 
+     * bytes 25 and 108. The first byte provides the sign bit, all of the 
+     * exponent bits and the two highest explicit mantissa bits. The second byte 
+     * provides the rest of the mantissa bits.
      */
     HalfPrecisionNumber(byte[] bytes) {
         super(bytes);
-        // TODO: Write test that this field is set correctly
-        this.heldShort = (short) ~bytes[0];
+        this.heldShort = ShortProcessor.fromBytes(bytes);
     }
     
     /**
-     * 
-     * @param sh 
+     * Primary constructor. For the example, consider the number 
+     * 0.00264739990234375 with bit pattern 196C.
+     * @param sh The 16-bit integer to create the instance from. For example, 
+     * 6508.
      */
     public HalfPrecisionNumber(short sh) {
         super(ShortProcessor.toBytes(sh));
