@@ -224,6 +224,7 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
                 case 11 -> 2;
                 case 12 -> 4;
                 case 13 -> 8;
+                case 14 -> 16;
                 default -> -1;
             };
             pow = BigDecimal.valueOf(val);
