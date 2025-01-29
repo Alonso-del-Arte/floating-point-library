@@ -17,6 +17,7 @@
 package math.fp;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 
 import static math.fp.FloatingPointNumberNGTest.RANDOM;
 import math.integer.ShortProcessor;
@@ -1588,9 +1589,17 @@ public class HalfPrecisionNumberNGTest {
         assertEquals(actual, expected);
     }
     
-//    @Test
+    @Test
     public void testBytesArrayConstructorCorrectlySetsHeldShort() {
-        fail("HAVEN'T WRITTEN TEST YET");
+        byte[] bytes = new byte[2];
+        RANDOM.nextBytes(bytes);
+        HalfPrecisionNumber fromShort = new HalfPrecisionNumber(ShortProcessor
+                .fromBytes(bytes));
+        HalfPrecisionNumber fromBytes = new HalfPrecisionNumber(bytes);
+        String expected = fromShort.toString();
+        String actual = fromBytes.toString();
+        String message = "Reckoning from bytes " + Arrays.toString(bytes);
+        assertEquals(actual, expected, message);
     }
     
 }
