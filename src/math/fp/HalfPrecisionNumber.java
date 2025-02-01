@@ -73,7 +73,7 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
     // TODO: Write tests for this
     @Override
     public int getBiasedExponent() {
-        return Integer.MAX_VALUE;
+        return -14;
     }
     
     // TODO: Write tests for this
