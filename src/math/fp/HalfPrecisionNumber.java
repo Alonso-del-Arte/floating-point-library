@@ -73,7 +73,7 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
     // TODO: Write tests for this
     @Override
     public int getBiasedExponent() {
-        return -15;
+        return -14;
     }
     
     // TODO: Write tests for this
