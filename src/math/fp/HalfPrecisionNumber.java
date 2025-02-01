@@ -65,10 +65,9 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
     
     private final short heldShort;
 
-    // TODO: Write tests for this
     @Override
     public int getUnbiasedExponent() {
-        return Integer.MIN_VALUE;
+        return (this.heldShort & 31744) >> 10;
     }
     
     // TODO: Write tests for this
