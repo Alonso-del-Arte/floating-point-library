@@ -1200,17 +1200,24 @@ public class HalfPrecisionNumberNGTest {
     }
 
     /**
-     * Test of getUnbiasedExponent method, of class HalfPrecisionNumber.
+     * Test of the getUnbiasedExponent function, of the HalfPrecisionNumber 
+     * class.
      */
-//    @Test
+    @Test
     public void testGetUnbiasedExponent() {
         System.out.println("getUnbiasedExponent");
-//        HalfPrecisionNumber instance = null;
-//        int expResult = 0;
-//        int result = instance.getUnbiasedExponent();
-//        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        for (int i = Short.MIN_VALUE; i < Short.MAX_VALUE; i += 1024) {
+            int expected = (i & 31744) >> 10;
+            short start = (short) i;
+            short end = (short) (start + 1024);
+            for (short sh = start; sh < end; sh++) {
+                HalfPrecisionNumber instance = new HalfPrecisionNumber(sh);
+                int actual = instance.getUnbiasedExponent();
+                String message = "Getting unbiased exponent of " 
+                        + instance.toString();
+                assertEquals(actual, expected, message);
+            }
+        }
     }
 
     /**
