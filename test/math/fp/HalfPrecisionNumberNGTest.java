@@ -1223,7 +1223,7 @@ public class HalfPrecisionNumberNGTest {
     @Test
     public void testGetBiasedExponentSubnormalNegative() {
         int expected = -14;
-        for (short sh = Short.MIN_VALUE; sh < 31744; sh++) {
+        for (short sh = Short.MIN_VALUE; sh < -31744; sh++) {
             HalfPrecisionNumber instance = new HalfPrecisionNumber(sh);
             int actual = instance.getBiasedExponent();
             String message = "Getting biased exponent of " 
@@ -1244,12 +1244,10 @@ public class HalfPrecisionNumberNGTest {
         }
     }
 
-    /**
-     * Test of getBiasedExponent method, of class HalfPrecisionNumber.
-     */
 //    @Test
-    public void testGetBiasedExponent() {
-        System.out.println("getBiasedExponent");
+    public void testGetBiasedExponentNormalNegative_NOT_YET_() {
+        int expected = -14;
+//        for (short sh )
         HalfPrecisionNumber instance = null;
         int expResult = 0;
         int result = instance.getBiasedExponent();
