@@ -1219,6 +1219,30 @@ public class HalfPrecisionNumberNGTest {
             }
         }
     }
+    
+    @Test
+    public void testGetBiasedExponentSubnormalNegative() {
+        int expected = -14;
+        for (short sh = Short.MIN_VALUE; sh < 31744; sh++) {
+            HalfPrecisionNumber instance = new HalfPrecisionNumber(sh);
+            int actual = instance.getBiasedExponent();
+            String message = "Getting biased exponent of " 
+                    + instance.toString();
+            assertEquals(actual, expected, message);
+        }
+    }
+
+    @Test
+    public void testGetBiasedExponentSubnormalPositive() {
+        int expected = -14;
+        for (short sh = 0; sh < 1024; sh++) {
+            HalfPrecisionNumber instance = new HalfPrecisionNumber(sh);
+            int actual = instance.getBiasedExponent();
+            String message = "Getting biased exponent of " 
+                    + instance.toString();
+            assertEquals(actual, expected, message);
+        }
+    }
 
     /**
      * Test of getBiasedExponent method, of class HalfPrecisionNumber.
