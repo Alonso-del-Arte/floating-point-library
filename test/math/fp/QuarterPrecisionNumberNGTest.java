@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 Alonso del Arte
+ * Copyright (C) 2025 Alonso del Arte
  *
  * This program is free software: you can redistribute it and/or modify it under 
  * the terms of the GNU General Public License as published by the Free Software 
@@ -2164,6 +2164,15 @@ public class QuarterPrecisionNumberNGTest {
             QuarterPrecisionNumber actual = expected.toQuarterPrecision();
             assertEquals(actual, expected);
         }
+    }
+    
+    @Test
+    public void testToHalfPrecisionNegativeInfinity() {
+        QuarterPrecisionNumber negInf = new QuarterPrecisionNumber((byte) -8);
+        HalfPrecisionNumber expected = new HalfPrecisionNumber((short) -1024);
+        HalfPrecisionNumber actual = negInf.toHalfPrecision();
+        String message = "Converting " + negInf + " to half precision";
+        assertEquals(actual, expected, message);
     }
     
     @Test
