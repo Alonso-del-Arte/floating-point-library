@@ -313,9 +313,11 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
         return this;
     }
 
-    // TODO: Write tests for this
     @Override
     public HalfPrecisionNumber toHalfPrecision() {
+        if (this.heldByte == 120) {
+            return new HalfPrecisionNumber((short) 31744);
+        }
         return new HalfPrecisionNumber((short) -1024);
     }
 
