@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 Alonso del Arte
+ * Copyright (C) 2025 Alonso del Arte
  *
  * This program is free software: you can redistribute it and/or modify it under 
  * the terms of the GNU General Public License as published by the Free Software 
@@ -24,6 +24,8 @@ import math.fractions.Fraction;
  * @author Alonso del Arte
  */
 public class QuarterPrecisionNumber extends FloatingPointNumber {
+    
+    private static final char MINUS_SIGN = '\u2212';
     
     private static final Fraction ONE = new Fraction(1, 1);
     
@@ -476,7 +478,7 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     private String toStringNormal() {
         String intermediate = Double.toString(this.toNonNegativeFractionNormal()
                 .numericApproximation());
-        return (this.heldByte < 0) ? "\u2212" + intermediate : intermediate;
+        return (this.heldByte < 0) ? MINUS_SIGN + intermediate : intermediate;
     }
     
     /**
@@ -490,15 +492,15 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     @Override
     public String toString() {
         return switch (this.heldByte) {
-            case -128 -> "\u22120.0";
-            case -127 -> "\u22120.001953125";
-            case -126 -> "\u22120.00390625";
-            case -125 -> "\u22120.005859375";
-            case -124 -> "\u22120.0078125";
-            case -123 -> "\u22120.009765625";
-            case -122 -> "\u22120.01171875";
-            case -121 -> "\u22120.013671875";
-            case -8 -> "\u2212Infinity";
+            case -128 -> MINUS_SIGN + "0.0";
+            case -127 -> MINUS_SIGN + "0.001953125";
+            case -126 -> MINUS_SIGN + "0.00390625";
+            case -125 -> MINUS_SIGN + "0.005859375";
+            case -124 -> MINUS_SIGN + "0.0078125";
+            case -123 -> MINUS_SIGN + "0.009765625";
+            case -122 -> MINUS_SIGN + "0.01171875";
+            case -121 -> MINUS_SIGN + "0.013671875";
+            case -8 -> MINUS_SIGN + "Infinity";
             case -7, -6, -5, -4, -3, -2, -1, 121, 122, 123, 124, 125, 126, 
                 Byte.MAX_VALUE -> "NaN";
             case 0 -> "0.0";
