@@ -2176,6 +2176,15 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testToHalfPrecisionPositiveInfinity() {
+        QuarterPrecisionNumber posInf = new QuarterPrecisionNumber((byte) 120);
+        HalfPrecisionNumber expected = new HalfPrecisionNumber((short) 31744);
+        HalfPrecisionNumber actual = posInf.toHalfPrecision();
+        String message = "Converting " + posInf + " to half precision";
+        assertEquals(actual, expected, message);
+    }
+    
+    @Test
     public void testNegativeZeroPlusSomeNumberIsSomeNumber() {
         QuarterPrecisionNumber zero 
                 = new QuarterPrecisionNumber(Byte.MIN_VALUE);
