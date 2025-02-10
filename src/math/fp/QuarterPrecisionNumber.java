@@ -316,7 +316,7 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     // TODO: Write tests for this
     @Override
     public HalfPrecisionNumber toHalfPrecision() {
-        return new HalfPrecisionNumber(TWO_ZEROS);
+        return new HalfPrecisionNumber((short) -1024);
     }
 
     // TODO: Write tests for this
