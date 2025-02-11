@@ -106,9 +106,18 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
         return false;
     }
     
+    /**
+     * Indicates whether or not this number is a Not a Number (NaN) value. Note 
+     * that the infinities are not considered NaN, even though they don't 
+     * represent finite numbers either.
+     * @return True if this number is a NaN value, false in all other cases, 
+     * including &plusmn;&infin;. Examples: NaNs from the bit patterns FC21 and 
+     * 7C21 return true for this function, false for the numbers &minus;65504.0 
+     * and 0.000001966953277587890625.
+     */
     @Override
     public boolean isNaN() {
-        return (this.heldShort & 31744) == 31744;
+        return (this.heldShort & Short.MAX_VALUE) > 31744;
     }
     
     // TODO: Write tests for this
