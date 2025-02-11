@@ -1347,6 +1347,24 @@ public class HalfPrecisionNumberNGTest {
             assert positiveNaN.isNaN() : posNaNMsg;
         }
     }
+    
+    @Test
+    public void testNegativeFinitesAreNotNaN() {
+        for (short sh = Short.MIN_VALUE; sh < -1024; sh++) {
+            HalfPrecisionNumber instance = new HalfPrecisionNumber(sh);
+            String msg = "Number " + instance.toString() + " should not be NaN";
+            assert !instance.isNaN() : msg;
+        }
+    }
+
+    @Test
+    public void testPositiveFinitesAreNotNaN() {
+        for (short sh = 0; sh < 31744; sh++) {
+            HalfPrecisionNumber instance = new HalfPrecisionNumber(sh);
+            String msg = "Number " + instance.toString() + " should not be NaN";
+            assert !instance.isNaN() : msg;
+        }
+    }
 
     /**
      * Test of isQuietNaN method, of class HalfPrecisionNumber.
