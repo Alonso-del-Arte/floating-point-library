@@ -1365,6 +1365,20 @@ public class HalfPrecisionNumberNGTest {
             assert !instance.isNaN() : msg;
         }
     }
+    
+    @Test
+    public void testNegativeInfinityIsNotNaN() {
+        HalfPrecisionNumber negInf = new HalfPrecisionNumber((short) -1024);
+        String msg = "Number " + negInf + " should not be NaN";
+        assert !negInf.isNaN() : msg;
+    }
+
+    @Test
+    public void testPositiveInfinityIsNotNaN() {
+        HalfPrecisionNumber posInf = new HalfPrecisionNumber((short) 31744);
+        String msg = "Number " + posInf + " should not be NaN";
+        assert !posInf.isNaN() : msg;
+    }
 
     /**
      * Test of isQuietNaN method, of class HalfPrecisionNumber.
