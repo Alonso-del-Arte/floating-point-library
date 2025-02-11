@@ -106,10 +106,9 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
         return false;
     }
     
-    // TODO: Write tests for this
     @Override
     public boolean isNaN() {
-        return true;
+        return (this.heldShort & 31744) == 31744;
     }
     
     // TODO: Write tests for this
