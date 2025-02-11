@@ -2185,6 +2185,32 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testToHalfPrecisionNegativeNaN() {
+        for (byte b = -7; b < 0; b++) {
+            QuarterPrecisionNumber instance = new QuarterPrecisionNumber(b);
+            HalfPrecisionNumber actual = instance.toHalfPrecision();
+            String msg = "Number " + instance.toString() + " from bit pattern " 
+                    + Integer.toHexString(b + 256) 
+                    + " should also be NaN in half-precision, got " 
+                    + actual.toString();
+            assert actual.isNaN() : msg;
+        }
+    }
+    
+    @Test
+    public void testToHalfPrecisionPositiveNaN() {
+        for (byte b = 121; b > 0; b++) {
+            QuarterPrecisionNumber instance = new QuarterPrecisionNumber(b);
+            HalfPrecisionNumber actual = instance.toHalfPrecision();
+            String msg = "Number " + instance.toString() + " from bit pattern " 
+                    + Integer.toHexString(b) 
+                    + " should also be NaN in half-precision, got " 
+                    + actual.toString();
+            assert actual.isNaN() : msg;
+        }
+    }
+    
+    @Test
     public void testNegativeZeroPlusSomeNumberIsSomeNumber() {
         QuarterPrecisionNumber zero 
                 = new QuarterPrecisionNumber(Byte.MIN_VALUE);
