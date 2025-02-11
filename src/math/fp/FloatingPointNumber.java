@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 Alonso del Arte
+ * Copyright (C) 2025 Alonso del Arte
  *
  * This program is free software: you can redistribute it and/or modify it under 
  * the terms of the GNU General Public License as published by the Free Software 
@@ -118,8 +118,11 @@ public abstract class FloatingPointNumber
     public abstract boolean isInfinite();
     
     /**
-     * Indicates whether or not this number is a Not a Number (NaN) value.
-     * @return True if this number is a NaN value, false in all other cases.
+     * Indicates whether or not this number is a Not a Number (NaN) value. Note 
+     * that the infinities are not considered NaN, even though they don't 
+     * represent finite numbers either.
+     * @return True if this number is a NaN value, false in all other cases, 
+     * including &plusmn;&infin;.
      */
     public abstract boolean isNaN();
     

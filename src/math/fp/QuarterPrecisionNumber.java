@@ -173,7 +173,8 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
      * that the infinities are not considered NaN, even though they don't 
      * represent finite numbers either.
      * @return True if this number is a NaN value, false in all other cases, 
-     * including &plusmn;&infin;.
+     * including &plusmn;&infin;. Examples: true for the NaNs from the bit 
+     * patterns &minus;3 and 125, false for &minus;240.0 and 0.0078125.
      */
     @Override
     public boolean isNaN() {
