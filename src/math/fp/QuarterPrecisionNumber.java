@@ -318,9 +318,9 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     public HalfPrecisionNumber toHalfPrecision() {
         short sh = switch (this.heldByte) {
             case Byte.MIN_VALUE -> Short.MIN_VALUE;
-            case -8 -> (short) -1024;
-            case 0 -> (short) 0;
-            case 120 -> (short) 31744;
+            case -8 -> -1024;
+            case 0 -> 0;
+            case 120 -> 31744;
             default -> Short.MAX_VALUE;
         };
         return new HalfPrecisionNumber(sh);
