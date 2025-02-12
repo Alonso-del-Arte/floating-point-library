@@ -2171,7 +2171,27 @@ public class QuarterPrecisionNumberNGTest {
         QuarterPrecisionNumber negInf = new QuarterPrecisionNumber((byte) -8);
         HalfPrecisionNumber expected = new HalfPrecisionNumber((short) -1024);
         HalfPrecisionNumber actual = negInf.toHalfPrecision();
-        String message = "Converting " + negInf + " to half precision";
+        String message = "Converting " + negInf.toString() 
+                + " to half precision";
+        assertEquals(actual, expected, message);
+    }
+    
+    @Test
+    public void testToHalfPrecisionNegativeZero() {
+        QuarterPrecisionNumber zero 
+                = new QuarterPrecisionNumber(Byte.MIN_VALUE);
+        HalfPrecisionNumber expected = new HalfPrecisionNumber(Short.MIN_VALUE);
+        HalfPrecisionNumber actual = zero.toHalfPrecision();
+        String message = "Converting " + zero.toString() + " to half precision";
+        assertEquals(actual, expected, message);
+    }
+    
+    @Test
+    public void testToHalfPrecisionPositiveZero() {
+        QuarterPrecisionNumber zero = new QuarterPrecisionNumber((byte) 0);
+        HalfPrecisionNumber expected = new HalfPrecisionNumber((short) 0);
+        HalfPrecisionNumber actual = zero.toHalfPrecision();
+        String message = "Converting " + zero.toString() + " to half precision";
         assertEquals(actual, expected, message);
     }
     
@@ -2180,7 +2200,8 @@ public class QuarterPrecisionNumberNGTest {
         QuarterPrecisionNumber posInf = new QuarterPrecisionNumber((byte) 120);
         HalfPrecisionNumber expected = new HalfPrecisionNumber((short) 31744);
         HalfPrecisionNumber actual = posInf.toHalfPrecision();
-        String message = "Converting " + posInf + " to half precision";
+        String message = "Converting " + posInf.toString() 
+                + " to half precision";
         assertEquals(actual, expected, message);
     }
     
