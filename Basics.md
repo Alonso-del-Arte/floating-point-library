@@ -236,6 +236,37 @@ zero or a negative value.
 
 FINISH WRITING
 
+## Conversions
+
+It is quite easy to convert integers in an integer data type using two's 
+complement to a wider or narrower format, e.g., to convert from a 16-bit integer 
+to a 32-bit integer or the other way around.
+
+Converting a floating point number to a wider or narrower format is subject to 
+major complexity in both directions.
+
+### Narrowing conversions
+
+We accept that narrowing conversions are potentially lossy in the case of both 
+integer types and floating point types. But in the case of integers, a loss 
+occurs only when is farther away from 0 than the narrower format can 
+accommodate.
+
+FINISH WRITING
+
+### Widening conversions
+
+Converting an integer to a wider format is just a simple matter of copying the 
+sign bit to the extra bits. This works thanks to two's complement. For example, 
+to convert &minus;3 in a byte to any wider integer format, we just fill the 
+extra bits with more 1s.
+
+Converting a floating point number to a wider format is rather more complicated, 
+especially if the number is subnormal in the original format, as it would not be 
+subnormal in the target format.
+
+FINISH WRITING
+
 ## Floating point arithmetic
 
 FINISH WRITING
