@@ -2177,6 +2177,28 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testToHalfPrecisionNegativeSubnormal() {
+        for (byte b = -127; b < -120; b++) {
+            QuarterPrecisionNumber instance = new QuarterPrecisionNumber(b);
+            int exponent = -6;
+            int mantissa = b & 7;
+            while (mantissa < 8) {
+                mantissa <<= 1;
+                exponent--;
+            }
+            int biasedExponent = (exponent + 15) << 10;
+            int normalizedMantissa = (mantissa & 7) << 7;
+            int draftBitPattern = 32768 + biasedExponent + normalizedMantissa;
+            short sh = (short) draftBitPattern;
+            HalfPrecisionNumber expected = new HalfPrecisionNumber(sh);
+            HalfPrecisionNumber actual = instance.toHalfPrecision();
+            String message = "Converting " + instance.toString() 
+                    + " to half-precision";
+            assertEquals(actual, expected, message);
+        }
+    }
+    
+    @Test
     public void testToHalfPrecisionNegativeZero() {
         QuarterPrecisionNumber zero 
                 = new QuarterPrecisionNumber(Byte.MIN_VALUE);
@@ -2193,6 +2215,28 @@ public class QuarterPrecisionNumberNGTest {
         HalfPrecisionNumber actual = zero.toHalfPrecision();
         String message = "Converting " + zero.toString() + " to half precision";
         assertEquals(actual, expected, message);
+    }
+    
+    @Test
+    public void testToHalfPrecisionPositiveSubnormal() {
+        for (byte b = 1; b < 8; b++) {
+            QuarterPrecisionNumber instance = new QuarterPrecisionNumber(b);
+            int exponent = -6;
+            int mantissa = b & 7;
+            while (mantissa < 8) {
+                mantissa <<= 1;
+                exponent--;
+            }
+            int biasedExponent = (exponent + 15) << 10;
+            int normalizedMantissa = (mantissa & 7) << 7;
+            int draftBitPattern = biasedExponent + normalizedMantissa;
+            short sh = (short) draftBitPattern;
+            HalfPrecisionNumber expected = new HalfPrecisionNumber(sh);
+            HalfPrecisionNumber actual = instance.toHalfPrecision();
+            String message = "Converting " + instance.toString() 
+                    + " to half-precision";
+            assertEquals(actual, expected, message);
+        }
     }
     
     @Test
