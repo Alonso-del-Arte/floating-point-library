@@ -326,6 +326,8 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
             case -122 -> -24064;
             case -121 -> -23808;
             case -8 -> -1024;
+            case -7, -6, -5, -4, -3, -2, -1, 121, 122, 123, 124, 125, 126, 
+                Byte.MAX_VALUE -> Short.MAX_VALUE;
             case 0 -> 0;
             case 1 -> 6144;
             case 2 -> 7168;
@@ -335,7 +337,12 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
             case 6 -> 8704;
             case 7 -> 8960;
             case 120 -> 31744;
-            default -> Short.MAX_VALUE;
+            default -> {
+                int sign = (this.heldByte < 0) ? 32768 : 0;
+                int exponent = ((this.heldByte & 120) + 64) << 7;
+                int mantissa = (this.heldByte & 7) << 10;
+                yield (short) (sign + exponent + mantissa);
+            }
         };
         return new HalfPrecisionNumber(sh);
     }
