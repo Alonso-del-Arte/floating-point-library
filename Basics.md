@@ -249,10 +249,23 @@ major complexity in both directions.
 
 We accept that narrowing conversions are potentially lossy in the case of both 
 integer types and floating point types. But in the case of integers, a loss 
-occurs only when is farther away from 0 than the narrower format can 
+occurs only when the number is farther away from 0 than the narrower format can 
 accommodate.
 
-FINISH WRITING
+With floating point numbers, distance from 0 alone is not enough to determine if 
+the number can be converted to the narrower format precisely. The trade-off is 
+that in many cases when a loss of precision occurs, the converted number is not 
+too far off from the original number.
+
+For example, 65472.0 and 65504.0 can both be represented in half precision. But 
+65488.0 can't be. To take that value from a wider format, such as single 
+precision, to half precision, it is necessary to either truncate the mantissa or 
+round it up to the next higher available mantissa.
+
+When a negative exponent is lower than the narrower format can represent, the 
+number simply underflows to &plusmn;0.0, and when a positive exponent is higher 
+than the narrower format can represent, the number simply overlows to 
+&plusmn;&infin;.
 
 ### Widening conversions
 
@@ -262,8 +275,8 @@ to convert &minus;3 in a byte to any wider integer format, we just fill the
 extra bits with more 1s.
 
 Converting a floating point number to a wider format is rather more complicated, 
-especially if the number is subnormal in the original format, as it would not be 
-subnormal in the target format.
+especially if the number is subnormal but not 0.0 in the original format, as it 
+would not be subnormal in the target format.
 
 FINISH WRITING
 
