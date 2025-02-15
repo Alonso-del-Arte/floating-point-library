@@ -120,10 +120,9 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
         return (this.heldShort & Short.MAX_VALUE) > 31744;
     }
     
-    // TODO: Write tests for this
     @Override
     public boolean isQuietNaN() {
-        return true;
+        return this.isNaN();
     }
 
     // TODO: Write tests for this
