@@ -184,13 +184,13 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     /**
      * Indicates whether or not this number is a quiet NaN value. A quiet NaN 
      * value is not supposed to indicate any special error condition.
-     * @return True if this number's bit pattern is &minus;7, &minus;6, 
-     * &minus;5, 121, 122 or 123, false in all other cases.
+     * @return True if this number's bit pattern is &minus;4, &minus;3, 
+     * &minus;2, &minus;1, 124, 125, 126 or 127, false in all other cases.
      */
     @Override
     public boolean isQuietNaN() {
         int masked = this.heldByte & Byte.MAX_VALUE;
-        return masked > 120 && masked < 124;
+        return masked > 123;
     }
 
     /**
@@ -198,13 +198,13 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
      * signaling NaN value is supposed to indicate a special error condition, 
      * but there has been no widespread agreement on how different error 
      * conditions are to be signaled.
-     * @return True if this number's bit pattern is &minus;4, &minus;3, 
-     * &minus;2, &minus;1, 124, 125, 126 or 127, false in all other cases.
+     * @return True if this number's bit pattern is &minus;7, &minus;6, 
+     * &minus;5, 121, 122 or 123, false in all other cases.
      */
     @Override
     public boolean isSignalingNaN() {
         int masked = this.heldByte & Byte.MAX_VALUE;
-        return masked > 123;
+        return masked > 120 && masked < 124;
     }
 
     private Fraction toNonNegativeFractionNormal() {
