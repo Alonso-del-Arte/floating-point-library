@@ -1400,6 +1400,40 @@ public class HalfPrecisionNumberNGTest {
             assert positiveNaN.isQuietNaN() : posNaNMsg;
         }
     }
+    
+    @Test
+    public void testNegativeInfinityIsNotQuietNaN() {
+        HalfPrecisionNumber infinity = new HalfPrecisionNumber((short) -1024);
+        String msg = infinity.toString() + " should not be quiet NaN";
+        assert !infinity.isQuietNaN() : msg;
+    }
+    
+    @Test
+    public void testNegativeNormalIsNotQuietNaN() {
+        for (short sh = Short.MIN_VALUE; sh < -1024; sh++) {
+            HalfPrecisionNumber instance = new HalfPrecisionNumber(sh);
+            String msg = "Number " + instance.toString() 
+                    + " should not be quiet NaN";
+            assert !instance.isQuietNaN() : msg;
+        }
+    }
+
+    @Test
+    public void testPositiveNormalIsNotQuietNaN() {
+        for (short sh = 0; sh < 31744; sh++) {
+            HalfPrecisionNumber instance = new HalfPrecisionNumber(sh);
+            String msg = "Number " + instance.toString() 
+                    + " should not be quiet NaN";
+            assert !instance.isQuietNaN() : msg;
+        }
+    }
+
+    @Test
+    public void testPositiveInfinityIsNotQuietNaN() {
+        HalfPrecisionNumber infinity = new HalfPrecisionNumber((short) 31744);
+        String msg = infinity.toString() + " should not be quiet NaN";
+        assert !infinity.isQuietNaN() : msg;
+    }
 
     /**
      * Test of isSignalingNaN method, of class HalfPrecisionNumber.
