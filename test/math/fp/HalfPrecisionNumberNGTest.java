@@ -1381,17 +1381,24 @@ public class HalfPrecisionNumberNGTest {
     }
 
     /**
-     * Test of isQuietNaN method, of class HalfPrecisionNumber.
+     * Test of the isQuietNaN function, of the HalfPrecisionNumber class.
      */
-//    @Test
+    @Test
     public void testIsQuietNaN() {
         System.out.println("isQuietNaN");
-        HalfPrecisionNumber instance = null;
-        boolean expResult = false;
-        boolean result = instance.isQuietNaN();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        for (short sh = 32256; sh > 0; sh++) {
+            short negSh = (short) (sh + Short.MIN_VALUE);
+            HalfPrecisionNumber negativeNaN = new HalfPrecisionNumber(negSh);
+            HalfPrecisionNumber positiveNaN = new HalfPrecisionNumber(sh);
+            String negNaNMsg = "Number " + negativeNaN + " from bit pattern " 
+                    + Integer.toHexString(negSh).substring(4) 
+                    + " should be found to be quiet NaN";
+            String posNaNMsg = "Number " + positiveNaN + " from bit pattern " 
+                    + Integer.toHexString(sh + 65536).substring(1) 
+                    + " should be found to be quiet NaN";
+            assert negativeNaN.isQuietNaN() : negNaNMsg;
+            assert positiveNaN.isQuietNaN() : posNaNMsg;
+        }
     }
 
     /**
