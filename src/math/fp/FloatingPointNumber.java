@@ -128,7 +128,9 @@ public abstract class FloatingPointNumber
     
     /**
      * Indicates whether or not this number is a quiet NaN value. A quiet NaN 
-     * value is not supposed to indicate any special error condition. 
+     * value is not supposed to indicate any special error condition. The most 
+     * significant explicit bit of the mantissa in a quiet NaN is 1, the rest of 
+     * the mantissa bits may all be 0s.
      * @return True if this number is a quiet NaN value, false in all other 
      * cases.
      */
@@ -141,7 +143,9 @@ public abstract class FloatingPointNumber
      * conditions are to be signaled. The Java Virtual Machine bypasses the 
      * whole issue by always or almost always giving a canonical quiet NaN for 
      * operations that give NaN (such as taking the square root of a negative 
-     * number).
+     * number). The most significant explicit bit of the mantissa of a signaling 
+     * NaN is 0. Therefore at least one of the less significant bits of the 
+     * mantissa bits must be 1, otherwise the number is an infinity.
      * @return True if this number is a signaling NaN value, false in all other 
      * cases.
      */
