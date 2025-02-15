@@ -1112,7 +1112,7 @@ public class QuarterPrecisionNumberNGTest {
     
     @Test
     public void testNegativeQuietNaNIsQuietNaN() {
-        for (byte b = -7; b < -4; b++) {
+        for (byte b = -4; b < 0; b++) {
             QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
             String msg = number.toString() + " from bit pattern " 
                     + Integer.toHexString(b + 256) 
@@ -1123,7 +1123,7 @@ public class QuarterPrecisionNumberNGTest {
     
     @Test
     public void testNegativeSignalingNaNIsNotQuietNaN() {
-        for (byte b = -4; b < 0; b++) {
+        for (byte b = -7; b < -4; b++) {
             QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
             String msg = number.toString() + " from bit pattern " 
                     + Integer.toHexString(b + 256) 
@@ -1134,7 +1134,7 @@ public class QuarterPrecisionNumberNGTest {
     
     @Test
     public void testPositiveQuietNaNIsQuietNaN() {
-        for (byte b = 121; b < 124; b++) {
+        for (byte b = 124; b > 0; b++) {
             QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
             String msg = number.toString() + " from bit pattern " 
                     + Integer.toHexString(b) 
@@ -1145,7 +1145,7 @@ public class QuarterPrecisionNumberNGTest {
     
     @Test
     public void testPositiveSignalingNaNIsNotQuietNaN() {
-        for (byte b = 124; b > 0; b++) {
+        for (byte b = 121; b < 124; b++) {
             QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
             String msg = number.toString() + " from bit pattern " 
                     + Integer.toHexString(b) 
@@ -1169,7 +1169,7 @@ public class QuarterPrecisionNumberNGTest {
     
     @Test
     public void testNegativeSignalingNaNIsSignalingNaN() {
-        for (byte b = -4; b < 0; b++) {
+        for (byte b = -7; b < -4; b++) {
             QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
             String msg = number.toString() + " from bit pattern " 
                     + Integer.toHexString(b + 256) 
@@ -1180,7 +1180,7 @@ public class QuarterPrecisionNumberNGTest {
     
     @Test
     public void testNegativeQuietNaNIsNotSignalingNaN() {
-        for (byte b = -7; b < -4; b++) {
+        for (byte b = -4; b < 0; b++) {
             QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
             String msg = number.toString() + " from bit pattern " 
                     + Integer.toHexString(b + 256) 
@@ -1191,7 +1191,7 @@ public class QuarterPrecisionNumberNGTest {
     
     @Test
     public void testPositiveSignalingNaNIsSignalingNaN() {
-        for (byte b = 124; b > 0; b++) {
+        for (byte b = 121; b < 124; b++) {
             QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
             String msg = number.toString() + " from bit pattern " 
                     + Integer.toHexString(b) 
@@ -1202,7 +1202,7 @@ public class QuarterPrecisionNumberNGTest {
     
     @Test
     public void testPositiveQuietNaNIsNotSignalingNaN() {
-        for (byte b = 121; b < 124; b++) {
+        for (byte b = 124; b > 0; b++) {// 124, > 0
             QuarterPrecisionNumber number = new QuarterPrecisionNumber(b);
             String msg = number.toString() + " from bit pattern " 
                     + Integer.toHexString(b) 
