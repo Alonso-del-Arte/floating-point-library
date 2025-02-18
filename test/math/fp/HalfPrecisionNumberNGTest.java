@@ -1495,18 +1495,24 @@ public class HalfPrecisionNumberNGTest {
     }
 
     /**
-     * Test of toQuarterPrecision method, of class HalfPrecisionNumber.
+     * Test of the toQuarterPrecision function, of the HalfPrecisionNumber 
+     * class.
      */
-//    @Test
+    @Test
     public void testToQuarterPrecision() {
         System.out.println("toQuarterPrecision");
-        HalfPrecisionNumber instance = null;
-        QuarterPrecisionNumber expResult = null;
-        QuarterPrecisionNumber result = instance.toQuarterPrecision();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        int stop = -Byte.MIN_VALUE;
+        for (int i = Byte.MIN_VALUE; i < stop; i++) {
+            byte b = (byte) i;
+            QuarterPrecisionNumber expected = new QuarterPrecisionNumber(b);
+            HalfPrecisionNumber instance = expected.toHalfPrecision();
+            QuarterPrecisionNumber actual = instance.toQuarterPrecision();
+            assertEquals(actual, expected);
+        }
     }
+    
+    // TODO: Write tests for toQuarterPrecision() when rounding is needed for 
+    // the narrowing conversion
 
     /**
      * Test of the toHalfPrecision function, of the HalfPrecisionNumber class.
