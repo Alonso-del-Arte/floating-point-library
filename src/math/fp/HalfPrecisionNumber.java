@@ -40,10 +40,6 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
     
     private static final byte ZERO_BYTE = 0;
     
-    private static final byte[] ONE_ZERO = {ZERO_BYTE}; // quarter
-
-    private static final byte[] TWO_ZEROS = {ZERO_BYTE, ZERO_BYTE}; // half
-
     private static final byte[] FOUR_ZEROS = {ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, 
         ZERO_BYTE}; // float
 
@@ -153,7 +149,7 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
     // TODO: Write tests for this
     @Override
     public HalfPrecisionNumber toHalfPrecision() {
-        return new HalfPrecisionNumber(TWO_ZEROS);
+        return new HalfPrecisionNumber((short) 0);
     }
 
     // TODO: Write tests for this
