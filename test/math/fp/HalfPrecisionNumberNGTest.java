@@ -1509,17 +1509,18 @@ public class HalfPrecisionNumberNGTest {
     }
 
     /**
-     * Test of toHalfPrecision method, of class HalfPrecisionNumber.
+     * Test of the toHalfPrecision function, of the HalfPrecisionNumber class.
      */
-//    @Test
+    @Test
     public void testToHalfPrecision() {
         System.out.println("toHalfPrecision");
-        HalfPrecisionNumber instance = null;
-        HalfPrecisionNumber expResult = null;
-        HalfPrecisionNumber result = instance.toHalfPrecision();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        int stop = -Short.MIN_VALUE;
+        for (int i = Short.MIN_VALUE; i < stop; i++) {
+            short sh = (short) i;
+            HalfPrecisionNumber expected = new HalfPrecisionNumber(sh);
+            HalfPrecisionNumber actual = expected.toHalfPrecision();
+            assertEquals(actual, expected);
+        }
     }
 
     /**
