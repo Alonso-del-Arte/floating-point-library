@@ -140,10 +140,38 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
         return 0.0;
     }
 
-    // TODO: Write tests for this
     @Override
     public QuarterPrecisionNumber toQuarterPrecision() {
-        return new QuarterPrecisionNumber((byte) 0);
+        byte b = switch (this.heldShort) {
+            case Short.MIN_VALUE -> Byte.MIN_VALUE;
+            case -26624 -> -127;
+            case -25600 -> -126;
+            case -25088 -> -125;
+            case -24576 -> -124;
+            case -24320 -> -123;
+            case -24064 -> -122;
+            case -23808 -> -121;
+            case -1024 -> -8;
+            case 0 -> 0;
+            case 6144 -> 1;
+            case 7168 -> 2;
+            case 7680 -> 3;
+            case 8192 -> 4;
+            case 8448 -> 5;
+            case 8704 -> 6;
+            case 8960 -> 7;
+            case 31744 -> 120;
+            default -> {
+                if ((this.heldShort & Short.MAX_VALUE) > 31744) {
+                    yield 127;
+                }
+                int sign = (this.heldShort < 0) ? 128 : 0;
+                int exponent = ((this.heldShort & 31744) - 8192) >> 7;
+                int mantissa = (this.heldShort & 1023) >> 10;
+                yield (byte) (sign + exponent + mantissa);
+            }
+        };
+        return new QuarterPrecisionNumber(b);
     }
 
     @Override
