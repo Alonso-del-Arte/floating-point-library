@@ -1507,7 +1507,13 @@ public class HalfPrecisionNumberNGTest {
             QuarterPrecisionNumber expected = new QuarterPrecisionNumber(b);
             HalfPrecisionNumber instance = expected.toHalfPrecision();
             QuarterPrecisionNumber actual = instance.toQuarterPrecision();
-            assertEquals(actual, expected);
+            if (expected.isNaN()) {
+                String msg = "Both " + expected.toString() + " and " 
+                        + actual.toString() + " should be NaN";
+                assert actual.isNaN() : msg;
+            } else {
+                assertEquals(actual, expected);
+            }
         }
     }
     
