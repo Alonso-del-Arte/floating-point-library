@@ -340,7 +340,7 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
             default -> {
                 int sign = (this.heldByte < 0) ? 32768 : 0;
                 int exponent = ((this.heldByte & 120) + 64) << 7;
-                int mantissa = (this.heldByte & 7) << 10;
+                int mantissa = (this.heldByte & 7) << 7;
                 yield (short) (sign + exponent + mantissa);
             }
         };
