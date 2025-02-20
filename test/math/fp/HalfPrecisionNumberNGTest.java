@@ -1473,6 +1473,20 @@ public class HalfPrecisionNumberNGTest {
         }
     }
 
+    @Test
+    public void testNegativeInfinityIsNotSignalingNaN() {
+        HalfPrecisionNumber infinity = new HalfPrecisionNumber((short) -1024);
+        String msg = infinity.toString() + " should not be signaling NaN";
+        assert !infinity.isSignalingNaN() : msg;
+    }
+    
+    @Test
+    public void testPositiveInfinityIsNotSignalingNaN() {
+        HalfPrecisionNumber infinity = new HalfPrecisionNumber((short) 31744);
+        String msg = infinity.toString() + " should not be signaling NaN";
+        assert !infinity.isSignalingNaN() : msg;
+    }
+
     /**
      * Test of to32BitPrimitive method, of class HalfPrecisionNumber.
      */
