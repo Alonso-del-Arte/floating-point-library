@@ -1453,17 +1453,24 @@ public class HalfPrecisionNumberNGTest {
     }
     
     /**
-     * Test of isSignalingNaN method, of class HalfPrecisionNumber.
+     * Test of the isSignalingNaN function, of the HalfPrecisionNumber class.
      */
-//    @Test
+    @Test
     public void testIsSignalingNaN() {
         System.out.println("isSignalingNaN");
-        HalfPrecisionNumber instance = null;
-        boolean expResult = false;
-        boolean result = instance.isSignalingNaN();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        for (short sh = 31745; sh < 32256; sh++) {
+            short negSh = (short) (sh + Short.MIN_VALUE);
+            HalfPrecisionNumber negativeNaN = new HalfPrecisionNumber(negSh);
+            HalfPrecisionNumber positiveNaN = new HalfPrecisionNumber(sh);
+            String negNaNMsg = "Number " + negativeNaN + " from bit pattern " 
+                    + Integer.toHexString(negSh).substring(4) 
+                    + " should be found to be signaling NaN";
+            String posNaNMsg = "Number " + positiveNaN + " from bit pattern " 
+                    + Integer.toHexString(sh + 65536).substring(1) 
+                    + " should be found to be signaling NaN";
+            assert negativeNaN.isSignalingNaN() : negNaNMsg;
+            assert positiveNaN.isSignalingNaN() : posNaNMsg;
+        }
     }
 
     /**
