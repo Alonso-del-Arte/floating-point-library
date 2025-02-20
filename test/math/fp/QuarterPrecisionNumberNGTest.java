@@ -2184,7 +2184,7 @@ public class QuarterPrecisionNumberNGTest {
             for (byte b = begin; b < stop; b++) {
                 QuarterPrecisionNumber instance = new QuarterPrecisionNumber(b);
                 int widerExponent = (exponent + 8) << 10;
-                int mantissa = (b & 7) << 10;
+                int mantissa = (b & 7) << 7;
                 int draftBitPattern = 32768 + widerExponent + mantissa;
                 HalfPrecisionNumber expected 
                         = new HalfPrecisionNumber((short) draftBitPattern);
@@ -2267,7 +2267,7 @@ public class QuarterPrecisionNumberNGTest {
             for (byte b = begin; b < stop; b++) {
                 QuarterPrecisionNumber instance = new QuarterPrecisionNumber(b);
                 int widerExponent = (exponent + 8) << 10;
-                int mantissa = (b & 7) << 10;
+                int mantissa = (b & 7) << 7;
                 int draftBitPattern = widerExponent + mantissa;
                 HalfPrecisionNumber expected 
                         = new HalfPrecisionNumber((short) draftBitPattern);
