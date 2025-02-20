@@ -125,7 +125,7 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
     // TODO: Write tests for this
     @Override
     public boolean isSignalingNaN() {
-        return false;
+        return true;
     }
 
     // TODO: Write tests for this
