@@ -167,7 +167,7 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
                 }
                 int sign = (this.heldShort < 0) ? 128 : 0;
                 int exponent = ((this.heldShort & 31744) - 8192) >> 7;
-                int mantissa = (this.heldShort & 1023) >> 10;
+                int mantissa = (this.heldShort & 1023) >> 7;
                 yield (byte) (sign + exponent + mantissa);
             }
         };
