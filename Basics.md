@@ -278,6 +278,10 @@ Converting a floating point number to a wider format is rather more complicated,
 especially if the number is subnormal but not 0.0 in the original format, as it 
 would not be subnormal in the target format.
 
+In that case, the exponent needs to be converted and the highest on bit of the 
+mantissa is dropped, and the remaining mantissa bits are shifted to the left 
+accordingly.
+
 FINISH WRITING
 
 ## Floating point arithmetic
