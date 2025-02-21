@@ -282,7 +282,9 @@ In that case, the exponent needs to be converted and the highest on bit of the
 mantissa is dropped, and the remaining mantissa bits are shifted to the left 
 accordingly.
 
-FINISH WRITING
+At least in the case of normal numbers in the narrower format, the conversion to 
+the wider format is much simpler: the exponent is adjusted and the mantissa bits 
+are simply shifted to the left by the appropriate numbers of bits.
 
 ## Floating point arithmetic
 
