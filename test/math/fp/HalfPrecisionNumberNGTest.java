@@ -1274,6 +1274,15 @@ public class HalfPrecisionNumberNGTest {
             assert negativeNormal.isNormal() : negNormMsg;
         }
     }
+    
+    @Test
+    public void testNegativeInfinityIsNotNormal() {
+        short sh = -1024;
+        HalfPrecisionNumber negInf = new HalfPrecisionNumber(sh);
+        String msg = "Number " + negInf.toString() 
+                + " should not be considered normal";
+        assert !negInf.isNormal() : msg;
+    }
 
     /**
      * Test of isSubnormal method, of class HalfPrecisionNumber.
