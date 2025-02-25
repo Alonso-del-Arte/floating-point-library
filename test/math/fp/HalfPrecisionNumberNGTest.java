@@ -1257,17 +1257,22 @@ public class HalfPrecisionNumberNGTest {
     }
 
     /**
-     * Test of isNormal method, of class HalfPrecisionNumber.
+     * Test of the isNormal function, of the HalfPrecisionNumber class.
      */
-//    @Test
+    @Test
     public void testIsNormal() {
         System.out.println("isNormal");
-        HalfPrecisionNumber instance = null;
-        boolean expResult = false;
-        boolean result = instance.isNormal();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        for (short sh = 1024; sh < 31744; sh++) {
+            short negSh = (short) (sh - 32768);
+            HalfPrecisionNumber positiveNormal = new HalfPrecisionNumber(sh);
+            HalfPrecisionNumber negativeNormal = new HalfPrecisionNumber(negSh);
+            String negNormMsg = "Number " + negativeNormal.toString() 
+                    + " should be considered normal";
+            String posNormMsg = "Number " + positiveNormal.toString() 
+                    + " should be considered normal";
+            assert positiveNormal.isNormal() : posNormMsg;
+            assert negativeNormal.isNormal() : negNormMsg;
+        }
     }
 
     /**
