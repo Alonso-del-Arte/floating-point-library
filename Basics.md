@@ -296,6 +296,9 @@ FINISH WRITING
 
 ### Multiplication and division
 
+Generally, multiplication and division are more reliable than addition and 
+subtraction.
+
 FINISH WRITING
 
 ### Roots and logarithms
