@@ -72,10 +72,9 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
         return -14;
     }
     
-    // TODO: Write tests for this
     @Override
     public boolean isNormal() {
-        return true;
+        return this.heldShort != -1024;
     }
     
     // TODO: Write tests for this
