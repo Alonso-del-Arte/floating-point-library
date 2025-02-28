@@ -1292,6 +1292,28 @@ public class HalfPrecisionNumberNGTest {
                 + " should not be considered normal";
         assert !posInf.isNormal() : msg;
     }
+    
+    @Test
+    public void testNegativeNaNIsNotNormal() {
+        for (short sh = -1023; sh < 0; sh++) {
+            HalfPrecisionNumber instance = new HalfPrecisionNumber(sh);
+            String msg = instance.toString() + " from bit pattern " 
+                    + Integer.toHexString(sh).substring(4) 
+                    + " should not be normal";
+            assert !instance.isNormal() : msg;
+        }
+    }
+
+    @Test
+    public void testPositiveNaNIsNotNormal() {
+        for (short sh = 31745; sh > 0; sh++) {
+            HalfPrecisionNumber instance = new HalfPrecisionNumber(sh);
+            String msg = instance.toString() + " from bit pattern " 
+                    + Integer.toHexString(sh + 65536).substring(1) 
+                    + " should not be normal";
+            assert !instance.isNormal() : msg;
+        }
+    }
 
     /**
      * Test of isSubnormal method, of class HalfPrecisionNumber.
