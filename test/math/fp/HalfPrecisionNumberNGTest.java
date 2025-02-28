@@ -1314,6 +1314,27 @@ public class HalfPrecisionNumberNGTest {
             assert !instance.isNormal() : msg;
         }
     }
+    
+    @Test
+    public void testNegativeSubnormalIsNotNormal() {
+        short stop = Short.MIN_VALUE + 1024;
+        for (short sh = Short.MIN_VALUE; sh < stop; sh++) {
+            HalfPrecisionNumber instance = new HalfPrecisionNumber(sh);
+            String msg = "Subnormal number " + instance.toString() 
+                    + " should not be normal";
+            assert !instance.isNormal() : msg;
+        }
+    }
+
+    @Test
+    public void testPositiveSubnormalIsNotNormal() {
+        for (short sh = 0; sh < 1024; sh++) {
+            HalfPrecisionNumber instance = new HalfPrecisionNumber(sh);
+            String msg = "Subnormal number " + instance.toString() 
+                    + " should not be normal";
+            assert !instance.isNormal() : msg;
+        }
+    }
 
     /**
      * Test of isSubnormal method, of class HalfPrecisionNumber.
