@@ -1337,17 +1337,22 @@ public class HalfPrecisionNumberNGTest {
     }
 
     /**
-     * Test of isSubnormal method, of class HalfPrecisionNumber.
+     * Test of the isSubnormal function, of the HalfPrecisionNumber class.
      */
-//    @Test
+    @Test
     public void testIsSubnormal() {
         System.out.println("isSubnormal");
-        HalfPrecisionNumber instance = null;
-        boolean expResult = false;
-        boolean result = instance.isSubnormal();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        for (short sh = 0; sh < 1024; sh++) {
+            short negSh = (short) (sh + Short.MIN_VALUE);
+            HalfPrecisionNumber negSubnormal = new HalfPrecisionNumber(negSh);
+            HalfPrecisionNumber posSubnormal = new HalfPrecisionNumber(sh);
+            String negMsg = "Number " + negSubnormal.toString() 
+                    + " should be subnormal";
+            String posMsg = "Number " + posSubnormal.toString() 
+                    + " should be subnormal";
+            assert negSubnormal.isSubnormal() : negMsg;
+            assert posSubnormal.isSubnormal() : posMsg;
+        }
     }
 
     /**
