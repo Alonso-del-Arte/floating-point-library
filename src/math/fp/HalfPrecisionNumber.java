@@ -74,7 +74,7 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
     
     @Override
     public boolean isNormal() {
-        int masked = this.heldShort & Short.MAX_VALUE;
+        int masked = this.heldShort & 31744;
         return masked != 31744;
     }
     
