@@ -81,7 +81,7 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
     // TODO: Write tests for this
     @Override
     public boolean isSubnormal() {
-        return false;
+        return true;
     }
     
     // TODO: Write tests for this
