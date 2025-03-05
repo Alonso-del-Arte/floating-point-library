@@ -1354,6 +1354,24 @@ public class HalfPrecisionNumberNGTest {
             assert posSubnormal.isSubnormal() : posMsg;
         }
     }
+    
+    @Test
+    public void testNegativeInfinityIsNotSubnormal() {
+        short sh = -1024;
+        HalfPrecisionNumber negInf = new HalfPrecisionNumber(sh);
+        String msg = "Number " + negInf.toString() 
+                + " should not be considered subnormal";
+        assert !negInf.isSubnormal() : msg;
+    }
+    
+    @Test
+    public void testPositiveInfinityIsNotSubnormal() {
+        short sh = 31744;
+        HalfPrecisionNumber posInf = new HalfPrecisionNumber(sh);
+        String msg = "Number " + posInf.toString() 
+                + " should not be considered subnormal";
+        assert !posInf.isSubnormal() : msg;
+    }
 
     /**
      * Test of isInteger method, of class HalfPrecisionNumber.
