@@ -1390,7 +1390,7 @@ public class HalfPrecisionNumberNGTest {
             HalfPrecisionNumber instance = new HalfPrecisionNumber(sh);
             String msg = instance.toString() + " from bit pattern " 
                     + Integer.toHexString(sh + 65536).substring(1) 
-                    + " should not be normal";
+                    + " should not be subnormal";
             assert !instance.isSubnormal() : msg;
         }
     }
