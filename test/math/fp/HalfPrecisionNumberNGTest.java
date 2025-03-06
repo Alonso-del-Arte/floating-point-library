@@ -1395,6 +1395,26 @@ public class HalfPrecisionNumberNGTest {
         }
     }
     
+    @Test
+    public void testNegativeNormalIsNotSubnormal() {
+        for (short sh = -31744; sh < -1024; sh++) {
+            HalfPrecisionNumber instance = new HalfPrecisionNumber(sh);
+            String msg = "Number " + instance.toString() 
+                    + " should not be subnormal";
+            assert !instance.isSubnormal() : msg;
+        }
+    }
+
+    @Test
+    public void testPositiveNormalIsNotSubnormal() {
+        for (short sh = 1024; sh < 31744; sh++) {
+            HalfPrecisionNumber instance = new HalfPrecisionNumber(sh);
+            String msg = "Number " + instance.toString() 
+                    + " should not be normal";
+            assert !instance.isSubnormal() : msg;
+        }
+    }
+    
     /**
      * Test of isInteger method, of class HalfPrecisionNumber.
      */
