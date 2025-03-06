@@ -1460,10 +1460,10 @@ public class HalfPrecisionNumberNGTest {
     @Test
     public void testPositiveInfinityIsNotFinite() {
         short sh = 31744;
-        HalfPrecisionNumber negInf = new HalfPrecisionNumber(sh);
-        String msg = "Number " + negInf.toString() 
+        HalfPrecisionNumber posInf = new HalfPrecisionNumber(sh);
+        String msg = "Number " + posInf.toString() 
                 + " should not be considered finite";
-        assert !negInf.isFinite() : msg;
+        assert !posInf.isFinite() : msg;
     }
 
     /**
