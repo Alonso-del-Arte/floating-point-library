@@ -92,7 +92,7 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
     // TODO: Write tests for this
     @Override
     public boolean isFinite() {
-        return true;
+        return (this.heldShort & Short.MAX_VALUE) != 31744;
     }
     
     // TODO: Write tests for this
