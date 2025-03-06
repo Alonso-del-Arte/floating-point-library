@@ -92,7 +92,7 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
     // TODO: Write tests for this
     @Override
     public boolean isFinite() {
-        return false;
+        return true;
     }
     
     // TODO: Write tests for this
