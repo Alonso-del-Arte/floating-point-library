@@ -1466,6 +1466,28 @@ public class HalfPrecisionNumberNGTest {
         assert !posInf.isFinite() : msg;
     }
 
+    @Test
+    public void testNegativeNaNIsNotFinite() {
+        for (short sh = -1023; sh < 0; sh++) {
+            HalfPrecisionNumber instance = new HalfPrecisionNumber(sh);
+            String msg = instance.toString() + " from bit pattern " 
+                    + Integer.toHexString(sh).substring(4) 
+                    + " should not be considered finite";
+            assert !instance.isFinite() : msg;
+        }
+    }
+
+    @Test
+    public void testPositiveNaNIsNotFinite() {
+        for (short sh = 31745; sh > 0; sh++) {
+            HalfPrecisionNumber instance = new HalfPrecisionNumber(sh);
+            String msg = instance.toString() + " from bit pattern " 
+                    + Integer.toHexString(sh + 65536).substring(1) 
+                    + " should not be considered finite";
+            assert !instance.isFinite() : msg;
+        }
+    }
+    
     /**
      * Test of isInfinite method, of class HalfPrecisionNumber.
      */
