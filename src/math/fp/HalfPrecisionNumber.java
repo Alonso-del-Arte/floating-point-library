@@ -78,10 +78,9 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
         return masked > 1023 && masked < 31744;
     }
     
-    // TODO: Write tests for this
     @Override
     public boolean isSubnormal() {
-        return (this.heldShort & Short.MAX_VALUE) < 31744;
+        return (this.heldShort & Short.MAX_VALUE) < 1024;
     }
     
     // TODO: Write tests for this
