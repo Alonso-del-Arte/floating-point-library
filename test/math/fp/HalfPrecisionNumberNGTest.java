@@ -1430,17 +1430,22 @@ public class HalfPrecisionNumberNGTest {
     }
 
     /**
-     * Test of isFinite method, of class HalfPrecisionNumber.
+     * Test of the isFinite function, of the HalfPrecisionNumber class.
      */
-//    @Test
+    @Test
     public void testIsFinite() {
         System.out.println("isFinite");
-        HalfPrecisionNumber instance = null;
-        boolean expResult = false;
-        boolean result = instance.isFinite();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        for (short sh = 0; sh < 31744; sh++) {
+            short negSh = (short) (sh + Short.MIN_VALUE);
+            HalfPrecisionNumber negNum = new HalfPrecisionNumber(negSh);
+            HalfPrecisionNumber posNum = new HalfPrecisionNumber(sh);
+            String negMsg = "Number " + negNum.toString() 
+                    + " should be considered finite";
+            String posMsg = "Number " + posNum.toString() 
+                    + " should be considered finite";
+            assert negNum.isFinite() : negMsg;
+            assert posNum.isFinite() : posMsg;
+        }
     }
 
     /**
