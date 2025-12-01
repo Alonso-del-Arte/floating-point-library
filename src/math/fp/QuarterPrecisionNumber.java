@@ -39,8 +39,6 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
 
     private static final byte ZERO_BYTE = 0;
     
-    private static final byte[] TWO_ZEROS = {ZERO_BYTE, ZERO_BYTE}; // half
-
     private static final byte[] FOUR_ZEROS = {ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, 
         ZERO_BYTE}; // float
 
