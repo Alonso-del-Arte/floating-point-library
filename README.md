@@ -21,7 +21,8 @@ subject to the following caveats:
 * Two objects representing not a number (NaN) values will be considered equal 
 according to `equals()` if they have the same bit pattern.
 * Positive zero and negative zero will not be considered equal according to 
-`equals()` but they will be considered equal according to `compareTo()`.
+`equals()` but they will be considered equal according to 
+`arithmeticallyEqual()` and `compareTo()`.
 
 Also, signaling NaNs will be preserved to the extent that they can be kept out 
 of Java floating point primitives.
