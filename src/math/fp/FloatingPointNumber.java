@@ -259,24 +259,56 @@ public abstract class FloatingPointNumber
         return this;
     }
     
+    /**
+     * Determines if this floating point number is arithmetically equal to 
+     * another floating point number. Usually, but not always, if {@link 
+     * #equals(java.lang.Object) equals()} returns true, this function will also 
+     * return true, if neither this number nor the other is a NaN. For the 
+     * examples, suppose this floating point number is &minus;0.5 in half 
+     * precision. Mind the caveat that if the comparison involves subnormal 
+     * numbers, even if both are in the same precision, may give misleading 
+     * results. However, we hope that if the difference between two normal 
+     * numbers is a subnormal number, our algorithm will convert the number of 
+     * lower precision to the higher precision and perform the comparison using 
+     * higher precision arithmetic.
+     * @param other The number to compare to. Examples: &minus;0.5 in quadruple 
+     * precision, &minus;0.4999999999999999 in double precision, &minus;0.0 in  
+     * any precision, positive infinity in any precision, a signaling NaN.
+     * @return True if this number is arithmetically equal to {@code other}, 
+     * false otherwise, subject to multiple caveats.
+     * <p>Special cases to consider:</p>
+     * <ul>
+     * <li>Positive zero and negative zero are always equal, even though their  
+     * bit patterns differ in their sign bits.</li>
+     * <li>No NaN is equal to another or even itself, even though by {@code 
+     * equals()} it would be considered equal if the bit patterns match.</li>
+     * <li>A finite number of large absolute value is not arithmetically equal 
+     * to the infinity of matching sign in a lower precision even if that's what 
+     * it would turn to in a narrowing conversion.</li>
+     * </ul>
+     */
     public abstract boolean arithmeticallyEqual(FloatingPointNumber other);
     
     /**
-     * Compares this floating point number object for equality. For the 
-     * examples, let's say this object is a 128-bit rational approximation of 
-     * the mathematical constant &pi;. 
+     * Compares this floating point number object for equality. Runtime class 
+     * and bit patterns are the only things taken into account. It doesn't 
+     * matter if this and the other object represent the same finite number or 
+     * the same sign infinity, nor does it matter if both numbers are NaNs. To 
+     * compare two numbers according to the rules of floating point arithmetic, 
+     * use {@link #arithmeticallyEqual(math.fp.FloatingPointNumber) 
+     * arithmeticallyEqual()}. For the examples, let's say this object is a 
+     * 128-bit rational approximation of the mathematical constant &pi;. 
      * @param obj The object to compare this floating point number object to. 
      * Examples: 64-bit, 128-bit and 256-bit rational approximations of &pi; in 
-     * <code>FloatingPointNumber</code> instances; a 128-bit rational 
-     * approximation of &radic;10; a <code>BigDecimal</code> approximation of 
-     * &pi;; a <code>LocalDateTime</code> object for the time and date right 
-     * now; and a <code>Double</code> wrapping <code>Math.PI</code>.
-     * @return True only if <code>obj</code> is a 
-     * <code>FloatingPointNumber</code> instance of the same runtime class with 
-     * the same number of bytes and the same bit pattern, false in all other 
-     * cases. In the examples, false, true and false for the three 
-     * <code>FloatingPointNumber</code> instances holding approximations of 
-     * &pi;, and false for all others.
+     * {@code FloatingPointNumber} instances; a 128-bit rational approximation 
+     * of &radic;10; a {@code BigDecimal} approximation of &pi;; a {@code 
+     * LocalDateTime} object for the time and date right now; and a {@code 
+     * Double} wrapping {@code Math.PI}, and a null.
+     * @return True only if {@code obj} is a {@code FloatingPointNumber} 
+     * instance of the same runtime class with the same number of bytes and the 
+     * same bit pattern, false in all other cases. In the examples, false, true 
+     * and false for the three {@code FloatingPointNumber} instances holding 
+     * approximations of &pi;, and false for all others.
      */
     @Override
     public boolean equals(Object obj) {
