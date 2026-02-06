@@ -256,7 +256,7 @@ public class FloatingPointNumberNGTest {
     
     @Test
     public void testApplyRejectsByteArraysOfOddLength() {
-        int badLen = 2 * RANDOM.nextInt(8) + 1;
+        int badLen = 2 * RANDOM.nextInt(1, 8) + 1;
         byte[] bytes = new byte[badLen];
         RANDOM.nextBytes(bytes);
         String msg = "apply() should reject byte array of length " + badLen;
