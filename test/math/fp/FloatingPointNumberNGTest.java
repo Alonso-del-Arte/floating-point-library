@@ -259,7 +259,20 @@ public class FloatingPointNumberNGTest {
         int badLen = 2 * RANDOM.nextInt(8) + 1;
         byte[] bytes = new byte[badLen];
         RANDOM.nextBytes(bytes);
-        fail("FINISH WRITING THIS TEST");
+        String msg = "apply() should reject byte array of length " + badLen;
+        Throwable t = assertThrows(() -> {
+            FloatingPointNumber badResult = FloatingPointNumber.apply(bytes);
+            System.out.println(msg + ", not given result " 
+                    + badResult.toString());
+        }, IllegalArgumentException.class, msg);
+        String excMsg = t.getMessage();
+        assert excMsg != null : "Message should not be null";
+        assert !excMsg.isBlank() : "Message should not be blank";
+        String numStr = Integer.toString(badLen);
+        String containsMsg = "Exception message should contain \"" + numStr 
+                + "\"";
+        assert excMsg.contains(numStr) : containsMsg;
+        System.out.println("\"" + excMsg + "\"");
     }
     
     @Test
