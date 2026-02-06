@@ -191,6 +191,12 @@ public abstract class FloatingPointNumber
     
     // TODO: Write tests for this
     public static FloatingPointNumber apply(byte[] bytes) {
+        int len = bytes.length;
+        if (len % 2 == 1) {
+            String excMsg = "Array length " + len 
+                    + " is not valid, should be even";
+            throw new IllegalArgumentException(excMsg);
+        }
         return new QuarterPrecisionNumber((byte) 47);
     }
     
