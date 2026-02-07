@@ -276,6 +276,17 @@ public class FloatingPointNumberNGTest {
     }
     
     @Test
+    public void testApplyQuarterPrecision() {
+        for (int i = Byte.MIN_VALUE; i < 128; i++) {
+            byte b = (byte) i;
+            byte[] bytes = {b};
+            QuarterPrecisionNumber expected = new QuarterPrecisionNumber(b);
+            FloatingPointNumber actual = FloatingPointNumber.apply(bytes);
+            assertEquals(actual, expected);
+        }
+    }
+    
+    @Test
     public void testMinus() {
         System.out.println("minus");
         FloatingPointNumber minuend = makeNumber();
