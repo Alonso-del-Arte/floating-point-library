@@ -190,6 +190,16 @@ public abstract class FloatingPointNumber
     }
     
     // TODO: Write tests for this
+    /**
+     * WORK IN PROGRESS...
+     * Converts an array of bytes to a floating point number of the appropriate 
+     * type... or will do so once all of the various types are thoroughly 
+     * tested...
+     * @param bytes The bytes. For example, {0x42, 0x48}.
+     * @return The floating point number. For example, &pi; in half-precision.
+     * @throws IllegalArgumentException If {@code bytes} consists of three, 
+     * five, seven or any greater odd number of bytes.
+     */
     public static FloatingPointNumber apply(byte[] bytes) {
         int len = bytes.length;
         if (len > 2 && len % 2 == 1) {
