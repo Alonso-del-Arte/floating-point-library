@@ -197,7 +197,7 @@ public abstract class FloatingPointNumber
                     + " is not valid, should be even or just 1";
             throw new IllegalArgumentException(excMsg);
         }
-        return new QuarterPrecisionNumber((byte) 47);
+        return new QuarterPrecisionNumber(bytes[0]);
     }
     
     /**
