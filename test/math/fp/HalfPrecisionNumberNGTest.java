@@ -1199,6 +1199,19 @@ public class HalfPrecisionNumberNGTest {
             assertEquals(actual, expected);
         }
     }
+    
+    @Test
+    public void testReferentialEquality() {
+        short sh = (short) RANDOM.nextInt();
+        HalfPrecisionNumber someNumber = new HalfPrecisionNumber(sh);
+        String message = "Number " + someNumber.toString() 
+                + " should be equal to itself";
+        assertEquals(someNumber, someNumber, message);
+    }
+    
+    // TODO: More tests for equals()
+    
+    // TODO: Test hashCode()
 
     /**
      * Test of the getUnbiasedExponent function, of the HalfPrecisionNumber 
