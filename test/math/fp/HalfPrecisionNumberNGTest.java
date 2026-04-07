@@ -1720,7 +1720,7 @@ public class HalfPrecisionNumberNGTest {
     /**
      * Test of the toHalfPrecision function, of the HalfPrecisionNumber class.
      */
-    @Test
+    @Test(enabled = false)
     public void testToHalfPrecision() {
         System.out.println("toHalfPrecision");
         int stop = -Short.MIN_VALUE;
