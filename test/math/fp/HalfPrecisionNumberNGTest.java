@@ -1209,6 +1209,20 @@ public class HalfPrecisionNumberNGTest {
         assertEquals(someNumber, someNumber, message);
     }
     
+    private static Object provideNull() {
+        return null;
+    }
+    
+    @Test
+    public void testNotEqualsNull() {
+        short sh = (short) RANDOM.nextInt();
+        HalfPrecisionNumber someNumber = new HalfPrecisionNumber(sh);
+        Object obj = provideNull();
+        String msg = "Number " + someNumber.toString() 
+                + " should not equal null";
+        assert !someNumber.equals(obj) : msg;
+    }
+    
     // TODO: More tests for equals()
     
     // TODO: Test hashCode()
