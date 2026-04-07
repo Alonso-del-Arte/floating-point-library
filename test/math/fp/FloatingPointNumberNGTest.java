@@ -286,6 +286,16 @@ public class FloatingPointNumberNGTest {
         }
     }
     
+    // TODO: Write test for apply half precision
+    
+    // TODO: Write test for apply single precision
+    
+    // TODO: Write test for apply double precision
+    
+    // TODO: Write test for apply quadruple precision
+    
+    // TODO: Write test for apply octuple precision
+    
     @Test
     public void testMinus() {
         System.out.println("minus");
