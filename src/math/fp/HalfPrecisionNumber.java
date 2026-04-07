@@ -274,6 +274,7 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
             case -1024 -> MINUS_SIGN + "Infinity";
             case 0 -> "0.0";
             case 31744 -> "Infinity";
+            case 31745 -> "TEMP REWIND TO FAILING";
             default -> {
                 if ((this.heldShort > -1024 && this.heldShort < 0) 
                         || this.heldShort > 31744) {
