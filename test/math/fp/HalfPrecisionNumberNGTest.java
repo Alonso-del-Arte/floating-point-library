@@ -1190,6 +1190,7 @@ public class HalfPrecisionNumberNGTest {
         }
     }
 
+    @Test
     public void testToStringPositiveNaN() {
         String expected = "NaN";
         for (short sh = 31745; sh > 0; sh++) {
