@@ -328,7 +328,7 @@ public class FloatingPointNumberNGTest {
         System.out.println("\"" + excMsg + "\"");
     }
     
-    private static class FloatingPointNumberImpl extends FloatingPointNumber {
+    static class FloatingPointNumberImpl extends FloatingPointNumber {
         
         @Override
         public int getUnbiasedExponent() {
