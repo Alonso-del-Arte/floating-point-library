@@ -18,6 +18,8 @@ package math.fp;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 import static math.fp.FloatingPointNumberNGTest.RANDOM;
 import math.integer.ShortProcessor;
@@ -1264,7 +1266,24 @@ public class HalfPrecisionNumberNGTest {
         assertEquals(someNumber, sameNumber, message);
     }
     
-    // TODO: Test hashCode()
+    @Test
+    public void testHashCode() {
+        System.out.println("hashCode");
+        int initialCapacity = RANDOM.nextInt(64) + 16;
+        Set<FloatingPointNumber> numbers = new HashSet<>(initialCapacity);
+        Set<Integer> hashes = new HashSet<>(initialCapacity);
+        for (int i = 0; i < initialCapacity; i++) {
+            short sh = (short) RANDOM.nextInt();
+            FloatingPointNumber number = new HalfPrecisionNumber(sh);
+            numbers.add(number);
+            hashes.add(number.hashCode());
+        }
+        int expected = numbers.size();
+        int actual = hashes.size();
+        String message = "The set of " + expected 
+                + " numbers should correspond to as many hash codes";
+        assertEquals(actual, expected, message);
+    }
 
     /**
      * Test of the getUnbiasedExponent function, of the HalfPrecisionNumber 
