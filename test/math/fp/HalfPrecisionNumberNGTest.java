@@ -1239,6 +1239,20 @@ public class HalfPrecisionNumberNGTest {
         assert !numSpecClass.equals(numDiffClass) : msg;
     }
     
+    @Test
+    public void testNotEqualsDiffValue() {
+        short shA = (short) RANDOM.nextInt();
+        short shB = (short) (shA + 1);
+        FloatingPointNumber numA = new HalfPrecisionNumber(shA);
+        FloatingPointNumber numB = new HalfPrecisionNumber(shB);
+        int mask = 65535;
+        String msg = numA.toString() + " from bit pattern " 
+                + Integer.toHexString(shA & mask) + " should not equal " 
+                + numB.toString() + " from bit pattern " 
+                + Integer.toHexString(shB & mask);
+        assert !numA.equals(numB) : msg;
+    }
+    
     // TODO: More tests for equals()
     
     // TODO: Test hashCode()
