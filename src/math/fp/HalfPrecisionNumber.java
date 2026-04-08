@@ -297,12 +297,6 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
             
     // TODO: Write tests for this
     @Override
-    public boolean equals(Object obj) {
-        return this == obj;
-    }
-    
-    // TODO: Write tests for this
-    @Override
     public int hashCode() {
         return 0;
     }
