@@ -310,10 +310,9 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
         return this.heldShort == other.heldShort;
     }
     
-    // TODO: Write tests for this
     @Override
     public int hashCode() {
-        return 0;
+        return this.heldShort;
     }
     
     // TODO: Write tests for this
