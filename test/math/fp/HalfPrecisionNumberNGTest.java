@@ -1223,6 +1223,22 @@ public class HalfPrecisionNumberNGTest {
         assert !someNumber.equals(obj) : msg;
     }
     
+    @Test
+    public void testNotEqualsDiffClass() {
+        short sh = (short) RANDOM.nextInt();
+        FloatingPointNumber numSpecClass = new HalfPrecisionNumber(sh);
+        byte highByte = (byte) (sh >> 8);
+        byte lowByte = (byte) sh;
+        byte[] bytes = {highByte, lowByte};
+        FloatingPointNumber numDiffClass 
+                = new FloatingPointNumberNGTest.FloatingPointNumberImpl(bytes);
+        String msg = numSpecClass.toString() + " of class " 
+                + numSpecClass.getClass().getName() 
+                + " should not equal " + numDiffClass.toString() 
+                + " instance from same bit pattern";
+        assert !numSpecClass.equals(numDiffClass) : msg;
+    }
+    
     // TODO: More tests for equals()
     
     // TODO: Test hashCode()
