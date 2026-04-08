@@ -1253,7 +1253,16 @@ public class HalfPrecisionNumberNGTest {
         assert !numA.equals(numB) : msg;
     }
     
-    // TODO: More tests for equals()
+    @Test
+    public void testEquals() {
+        System.out.println("equals");
+        short sh = (short) RANDOM.nextInt();
+        FloatingPointNumber someNumber = new HalfPrecisionNumber(sh);
+        FloatingPointNumber sameNumber = new HalfPrecisionNumber(sh);
+        String message = someNumber.toString() + " should equal " 
+                + sameNumber.toString();
+        assertEquals(someNumber, sameNumber, message);
+    }
     
     // TODO: Test hashCode()
 
