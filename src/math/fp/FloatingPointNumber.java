@@ -349,11 +349,19 @@ public abstract class FloatingPointNumber
      */
     @Override
     public int hashCode() {
-        int hash = this.componentBytes.length << 16;
+        int len = this.componentBytes.length;
+        int hash = len << 16;
         hash += this.getClass().getName().hashCode();
-        for (byte b : this.componentBytes) {
-            hash += (b << 8);
-            hash ^= b;
+        if (len < 4) {
+            for (byte b : this.componentBytes) {
+                hash <<= 8;
+                hash += b;
+            }
+        } else {
+            for (byte b : this.componentBytes) {
+                hash += (b << 8);
+                hash ^= b;
+            }
         }
         return hash;
     }
