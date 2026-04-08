@@ -295,26 +295,6 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
         };
     }
             
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (!this.getClass().equals(obj.getClass())) {
-            return false;
-        }
-        HalfPrecisionNumber other = (HalfPrecisionNumber) obj;
-        return this.heldShort == other.heldShort;
-    }
-    
-    @Override
-    public int hashCode() {
-        return this.heldShort;
-    }
-    
     // TODO: Write tests for this
     @Override
     public String bitPatternHexadecimal() {
