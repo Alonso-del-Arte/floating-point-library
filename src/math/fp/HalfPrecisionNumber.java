@@ -298,7 +298,17 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
     // TODO: Write tests for this
     @Override
     public boolean equals(Object obj) {
-        return this == obj;
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (!this.getClass().equals(obj.getClass())) {
+            return false;
+        }
+        HalfPrecisionNumber other = (HalfPrecisionNumber) obj;
+        return this.heldShort == other.heldShort;
     }
     
     // TODO: Write tests for this
