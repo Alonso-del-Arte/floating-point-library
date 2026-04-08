@@ -352,7 +352,7 @@ public abstract class FloatingPointNumber
         int hash = this.componentBytes.length << 16;
         hash += this.getClass().getName().hashCode();
         for (byte b : this.componentBytes) {
-            hash += (b << 7);
+            hash += (b << 8);
             hash ^= b;
         }
         return hash;
