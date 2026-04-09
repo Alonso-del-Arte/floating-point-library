@@ -555,6 +555,21 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testNotEqualsDiffClass() {
+        byte[] bytes = new byte[1];
+        RANDOM.nextBytes(bytes);
+        byte b = bytes[0];
+        FloatingPointNumber numSpecClass = new QuarterPrecisionNumber(b);
+        FloatingPointNumber numDiffClass 
+                = new FloatingPointNumberNGTest.FloatingPointNumberImpl(bytes);
+        String msg = numSpecClass.toString() + " of class " 
+                + numSpecClass.getClass().getName() 
+                + " should not equal " + numDiffClass.toString() 
+                + " instance from same bit pattern";
+        assert !numSpecClass.equals(numDiffClass) : msg;
+    }
+    
+    @Test
     public void testGetUnbiasedExponent() {
         System.out.println("getUnbiasedExponent");
         for (int i = Byte.MIN_VALUE; i < Byte.MAX_VALUE; i += 8) {
