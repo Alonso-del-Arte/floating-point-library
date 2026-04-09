@@ -570,6 +570,24 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testNotEqualsDiffValue() {
+        byte b = (byte) RANDOM.nextInt();
+        FloatingPointNumber instance = new QuarterPrecisionNumber(b);
+        byte other = (byte) (b + 1);
+        int count = 0;
+        String msgPart = instance.toString() + " from bit pattern " + b 
+                + " should not equal ";
+        while (count < 256) {
+            FloatingPointNumber obj = new QuarterPrecisionNumber(other);
+            String msg = msgPart + obj.toString() + " from bit pattern " 
+                    + other;
+            assert !instance.equals(obj) : msg;
+            other++;
+            count++;
+        }
+    }
+    
+    @Test
     public void testGetUnbiasedExponent() {
         System.out.println("getUnbiasedExponent");
         for (int i = Byte.MIN_VALUE; i < Byte.MAX_VALUE; i += 8) {
