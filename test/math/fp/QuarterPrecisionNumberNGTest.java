@@ -605,6 +605,25 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testHashCode() {
+        System.out.println("hashCode");
+        int initialCapacity = 256;
+        Set<QuarterPrecisionNumber> numbers = new HashSet<>(initialCapacity);
+        Set<Integer> hashes = new HashSet<>(initialCapacity);
+        for (int i = Byte.MIN_VALUE; i < 128; i++) {
+            byte b = (byte) i;
+            QuarterPrecisionNumber instance = new QuarterPrecisionNumber(b);
+            numbers.add(instance);
+            hashes.add(instance.hashCode());
+        }
+        int expected = numbers.size();
+        int actual = hashes.size();
+        String message = "There should be " + expected 
+                + " distinct hash codes for as many numbers";
+        assertEquals(actual, expected, message);
+    }
+    
+    @Test
     public void testGetUnbiasedExponent() {
         System.out.println("getUnbiasedExponent");
         for (int i = Byte.MIN_VALUE; i < Byte.MAX_VALUE; i += 8) {
