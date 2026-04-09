@@ -16,6 +16,9 @@
  */
 package math.fp;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import static math.fp.FloatingPointNumberNGTest.provideNull;
 import static math.fp.FloatingPointNumberNGTest.RANDOM;
 import math.fractions.Fraction;
@@ -590,7 +593,7 @@ public class QuarterPrecisionNumberNGTest {
     @Test
     public void testEquals() {
         System.out.println("equals");
-        for (int i = Byte.MIN_VALUE; i < Byte.MAX_VALUE; i++) {
+        for (int i = Byte.MIN_VALUE; i < 128; i++) {
             byte b = (byte) i;
             FloatingPointNumber someNumber = new QuarterPrecisionNumber(b);
             FloatingPointNumber sameNumber = new QuarterPrecisionNumber(b);
