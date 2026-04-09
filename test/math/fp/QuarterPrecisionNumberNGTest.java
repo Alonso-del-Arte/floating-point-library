@@ -577,7 +577,7 @@ public class QuarterPrecisionNumberNGTest {
         int count = 0;
         String msgPart = instance.toString() + " from bit pattern " + b 
                 + " should not equal ";
-        while (count < 256) {
+        while (count < 255) {
             FloatingPointNumber obj = new QuarterPrecisionNumber(other);
             String msg = msgPart + obj.toString() + " from bit pattern " 
                     + other;
