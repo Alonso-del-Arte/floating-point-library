@@ -16,6 +16,7 @@
  */
 package math.fp;
 
+import static math.fp.FloatingPointNumberNGTest.provideNull;
 import static math.fp.FloatingPointNumberNGTest.RANDOM;
 import math.fractions.Fraction;
 
@@ -542,6 +543,15 @@ public class QuarterPrecisionNumberNGTest {
         FloatingPointNumber instance = new QuarterPrecisionNumber(b);
         String msg = instance.toString() + " should equal itself";
         assert instance.equals(instance) : msg;
+    }
+    
+    @Test
+    public void testNotEqualsNull() {
+        byte b = (byte) RANDOM.nextInt();
+        FloatingPointNumber instance = new QuarterPrecisionNumber(b);
+        Object obj = provideNull();
+        String msg = instance.toString() + " should not equal null";
+        assert !instance.equals(obj) : msg;
     }
     
     @Test
