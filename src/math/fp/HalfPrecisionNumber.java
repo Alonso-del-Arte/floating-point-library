@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 Alonso del Arte
+ * Copyright (C) 2026 Alonso del Arte
  *
  * This program is free software: you can redistribute it and/or modify it under 
  * the terms of the GNU General Public License as published by the Free Software 
@@ -89,7 +89,6 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
         return true;
     }
     
-    // TODO: Write tests for this
     @Override
     public boolean isFinite() {
         return (this.heldShort & 31744) != 31744;
@@ -98,7 +97,7 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
     // TODO: Write tests for this
     @Override
     public boolean isInfinite() {
-        return false;
+        return true;
     }
     
     /**
