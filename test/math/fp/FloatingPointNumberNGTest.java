@@ -114,7 +114,7 @@ public class FloatingPointNumberNGTest {
         assertEquals(number, number);
     }
     
-    private static Object provideNull() {
+    static Object provideNull() {
         return null;
     }
     
