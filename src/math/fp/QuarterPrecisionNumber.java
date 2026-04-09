@@ -544,7 +544,7 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     
     @Override
     public boolean equals(Object obj) {
-        return obj != null;
+        return obj instanceof QuarterPrecisionNumber;
     }
     
     @Override
