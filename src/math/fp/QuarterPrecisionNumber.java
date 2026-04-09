@@ -544,16 +544,16 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     
     @Override
     public boolean equals(Object obj) {
-//        if (this == obj) {
-//            return true;
-//        }
-//        if (obj == null) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
-//        }
-//        if (!this.getClass().equals(obj.getClass())) {
-//            return false;
-//        }
-//        return this.heldByte == ((QuarterPrecisionNumber) obj).heldByte;
+        }
+        if (!this.getClass().equals(obj.getClass())) {
+            return false;
+        }
+        return this.heldByte == ((QuarterPrecisionNumber) obj).heldByte;
     }
     
     @Override
