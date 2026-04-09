@@ -588,6 +588,20 @@ public class QuarterPrecisionNumberNGTest {
     }
     
     @Test
+    public void testEquals() {
+        System.out.println("equals");
+        for (int i = Byte.MIN_VALUE; i < Byte.MAX_VALUE; i++) {
+            byte b = (byte) i;
+            FloatingPointNumber someNumber = new QuarterPrecisionNumber(b);
+            FloatingPointNumber sameNumber = new QuarterPrecisionNumber(b);
+            String msg = someNumber.toString() + " from bit pattern " + b 
+                    + " should equal " + sameNumber.toString() 
+                    + " from same bit pattern";
+            assert someNumber.equals(sameNumber) : msg;
+        }
+    }
+    
+    @Test
     public void testGetUnbiasedExponent() {
         System.out.println("getUnbiasedExponent");
         for (int i = Byte.MIN_VALUE; i < Byte.MAX_VALUE; i += 8) {
