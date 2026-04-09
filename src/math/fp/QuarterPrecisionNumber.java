@@ -558,7 +558,7 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
     
     @Override
     public int hashCode() {
-        return 0;
+        return this.heldByte;
     }
     
     /**
