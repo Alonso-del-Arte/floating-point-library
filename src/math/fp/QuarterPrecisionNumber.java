@@ -542,25 +542,6 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
         };
     }
     
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (!this.getClass().equals(obj.getClass())) {
-            return false;
-        }
-        return this.heldByte == ((QuarterPrecisionNumber) obj).heldByte;
-    }
-    
-    @Override
-    public int hashCode() {
-        return this.heldByte;
-    }
-    
     /**
      * Gives the bit pattern of this number as the textual representation of an 
      * unsigned hexadecimal number. Will be zero-padded on the left as needed.
