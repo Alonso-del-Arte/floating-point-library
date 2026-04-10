@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 Alonso del Arte
+ * Copyright (C) 2026 Alonso del Arte
  *
  * This program is free software: you can redistribute it and/or modify it under 
  * the terms of the GNU General Public License as published by the Free Software 
@@ -1507,10 +1507,10 @@ public class HalfPrecisionNumberNGTest {
 //    @Test
     public void testIsInteger() {
         System.out.println("isInteger");
-        HalfPrecisionNumber instance = null;
-        boolean expResult = false;
-        boolean result = instance.isInteger();
-        assertEquals(result, expResult);
+//        HalfPrecisionNumber instance = null;
+//        boolean expResult = false;
+//        boolean result = instance.isInteger();
+//        assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -1572,6 +1572,13 @@ public class HalfPrecisionNumberNGTest {
                     + " should not be considered finite";
             assert !instance.isFinite() : msg;
         }
+    }
+    
+    @Test
+    public void testNegativeZeroIsNotInfinite() {
+        FloatingPointNumber zero = new HalfPrecisionNumber(Short.MIN_VALUE);
+        String msg = zero.toString() + " should not be infinite";
+        assert !zero.isInfinite() : msg;
     }
     
     /**
