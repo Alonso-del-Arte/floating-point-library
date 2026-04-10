@@ -1600,6 +1600,20 @@ public class HalfPrecisionNumberNGTest {
         assert infinity.isInfinite() : msg;
     }
     
+    @Test
+    public void testNegativeNaNIsNotInfinite() {
+        short start = -1023;
+        String msgPartA = " from bit pattern ";
+        String msgPartB = " should not be infinite";
+        for (short sh = start; sh < 0; sh++) {
+            FloatingPointNumber instance = new HalfPrecisionNumber(sh);
+            int bitPattern = 65536 + sh;
+            String msg = instance.toString() + msgPartA 
+                    + Integer.toHexString(bitPattern) + msgPartB;
+            assert !instance.isInfinite() : msg;
+        }
+    }
+    
     /**
      * Test of isInfinite method, of class HalfPrecisionNumber.
      */
