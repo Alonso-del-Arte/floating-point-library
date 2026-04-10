@@ -1540,6 +1540,14 @@ public class HalfPrecisionNumberNGTest {
         }
     }
     
+    @Test
+    public void testIsZero() {
+        System.out.println("isZero");
+        FloatingPointNumber zero = new HalfPrecisionNumber((short) 0);
+        String msg = zero.toString() + " should be zero";
+        assert zero.isZero() : msg;
+    }
+    
     /**
      * Test of isInteger method, of class HalfPrecisionNumber.
      */
