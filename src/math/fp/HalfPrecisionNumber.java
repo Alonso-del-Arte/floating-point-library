@@ -94,10 +94,9 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
         return (this.heldShort & 31744) != 31744;
     }
     
-    // TODO: Write tests for this
     @Override
     public boolean isInfinite() {
-        return this.heldShort == -1024 || this.heldShort == 31744;
+        return (this.heldShort & Short.MAX_VALUE) == 31744;
     }
     
     /**
