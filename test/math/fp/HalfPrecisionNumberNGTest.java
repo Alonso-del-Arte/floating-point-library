@@ -1592,6 +1592,14 @@ public class HalfPrecisionNumberNGTest {
         }
     }
     
+    @Test
+    public void testNegativeInfinityIsInfinite() {
+        short sh = -1024;
+        FloatingPointNumber infinity = new HalfPrecisionNumber(sh);
+        String msg = infinity.toString() + " should be infinite";
+        assert infinity.isInfinite() : msg;
+    }
+    
     /**
      * Test of isInfinite method, of class HalfPrecisionNumber.
      */
