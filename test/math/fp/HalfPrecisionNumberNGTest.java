@@ -1508,6 +1508,17 @@ public class HalfPrecisionNumberNGTest {
         assert zero.isZero() : msg;
     }
     
+    @Test
+    public void testNegativeNonZeroIsNotZero() {
+        String msgPart = " should not be zero";
+        short start = Short.MIN_VALUE + 1;
+        for (short sh = start; sh < -1024; sh++) {
+            FloatingPointNumber instance = new HalfPrecisionNumber(sh);
+            String msg = instance.toString() + msgPart;
+            assert !instance.isZero() : msg;
+        }
+    }
+    
     /**
      * Test of isInteger method, of class HalfPrecisionNumber.
      */
