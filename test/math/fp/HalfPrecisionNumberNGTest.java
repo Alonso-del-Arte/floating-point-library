@@ -1632,17 +1632,15 @@ public class HalfPrecisionNumberNGTest {
     }
     
     /**
-     * Test of isInfinite method, of class HalfPrecisionNumber.
+     * Test of the isInfinite function, of the HalfPrecisionNumber class.
      */
-//    @Test
+    @Test
     public void testIsInfinite() {
         System.out.println("isInfinite");
-        HalfPrecisionNumber instance = null;
-        boolean expResult = false;
-        boolean result = instance.isInfinite();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        short sh = 31744;
+        FloatingPointNumber infinity = new HalfPrecisionNumber(sh);
+        String msg = infinity.toString() + " should be infinite";
+        assert infinity.isInfinite() : msg;
     }
 
     /**
