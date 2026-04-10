@@ -97,7 +97,7 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
     // TODO: Write tests for this
     @Override
     public boolean isInfinite() {
-        return this.heldShort > -1025;
+        return this.heldShort == -1024;
     }
     
     /**
