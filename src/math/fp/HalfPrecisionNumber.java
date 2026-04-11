@@ -85,7 +85,8 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
     
     @Override
     public boolean isZero() {
-        return this.heldShort == Short.MIN_VALUE || this.heldShort == 0;
+        return this.heldShort == Short.MIN_VALUE || this.heldShort == 0 
+                || this.heldShort > 31743;
     }
     
     // TODO: Write tests for this
