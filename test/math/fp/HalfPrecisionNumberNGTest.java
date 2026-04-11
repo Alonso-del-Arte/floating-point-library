@@ -1566,6 +1566,18 @@ public class HalfPrecisionNumberNGTest {
         assert !infinity.isZero() : msg;
     }
     
+    @Test
+    public void testPositiveNaNIsNotZero() {
+        String msgPartA = " from bit pattern ";
+        String msgPartB = " should not be zero";
+        for (short sh = 31745; sh > 0; sh++) {
+            FloatingPointNumber instance = new HalfPrecisionNumber(sh);
+            String msg = instance.toString() + msgPartA 
+                    + Integer.toHexString(sh) + msgPartB;
+            assert !instance.isZero() : msg;
+        }
+    }
+    
     /**
      * Test of isInteger method, of class HalfPrecisionNumber.
      */
