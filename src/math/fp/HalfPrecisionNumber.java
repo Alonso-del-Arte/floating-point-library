@@ -207,36 +207,36 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
     
     // TODO: Write tests for this
     @Override
-    public FloatingPointNumber plus(FloatingPointNumber addend) {
+    public HalfPrecisionNumber plus(FloatingPointNumber addend) {
         return this;
     }
     
     @Override
-    public FloatingPointNumber negate() {
+    public HalfPrecisionNumber negate() {
         return new HalfPrecisionNumber((short) (this.heldShort 
                 ^ Short.MIN_VALUE));
     }
     
     // TODO: Write tests for this
     @Override
-    public FloatingPointNumber minus(FloatingPointNumber subtrahend) {
+    public HalfPrecisionNumber minus(FloatingPointNumber subtrahend) {
         return this;
     }
     
     // TODO: Write tests for this
     @Override
-    public FloatingPointNumber times(FloatingPointNumber multiplicand) {
+    public HalfPrecisionNumber times(FloatingPointNumber multiplicand) {
         return this;
     }
     
     @Override
-    public FloatingPointNumber reciprocal() {
+    public HalfPrecisionNumber reciprocal() {
         return this;
     }
     
     // TODO: Write tests for this
     @Override
-    public FloatingPointNumber divides(FloatingPointNumber divisor) {
+    public HalfPrecisionNumber divides(FloatingPointNumber divisor) {
         return this;
     }
     
