@@ -178,7 +178,7 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
 
     @Override
     public HalfPrecisionNumber toHalfPrecision() {
-        return new HalfPrecisionNumber(Short.MIN_VALUE);
+        return this;
     }
 
     // TODO: Write tests for this
