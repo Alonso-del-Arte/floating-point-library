@@ -2035,17 +2035,21 @@ public class HalfPrecisionNumberNGTest {
     }
 
     /**
-     * Test of negate method, of class HalfPrecisionNumber.
+     * Test of the negate function, of the HalfPrecisionNumber class.
      */
-//    @Test
+    @Test
     public void testNegate() {
         System.out.println("negate");
-        HalfPrecisionNumber instance = null;
-        FloatingPointNumber expResult = null;
-        FloatingPointNumber result = instance.negate();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        int stop = -Short.MIN_VALUE;
+        for (int i = 0; i < stop; i++) {
+            short sh = (short) i;
+            FloatingPointNumber instance = new HalfPrecisionNumber(sh);
+            FloatingPointNumber expected 
+                    = new HalfPrecisionNumber((short) (sh + Short.MIN_VALUE));
+            FloatingPointNumber actual = instance.negate();
+            String message = "Negating " + instance.toString();
+            assertEquals(actual, expected, message);
+        }
     }
 
     /**
