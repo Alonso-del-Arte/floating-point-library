@@ -213,7 +213,8 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
     
     @Override
     public FloatingPointNumber negate() {
-        return this;
+        return new HalfPrecisionNumber((short) (this.heldShort 
+                | Short.MIN_VALUE));
     }
     
     // TODO: Write tests for this
