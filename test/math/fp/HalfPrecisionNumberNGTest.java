@@ -2051,6 +2051,18 @@ public class HalfPrecisionNumberNGTest {
             assertEquals(actual, expected, message);
         }
     }
+    
+    @Test
+    public void testNegateNegative() {
+        for (short sh = Short.MIN_VALUE; sh < 0; sh++) {
+            FloatingPointNumber instance = new HalfPrecisionNumber(sh);
+            FloatingPointNumber expected 
+                    = new HalfPrecisionNumber((short) (sh & Short.MAX_VALUE));
+            FloatingPointNumber actual = instance.negate();
+            String message = "Negating " + instance.toString();
+            assertEquals(actual, expected, message);
+        }
+    }
 
     /**
      * Test of minus method, of class HalfPrecisionNumber.
