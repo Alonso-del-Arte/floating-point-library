@@ -91,7 +91,7 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
     // TODO: Write tests for this
     @Override
     public boolean isInteger() {
-        return this.heldShort > 0;
+        return false;
     }
     
     @Override
