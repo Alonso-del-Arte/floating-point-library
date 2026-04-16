@@ -1599,6 +1599,14 @@ public class HalfPrecisionNumberNGTest {
         }
     }
     
+    @Test
+    public void testPositiveInfinityIsNotInteger() {
+        short sh = 31744;
+        FloatingPointNumber infinity = new HalfPrecisionNumber(sh);
+        String msg = infinity.toString() + " should not be integer";
+        assert !infinity.isInteger(): msg;
+    }
+    
     /**
      * Test of isInteger method, of class HalfPrecisionNumber.
      */
