@@ -1633,6 +1633,27 @@ public class HalfPrecisionNumberNGTest {
         assert zero.isInteger() : msg;
     }
     
+    @Test
+    public void testNonzeroNegativeSubnormalIsNotInteger() {
+        short stop = Short.MIN_VALUE + 1024;
+        String msgPart = " should not be an integer";
+        for (short sh = -Short.MAX_VALUE; sh < stop; sh++) {
+            FloatingPointNumber instance = new HalfPrecisionNumber(sh);
+            String msg = instance.toString() + msgPart;
+            assert !instance.isInteger() : msg;
+        }
+    }
+    
+    @Test
+    public void testNonzeroPositiveSubnormalIsNotInteger() {
+        String msgPart = " should not be an integer";
+        for (short sh = 1; sh < 1024; sh++) {
+            FloatingPointNumber instance = new HalfPrecisionNumber(sh);
+            String msg = instance.toString() + msgPart;
+            assert !instance.isInteger() : msg;
+        }
+    }
+    
     /**
      * Test of isInteger method, of class HalfPrecisionNumber.
      */
