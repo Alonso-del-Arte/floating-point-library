@@ -1619,6 +1619,13 @@ public class HalfPrecisionNumberNGTest {
         }
     }
     
+    @Test
+    public void testNegativeZeroIsInteger() {
+        FloatingPointNumber zero = new HalfPrecisionNumber(Short.MIN_VALUE);
+        String msg = zero.toString() + " should be integer";
+        assert zero.isInteger() : msg;
+    }
+    
     /**
      * Test of isInteger method, of class HalfPrecisionNumber.
      */
