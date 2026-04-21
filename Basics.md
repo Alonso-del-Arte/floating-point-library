@@ -189,6 +189,11 @@ represented meaningfully in floating point, but it can be represented in some
 kind of struct holding two floating point values (one for the real part, the 
 other for the imaginary part).
 
+Thus, in Java, `Math.sqrt(a)`, where `a` is 0.0 or a positive finite number, 
+gives an equal or smaller nonnegative finite number, but if `a` is a negative 
+number, the result is NaN. However, if `a` is &minus;0.0, the result is 
+&minus;0.0.
+
 FINISH WRITING
 
 ## Formats smaller than eight bits
