@@ -25,6 +25,15 @@ import org.testng.annotations.Test;
  */
 public class SinglePrecisionNumberNGTest {
     
+    @Test
+    public void testToStringNegativeInfinity() {
+        int i = -8388608;
+        FloatingPointNumber infinity = new SinglePrecisionNumber(i);
+        String expected = "\u2212Infinity";
+        String actual = infinity.toString();
+        assertEquals(actual, expected);
+    }
+    
     /**
      * Test of getUnbiasedExponent method, of class SinglePrecisionNumber.
      */
