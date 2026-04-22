@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 Alonso del Arte
+ * Copyright (C) 2026 Alonso del Arte
  *
  * This program is free software: you can redistribute it and/or modify it under 
  * the terms of the GNU General Public License as published by the Free Software 
@@ -24,6 +24,13 @@ public class IntProcessor {
     
     // TODO: Write tests for this
     public static int fromBytes(byte[] source) {
+        int len = source.length;
+        if (len > Integer.BYTES) {
+            int excess = len - Integer.BYTES;
+            String excMsg = "Source array has " + len + " bytes, " + excess 
+                    + " too many";
+            throw new IllegalArgumentException(excMsg);
+        }
         return 0;
     }
     
