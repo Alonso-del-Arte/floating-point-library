@@ -20,18 +20,15 @@ import static org.testng.Assert.*;
 import org.testng.annotations.Test;
 
 /**
- *
- * @author al
+ * Tests of the SinglePrecisionNumber class.
+ * @author Alonso del Arte
  */
 public class SinglePrecisionNumberNGTest {
     
-    public SinglePrecisionNumberNGTest() {
-    }
-
     /**
      * Test of getUnbiasedExponent method, of class SinglePrecisionNumber.
      */
-    @Test
+    @Test(enabled = false)
     public void testGetUnbiasedExponent() {
         System.out.println("getUnbiasedExponent");
         SinglePrecisionNumber instance = null;
@@ -45,13 +42,13 @@ public class SinglePrecisionNumberNGTest {
     /**
      * Test of getBiasedExponent method, of class SinglePrecisionNumber.
      */
-    @Test
+    @Test(enabled = false)
     public void testGetBiasedExponent() {
-        System.out.println("getBiasedExponent");
-        SinglePrecisionNumber instance = null;
-        int expResult = 0;
-        int result = instance.getBiasedExponent();
-        assertEquals(result, expResult);
+//        System.out.println("getBiasedExponent");
+//        SinglePrecisionNumber instance = null;
+//        int expResult = 0;
+//        int result = instance.getBiasedExponent();
+//        assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -59,13 +56,13 @@ public class SinglePrecisionNumberNGTest {
     /**
      * Test of isNormal method, of class SinglePrecisionNumber.
      */
-    @Test
+    @Test(enabled = false)
     public void testIsNormal() {
         System.out.println("isNormal");
-        SinglePrecisionNumber instance = null;
-        boolean expResult = false;
-        boolean result = instance.isNormal();
-        assertEquals(result, expResult);
+//        SinglePrecisionNumber instance = null;
+//        boolean expResult = false;
+//        boolean result = instance.isNormal();
+//        assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -73,13 +70,13 @@ public class SinglePrecisionNumberNGTest {
     /**
      * Test of isSubnormal method, of class SinglePrecisionNumber.
      */
-    @Test
+    @Test(enabled = false)
     public void testIsSubnormal() {
         System.out.println("isSubnormal");
-        SinglePrecisionNumber instance = null;
-        boolean expResult = false;
-        boolean result = instance.isSubnormal();
-        assertEquals(result, expResult);
+//        SinglePrecisionNumber instance = null;
+//        boolean expResult = false;
+//        boolean result = instance.isSubnormal();
+//        assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -87,13 +84,13 @@ public class SinglePrecisionNumberNGTest {
     /**
      * Test of isInteger method, of class SinglePrecisionNumber.
      */
-    @Test
+    @Test(enabled = false)
     public void testIsInteger() {
         System.out.println("isInteger");
-        SinglePrecisionNumber instance = null;
-        boolean expResult = false;
-        boolean result = instance.isInteger();
-        assertEquals(result, expResult);
+//        SinglePrecisionNumber instance = null;
+//        boolean expResult = false;
+//        boolean result = instance.isInteger();
+//        assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -101,13 +98,13 @@ public class SinglePrecisionNumberNGTest {
     /**
      * Test of isFinite method, of class SinglePrecisionNumber.
      */
-    @Test
+    @Test(enabled = false)
     public void testIsFinite() {
         System.out.println("isFinite");
-        SinglePrecisionNumber instance = null;
-        boolean expResult = false;
-        boolean result = instance.isFinite();
-        assertEquals(result, expResult);
+//        SinglePrecisionNumber instance = null;
+//        boolean expResult = false;
+//        boolean result = instance.isFinite();
+//        assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -115,13 +112,13 @@ public class SinglePrecisionNumberNGTest {
     /**
      * Test of isInfinite method, of class SinglePrecisionNumber.
      */
-    @Test
+    @Test(enabled = false)
     public void testIsInfinite() {
         System.out.println("isInfinite");
-        SinglePrecisionNumber instance = null;
-        boolean expResult = false;
-        boolean result = instance.isInfinite();
-        assertEquals(result, expResult);
+//        SinglePrecisionNumber instance = null;
+//        boolean expResult = false;
+//        boolean result = instance.isInfinite();
+//        assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -129,7 +126,7 @@ public class SinglePrecisionNumberNGTest {
     /**
      * Test of isNaN method, of class SinglePrecisionNumber.
      */
-    @Test
+    @Test(enabled = false)
     public void testIsNaN() {
         System.out.println("isNaN");
         SinglePrecisionNumber instance = null;
@@ -143,7 +140,7 @@ public class SinglePrecisionNumberNGTest {
     /**
      * Test of isQuietNaN method, of class SinglePrecisionNumber.
      */
-    @Test
+    @Test(enabled = false)
     public void testIsQuietNaN() {
         System.out.println("isQuietNaN");
         SinglePrecisionNumber instance = null;
@@ -157,7 +154,7 @@ public class SinglePrecisionNumberNGTest {
     /**
      * Test of isSignalingNaN method, of class SinglePrecisionNumber.
      */
-    @Test
+    @Test(enabled = false)
     public void testIsSignalingNaN() {
         System.out.println("isSignalingNaN");
         SinglePrecisionNumber instance = null;
@@ -171,7 +168,7 @@ public class SinglePrecisionNumberNGTest {
     /**
      * Test of to32BitPrimitive method, of class SinglePrecisionNumber.
      */
-    @Test
+    @Test(enabled = false)
     public void testTo32BitPrimitive() {
         System.out.println("to32BitPrimitive");
         SinglePrecisionNumber instance = null;
@@ -185,7 +182,7 @@ public class SinglePrecisionNumberNGTest {
     /**
      * Test of to64BitPrimitive method, of class SinglePrecisionNumber.
      */
-    @Test
+    @Test(enabled = false)
     public void testTo64BitPrimitive() {
         System.out.println("to64BitPrimitive");
         SinglePrecisionNumber instance = null;
@@ -199,7 +196,7 @@ public class SinglePrecisionNumberNGTest {
     /**
      * Test of toQuarterPrecision method, of class SinglePrecisionNumber.
      */
-    @Test
+    @Test(enabled = false)
     public void testToQuarterPrecision() {
         System.out.println("toQuarterPrecision");
         SinglePrecisionNumber instance = null;
@@ -213,7 +210,7 @@ public class SinglePrecisionNumberNGTest {
     /**
      * Test of toHalfPrecision method, of class SinglePrecisionNumber.
      */
-    @Test
+    @Test(enabled = false)
     public void testToHalfPrecision() {
         System.out.println("toHalfPrecision");
         SinglePrecisionNumber instance = null;
@@ -227,7 +224,7 @@ public class SinglePrecisionNumberNGTest {
     /**
      * Test of toSinglePrecision method, of class SinglePrecisionNumber.
      */
-    @Test
+    @Test(enabled = false)
     public void testToSinglePrecision() {
         System.out.println("toSinglePrecision");
         SinglePrecisionNumber instance = null;
@@ -241,7 +238,7 @@ public class SinglePrecisionNumberNGTest {
     /**
      * Test of toDoublePrecision method, of class SinglePrecisionNumber.
      */
-    @Test
+    @Test(enabled = false)
     public void testToDoublePrecision() {
         System.out.println("toDoublePrecision");
         SinglePrecisionNumber instance = null;
@@ -255,7 +252,7 @@ public class SinglePrecisionNumberNGTest {
     /**
      * Test of toQuadruplePrecision method, of class SinglePrecisionNumber.
      */
-    @Test
+    @Test(enabled = false)
     public void testToQuadruplePrecision() {
         System.out.println("toQuadruplePrecision");
         SinglePrecisionNumber instance = null;
@@ -269,7 +266,7 @@ public class SinglePrecisionNumberNGTest {
     /**
      * Test of toOctuplePrecision method, of class SinglePrecisionNumber.
      */
-    @Test
+    @Test(enabled = false)
     public void testToOctuplePrecision() {
         System.out.println("toOctuplePrecision");
         SinglePrecisionNumber instance = null;
@@ -283,7 +280,7 @@ public class SinglePrecisionNumberNGTest {
     /**
      * Test of plus method, of class SinglePrecisionNumber.
      */
-    @Test
+    @Test(enabled = false)
     public void testPlus() {
         System.out.println("plus");
         FloatingPointNumber addend = null;
@@ -298,7 +295,7 @@ public class SinglePrecisionNumberNGTest {
     /**
      * Test of negate method, of class SinglePrecisionNumber.
      */
-    @Test
+    @Test(enabled = false)
     public void testNegate() {
         System.out.println("negate");
         SinglePrecisionNumber instance = null;
@@ -312,7 +309,7 @@ public class SinglePrecisionNumberNGTest {
     /**
      * Test of minus method, of class SinglePrecisionNumber.
      */
-    @Test
+    @Test(enabled = false)
     public void testMinus() {
         System.out.println("minus");
         FloatingPointNumber subtrahend = null;
@@ -327,7 +324,7 @@ public class SinglePrecisionNumberNGTest {
     /**
      * Test of times method, of class SinglePrecisionNumber.
      */
-    @Test
+    @Test(enabled = false)
     public void testTimes() {
         System.out.println("times");
         FloatingPointNumber multiplicand = null;
@@ -342,7 +339,7 @@ public class SinglePrecisionNumberNGTest {
     /**
      * Test of reciprocal method, of class SinglePrecisionNumber.
      */
-    @Test
+    @Test(enabled = false)
     public void testReciprocal() {
         System.out.println("reciprocal");
         SinglePrecisionNumber instance = null;
@@ -356,7 +353,7 @@ public class SinglePrecisionNumberNGTest {
     /**
      * Test of divides method, of class SinglePrecisionNumber.
      */
-    @Test
+    @Test(enabled = false)
     public void testDivides() {
         System.out.println("divides");
         FloatingPointNumber divisor = null;
@@ -371,7 +368,7 @@ public class SinglePrecisionNumberNGTest {
     /**
      * Test of arithmeticallyEqual method, of class SinglePrecisionNumber.
      */
-    @Test
+    @Test(enabled = false)
     public void testArithmeticallyEqual() {
         System.out.println("arithmeticallyEqual");
         FloatingPointNumber other = null;
@@ -386,7 +383,7 @@ public class SinglePrecisionNumberNGTest {
     /**
      * Test of bitPatternHexadecimal method, of class SinglePrecisionNumber.
      */
-    @Test
+    @Test(enabled = false)
     public void testBitPatternHexadecimal() {
         System.out.println("bitPatternHexadecimal");
         SinglePrecisionNumber instance = null;
@@ -400,7 +397,7 @@ public class SinglePrecisionNumberNGTest {
     /**
      * Test of fromPrimitive method, of class SinglePrecisionNumber.
      */
-    @Test
+    @Test(enabled = false)
     public void testFromPrimitive() {
         System.out.println("fromPrimitive");
         float number = 0.0F;
