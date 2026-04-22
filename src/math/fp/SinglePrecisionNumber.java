@@ -194,6 +194,11 @@ public class SinglePrecisionNumber extends FloatingPointNumber {
     public boolean arithmeticallyEqual(FloatingPointNumber other) {
         return true;
     }
+    
+    @Override
+    public String toString() {
+        return "\u2212Infinity";
+    }
             
     // TODO: Write tests for this
     @Override
