@@ -34,6 +34,15 @@ public class SinglePrecisionNumberNGTest {
         assertEquals(actual, expected);
     }
     
+    @Test
+    public void testToStringPositiveInfinity() {
+        int i = 2139095040;
+        FloatingPointNumber infinity = new SinglePrecisionNumber(i);
+        String expected = "Infinity";
+        String actual = infinity.toString();
+        assertEquals(actual, expected);
+    }
+    
     /**
      * Test of getUnbiasedExponent method, of class SinglePrecisionNumber.
      */
