@@ -21,6 +21,8 @@ package math.fp;
  * @author Alonso del Arte
  */
 public class SinglePrecisionNumber extends FloatingPointNumber {
+    
+    private final int heldInt;
 
     private static final byte ZERO_BYTE = 0;
     
@@ -197,6 +199,9 @@ public class SinglePrecisionNumber extends FloatingPointNumber {
     
     @Override
     public String toString() {
+        if (this.heldInt > 0) {
+            return "Infinity";
+        }
         return "\u2212Infinity";
     }
             
@@ -213,10 +218,12 @@ public class SinglePrecisionNumber extends FloatingPointNumber {
     
     SinglePrecisionNumber(byte[] bytes) {
         super(bytes);
+        this.heldInt = 0;
     }
     
     public SinglePrecisionNumber(int i) {
         super(FOUR_ZEROS);
+        this.heldInt = i;
     }
     
 }
