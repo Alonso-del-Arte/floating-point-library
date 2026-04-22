@@ -29,6 +29,22 @@ import org.testng.annotations.Test;
  */
 public class IntProcessorNGTest {
     
+    @Test
+    public void testFromBytesRejectsTooManyBytes() {
+        int size = RANDOM.nextInt(8) + Integer.BYTES + 2;
+        byte[] source = new byte[size];
+        String msg = "Using array of " + size 
+                + " bytes should have caused an exception";
+        Throwable t = assertThrows(() -> {
+            int badInt = IntProcessor.fromBytes(source);
+            System.out.println(msg + ", not given result " + badInt);
+        }, IllegalArgumentException.class, msg);
+        String excMsg = t.getMessage();
+        assert excMsg != null : "Exception message should not be null";
+        assert !excMsg.isBlank() : "Exception message should not be blank";
+        System.out.println("\"" + excMsg + "\"");
+    }
+
     /**
      * Test of fromBytes method, of class IntProcessor.
      */
