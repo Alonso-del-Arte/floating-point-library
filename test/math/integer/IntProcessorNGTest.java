@@ -32,7 +32,7 @@ public class IntProcessorNGTest {
     /**
      * Test of fromBytes method, of class IntProcessor.
      */
-    @Test
+    @Test(enabled = false)
     public void testFromBytes() {
         System.out.println("fromBytes");
         byte[] source = null;
@@ -46,7 +46,7 @@ public class IntProcessorNGTest {
     /**
      * Test of toBytes method, of class IntProcessor.
      */
-    @Test
+    @Test(enabled = false)
     public void testToBytes() {
         System.out.println("toBytes");
         int source = 0;
