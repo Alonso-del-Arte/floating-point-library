@@ -1692,6 +1692,24 @@ public class HalfPrecisionNumberNGTest {
         assert instance.isInteger() : msg;
     }
     
+    @Test
+    public void testNegativeIntegerIsInteger() {
+        final int base = 49152;
+        String msgPart = " should be an integer";
+        for (int i = 0; i < 15; i++) {
+            int exponentPart = base + (i << 10);
+            int propShift = 9 - i;
+            int shift = (propShift > -1) ? propShift : 0;
+            int increment = 1 << shift;
+            for (int mantissa = 0; mantissa < 1024; mantissa += increment) {
+                short sh = (short) (exponentPart + mantissa);
+                FloatingPointNumber instance = new HalfPrecisionNumber(sh);
+                String msg = instance.toString() + msgPart;
+                assert instance.isInteger() : msg;
+            }
+        }
+    }
+    
     /**
      * Test of isInteger method, of class HalfPrecisionNumber.
      */
