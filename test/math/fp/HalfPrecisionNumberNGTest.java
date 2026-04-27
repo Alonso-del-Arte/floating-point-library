@@ -1713,15 +1713,23 @@ public class HalfPrecisionNumberNGTest {
     /**
      * Test of isInteger method, of class HalfPrecisionNumber.
      */
-//    @Test
+    @Test
     public void testIsInteger() {
         System.out.println("isInteger");
-//        HalfPrecisionNumber instance = null;
-//        boolean expResult = false;
-//        boolean result = instance.isInteger();
-//        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        final int base = 16384;
+        String msgPart = " should be an integer";
+        for (int i = 0; i < 15; i++) {
+            int exponentPart = base + (i << 10);
+            int propShift = 9 - i;
+            int shift = (propShift > -1) ? propShift : 0;
+            int increment = 1 << shift;
+            for (int mantissa = 0; mantissa < 1024; mantissa += increment) {
+                short sh = (short) (exponentPart + mantissa);
+                FloatingPointNumber instance = new HalfPrecisionNumber(sh);
+                String msg = instance.toString() + msgPart;
+                assert instance.isInteger() : msg;
+            }
+        }
     }
 
     /**
