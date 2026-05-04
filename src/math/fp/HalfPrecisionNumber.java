@@ -92,7 +92,7 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
     @Override
     public boolean isInteger() {
         int abs = this.heldShort & Short.MAX_VALUE;
-        return abs == 0 || abs == 15360 || (abs > 16383 && abs < 31744);
+        return abs == 0 || (abs > 15359 && abs < 31744);
     }
     
     @Override
