@@ -1752,6 +1752,46 @@ public class HalfPrecisionNumberNGTest {
         }
     }
 
+    @Test
+    public void testNegativeNonIntegerIsNotInteger() {
+        final int base = 49152;
+        String msgPart = " should not be an integer";
+        for (int i = 0; i < 10; i++) {
+            int exponentPart = base + (i << 10);
+            int shift = 9 - i;
+            int increment = 1 << shift;
+            for (int mantissa = 0; mantissa < 1024; mantissa += increment) {
+                for (int rightOfPoint = 1; rightOfPoint < increment; 
+                        rightOfPoint++) {
+                    short sh = (short) (exponentPart + mantissa + rightOfPoint);
+                    FloatingPointNumber instance = new HalfPrecisionNumber(sh);
+                    String msg = instance.toString() + msgPart;
+                    assert !instance.isInteger() : msg;
+                }
+            }
+        }
+    }
+
+    @Test
+    public void testPositiveNonIntegerIsNotInteger() {
+        final int base = 16384;
+        String msgPart = " should not be an integer";
+        for (int i = 0; i < 10; i++) {
+            int exponentPart = base + (i << 10);
+            int shift = 9 - i;
+            int increment = 1 << shift;
+            for (int mantissa = 0; mantissa < 1024; mantissa += increment) {
+                for (int rightOfPoint = 1; rightOfPoint < increment; 
+                        rightOfPoint++) {
+                    short sh = (short) (exponentPart + mantissa + rightOfPoint);
+                    FloatingPointNumber instance = new HalfPrecisionNumber(sh);
+                    String msg = instance.toString() + msgPart;
+                    assert !instance.isInteger() : msg;
+                }
+            }
+        }
+    }
+
     /**
      * Test of the isFinite function, of the HalfPrecisionNumber class.
      */
