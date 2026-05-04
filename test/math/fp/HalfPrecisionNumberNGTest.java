@@ -1667,7 +1667,6 @@ public class HalfPrecisionNumberNGTest {
     
     @Test
     public void testLowNormalsBetweenZeroAndPositiveOneAreNotIntegers() {
-        short start = Short.MIN_VALUE + 1025;
         String msgPart = " should not be an integer";
         for (short sh = 1025; sh < 15360; sh++) {
             FloatingPointNumber instance = new HalfPrecisionNumber(sh);
