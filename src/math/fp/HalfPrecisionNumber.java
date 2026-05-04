@@ -88,7 +88,6 @@ public class HalfPrecisionNumber extends FloatingPointNumber {
         return (this.heldShort | Short.MIN_VALUE) == Short.MIN_VALUE;
     }
     
-    // TODO: Write tests for this
     @Override
     public boolean isInteger() {
         int abs = this.heldShort & Short.MAX_VALUE;
