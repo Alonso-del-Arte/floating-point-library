@@ -1693,6 +1693,26 @@ public class HalfPrecisionNumberNGTest {
     }
     
     @Test
+    public void testLowNormalsBetweenNegativeTwoAndNegativeOneAreNotIntegers() {
+        String msgPart = " should not be an integer";
+        for (short sh = -17407; sh < -16384; sh++) {
+            FloatingPointNumber instance = new HalfPrecisionNumber(sh);
+            String msg = instance.toString() + msgPart;
+            assert !instance.isInteger() : msg;
+        }
+    }
+    
+    @Test
+    public void testLowNormalsBetweenOneAndTwoAreNotIntegers() {
+        String msgPart = " should not be an integer";
+        for (short sh = 15361; sh < 16384; sh++) {
+            FloatingPointNumber instance = new HalfPrecisionNumber(sh);
+            String msg = instance.toString() + msgPart;
+            assert !instance.isInteger() : msg;
+        }
+    }
+    
+    @Test
     public void testNegativeIntegerIsInteger() {
         final int base = 49152;
         String msgPart = " should be an integer";
