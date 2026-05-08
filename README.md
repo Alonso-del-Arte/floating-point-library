@@ -1,6 +1,6 @@
 # Floating point library
 
-WORK IN PROGRESS: About to resume work on 16-bit floating point
+WORK IN PROGRESS
 
 A library to represent floating point numbers in precisions other than the ones 
 available through Java Virtual Machine primitives. Specifically:
