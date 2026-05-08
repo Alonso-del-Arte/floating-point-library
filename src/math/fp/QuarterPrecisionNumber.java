@@ -37,26 +37,13 @@ public class QuarterPrecisionNumber extends FloatingPointNumber {
      */
     private static final byte EXPONENT_MASK = 120;
 
-    private static final byte ZERO_BYTE = 0;
-    
-    private static final byte[] FOUR_ZEROS = {ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, 
-        ZERO_BYTE}; // float
+    private static final byte[] FOUR_ZEROS = new byte[4]; // float
 
-    private static final byte[] EIGHT_ZEROS = {ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, 
-        ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE}; // double
+    private static final byte[] EIGHT_ZEROS = new byte[8]; // double
 
-    private static final byte[] SIXTEEN_ZEROS = {ZERO_BYTE, ZERO_BYTE, 
-        ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, 
-        ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, 
-        ZERO_BYTE, ZERO_BYTE}; // quadruple
+    private static final byte[] SIXTEEN_ZEROS = new byte[16]; // quadruple
 
-    private static final byte[] THIRTY_TWO_ZEROS = {ZERO_BYTE, ZERO_BYTE, 
-        ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, 
-        ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, 
-        ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE,
-        ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, 
-        ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE, ZERO_BYTE}; 
-// octuple
+    private static final byte[] THIRTY_TWO_ZEROS = new byte[32]; // octuple
     
     private final byte heldByte;
 
