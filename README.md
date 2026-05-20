@@ -29,10 +29,8 @@ according to `equals()` if they have the same bit pattern.
 Also, signaling NaNs will be preserved to the extent that they can be kept out 
 of Java floating point primitives.
 
-I haven't decided if arithmetic operations will be performed in hardware 
-whenever possible, or never performed in hardware, or simply using whatever is 
-most convenient. Or maybe I did decide that long ago but never wrote it down 
-before.
+Arithmetic operations will be performed in hardware when possible and 
+convenient.
 
 This project uses TestNG 6 and TestFrame 1.0.
 
