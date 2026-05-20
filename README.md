@@ -3,7 +3,9 @@
 WORK IN PROGRESS
 
 A library to represent floating point numbers in precisions other than the ones 
-available through Java Virtual Machine primitives. Specifically:
+available through Java Virtual Machine (JVM) primitives. But for completeness, 
+the formats already available through the JVM will also be included. 
+Specifically:
 
 * **Quarter precision** &mdash; 8-bit.
 * **Half precision** &mdash; 16-bit.
