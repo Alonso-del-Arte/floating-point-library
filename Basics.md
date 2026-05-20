@@ -361,6 +361,12 @@ mentioned in the Javadoc. The `strictfp` modifier would be a historical
 curiosity except that a lot of devices are still running Java 8 and Java 11, and 
 maybe some non-LTS versions prior to Java 17.
 
+### Java and canonical NaN
+
+Despite the wide ranges of possible NaN values in 32- and 64-bit floating point, 
+in Java most of the time there are only two NaN values which are said to be 
+"canonical." They have the bit patterns 7FC0 0000 and 7FF8 0000 0000 0000
+
 FINISH WRITING
 
 FINISH WRITING
