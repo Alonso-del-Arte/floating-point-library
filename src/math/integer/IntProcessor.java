@@ -31,7 +31,7 @@ public class IntProcessor {
                     + " too many";
             throw new IllegalArgumentException(excMsg);
         }
-        return 0;
+        return -1;
     }
     
     // TODO: Write tests for this
