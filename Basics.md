@@ -365,7 +365,8 @@ maybe some non-LTS versions prior to Java 17.
 
 Despite the wide ranges of possible NaN values in 32- and 64-bit floating point, 
 in Java most of the time there are only two NaN values which are said to be 
-"canonical." They have the bit patterns 7FC0 0000 and 7FF8 0000 0000 0000
+"canonical." They have the bit patterns 7FC0 0000 and 7FF8 0000 0000 0000, they 
+are "positive" quiet NaNs.
 
 FINISH WRITING
 
