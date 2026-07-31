@@ -22,7 +22,6 @@ package math.integer;
  */
 public class IntProcessor {
     
-    // TODO: Write tests for this
     public static int fromBytes(byte[] source) {
         int len = source.length;
         if (len > Integer.BYTES) {
@@ -31,7 +30,7 @@ public class IntProcessor {
                     + " too many";
             throw new IllegalArgumentException(excMsg);
         }
-        return -1;
+        return 0;
     }
     
     // TODO: Write tests for this
