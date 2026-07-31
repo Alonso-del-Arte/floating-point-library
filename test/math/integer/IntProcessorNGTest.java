@@ -16,6 +16,8 @@
  */
 package math.integer;
 
+import java.util.Arrays;
+
 import static math.integer.CalculatorNGTest.RANDOM;
 
 import static org.testframe.api.Asserters.assertThrows;
@@ -28,6 +30,16 @@ import org.testng.annotations.Test;
  * @author Alonso del Arte
  */
 public class IntProcessorNGTest {
+    
+    @Test
+    public void testFromZeroBytesGivesZero() {
+        byte[] source = {};
+        int expected = 0;
+        int actual = IntProcessor.fromBytes(source);
+        String message = "Array " + Arrays.toString(source) 
+                + " should give 0";
+        assertEquals(actual, expected, message);
+    }
     
     @Test
     public void testFromBytesRejectsTooManyBytes() {
