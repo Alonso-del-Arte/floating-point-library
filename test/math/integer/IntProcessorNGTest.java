@@ -37,7 +37,7 @@ public class IntProcessorNGTest {
         Throwable t = assertThrows(() -> {
             int badInt = IntProcessor.fromBytes(null);
             System.out.println(msg + ", not given result " + badInt);
-        }, IllegalArgumentException.class, msg);
+        }, NullPointerException.class, msg);
         String excMsg = t.getMessage();
         assert excMsg != null : "Exception message should not be null";
         assert !excMsg.isBlank() : "Exception message should not be blank";
