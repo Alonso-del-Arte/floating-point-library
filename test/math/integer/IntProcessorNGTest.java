@@ -41,6 +41,20 @@ public class IntProcessorNGTest {
         assertEquals(actual, expected, message);
     }
     
+    /**
+     * Test of fromBytes method, of class IntProcessor.
+     */
+    @Test(enabled = false)
+    public void testFromBytes() {
+        System.out.println("fromBytes");
+        byte[] source = null;
+        int expResult = 0;
+        int result = IntProcessor.fromBytes(source);
+        assertEquals(result, expResult);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
     @Test
     public void testFromBytesRejectsTooManyBytes() {
         int size = RANDOM.nextInt(8) + Integer.BYTES + 2;
@@ -55,20 +69,6 @@ public class IntProcessorNGTest {
         assert excMsg != null : "Exception message should not be null";
         assert !excMsg.isBlank() : "Exception message should not be blank";
         System.out.println("\"" + excMsg + "\"");
-    }
-
-    /**
-     * Test of fromBytes method, of class IntProcessor.
-     */
-    @Test(enabled = false)
-    public void testFromBytes() {
-        System.out.println("fromBytes");
-        byte[] source = null;
-        int expResult = 0;
-        int result = IntProcessor.fromBytes(source);
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
