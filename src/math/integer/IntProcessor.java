@@ -23,6 +23,7 @@ package math.integer;
 public class IntProcessor {
     
     public static int fromBytes(byte[] source) {
+        if (source == null) return 0;
         int len = source.length;
         if (len > Integer.BYTES) {
             int excess = len - Integer.BYTES;
